@@ -75,11 +75,10 @@ jobs:
           restore-keys: ${{ runner.os }}-pnpm-store-
       - run: pnpm install
       - run: pnpm run build
-      - run: wget https://raw.githubusercontent.com/rafgraph/spa-github-pages/gh-pages/404.html
-      - run: cp ./404.html ./dist/laser-admin/404.html
-      - uses: peaceiris/actions-gh-pages@v3
+      - run: cp ./dist/laser-admin/index.html ./dist/laser-admin/200.html
+      - uses: dswistowski/surge-sh-action@v1
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          external_repository: laser-ui/laser-admin.github.io
-          publish_branch: main
-          publish_dir: './dist/laser-admin'
+          domain: 'laser-admin.surge.sh'
+          project: './dist/laser-admin'
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
