@@ -1,0 +1,36 @@
+@use '~styles/variables';
+@use '~styles/mixins';
+
+@include mixins.b(list) {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @include mixins.e(item) {
+    display: flex;
+    padding: 12px 0;
+  }
+
+  @include mixins.e(avatar) {
+    margin-right: 12px;
+  }
+
+  @include mixins.e(content) {
+    flex: 1 0 0;
+  }
+
+  @include mixins.e(title) {
+    font-weight: var(--#{variables.$prefix}font-weight-bold);
+  }
+
+  @include mixins.e(subtitle) {
+    /* stylelint-disable-next-line declaration-property-value-allowed-list */
+    font-size: 10px;
+    color: var(--#{variables.$prefix}color-text-sub);
+  }
+
+  @include mixins.e(description) {
+    margin-top: 4px;
+    color: var(--#{variables.$prefix}color-text-sub);
+  }
+}

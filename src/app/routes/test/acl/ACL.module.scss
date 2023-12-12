@@ -1,0 +1,16 @@
+@use '~styles/variables';
+@use '~styles/mixins';
+
+@include mixins.b(acl) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  padding: 20px;
+
+  @include mixins.e(button-container) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+}

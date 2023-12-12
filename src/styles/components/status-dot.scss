@@ -1,0 +1,53 @@
+@use '../variables';
+@use '../mixins';
+
+@keyframes app-status-dot-wave {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@include mixins.b(status-dot) {
+  --app-status-dot-color: var(--#{variables.$prefix}background-color-primary-gray);
+
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+
+  @each $theme, $rgb in variables.$themes {
+    @include mixins.theme(#{$theme}) {
+      --app-status-dot-color: var(--#{variables.$prefix}color-#{$theme});
+    }
+  }
+
+  @include mixins.m(wave) {
+    @include mixins.e(dot) {
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+        border: 1px solid var(--app-status-dot-color);
+        border-radius: 50%;
+        animation: app-status-dot-wave 1.2s ease-in-out infinite;
+      }
+    }
+  }
+
+  @include mixins.e(dot) {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    margin-right: 8px;
+    background-color: var(--app-status-dot-color);
+    border-radius: 50%;
+  }
+}

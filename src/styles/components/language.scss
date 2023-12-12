@@ -1,0 +1,10 @@
+@use '../variables';
+@use '../mixins';
+
+@include mixins.b(language) {
+  @include mixins.e(item-region) {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.1em;
+  }
+}

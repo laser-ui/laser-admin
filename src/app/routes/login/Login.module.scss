@@ -1,0 +1,91 @@
+@use 'sass:map';
+@use '~styles/variables';
+@use '~styles/mixins';
+
+@include mixins.b(login) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 20px 20px;
+
+  @include mixins.e(bg) {
+    width: 400px;
+    height: 400px;
+    margin-right: 100px;
+  }
+
+  @include mixins.e(login-container) {
+    display: inline-block;
+    max-width: 400px;
+    vertical-align: top;
+  }
+
+  @include mixins.e(title-container) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mixins.font-size(2rem);
+  }
+
+  @include mixins.e(logo) {
+    width: calc(1em * 1.5);
+    height: calc(1em * 1.5);
+    margin-right: 16px;
+  }
+
+  @include mixins.e(description) {
+    margin: 10px 0 0;
+    color: rgb(var(--#{variables.$prefix}color-text-rgb) / 80%);
+    text-align: center;
+  }
+
+  @include mixins.e(tabs) {
+    margin-top: 20px;
+  }
+
+  @include mixins.e(lang) {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    white-space: nowrap;
+    vertical-align: top;
+    appearance: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+
+  @include mixins.e(footer) {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 60px;
+    color: var(--#{variables.$prefix}color-text-sub);
+    border-top: 1px solid var(--#{variables.$prefix}color-border);
+
+    @include mixins.media-breakpoint-up(md) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    & > div {
+      margin-top: 12px;
+    }
+  }
+
+  @include mixins.e(link-container) {
+    display: flex;
+    column-gap: 12px;
+  }
+}

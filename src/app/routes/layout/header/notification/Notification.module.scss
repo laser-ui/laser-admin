@@ -1,0 +1,27 @@
+@use '~styles/variables';
+@use '~styles/mixins';
+
+@include mixins.b(notification) {
+  @include mixins.e(item) {
+    padding-right: 16px;
+    padding-left: 16px;
+    cursor: pointer;
+    transition: background-color var(--#{variables.$prefix}animation-duration-base) linear;
+
+    &:hover {
+      background-color: var(--#{variables.$prefix}background-color-hover);
+    }
+
+    @include mixins.m(read) {
+      pointer-events: none;
+      filter: opacity(50%);
+    }
+  }
+
+  @include mixins.e(actions) {
+    display: flex;
+    align-items: stretch;
+    height: 44px;
+    border-top: 1px solid var(--#{variables.$prefix}color-divider);
+  }
+}

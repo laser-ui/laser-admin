@@ -1,0 +1,41 @@
+@use '../variables';
+@use '../mixins';
+
+@include mixins.b(table) {
+  @include mixins.e(title) {
+    margin: 0 0 8px;
+    font-size: var(--#{variables.$prefix}font-size-title);
+    font-weight: var(--#{variables.$prefix}font-weight-bold);
+    text-align: center;
+  }
+
+  @include mixins.e(card-header) {
+    display: flex;
+    align-items: center;
+
+    & > .#{variables.$prefix}checkbox {
+      margin-right: 8px;
+    }
+
+    & > span {
+      @include mixins.utils-ellipsis;
+
+      flex: 1 0 0;
+    }
+  }
+
+  @include mixins.e(expand) {
+    border-top: 1px solid var(--#{variables.$prefix}color-border);
+  }
+
+  @include mixins.e(expand-button) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+
+    @include mixins.when(expand) {
+      border-top: 1px solid var(--#{variables.$prefix}color-border);
+    }
+  }
+}

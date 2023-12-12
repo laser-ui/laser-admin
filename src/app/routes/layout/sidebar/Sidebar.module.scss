@@ -1,0 +1,13 @@
+@use '~styles/variables';
+@use '~styles/mixins';
+
+@include mixins.b(sidebar) {
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0;
+  overflow: hidden auto;
+  background-color: var(--#{variables.$prefix}background-color);
+  box-shadow: -2px 0 8px 0 var(--#{variables.$prefix}box-shadow-color);
+}

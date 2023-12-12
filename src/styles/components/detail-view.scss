@@ -1,0 +1,44 @@
+@use '../variables';
+@use '../mixins';
+
+@include mixins.b(detail-view) {
+  @include mixins.m(vertical) {
+    @include mixins.e(item) {
+      flex-direction: column;
+    }
+
+    @include mixins.e(item-label) {
+      margin-right: 0;
+      margin-bottom: 2px;
+      font-size: 0.775em;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  @include mixins.e(item) {
+    display: inline-flex;
+
+    @include mixins.m(center) {
+      align-items: center;
+    }
+  }
+
+  @include mixins.e(item-label) {
+    flex-shrink: 0;
+    margin-right: 12px;
+    color: var(--#{variables.$prefix}color-text-sub);
+
+    &::after {
+      margin-left: 2px;
+      content: ':';
+    }
+  }
+
+  @include mixins.e(item-content) {
+    flex-grow: 1;
+    word-break: break-all;
+  }
+}
