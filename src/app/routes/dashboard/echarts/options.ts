@@ -1,12 +1,12 @@
 import type { LineSeriesOption, BarSeriesOption, PieSeriesOption, ScatterSeriesOption } from 'echarts/charts';
 import type {
-  TitleComponentOption,
-  TooltipComponentOption,
-  GridComponentOption,
-  DatasetComponentOption,
   DataZoomComponentOption,
+  DatasetComponentOption,
+  GridComponentOption,
   LegendComponentOption,
+  TitleComponentOption,
   ToolboxComponentOption,
+  TooltipComponentOption,
 } from 'echarts/components';
 import type { ComposeOption } from 'echarts/core';
 
