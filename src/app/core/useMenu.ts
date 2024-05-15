@@ -1,8 +1,9 @@
 import type { AppMenuItem } from '../configs/menu';
 import type { MenuItem } from '@laser-ui/components/menu/types';
 
+import { useACL } from '@laser-ui/admin';
 import { Icon } from '@laser-ui/components';
-import { useACL, useMount } from '@laser-ui/hooks';
+import { useMount } from '@laser-ui/hooks';
 import { isObject, isUndefined } from 'lodash';
 import { useStore } from 'rcl-store';
 import { createElement } from 'react';

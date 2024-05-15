@@ -45,7 +45,7 @@ export function AppDeviceModal(props: AppDeviceModalProps): JSX.Element | null {
     http<AppStandardResponse.List<AppDocs.DeviceModel>>({
       url: '/device/model',
       method: 'get',
-    })[0].then((res) => {
+    }).then((res) => {
       setModelList(
         res.resources.map((model) => ({
           label: model.name,
@@ -69,7 +69,7 @@ export function AppDeviceModal(props: AppDeviceModalProps): JSX.Element | null {
                 url: '/device' + (device ? `/${device.id}` : ''),
                 method: device ? 'patch' : 'post',
                 data: form.value,
-              })[0].then((res) => {
+              }).then((res) => {
                 handleStandardResponse(res, {
                   success: () => {
                     onSuccess();

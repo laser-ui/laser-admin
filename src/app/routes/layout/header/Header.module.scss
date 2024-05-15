@@ -3,7 +3,9 @@
 @use '~styles/mixins';
 
 @include mixins.b(header) {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 910;
   display: flex;
   align-items: center;

@@ -1,7 +1,7 @@
 import type { AppTheme } from '../../../types';
 
+import { useStorage } from '@laser-ui/admin';
 import { Icon } from '@laser-ui/components';
-import { useStorage } from '@laser-ui/hooks';
 import { classNames } from '@laser-ui/utils';
 import DarkModeOutlined from '@material-design-icons/svg/outlined/dark_mode.svg?react';
 import FormatIndentDecreaseOutlined from '@material-design-icons/svg/outlined/format_indent_decrease.svg?react';
@@ -16,7 +16,7 @@ import { AppNotification } from './notification/Notification';
 import { AppUser } from './user/User';
 import { AppLanguage } from '../../../components';
 import { APP_NAME } from '../../../configs/app';
-import { STORAGE_KEY } from '../../../configs/storage';
+import { STORAGE } from '../../../configs/storage';
 import { URLS } from '../../../configs/urls';
 
 import styles from './Header.module.scss';
@@ -33,8 +33,8 @@ export function AppHeader(props: AppHeaderProps): JSX.Element | null {
   const textRef = useRef<HTMLDivElement>(null);
 
   const { t } = useTranslation();
-  const themeStorage = useStorage<AppTheme>(...STORAGE_KEY.theme);
-  const layoutStorage = useStorage(...STORAGE_KEY.layout, 'json');
+  const themeStorage = useStorage<AppTheme>(...STORAGE.theme);
+  const layoutStorage = useStorage(...STORAGE.layout);
 
   useEffect(() => {
     if (layoutStorage.value.menu.mode === 'vertical' && textRef.current) {

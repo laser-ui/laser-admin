@@ -1,24 +1,23 @@
 import type { DeviceData } from './types';
 import type { SelectItem } from '@laser-ui/components/select/types';
 
+import { useQuery } from '@laser-ui/admin';
 import { Button, Card, Checkbox, DialogService, Dropdown, Icon, Modal, Pagination, Select, Spinner } from '@laser-ui/components';
 import { useImmer, useMount } from '@laser-ui/hooks';
 import AddOutlined from '@material-design-icons/svg/outlined/add.svg?react';
 import KeyboardArrowDownOutlined from '@material-design-icons/svg/outlined/keyboard_arrow_down.svg?react';
 import { isUndefined } from 'lodash';
-import { Children, useEffect, useMemo, useState } from 'react';
+import { Children, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AppDeviceModal } from './DeviceModal';
 import { AppRouteHeader, AppStatusDot, AppTable, AppTableFilter } from '../../../components';
 import { useHttp } from '../../../core';
-import { useSaveQuery } from '../../../hooks';
-import { handleStandardResponse } from '../../../utils';
+import { checkEmpty, handleStandardResponse } from '../../../utils';
 
 import styles from './StandardTable.module.scss';
 
 interface QueryParams {
-  sort: 'id' | '-id' | null;
   keyword: string;
   model: string[];
   status: number[];
@@ -26,7 +25,6 @@ interface QueryParams {
   pageSize: number;
 }
 const QUERY: QueryParams = {
-  sort: '-id',
   keyword: '',
   model: [],
   status: [],
@@ -38,23 +36,12 @@ export default function StandardTable() {
   const { t } = useTranslation();
   const http = useHttp();
 
-  const [initialQuery = QUERY, saveQueryParams] = useSaveQuery<QueryParams>();
-  const [query, setQuery] = useImmer(initialQuery);
-  const isQueryEmpty = useMemo(() => {
-    const empty = {
-      keyword: query.keyword.length === 0,
-      model: query.keyword.length === 0,
-      status: query.status.length === 0,
-    };
-    return Object.assign(empty, { __value: Object.values(empty).every((isEmpty) => isEmpty) });
-  }, [query]);
-
+  const [query, updateQuery] = useQuery<QueryParams>(QUERY);
   const [table, setTable] = useImmer({
     loading: true,
     list: [] as DeviceData[],
     totalSize: 0,
     selected: new Set<number>(),
-    isQueryEmpty: true,
   });
   const allSelected = table.selected.size === 0 ? false : table.selected.size === table.list.length ? true : 'mixed';
 
@@ -64,7 +51,7 @@ export default function StandardTable() {
     http<AppStandardResponse.List<AppDocs.DeviceModel>>({
       url: '/device/model',
       method: 'get',
-    })[0].then((res) => {
+    }).then((res) => {
       setModelList(
         res.resources.map((model) => ({
           label: model.name,
@@ -73,51 +60,50 @@ export default function StandardTable() {
         })),
       );
     });
+
+    requestTable();
   });
 
-  const [updateTable, setUpdateTable] = useState(0);
-  useEffect(() => {
-    saveQueryParams(query);
+  const requestTable = (updateParams?: Partial<QueryParams>, clear = false) => {
+    let params = query;
+    if (updateParams) {
+      params = updateQuery(updateParams, { clear, navigateOptions: {} });
+    }
     setTable((draft) => {
       draft.loading = true;
-      draft.isQueryEmpty = isQueryEmpty.__value;
     });
     const reqParams: AppStandardRequest.Params = {
-      page: query.page,
-      page_size: query.pageSize,
+      page: params.page,
+      page_size: params.pageSize,
     };
-    if (!isQueryEmpty.keyword) {
-      reqParams['keyword'] = query.keyword;
+    if (!checkEmpty(params.keyword)) {
+      reqParams['keyword'] = params.keyword;
     }
-    if (!isQueryEmpty.model) {
-      reqParams['filter[model:in]'] = query.model.join();
+    if (!checkEmpty(params.model)) {
+      reqParams['filter[model:in]'] = params.model.join();
     }
-    if (!isQueryEmpty.status) {
-      reqParams['filter[status:in]'] = query.status.join();
+    if (!checkEmpty(params.status)) {
+      reqParams['filter[status:in]'] = params.status.join();
     }
     http<AppStandardResponse.List<AppDocs.Device>>({
       url: '/device',
       params: reqParams,
       method: 'get',
-    })[0].then((res) => {
-      setQuery((draft) => {
-        draft.page = res.metadata.page;
-        draft.pageSize = res.metadata.page_size;
-      });
+    }).then((res) => {
+      updateQuery({ page: res.metadata.page }, { navigateOptions: {} });
       setTable((draft) => {
         draft.loading = false;
         draft.list = res.resources;
         draft.totalSize = res.metadata.total_size;
       });
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updateTable]);
+  };
 
   const openDeviceModal = (device?: DeviceData) => {
     DialogService.open(AppDeviceModal, {
       device,
       onSuccess: () => {
-        setUpdateTable((n) => n + 1);
+        requestTable();
       },
     });
   };
@@ -165,9 +151,7 @@ export default function StandardTable() {
                       }))}
                       model={query.status}
                       onModelChange={(value) => {
-                        setQuery((draft) => {
-                          draft.status = value;
-                        });
+                        updateQuery({ status: value });
                       }}
                     >
                       {(nodes) => (
@@ -179,7 +163,7 @@ export default function StandardTable() {
                       )}
                     </Checkbox.Group>
                   ),
-                  isEmpty: isQueryEmpty.status,
+                  value: query.status,
                 },
                 {
                   label: 'Model',
@@ -193,37 +177,23 @@ export default function StandardTable() {
                       multiple
                       clearable
                       onModelChange={(value) => {
-                        setQuery((draft) => {
-                          draft.model = value;
-                        });
+                        updateQuery({ model: value });
                       }}
                     />
                   ),
-                  isEmpty: isQueryEmpty.model,
+                  value: query.model,
                 },
               ]}
               searchValue={query.keyword}
               searchPlaceholder="ID, Name"
               onSearchValueChange={(value) => {
-                setQuery((draft) => {
-                  draft.keyword = value;
-                });
+                updateQuery({ keyword: value });
               }}
               onSearchClick={() => {
-                setQuery({ ...query, page: 1 });
-                setUpdateTable((n) => n + 1);
+                requestTable({ page: 1 });
               }}
               onResetClick={() => {
-                setQuery({
-                  ...query,
-                  keyword: '',
-                  model: [],
-                  status: [],
-                });
-
-                if (!table.isQueryEmpty) {
-                  setUpdateTable((n) => n + 1);
-                }
+                requestTable({ pageSize: query.pageSize }, true);
               }}
             />
             <AppTable
@@ -311,10 +281,10 @@ export default function StandardTable() {
                                 http({
                                   url: `/device/${data.id}`,
                                   method: 'delete',
-                                })[0].then((res) => {
+                                }).then((res) => {
                                   handleStandardResponse(res, {
                                     success: () => {
-                                      setUpdateTable((n) => n + 1);
+                                      requestTable();
                                       r(true);
                                     },
                                     error: () => {
@@ -367,12 +337,7 @@ export default function StandardTable() {
                 pageSize={query.pageSize}
                 compose={['total', 'pages', 'page-size', 'jump']}
                 onChange={(page, pageSize) => {
-                  setQuery({
-                    ...query,
-                    page,
-                    pageSize,
-                  });
-                  setUpdateTable((n) => n + 1);
+                  requestTable({ page, pageSize });
                 }}
               />
             </div>

@@ -1,11 +1,12 @@
-import { useStorage } from '@laser-ui/hooks';
+import { useStorage } from '@laser-ui/admin';
 import { classNames } from '@laser-ui/utils';
 import { useEffect, useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { AppHeader } from './header/Header';
 import { AppSidebar } from './sidebar/Sidebar';
-import { STORAGE_KEY } from '../../configs/storage';
+import { STORAGE } from '../../configs/storage';
+import { ReuseOutlet } from '../ReuseOutlet';
 
 import styles from './Layout.module.scss';
 
@@ -22,7 +23,7 @@ const SIDEBAR_DEFAULT = {
 export default function Layout(props: AppLayoutProps): JSX.Element | null {
   const { sidebar } = props;
 
-  const layoutStorage = useStorage(...STORAGE_KEY.layout, 'json');
+  const layoutStorage = useStorage(...STORAGE.layout);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -38,7 +39,7 @@ export default function Layout(props: AppLayoutProps): JSX.Element | null {
         <AppSidebar menuOpen={menuOpen} onMenuOpenChange={setMenuOpen} />
         <main id="app-main" className={styles['app-layout__content']}>
           <section id="app-content">
-            <Outlet />
+            <ReuseOutlet />
           </section>
         </main>
       </section>

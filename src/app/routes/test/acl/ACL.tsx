@@ -1,5 +1,5 @@
+import { useACL } from '@laser-ui/admin';
 import { Alert, Button, Card, Table, Tag } from '@laser-ui/components';
-import { useACL } from '@laser-ui/hooks';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';

@@ -2,12 +2,12 @@ import type { AppLanguageProps } from './types';
 import type { AppLang } from '../../types';
 import type { DropdownItem } from '@laser-ui/components/dropdown/types';
 
+import { useStorage } from '@laser-ui/admin';
 import { Dropdown, Icon } from '@laser-ui/components';
-import { useStorage } from '@laser-ui/hooks';
 import TranslateOutlined from '@material-design-icons/svg/outlined/translate.svg?react';
 import { useTranslation } from 'react-i18next';
 
-import { STORAGE_KEY } from '../../configs/storage';
+import { STORAGE } from '../../configs/storage';
 
 export function AppLanguage(props: AppLanguageProps): JSX.Element | null {
   const {
@@ -16,7 +16,7 @@ export function AppLanguage(props: AppLanguageProps): JSX.Element | null {
     ...restProps
   } = props;
 
-  const languageStorage = useStorage<AppLang>(...STORAGE_KEY.language);
+  const languageStorage = useStorage<AppLang>(...STORAGE.language);
   const { t, i18n } = useTranslation();
 
   return (

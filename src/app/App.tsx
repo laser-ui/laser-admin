@@ -1,33 +1,35 @@
 import type { AppLang, AppTheme, AppUser } from './types';
 import type { LContextIn } from '@laser-ui/components/context';
 
+import { useStorage } from '@laser-ui/admin';
 import { ConfigProvider, Root } from '@laser-ui/components';
-import { useStorage } from '@laser-ui/hooks';
+import { useMount } from '@laser-ui/hooks';
 import { isNull } from 'lodash';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { LOGIN_PATH } from './configs/app';
-import { STORAGE_KEY } from './configs/storage';
-import { TOKEN_ENABLE } from './configs/token';
+import { STORAGE } from './configs/storage';
 import { TOKEN, useHttp, useInit } from './core';
-import AppRoutes from './routes/Routes';
+import AppRouter from './routes/Router';
+
+const TOKEN_VALID = !isNull(TOKEN.value) && !TOKEN.expired;
 
 function App() {
   const http = useHttp();
   const init = useInit();
   const navigate = useNavigate();
-  const languageStorage = useStorage<AppLang>(...STORAGE_KEY.language);
-  const themeStorage = useStorage<AppTheme>(...STORAGE_KEY.theme);
+  const languageStorage = useStorage<AppLang>(...STORAGE.language);
+  const themeStorage = useStorage<AppTheme>(...STORAGE.theme);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(TOKEN_VALID);
 
-  useEffect(() => {
-    if (TOKEN_ENABLE && !isNull(TOKEN.value) && !TOKEN.expired) {
+  useMount(() => {
+    if (TOKEN_VALID) {
       http<AppUser>({
         url: '/auth/me',
         method: 'get',
-      })[0]
+      })
         .then((res) => {
           init(res);
         })
@@ -39,9 +41,8 @@ function App() {
         });
     } else {
       navigate(LOGIN_PATH);
-      setLoading(false);
     }
-  }, []);
+  });
 
   useEffect(() => {
     document.documentElement.lang = languageStorage.value;
@@ -70,7 +71,7 @@ function App() {
 
   return (
     <ConfigProvider context={lContext}>
-      <Root context={rootContext}>{loading ? null : <AppRoutes />}</Root>
+      <Root context={rootContext}>{loading ? null : <AppRouter />}</Root>
     </ConfigProvider>
   );
 }

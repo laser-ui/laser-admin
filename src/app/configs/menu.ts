@@ -1,4 +1,4 @@
-import type { Control, ControlMode } from '@laser-ui/hooks/useACL';
+import type { Control, ControlMode } from '@laser-ui/admin/packages/acl/acl';
 
 import DashboardOutlined from '@material-design-icons/svg/outlined/dashboard.svg?react';
 import ReportOutlined from '@material-design-icons/svg/outlined/report.svg?react';

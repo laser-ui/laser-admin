@@ -1,8 +1,8 @@
+import { useStorage } from '@laser-ui/admin';
 import { Drawer, Menu } from '@laser-ui/components';
-import { useStorage } from '@laser-ui/hooks';
 import { classNames } from '@laser-ui/utils';
 
-import { STORAGE_KEY } from '../../../configs/storage';
+import { STORAGE } from '../../../configs/storage';
 import { useMenu } from '../../../core';
 
 import styles from './Sidebar.module.scss';
@@ -15,7 +15,7 @@ interface AppSidebarProps {
 export function AppSidebar(props: AppSidebarProps): JSX.Element | null {
   const { menuOpen, onMenuOpenChange } = props;
 
-  const layoutStorage = useStorage(...STORAGE_KEY.layout, 'json');
+  const layoutStorage = useStorage(...STORAGE.layout);
 
   const [{ menu, active, expands }, setMenu] = useMenu();
 

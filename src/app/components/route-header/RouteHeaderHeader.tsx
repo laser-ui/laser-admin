@@ -1,12 +1,11 @@
 import type { AppRouteHeaderHeaderProps } from './types';
 
+import { RouterContext } from '@laser-ui/admin/packages/router/context';
 import { Icon } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import ArrowBackOutlined from '@material-design-icons/svg/outlined/arrow_back.svg?react';
 import { Children, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { RouteStateContext } from '../../routes/vars';
 
 export function AppRouteHeaderHeader(props: AppRouteHeaderHeaderProps): JSX.Element | null {
   const {
@@ -17,7 +16,7 @@ export function AppRouteHeaderHeader(props: AppRouteHeaderHeaderProps): JSX.Elem
     ...restProps
   } = props;
 
-  const { title } = useContext(RouteStateContext);
+  const { title } = useContext(RouterContext);
 
   const navigate = useNavigate();
 

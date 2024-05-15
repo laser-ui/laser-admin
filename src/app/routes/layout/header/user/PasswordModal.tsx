@@ -35,7 +35,7 @@ export function AppPasswordModal(props: ModalProps): JSX.Element | null {
                 url: `/user/${appUser.id}`,
                 data,
                 method: 'patch',
-              })[0].then((res) => {
+              }).then((res) => {
                 handleStandardResponse(res, {
                   success: () => {
                     r(true);

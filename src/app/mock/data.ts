@@ -1,6 +1,6 @@
-import type { AppNotification, AppUser } from '../../types';
+import type { AppUser, AppNotification } from '../types';
 
-import { ROLE_ACL, ROUTES_ACL } from '../../configs/acl';
+import { ROLE_ACL, ROUTES_ACL } from '../configs/acl';
 
 export const DATA = {
   admin: {

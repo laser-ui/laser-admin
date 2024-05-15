@@ -6,6 +6,8 @@ import ExpandMoreOutlined from '@material-design-icons/svg/outlined/expand_more.
 import { cloneElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { checkEmpty } from '../../utils';
+
 export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
   const {
     filterList,
@@ -20,7 +22,7 @@ export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
 
   const { t } = useTranslation();
 
-  const badgeValue = filterList ? filterList.filter((item) => !item.isEmpty).length : 0;
+  const badgeValue = filterList ? filterList.filter(({ value }) => !checkEmpty(value)).length : 0;
 
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
 
@@ -47,7 +49,7 @@ export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
         />
         <div className="app-table-filter__button-container">
           <Button onClick={onSearchClick}>{t('components.table-filter.Search')}</Button>
-          <Button pattern="secondary" onClick={onResetClick}>
+          <Button pattern="secondary" disabled={!searchValue && badgeValue === 0} onClick={onResetClick}>
             {t('components.table-filter.Reset')}
           </Button>
           {filterList && (

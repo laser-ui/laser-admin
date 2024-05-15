@@ -52,17 +52,14 @@ export default function Login(): JSX.Element | null {
 
   const handleSubmit = () => {
     setLoginLoading(true);
-    http<{ user: AppUser; token: string }>(
-      {
-        url: '/auth/login',
-        method: 'post',
-        data: {
-          username: accountForm.get('username').value,
-          password: accountForm.get('password').value,
-        },
+    http<{ user: AppUser; token: string }>({
+      url: '/auth/login',
+      method: 'post',
+      data: {
+        username: accountForm.get('username').value,
+        password: accountForm.get('password').value,
       },
-      { authorization: false },
-    )[0]
+    })
       .then((res) => {
         TOKEN.set(res.token);
 

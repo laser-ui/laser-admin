@@ -1,13 +1,12 @@
-import type { JWTToken, JWTTokenPayload } from '../token';
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
+import { base64url } from '@laser-ui/admin/packages/auth/base64url';
 import { isString, nth } from 'lodash';
 
 import { DATA } from './data';
-import { base64url } from '../../utils';
-import { TOKEN } from '../token';
+import { TOKEN } from '../core';
 
-export default function mock(config: AxiosRequestConfig) {
+export function mock(config: AxiosRequestConfig) {
   return new Promise<AxiosResponse>((resolve, reject) => {
     const response = (data: any, delay: number) => {
       setTimeout(() => {
@@ -40,7 +39,7 @@ export default function mock(config: AxiosRequestConfig) {
       }
 
       case match('/api/v1/auth/me'): {
-        response((TOKEN as JWTToken<JWTTokenPayload & { admin: boolean }>).payload?.admin ? DATA.admin : DATA.user, 500);
+        response((TOKEN.payload as any).admin ? DATA.admin : DATA.user, 500);
         break;
       }
 
@@ -49,7 +48,7 @@ export default function mock(config: AxiosRequestConfig) {
           `${base64url.encode(JSON.stringify({}))}.${base64url.encode(
             JSON.stringify({
               exp: ~~((Date.now() + 2 * 60 * 60 * 1000) / 1000),
-              admin: (TOKEN as JWTToken<JWTTokenPayload & { admin: boolean }>).payload?.admin,
+              admin: (TOKEN.payload as any)?.admin,
             }),
           )}.signature`,
           500,

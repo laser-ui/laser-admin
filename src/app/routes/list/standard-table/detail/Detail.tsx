@@ -30,7 +30,7 @@ export default function Detail() {
     http({
       url: `/device/${id}`,
       method: 'get',
-    })[0].then((res) => {
+    }).then((res) => {
       setLoading(false);
       setDevice(res);
     });
