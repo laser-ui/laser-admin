@@ -18,6 +18,8 @@ English | [简体中文](README.zh-CN.md)
 
 - Load on demand
 - Responsive Layout
+- Authority management
+- Route cache
 - Customize Theme
 - International
 - Sass preprocessor & CSS variable
