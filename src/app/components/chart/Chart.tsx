@@ -1,5 +1,4 @@
 import type { AppChartProps } from './types';
-import type { AppLang, AppTheme } from '../../types';
 import type { ECharts } from 'echarts/core';
 
 import { useStorage } from '@laser-ui/admin';
@@ -49,8 +48,8 @@ export const AppChart = forwardRef<ECharts, AppChartProps>((props, ref): JSX.Ele
     ...restProps
   } = props;
 
-  const themeStorage = useStorage<AppTheme>(...STORAGE.theme);
-  const languageStorage = useStorage<AppLang>(...STORAGE.language);
+  const themeStorage = useStorage(...STORAGE.theme);
+  const languageStorage = useStorage(...STORAGE.language);
 
   const theme = _theme ?? themeStorage.value;
 

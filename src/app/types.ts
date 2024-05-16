@@ -1,8 +1,16 @@
+import type { MenuMode } from '@laser-ui/components/menu/types';
+
 export {};
 
 export type AppLang = 'en-US' | 'zh-CN';
 
 export type AppTheme = 'light' | 'dark';
+
+export interface AppLayout {
+  menu: {
+    mode: MenuMode;
+  };
+}
 
 export interface AppUser {
   id: number;

@@ -1,4 +1,4 @@
-import type { AppLang, AppTheme, AppUser } from './types';
+import type { AppUser } from './types';
 import type { LContextIn } from '@laser-ui/components/context';
 
 import { useStorage } from '@laser-ui/admin';
@@ -19,8 +19,8 @@ function App() {
   const http = useHttp();
   const init = useInit();
   const navigate = useNavigate();
-  const languageStorage = useStorage<AppLang>(...STORAGE.language);
-  const themeStorage = useStorage<AppTheme>(...STORAGE.theme);
+  const languageStorage = useStorage(...STORAGE.language);
+  const themeStorage = useStorage(...STORAGE.theme);
 
   const [loading, setLoading] = useState(TOKEN_VALID);
 

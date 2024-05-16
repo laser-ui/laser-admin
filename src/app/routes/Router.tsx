@@ -12,6 +12,14 @@ import { ROUTES_ACL } from '../configs/acl';
 import { LOGIN_PATH, PREV_ROUTE_KEY, TITLE_OPTIONS } from '../configs/app';
 import { TOKEN } from '../core';
 
+const ROUTES = {
+  '/dashboard/echarts': lazy(() => import('./dashboard/echarts/ECharts')),
+  '/list/standard-table': lazy(() => import('./list/standard-table/StandardTable')),
+  '/list/standard-table/:id': lazy(() => import('./list/standard-table/detail/Detail')),
+  '/test/acl': lazy(() => import('./test/acl/ACL')),
+  '/test/http': lazy(() => import('./test/http/Http')),
+};
+
 interface AppRouteProps {
   path?: keyof typeof ROUTES;
   element?: React.FC;
@@ -21,14 +29,6 @@ function AppRoute(props: AppRouteProps) {
 
   return element ? createElement(element) : <Suspense fallback={<AppFCPLoader />}>{createElement(ROUTES[path!])}</Suspense>;
 }
-
-const ROUTES = {
-  '/dashboard/echarts': lazy(() => import('./dashboard/echarts/ECharts')),
-  '/list/standard-table': lazy(() => import('./list/standard-table/StandardTable')),
-  '/list/standard-table/:id': lazy(() => import('./list/standard-table/detail/Detail')),
-  '/test/acl': lazy(() => import('./test/acl/ACL')),
-  '/test/http': lazy(() => import('./test/http/Http')),
-};
 
 const AppRouter = memo(() => {
   const location = useLocation();

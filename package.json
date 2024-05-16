@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@laser-ui/admin": "^0.0.9",
+    "@laser-ui/admin": "^0.1.0",
     "@laser-ui/components": "^0.6.2",
     "@laser-ui/hooks": "^0.6.2",
     "@laser-ui/rcharts": "^0.1.3",

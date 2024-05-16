@@ -16,7 +16,7 @@ export function AppLanguage(props: AppLanguageProps): JSX.Element | null {
     ...restProps
   } = props;
 
-  const languageStorage = useStorage<AppLang>(...STORAGE.language);
+  const languageStorage = useStorage(...STORAGE.language);
   const { t, i18n } = useTranslation();
 
   return (

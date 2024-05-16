@@ -1,5 +1,3 @@
-import type { AppTheme } from '../../../types';
-
 import { useStorage } from '@laser-ui/admin';
 import { Icon } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
@@ -33,7 +31,7 @@ export function AppHeader(props: AppHeaderProps): JSX.Element | null {
   const textRef = useRef<HTMLDivElement>(null);
 
   const { t } = useTranslation();
-  const themeStorage = useStorage<AppTheme>(...STORAGE.theme);
+  const themeStorage = useStorage(...STORAGE.theme);
   const layoutStorage = useStorage(...STORAGE.layout);
 
   useEffect(() => {
