@@ -6,7 +6,7 @@ import { Button, Card, Checkbox, DialogService, Dropdown, Icon, Modal, Paginatio
 import { useImmer, useMount } from '@laser-ui/hooks';
 import AddOutlined from '@material-design-icons/svg/outlined/add.svg?react';
 import KeyboardArrowDownOutlined from '@material-design-icons/svg/outlined/keyboard_arrow_down.svg?react';
-import { isUndefined } from 'lodash';
+import { isUndefined, pick } from 'lodash';
 import { Children, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -47,27 +47,10 @@ export default function StandardTable() {
 
   const [modelList, setModelList] = useState<SelectItem<string>[]>();
 
-  useMount(() => {
-    http<AppStandardResponse.List<AppDocs.DeviceModel>>({
-      url: '/device/model',
-      method: 'get',
-    }).then((res) => {
-      setModelList(
-        res.resources.map((model) => ({
-          label: model.name,
-          value: model.name,
-          disabled: model.disabled,
-        })),
-      );
-    });
-
-    requestTable();
-  });
-
-  const requestTable = (updateParams?: Partial<QueryParams>, clear = false) => {
+  const requestTable = (updateParams?: Partial<QueryParams>, options?: { clear?: boolean }) => {
     let params = query;
     if (updateParams) {
-      params = updateQuery(updateParams, { clear, navigateOptions: {} });
+      params = updateQuery(updateParams, { clear: options?.clear, navigateOptions: {} });
     }
     setTable((draft) => {
       draft.loading = true;
@@ -98,6 +81,23 @@ export default function StandardTable() {
       });
     });
   };
+
+  useMount(() => {
+    requestTable();
+
+    http<AppStandardResponse.List<AppDocs.DeviceModel>>({
+      url: '/device/model',
+      method: 'get',
+    }).then((res) => {
+      setModelList(
+        res.resources.map((model) => ({
+          label: model.name,
+          value: model.name,
+          disabled: model.disabled,
+        })),
+      );
+    });
+  });
 
   const openDeviceModal = (device?: DeviceData) => {
     DialogService.open(AppDeviceModal, {
@@ -193,7 +193,7 @@ export default function StandardTable() {
                 requestTable({ page: 1 });
               }}
               onResetClick={() => {
-                requestTable({ pageSize: query.pageSize }, true);
+                requestTable(pick(query, ['pageSize']), { clear: true });
               }}
             />
             <AppTable
