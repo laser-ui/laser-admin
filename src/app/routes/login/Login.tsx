@@ -29,7 +29,7 @@ import { AppLanguage } from '../../components';
 import { APP_NAME, LOGIN_PATH } from '../../configs/app';
 import { STORAGE } from '../../configs/storage';
 import { URLS } from '../../configs/urls';
-import { TOKEN, useHttp, useInit } from '../../core';
+import { TOKEN, initUser, useHttp } from '../../core';
 import { rememberToken } from '../../core/token';
 
 import styles from './Login.module.scss';
@@ -38,7 +38,6 @@ export default function Login(): JSX.Element | null {
   const { t } = useTranslation();
   const http = useHttp();
   const [loginloading, setLoginLoading] = useState(false);
-  const init = useInit();
   const location = useLocation();
   const from = (location.state as null | { [PREV_ROUTE_KEY]?: Location })?.from?.pathname;
   const navigate = useNavigate();
@@ -67,7 +66,7 @@ export default function Login(): JSX.Element | null {
         TOKEN.set(res.token);
         rememberToken(rememberStorage.value === '1');
 
-        init(res.user);
+        initUser(res.user);
         navigate(isString(from) && from !== LOGIN_PATH ? from : '/', { replace: true });
       })
       .catch((err) => {

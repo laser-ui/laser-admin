@@ -1,48 +1,15 @@
-import type { AppUser } from './types';
 import type { LContextIn } from '@laser-ui/components/context';
 
 import { useStorage } from '@laser-ui/admin';
 import { ConfigProvider, Root } from '@laser-ui/components';
-import { useMount } from '@laser-ui/hooks';
-import { isNull } from 'lodash';
-import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useMemo } from 'react';
 
-import { LOGIN_PATH } from './configs/app';
 import { STORAGE } from './configs/storage';
-import { TOKEN, useHttp, useInit } from './core';
 import AppRouter from './routes/Router';
 
-const TOKEN_VALID = !isNull(TOKEN.value) && !TOKEN.expired;
-
 function App() {
-  const http = useHttp();
-  const init = useInit();
-  const navigate = useNavigate();
   const languageStorage = useStorage(...STORAGE.language);
   const themeStorage = useStorage(...STORAGE.theme);
-
-  const [loading, setLoading] = useState(TOKEN_VALID);
-
-  useMount(() => {
-    if (TOKEN_VALID) {
-      http<AppUser>({
-        url: '/auth/me',
-        method: 'get',
-      })
-        .then((res) => {
-          init(res);
-        })
-        .catch(() => {
-          navigate(LOGIN_PATH);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
-      navigate(LOGIN_PATH);
-    }
-  });
 
   useEffect(() => {
     document.documentElement.lang = languageStorage.value;
@@ -71,7 +38,9 @@ function App() {
 
   return (
     <ConfigProvider context={lContext}>
-      <Root context={rootContext}>{loading ? null : <AppRouter />}</Root>
+      <Root context={rootContext}>
+        <AppRouter />
+      </Root>
     </ConfigProvider>
   );
 }
