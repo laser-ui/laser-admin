@@ -1,6 +1,7 @@
 import type { PREV_ROUTE_KEY } from '../../configs/app';
 import type { AppUser } from '../../types';
 
+import { useStorage } from '@laser-ui/admin';
 import {
   Button,
   Checkbox,
@@ -26,8 +27,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AppLanguage } from '../../components';
 import { APP_NAME, LOGIN_PATH } from '../../configs/app';
+import { STORAGE } from '../../configs/storage';
 import { URLS } from '../../configs/urls';
 import { TOKEN, useHttp, useInit } from '../../core';
+import { rememberToken } from '../../core/token';
 
 import styles from './Login.module.scss';
 
@@ -40,7 +43,7 @@ export default function Login(): JSX.Element | null {
   const from = (location.state as null | { [PREV_ROUTE_KEY]?: Location })?.from?.pathname;
   const navigate = useNavigate();
 
-  const [remember, setRemember] = useState(true);
+  const rememberStorage = useStorage(...STORAGE.remember);
 
   const [accountForm] = useForm(
     () =>
@@ -62,6 +65,7 @@ export default function Login(): JSX.Element | null {
     })
       .then((res) => {
         TOKEN.set(res.token);
+        rememberToken(rememberStorage.value === '1');
 
         init(res.user);
         navigate(isString(from) && from !== LOGIN_PATH ? from : '/', { replace: true });
@@ -129,7 +133,12 @@ export default function Login(): JSX.Element | null {
                         )}
                       </Form.Item>
                       <div className="d-flex align-items-center justify-content-between mb-2" style={{ width: '100%' }}>
-                        <Checkbox model={remember} onModelChange={setRemember}>
+                        <Checkbox
+                          model={rememberStorage.value === '1'}
+                          onModelChange={(checked) => {
+                            rememberStorage.set(checked ? '1' : '0');
+                          }}
+                        >
                           {t('routes.login.Remember me')}
                         </Checkbox>
                         <a className="app-link" style={{ marginLeft: 'auto' }}>
