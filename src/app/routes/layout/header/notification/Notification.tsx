@@ -1,6 +1,6 @@
 import type { TabsRef } from '@laser-ui/components/tabs';
 
-import { Avatar, Badge, Button, Icon, Popover, Separator, Spinner, Tabs } from '@laser-ui/components';
+import { Avatar, Badge, Button, Empty, Icon, Popover, Separator, Spinner, Tabs, Tag } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import NotificationsOutlined from '@material-design-icons/svg/outlined/notifications.svg?react';
 import { isUndefined } from 'lodash';
@@ -23,8 +23,8 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
   const num = (() => {
     let n = 0;
     if (!isUndefined(appNotifications)) {
-      appNotifications.forEach((notify) => {
-        n += notify.list.filter((item) => !item.read).length;
+      appNotifications.forEach((notification) => {
+        n += notification.filter((item) => !item.read).length;
       });
     }
     return n;
@@ -41,24 +41,28 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
           <>
             <Tabs
               ref={tabsRef}
-              list={appNotifications.map((notify) => ({
-                id: notify.id,
-                title: notify.title,
-                panel: (
-                  <AppList
-                    list={notify.list.map((item, index) => ({
-                      avatar: <Avatar img={{ src: URLS['/avatar.png'], alt: 'avatar' }} />,
-                      title: 'name',
-                      subtitle: index === 0 && new Date().toLocaleString(),
-                      description: item.message,
-                      props: {
-                        className: classNames(styles['app-notification__item'], {
-                          [styles['app-notification__item--read']]: item.read,
-                        }),
-                      },
-                    }))}
-                  />
-                ),
+              list={Array.from({ length: 3 }).map((_, index) => ({
+                id: index,
+                title: 'Title',
+                panel:
+                  appNotifications[index].length === 0 ? (
+                    <Empty className="mb-3" />
+                  ) : (
+                    <AppList
+                      list={(appNotifications[index] as { message: string; read: boolean }[]).map((notification, index) => ({
+                        avatar: <Avatar img={{ src: URLS['/avatar.png'], alt: 'avatar' }} />,
+                        title: 'Name',
+                        extra: <Tag theme={index === 0 ? undefined : 'success'}>{index === 0 ? 'Pending' : 'Processed'}</Tag>,
+                        description: notification.message,
+                        footer: index === 0 && new Date().toLocaleString(),
+                        props: {
+                          className: classNames(styles['app-notification__item'], {
+                            [styles['app-notification__item--read']]: notification.read,
+                          }),
+                        },
+                      }))}
+                    />
+                  ),
               }))}
               center
             />

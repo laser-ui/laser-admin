@@ -1,4 +1,4 @@
-import type { AppUser, AppNotification } from '../types';
+import type { AppUser } from '../types';
 
 import { ROLE_ACL, ROUTES_ACL } from '../configs/acl';
 
@@ -15,22 +15,10 @@ export const DATA = {
     permissions: [0, ROUTES_ACL['/test/acl'], ROUTES_ACL['/test/http']],
   } as AppUser,
   notification: [
-    {
-      id: '1',
-      title: 'Title1',
-      list: Array.from({ length: 4 }).map((_, i) => ({ message: `This is message ${i}`, read: i === 1 })),
-    },
-    {
-      id: '2',
-      title: 'Title2',
-      list: Array.from({ length: 2 }).map((_, i) => ({ message: `This is message ${i}`, read: false })),
-    },
-    {
-      id: '3',
-      title: 'Title3',
-      list: Array.from({ length: 3 }).map((_, i) => ({ message: `This is message ${i}`, read: false })),
-    },
-  ] as AppNotification[],
+    Array.from({ length: 4 }).map((_, i) => ({ message: `This is message ${i}`, read: i === 1 })),
+    Array.from({ length: 2 }).map((_, i) => ({ message: `This is message ${i}`, read: false })),
+    [],
+  ],
   deviceList: Array.from({ length: 108 }).map<AppDocs.Device>((_, i) => ({
     id: i,
     create_time: Date.now() + 60 * 60 * 1000,

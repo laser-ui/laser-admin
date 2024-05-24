@@ -6,10 +6,11 @@ import styles from './List.module.scss';
 
 interface AppListProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
   list: {
+    title: React.ReactNode;
     avatar?: React.ReactNode;
-    title?: React.ReactNode;
-    subtitle?: React.ReactNode;
+    extra?: React.ReactNode;
     description?: React.ReactNode;
+    footer?: React.ReactNode;
     props?: React.HTMLAttributes<HTMLLIElement>;
   }[];
   separator?: boolean;
@@ -25,14 +26,17 @@ export function AppList(props: AppListProps): JSX.Element | null {
 
   return (
     <ul {...restProps} className={classNames(restProps.className, styles['app-list'])}>
-      {list.map(({ avatar, title, subtitle, description, props }, index) => (
+      {list.map(({ title, avatar, extra, description, footer, props }, index) => (
         <Fragment key={index}>
           <li {...props} className={classNames(props?.className, styles['app-list__item'])}>
             {checkNodeExist(avatar) && <div className={styles['app-list__avatar']}>{avatar}</div>}
             <div className={styles['app-list__content']}>
-              {checkNodeExist(title) && <div className={styles['app-list__title']}>{title}</div>}
-              {checkNodeExist(subtitle) && <div className={styles['app-list__subtitle']}>{subtitle}</div>}
+              <div className={styles['app-list__header']}>
+                <div className={styles['app-list__title']}>{title}</div>
+                {checkNodeExist(extra) && <div className={styles['app-list__extra']}>{extra}</div>}
+              </div>
               {checkNodeExist(description) && <div className={styles['app-list__description']}>{description}</div>}
+              {checkNodeExist(footer) && <div className={styles['app-list__footer']}>{footer}</div>}
             </div>
           </li>
           {separator && index !== list.length - 1 && <Separator style={{ margin: 0 }} />}

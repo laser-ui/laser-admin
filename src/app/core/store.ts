@@ -1,11 +1,11 @@
-import type { AppMenu, AppNotification, AppUser } from '../types';
+import type { AppMenu, AppUser } from '../types';
 
 import { createStore } from 'rcl-store';
 
 export const GlobalStore = createStore<{
   appUser: AppUser;
   appMenu: AppMenu;
-  appNotifications: AppNotification[] | undefined;
+  appNotifications: any[][] | undefined;
 }>({
   appUser: {} as any,
   appMenu: {},

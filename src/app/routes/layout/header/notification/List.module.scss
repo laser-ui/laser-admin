@@ -19,18 +19,29 @@
     flex: 1 0 0;
   }
 
+  @include mixins.e(header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   @include mixins.e(title) {
     font-weight: var(--#{variables.$prefix}font-weight-bold);
   }
 
-  @include mixins.e(subtitle) {
-    /* stylelint-disable-next-line declaration-property-value-allowed-list */
-    font-size: 10px;
-    color: var(--#{variables.$prefix}color-text-sub);
+  @include mixins.e(extra) {
+    flex: 0 0 auto;
+    margin-left: 4px;
   }
 
   @include mixins.e(description) {
+    margin-top: 6px;
+    color: var(--#{variables.$prefix}color-text-sub);
+  }
+
+  @include mixins.e(footer) {
     margin-top: 4px;
+    font-size: 0.775em;
     color: var(--#{variables.$prefix}color-text-sub);
   }
 }

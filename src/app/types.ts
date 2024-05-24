@@ -22,12 +22,3 @@ export interface AppUser {
 export interface AppMenu {
   expands?: string[];
 }
-
-export interface AppNotification {
-  id: string;
-  title: string;
-  list: {
-    message: string;
-    read: boolean;
-  }[];
-}
