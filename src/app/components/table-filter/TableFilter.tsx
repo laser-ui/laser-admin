@@ -50,7 +50,7 @@ export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
         <div className="app-table-filter__button-container">
           <Button onClick={onSearchClick}>{t('components.table-filter.Search')}</Button>
           <Button pattern="secondary" disabled={!searchValue && badgeValue === 0} onClick={onResetClick}>
-            {t('components.table-filter.Reset')}
+            {t('Reset')}
           </Button>
           {filterList && (
             <div className="d-flex align-items-center">

@@ -3,6 +3,8 @@
     "translation": {
       "Add": "Add",
       "Edit": "Edit",
+      "Reset": "Reset",
+      "OK": "OK",
       "User not authorized": "User not authorized",
       "Light theme": "Light theme",
       "Dark theme": "Dark theme",
@@ -17,11 +19,17 @@
         },
         "table": {
           "ACTIONS": "ACTIONS",
-          "More": "More"
+          "More": "More",
+          "Refresh": "Refresh",
+          "Grid": "Grid",
+          "Layout": "Layout",
+          "Default": "Default",
+          "Middle": "Middle",
+          "Compact": "Compact",
+          "Settings": "Settings"
         },
         "table-filter": {
           "Search": "Search",
-          "Reset": "Reset",
           "Advanced Search": "Advanced Search"
         }
       },
@@ -107,6 +115,8 @@
     "translation": {
       "Add": "添加",
       "Edit": "编辑",
+      "Reset": "重置",
+      "OK": "确定",
       "User not authorized": "用户未授权",
       "Light theme": "浅色主题",
       "Dark theme": "深色主题",
@@ -121,11 +131,17 @@
         },
         "table": {
           "ACTIONS": "操作",
-          "More": "更多"
+          "More": "更多",
+          "Refresh": "刷新",
+          "Grid": "网格",
+          "Layout": "布局",
+          "Default": "默认",
+          "Middle": "中等",
+          "Compact": "紧凑",
+          "Settings": "设置"
         },
         "table-filter": {
           "Search": "查询",
-          "Reset": "重置",
           "Advanced Search": "高级搜索"
         }
       },

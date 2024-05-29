@@ -135,11 +135,9 @@ export default function StandardTable() {
         />
       </AppRouteHeader>
       <div className={styles['app-standard-table']}>
-        <Card>
+        <Card className="mb-3">
           <Card.Content>
-            <Spinner visible={table.loading}></Spinner>
             <AppTableFilter
-              className="mb-3"
               filterList={[
                 {
                   label: 'Status',
@@ -196,43 +194,19 @@ export default function StandardTable() {
                 requestTable(pick(query, ['pageSize']), { clear: true });
               }}
             />
+          </Card.Content>
+        </Card>
+        <Card>
+          <Card.Content>
+            <Spinner visible={table.loading}></Spinner>
             <AppTable
               list={table.list}
               columns={[
                 {
-                  th: (
-                    <Checkbox
-                      model={allSelected === true}
-                      indeterminate={allSelected === 'mixed'}
-                      onModelChange={(checked) => {
-                        setTable((draft) => {
-                          draft.selected = new Set(checked ? draft.list.map((data) => data.id) : []);
-                        });
-                      }}
-                    />
-                  ),
-                  td: (data) => (
-                    <Checkbox
-                      model={table.selected.has(data.id)}
-                      onModelChange={(checked) => {
-                        setTable((draft) => {
-                          if (checked) {
-                            draft.selected.add(data.id);
-                          } else {
-                            draft.selected.delete(data.id);
-                          }
-                        });
-                      }}
-                    />
-                  ),
-                  width: 60,
-                  align: 'center',
-                  checkbox: true,
-                },
-                {
                   th: 'NAME',
                   td: 'name',
-                  title: true,
+                  asTitle: true,
+                  copyable: true,
                 },
                 {
                   th: 'MODEL',
@@ -256,6 +230,26 @@ export default function StandardTable() {
                   td: (data) => new Date(data.create_time).toLocaleString(),
                 },
               ]}
+              selectable={{
+                all: allSelected,
+                onAllChange: (checked) => {
+                  setTable((draft) => {
+                    draft.selected = new Set(checked ? draft.list.map((data) => data.id) : []);
+                  });
+                },
+                item: (data) => ({
+                  checked: table.selected.has(data.id),
+                  onChange: (checked) => {
+                    setTable((draft) => {
+                      if (checked) {
+                        draft.selected.add(data.id);
+                      } else {
+                        draft.selected.delete(data.id);
+                      }
+                    });
+                  },
+                }),
+              }}
               actionOpts={{
                 actions: (data) => [
                   { text: 'View', link: `/list/standard-table/${data.id}` },
@@ -304,6 +298,9 @@ export default function StandardTable() {
                 width: 140,
               }}
               scroll={{ x: 1200 }}
+              onRefresh={() => {
+                requestTable();
+              }}
             />
             <div className="app-table-footer">
               <div>

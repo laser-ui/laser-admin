@@ -1,0 +1,21 @@
+@use '../variables';
+@use '../mixins';
+
+@include mixins.b(copy) {
+  display: flex;
+  align-items: center;
+
+  @include mixins.e(icon) {
+    margin-left: 4px;
+    color: var(--#{variables.$prefix}color-text-sub);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--#{variables.$prefix}color-text);
+    }
+
+    @include mixins.when(active) {
+      color: var(--#{variables.$prefix}color-success) !important;
+    }
+  }
+}

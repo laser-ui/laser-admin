@@ -2,11 +2,40 @@
 @use '../mixins';
 
 @include mixins.b(table) {
+  @include mixins.m(middle) {
+    --#{variables.$prefix}table-padding-size: 12px;
+  }
+
+  @include mixins.m(compact) {
+    --#{variables.$prefix}table-padding-size: 8px;
+  }
+
+  @include mixins.e(header) {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
   @include mixins.e(title) {
-    margin: 0 0 8px;
     font-size: var(--#{variables.$prefix}font-size-title);
     font-weight: var(--#{variables.$prefix}font-weight-bold);
-    text-align: center;
+  }
+
+  @include mixins.e(actions) {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    /* stylelint-disable-next-line declaration-property-value-allowed-list */
+    font-size: 24px;
+
+    & > .#{variables.$prefix}icon {
+      margin-left: 10px;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--#{variables.$prefix}color-light-primary);
+      }
+    }
   }
 
   @include mixins.e(card-header) {
@@ -37,5 +66,29 @@
     @include mixins.when(expand) {
       border-top: 1px solid var(--#{variables.$prefix}color-border);
     }
+  }
+
+  @include mixins.e(col-config-item) {
+    display: flex;
+    align-items: center;
+
+    & > .#{variables.$prefix}icon {
+      padding: 4px 8px;
+      color: var(--#{variables.$prefix}color-icon-decorator);
+      cursor: grab;
+
+      &:hover {
+        color: var(--#{variables.$prefix}color-text);
+      }
+    }
+  }
+
+  @include mixins.e(col-config-actions) {
+    --#{variables.$prefix}button-font-size: 14px;
+
+    display: flex;
+    align-items: stretch;
+    height: 36px;
+    border-top: 1px solid var(--#{variables.$prefix}color-divider);
   }
 }

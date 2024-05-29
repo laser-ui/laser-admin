@@ -1,7 +1,8 @@
 export {};
 
 export interface AppTableColumn<T> {
-  th: React.ReactNode;
+  key?: string;
+  th: string;
   thProps?: {
     sort?: {
       options?: ('ascend' | 'descend' | null)[];
@@ -12,24 +13,27 @@ export interface AppTableColumn<T> {
   };
   td: ((data: T, index: number) => React.ReactNode) | string;
   width?: number | string;
-  fixed?: {
-    top?: number | string;
-    right?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-  };
+  fixed?: 'L' | 'R';
   align?: 'left' | 'right' | 'center';
-  title?: boolean;
-  checkbox?: boolean;
+  copyable?: boolean;
   nowrap?: boolean;
   hidden?: boolean;
+  asTitle?: boolean;
 }
 
 export interface AppTableProps<T> {
+  id?: string;
   className?: string;
-  name?: string;
+  name?: string | false;
+  tools?: ('refresh' | 'grid' | 'layout' | 'settings')[];
   list: T[];
   columns: AppTableColumn<T>[];
+  selectable?: {
+    fixed?: boolean;
+    all: boolean | 'mixed';
+    onAllChange: (checked: boolean) => void;
+    item: (data: T, index: number) => { checked: boolean; onChange: (checked: boolean) => void };
+  };
   actionOpts?: {
     actions: (
       data: T,
@@ -45,12 +49,10 @@ export interface AppTableProps<T> {
     width: number | string;
   };
   expand?: (data: T, index: number) => React.ReactNode;
-  expandFixed?: {
-    top?: number | string;
-    right?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-  };
+  expandFixed?: boolean;
+  grid?: boolean;
+  layout?: 'default' | 'middle' | 'compact';
   scroll?: { x?: number | string; y?: number | string };
   itemKey?: (data: T, index: number) => any;
+  onRefresh?: () => void;
 }
