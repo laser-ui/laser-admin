@@ -15,23 +15,23 @@ dependencies:
     specifier: ^3.2.2
     version: 3.2.2(react@18.2.0)
   '@laser-pro/acl':
-    specifier: ^0.0.2
-    version: 0.0.2
+    specifier: ^0.0.4
+    version: 0.0.4
   '@laser-pro/auth':
-    specifier: ^0.0.2
-    version: 0.0.2
+    specifier: ^0.0.4
+    version: 0.0.4
   '@laser-pro/http':
-    specifier: ^0.0.2
-    version: 0.0.2(@laser-ui/hooks@0.6.4)(axios@1.6.2)
+    specifier: ^0.0.4
+    version: 0.0.4(@laser-ui/hooks@0.6.4)(axios@1.6.2)
   '@laser-pro/rcharts':
-    specifier: ^0.0.2
-    version: 0.0.2(@laser-ui/hooks@0.6.4)(echarts@5.4.3)
+    specifier: ^0.0.4
+    version: 0.0.4(@laser-ui/hooks@0.6.4)(echarts@5.4.3)
   '@laser-pro/router':
-    specifier: ^0.0.2
-    version: 0.0.2(@laser-ui/hooks@0.6.4)(react-router-dom@6.19.0)
+    specifier: ^0.0.4
+    version: 0.0.4(@laser-ui/hooks@0.6.4)(react-router-dom@6.19.0)
   '@laser-pro/storage':
-    specifier: ^0.0.2
-    version: 0.0.2(@laser-ui/hooks@0.6.4)
+    specifier: ^0.0.4
+    version: 0.0.4(@laser-ui/hooks@0.6.4)
   '@laser-ui/components':
     specifier: ^0.6.4
     version: 0.6.4(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)
@@ -1983,20 +1983,20 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@laser-pro/acl@0.0.2:
-    resolution: {integrity: sha512-KtVH1v/yppXqJmOLi0BrK8De2pOEnIlZipH0Grmu3s1tc99SvSJ+k7aAHuf1uZczPyw2mgLoGws58b13oTdHaA==}
+  /@laser-pro/acl@0.0.4:
+    resolution: {integrity: sha512-xrJ/dPFNDB0i4sQBXtBBwsClwoga26g7hChHYWd5BFR0Bjgd4k2ouQ3cMnYgPT+36IlM/wwroQGJ4uE/b0tucA==}
     dependencies:
       lodash: 4.17.21
     dev: false
 
-  /@laser-pro/auth@0.0.2:
-    resolution: {integrity: sha512-WeZNG29KQEmeCLvUvHa/+z11I/xEMRp8IQdkfQlMYG+Qv26ErObmHdLyAaWHeWy+QQ4My4Fb02hL6HgNwzcuAw==}
+  /@laser-pro/auth@0.0.4:
+    resolution: {integrity: sha512-O3fLbQOOpziFjjzxX5F/CypMT+jFWSrHXQ7+97FlsKZ9gJgvUgIgOThhiCX9ncQdKdWejeb2uO9s1xX7XbDN+w==}
     dependencies:
       lodash: 4.17.21
     dev: false
 
-  /@laser-pro/http@0.0.2(@laser-ui/hooks@0.6.4)(axios@1.6.2):
-    resolution: {integrity: sha512-WG0dhjJr58ZbqquOCStDX7FPiNOB/qv3E6R/ZG7We0DS2g8qU0eMNaHMXEXEg+u38gVYQV2ECeEamuCSYyld3Q==}
+  /@laser-pro/http@0.0.4(@laser-ui/hooks@0.6.4)(axios@1.6.2):
+    resolution: {integrity: sha512-6E459Y4joiD7VApANpOaJuMaxfhFv4Z/Zxuj42e45o8rcpraAjiO0wqHCLxHFWFVxTex+t2l8ZSKs1Jk41i3Ug==}
     peerDependencies:
       '@laser-ui/hooks': '>=0.6.0'
       axios: ^1.6.0
@@ -2006,8 +2006,8 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@laser-pro/rcharts@0.0.2(@laser-ui/hooks@0.6.4)(echarts@5.4.3):
-    resolution: {integrity: sha512-F31evii1HB3IfuyDHvMZyqKkkKWKi2LMXC0SI9rB0zSzJLJF61uuFcH28YVOnr1kKMJYc2QUYZ+FoWIrBpk5lw==}
+  /@laser-pro/rcharts@0.0.4(@laser-ui/hooks@0.6.4)(echarts@5.4.3):
+    resolution: {integrity: sha512-YJroAg/AzLzq09JcxiIllbBKYhTTW9sByrOt4HZbGryI0Ab+M4kZVHJC6xUla0X16TtHIItHnT2sebN4ytx8Cg==}
     peerDependencies:
       '@laser-ui/hooks': '>=0.6.0'
       echarts: '>=5.4.0'
@@ -2016,8 +2016,8 @@ packages:
       echarts: 5.4.3
     dev: false
 
-  /@laser-pro/router@0.0.2(@laser-ui/hooks@0.6.4)(react-router-dom@6.19.0):
-    resolution: {integrity: sha512-xI51Q1qL3s/rXmmlkqkIBFL1FoWl1WyLJOvDdHf3x+MDY851C/khmD3XkLlfV0sRTseUu/8WbdeDu1He7u/6NQ==}
+  /@laser-pro/router@0.0.4(@laser-ui/hooks@0.6.4)(react-router-dom@6.19.0):
+    resolution: {integrity: sha512-RrJxSDqKVZjDBncsfYod3eER4GnmNnRbjNGMsWO72076i/tDsgQ9shZodanMlEUf2+pOOuiSxCOO8kJzG6WeCA==}
     peerDependencies:
       '@laser-ui/hooks': '>=0.6.0'
       react-router-dom: '>=6.0.0'
@@ -2028,8 +2028,8 @@ packages:
       react-router-dom: 6.19.0(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@laser-pro/storage@0.0.2(@laser-ui/hooks@0.6.4):
-    resolution: {integrity: sha512-clql8qK87K3jCZMIv0fT9W6LAZcwGyDxmaYKKDQEvovLBvdAbr5qwops/wJgjjztx1V2K7T+bmKpQ2Faj3n5Sg==}
+  /@laser-pro/storage@0.0.4(@laser-ui/hooks@0.6.4):
+    resolution: {integrity: sha512-uLLvsI1c520FJRs3ORD5zAP6EnvqI4FXvFwzobZIcoIaHV3NUm8mgcIOASfWwgUSAH0ufvnotV7r/XIaZUn1aQ==}
     peerDependencies:
       '@laser-ui/hooks': '>=0.6.0'
     dependencies:

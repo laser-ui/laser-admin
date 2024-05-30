@@ -1,5 +1,6 @@
 import type { PREV_ROUTE_KEY } from '../../configs/router';
 import type { AppUser } from '../../types';
+import type { AxiosError } from 'axios';
 
 import { useStorage } from '@laser-pro/storage';
 import {
@@ -55,14 +56,17 @@ export default function Login(): JSX.Element | null {
 
   const handleSubmit = () => {
     setLoginLoading(true);
-    http<{ user: AppUser; token: string }>({
-      url: '/auth/login',
-      method: 'post',
-      data: {
-        username: accountForm.get('username').value,
-        password: accountForm.get('password').value,
+    http<{ user: AppUser; token: string }>(
+      {
+        url: '/auth/login',
+        method: 'post',
+        data: {
+          username: accountForm.get('username').value,
+          password: accountForm.get('password').value,
+        },
       },
-    })
+      { authorization: true },
+    )
       .then((res) => {
         TOKEN.set(res.token);
         rememberToken(rememberStorage.value === '1');
@@ -70,9 +74,9 @@ export default function Login(): JSX.Element | null {
         initUser(res.user);
         navigate(isString(from) && from !== LOGIN_PATH ? from : '/', { replace: true });
       })
-      .catch((err) => {
+      .catch((err: AxiosError) => {
         DialogService.open(Toast, {
-          children: err,
+          children: err.message,
           type: 'error',
         });
       })
