@@ -3,7 +3,7 @@ import { DialogService, Toast } from '@laser-ui/components';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/app';
+import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
 
 export function useHttp() {
   const navigate = useNavigate();

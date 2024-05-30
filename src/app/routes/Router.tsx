@@ -9,7 +9,8 @@ import AppLayout from './layout/Layout';
 import AppLoginRoute from './login/Login';
 import { AppFCPLoader } from '../components';
 import { ROUTES_ACL } from '../configs/acl';
-import { LOGIN_PATH, PREV_ROUTE_KEY, TITLE_OPTIONS } from '../configs/app';
+import { TITLE_OPTIONS } from '../configs/app';
+import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
 import { TOKEN } from '../core';
 
 const ROUTES = {

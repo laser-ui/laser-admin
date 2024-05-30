@@ -3,14 +3,17 @@ import { useStorage } from '@laser-pro/storage';
 import i18n from 'i18next';
 import { isNull } from 'lodash';
 import { initReactI18next } from 'react-i18next';
-import { redirect } from 'react-router-dom';
 
-import { LOGIN_PATH } from './app/configs/app';
 import { HTTP_CONFIGS } from './app/configs/http';
+import { HASH, LOGIN_PATH } from './app/configs/router';
 import { STORAGE } from './app/configs/storage';
 import { initUser } from './app/core';
 import { TOKEN, rememberToken } from './app/core/token';
 import resources from './resources.json';
+
+function redirect(path: string) {
+  window.history.replaceState(null, '', (HASH ? '#' : '') + path);
+}
 
 const configStorage = () =>
   new Promise<void>((r) => {

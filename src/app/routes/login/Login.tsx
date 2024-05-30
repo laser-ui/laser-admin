@@ -1,4 +1,4 @@
-import type { PREV_ROUTE_KEY } from '../../configs/app';
+import type { PREV_ROUTE_KEY } from '../../configs/router';
 import type { AppUser } from '../../types';
 
 import { useStorage } from '@laser-pro/storage';
@@ -26,7 +26,8 @@ import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AppLanguage } from '../../components';
-import { APP_NAME, LOGIN_PATH } from '../../configs/app';
+import { APP_NAME } from '../../configs/app';
+import { LOGIN_PATH } from '../../configs/router';
 import { STORAGE } from '../../configs/storage';
 import { URLS } from '../../configs/urls';
 import { TOKEN, initUser, useHttp } from '../../core';

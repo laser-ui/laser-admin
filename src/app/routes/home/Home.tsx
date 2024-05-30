@@ -1,7 +1,7 @@
 import { isUndefined } from 'lodash';
 import { Navigate } from 'react-router-dom';
 
-import { LOGIN_PATH } from '../../configs/app';
+import { LOGIN_PATH } from '../../configs/router';
 import { useMenu } from '../../core';
 
 export default function Home(): JSX.Element | null {

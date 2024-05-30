@@ -7,7 +7,3 @@ export const TITLE_OPTIONS: TitleOptions = {
   separator: ' - ',
   suffix: APP_NAME,
 };
-
-export const LOGIN_PATH = '/login';
-
-export const PREV_ROUTE_KEY = 'from';

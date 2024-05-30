@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { AppAccountModal } from './AccountModal';
 import { AppPasswordModal } from './PasswordModal';
-import { LOGIN_PATH } from '../../../../configs/app';
+import { LOGIN_PATH } from '../../../../configs/router';
 import { GlobalStore, TOKEN } from '../../../../core';
 
 export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): JSX.Element | null {
