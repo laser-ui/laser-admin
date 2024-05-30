@@ -1,7 +1,7 @@
 import type { DeviceData } from './types';
 import type { SelectItem } from '@laser-ui/components/select/types';
 
-import { useQuery } from '@laser-ui/admin';
+import { useQuery } from '@laser-pro/router';
 import { Button, Card, Checkbox, DialogService, Dropdown, Icon, Modal, Pagination, Select, Spinner } from '@laser-ui/components';
 import { useImmer, useMount } from '@laser-ui/hooks';
 import AddOutlined from '@material-design-icons/svg/outlined/add.svg?react';

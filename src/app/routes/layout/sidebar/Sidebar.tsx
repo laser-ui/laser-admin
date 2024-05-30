@@ -1,4 +1,4 @@
-import { useStorage } from '@laser-ui/admin';
+import { useStorage } from '@laser-pro/storage';
 import { Drawer, Menu } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 

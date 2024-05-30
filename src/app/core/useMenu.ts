@@ -1,7 +1,7 @@
 import type { AppMenuItem } from '../configs/menu';
 import type { MenuItem } from '@laser-ui/components/menu/types';
 
-import { useACL } from '@laser-ui/admin';
+import { useACL } from '@laser-pro/acl';
 import { Icon } from '@laser-ui/components';
 import { useMount } from '@laser-ui/hooks';
 import { isObject, isUndefined } from 'lodash';

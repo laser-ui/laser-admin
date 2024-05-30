@@ -1,4 +1,4 @@
-import type { TitleOptions } from '@laser-ui/admin/packages/router/types';
+import type { TitleOptions } from '@laser-pro/router/types';
 
 export const APP_NAME = 'Laser Admin';
 

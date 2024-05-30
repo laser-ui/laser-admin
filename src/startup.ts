@@ -1,4 +1,5 @@
-import { axios, useHttp, useStorage } from '@laser-ui/admin';
+import { axios, useHttp } from '@laser-pro/http';
+import { useStorage } from '@laser-pro/storage';
 import i18n from 'i18next';
 import { isNull } from 'lodash';
 import { initReactI18next } from 'react-i18next';

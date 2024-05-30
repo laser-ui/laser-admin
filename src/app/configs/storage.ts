@@ -1,5 +1,5 @@
 import type { AppLang, AppLayout, AppTheme } from '../types';
-import type { Options } from '@laser-ui/admin/packages/storage/useStorage';
+import type { Options } from '@laser-pro/storage/useStorage';
 
 type Value<T> = [string, Options<T>];
 export const STORAGE = {

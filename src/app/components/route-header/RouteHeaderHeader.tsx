@@ -1,6 +1,6 @@
 import type { AppRouteHeaderHeaderProps } from './types';
 
-import { RouterContext } from '@laser-ui/admin/packages/router/context';
+import { RouterContext } from '@laser-pro/router/context';
 import { Icon } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import ArrowBackOutlined from '@material-design-icons/svg/outlined/arrow_back.svg?react';

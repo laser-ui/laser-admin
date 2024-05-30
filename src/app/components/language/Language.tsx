@@ -2,7 +2,7 @@ import type { AppLanguageProps } from './types';
 import type { AppLang } from '../../types';
 import type { DropdownItem } from '@laser-ui/components/dropdown/types';
 
-import { useStorage } from '@laser-ui/admin';
+import { useStorage } from '@laser-pro/storage';
 import { Dropdown, Icon } from '@laser-ui/components';
 import TranslateOutlined from '@material-design-icons/svg/outlined/translate.svg?react';
 import { useTranslation } from 'react-i18next';

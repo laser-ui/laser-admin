@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-import { base64url } from '@laser-ui/admin/packages/auth/base64url';
+import { base64url } from '@laser-pro/auth/base64url';
 import { isString, nth } from 'lodash';
 
 import { DATA } from './data';

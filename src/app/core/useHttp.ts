@@ -1,4 +1,4 @@
-import { useHttp as useHttpCore } from '@laser-ui/admin';
+import { useHttp as useHttpCore } from '@laser-pro/http';
 import { DialogService, Toast } from '@laser-ui/components';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';

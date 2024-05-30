@@ -1,7 +1,7 @@
 import type { PREV_ROUTE_KEY } from '../../configs/app';
 import type { AppUser } from '../../types';
 
-import { useStorage } from '@laser-ui/admin';
+import { useStorage } from '@laser-pro/storage';
 import {
   Button,
   Checkbox,

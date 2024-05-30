@@ -1,4 +1,4 @@
-import { useStorage } from '@laser-ui/admin';
+import { useStorage } from '@laser-pro/storage';
 import { classNames } from '@laser-ui/utils';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';

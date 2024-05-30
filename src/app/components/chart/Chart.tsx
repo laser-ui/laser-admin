@@ -1,8 +1,8 @@
 import type { AppChartProps } from './types';
 import type { ECharts } from 'echarts/core';
 
-import { useStorage } from '@laser-ui/admin';
-import { RCharts } from '@laser-ui/rcharts';
+import { RCharts } from '@laser-pro/rcharts';
+import { useStorage } from '@laser-pro/storage';
 import { BarChart, LineChart, PieChart, ScatterChart } from 'echarts/charts';
 import {
   DataZoomComponent,

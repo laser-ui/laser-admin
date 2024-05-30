@@ -1,4 +1,4 @@
-import { Router, useACLGuard, useTokenGuard } from '@laser-ui/admin';
+import { Router, useACLGuard, useTokenGuard } from '@laser-pro/router';
 import { Suspense, createElement, lazy, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useLocation } from 'react-router-dom';

@@ -1,4 +1,5 @@
-import { JWTToken, axios } from '@laser-ui/admin';
+import { JWTToken } from '@laser-pro/auth';
+import { axios } from '@laser-pro/http';
 
 export const TOKEN = new JWTToken({});
 export const rememberToken = (remember: boolean) => {

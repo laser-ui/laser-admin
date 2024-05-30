@@ -1,4 +1,4 @@
-import type { HttpConfigs } from '@laser-ui/admin/packages/http/configs';
+import type { HttpConfigs } from '@laser-pro/http/configs';
 
 import { TOKEN } from '../core';
 import mock from '../mock';

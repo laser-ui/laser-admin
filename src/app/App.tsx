@@ -1,6 +1,6 @@
 import type { LContextIn } from '@laser-ui/components/context';
 
-import { useStorage } from '@laser-ui/admin';
+import { useStorage } from '@laser-pro/storage';
 import { ConfigProvider, Root } from '@laser-ui/components';
 import { useEffect, useMemo } from 'react';
 

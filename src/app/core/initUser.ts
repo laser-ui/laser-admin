@@ -1,6 +1,7 @@
 import type { AppUser } from '../types';
 
-import { axios, useACL } from '@laser-ui/admin';
+import { useACL } from '@laser-pro/acl';
+import { axios } from '@laser-pro/http';
 
 import { GlobalStore } from './store';
 import { ROLE_ACL } from '../configs/acl';

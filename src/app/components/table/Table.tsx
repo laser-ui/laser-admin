@@ -2,8 +2,8 @@ import type { AppTableColumn, AppTableProps } from './types';
 
 import { closestCenter, DndContext, DragOverlay, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { useStorage } from '@laser-ui/admin';
-import { RouterContext } from '@laser-ui/admin/packages/router/context';
+import { RouterContext } from '@laser-pro/router/context';
+import { useStorage } from '@laser-pro/storage';
 import { Button, Dropdown, Icon, Popover, Separator } from '@laser-ui/components';
 import { useAsync } from '@laser-ui/hooks';
 import { isSimpleArrayEqual } from '@laser-ui/utils';

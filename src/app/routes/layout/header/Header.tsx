@@ -1,4 +1,4 @@
-import { useStorage } from '@laser-ui/admin';
+import { useStorage } from '@laser-pro/storage';
 import { Icon } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import DarkModeOutlined from '@material-design-icons/svg/outlined/dark_mode.svg?react';
