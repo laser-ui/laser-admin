@@ -71,9 +71,6 @@ dependencies:
   immer:
     specifier: ^10.0.3
     version: 10.0.3
-  jsurl:
-    specifier: ^0.1.5
-    version: 0.1.5
   lodash:
     specifier: ^4.17.21
     version: 4.17.21

@@ -8,9 +8,9 @@
       "vite/client",
       "node",
       "vitest",
-      "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts",
-      "vite-plugin-svgr/client.d.ts"
+      "@nx/react/typings/cssmodule",
+      "@nx/react/typings/image",
+      "vite-plugin-svgr/client"
     ]
   },
   "include": [
@@ -23,6 +23,6 @@
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
-    "src/**/*.d.ts"
+    "src/**/*"
   ]
 }
