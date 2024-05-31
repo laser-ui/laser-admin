@@ -190,8 +190,8 @@ export default function StandardTable() {
               onSearchClick={() => {
                 requestTable({ page: 1 });
               }}
-              onResetClick={() => {
-                requestTable(pick(query, ['pageSize']), { clear: true });
+              onResetClick={(change) => {
+                (change ? requestTable : updateQuery)(pick(query, ['pageSize']), { clear: true });
               }}
             />
           </Card.Content>
