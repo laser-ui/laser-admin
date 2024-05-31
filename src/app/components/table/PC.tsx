@@ -54,6 +54,7 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
         ths.push(
           <Table.Th
             key={index}
+            styleOverrides={{ 'table__cell-text': { style: { whiteSpace: 'nowrap' } } }}
             width={column.width}
             sort={column.thProps?.sort}
             action={column.thProps?.action}
@@ -67,7 +68,7 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
         tds.push((data, dataIndex) => (
           <Table.Td
             key={index}
-            styleOverrides={{ 'table__cell-text': { style: { overflowWrap: column.nowrap ? 'normal' : undefined } } }}
+            styleOverrides={{ 'table__cell-text': { style: { whiteSpace: column.nowrap ? 'nowrap' : undefined } } }}
             width={column.width}
             fixed={fixed}
             align={column.align}
@@ -110,7 +111,11 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
             )}
             {ths}
             {actionOpts && (
-              <Table.Th width={actionOpts.width} fixed={{ top: 0, right: 0 }}>
+              <Table.Th
+                styleOverrides={{ 'table__cell-text': { style: { whiteSpace: 'nowrap' } } }}
+                width={actionOpts.width}
+                fixed={{ top: 0, right: 0 }}
+              >
                 {t('components.table.ACTIONS')}
               </Table.Th>
             )}
