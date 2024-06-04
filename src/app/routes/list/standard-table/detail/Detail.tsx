@@ -25,7 +25,7 @@ export default function Detail() {
   const [loading, setLoading] = useState(true);
   const [device, setDevice] = useState<DeviceData>();
 
-  const getDevice = () => {
+  const requestDevice = () => {
     setLoading(true);
     http({
       url: `/device/${id}`,
@@ -37,7 +37,7 @@ export default function Detail() {
   };
 
   useMount(() => {
-    getDevice();
+    requestDevice();
   });
 
   return (
@@ -67,7 +67,7 @@ export default function Detail() {
                 DialogService.open(AppDeviceModal, {
                   device,
                   onSuccess: () => {
-                    getDevice();
+                    requestDevice();
                   },
                 });
               }}
