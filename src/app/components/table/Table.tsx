@@ -1,10 +1,8 @@
 import type { AppTableColumn, AppTableProps } from './types';
 
-import { closestCenter, DndContext, DragOverlay, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
-import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { RouterContext } from '@laser-pro/router/context';
 import { useStorage } from '@laser-pro/storage';
-import { Button, Dropdown, Icon, Popover, Separator } from '@laser-ui/components';
+import { Button, Checkbox, Dropdown, Icon, Popover, Separator } from '@laser-ui/components';
 import { useAsync } from '@laser-ui/hooks';
 import { isSimpleArrayEqual } from '@laser-ui/utils';
 import RefreshOutlined from '@material-design-icons/svg/outlined/refresh.svg?react';
@@ -15,10 +13,9 @@ import { useContext, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
-import { ColConfigItem } from './ColConfigItem';
 import { Mobile } from './Mobile';
 import { PC } from './PC';
-import { SortableColConfigItem } from './SortableColConfigItem';
+import { SortableCols } from './sortable-cols';
 
 export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
   const {
@@ -66,7 +63,6 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
     });
     return [columnMap, sorts, hiddens];
   })();
-  const [activeCol, setActiveCol] = useState<string | null>(null);
   const colSorts = (() => {
     const prev: string[] = storage.value.sorts ?? [];
     if (isSimpleArrayEqual(prev, defaultColSorts)) {
@@ -75,23 +71,8 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
     return defaultColSorts;
   })();
   const colHiddens = new Set<string>(storage.value.hiddens ?? defaultHiddens);
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
-  );
 
   const columnsWithConfig = colSorts.map((key) => ({ ...columnMap.get(key)!, hidden: colHiddens.has(key) }));
-  const handleHiddenChange = (id: string, hidden: boolean) => {
-    const hiddens = new Set(colHiddens);
-    if (hidden) {
-      hiddens.add(id);
-    } else {
-      hiddens.delete(id);
-    }
-    storage.set({ ...storage.value, hiddens: Array.from(hiddens) });
-  };
 
   return (
     <>
@@ -142,61 +123,38 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
                 visible={settingsVisible}
                 content={
                   <>
-                    <div style={{ padding: '8px 8px 8px 0' }}>
-                      <DndContext
-                        sensors={sensors}
-                        collisionDetection={closestCenter}
-                        onDragStart={(event) => {
-                          const { active } = event;
-
-                          setActiveCol(active.id as string);
-                        }}
-                        onDragEnd={(event) => {
-                          dragEnd.current?.();
-                          dragEnd.current = async.setTimeout(() => {
-                            dragEnd.current = undefined;
-                          }, 50);
-
-                          const { active, over } = event;
-
-                          if (active.id !== over!.id) {
-                            const oldIndex = colSorts.indexOf(active.id as string);
-                            const newIndex = colSorts.indexOf(over!.id as string);
-                            storage.set({ ...storage.value, sorts: arrayMove(colSorts, oldIndex, newIndex) });
-                          }
-
-                          setActiveCol(null);
-                        }}
-                      >
-                        <SortableContext items={colSorts} strategy={verticalListSortingStrategy}>
-                          {colSorts.map((id) => (
-                            <SortableColConfigItem
-                              key={id}
-                              id={id}
-                              text={columnMap.get(id)!.th}
-                              hidden={colHiddens.has(id)}
-                              disabled={defaultHiddens.has(id)}
-                              onHiddenChange={(hidden) => {
-                                handleHiddenChange(id, hidden);
-                              }}
-                            />
-                          ))}
-                        </SortableContext>
-                        <DragOverlay>
-                          {activeCol ? (
-                            <ColConfigItem
-                              hidden={colHiddens.has(activeCol)}
-                              disabled={defaultHiddens.has(activeCol)}
-                              onHiddenChange={(hidden) => {
-                                handleHiddenChange(activeCol, hidden);
-                              }}
-                            >
-                              {columnMap.get(activeCol)!.th}
-                            </ColConfigItem>
-                          ) : null}
-                        </DragOverlay>
-                      </DndContext>
-                    </div>
+                    <SortableCols
+                      items={colSorts}
+                      onChange={(items) => {
+                        storage.set({ ...storage.value, sorts: items });
+                      }}
+                      renderItem={(item) => (
+                        <SortableCols.Item id={item}>
+                          <SortableCols.DragHandle />
+                          <Checkbox
+                            model={!colHiddens.has(item)}
+                            disabled={defaultHiddens.has(item)}
+                            onModelChange={(checked) => {
+                              const hiddens = new Set(colHiddens);
+                              if (checked) {
+                                hiddens.delete(item);
+                              } else {
+                                hiddens.add(item);
+                              }
+                              storage.set({ ...storage.value, hiddens: Array.from(hiddens) });
+                            }}
+                          >
+                            {columnMap.get(item)!.th}
+                          </Checkbox>
+                        </SortableCols.Item>
+                      )}
+                      onDragEnd={() => {
+                        dragEnd.current?.();
+                        dragEnd.current = async.setTimeout(() => {
+                          dragEnd.current = undefined;
+                        }, 50);
+                      }}
+                    />
                     <div className="app-table__col-config-actions">
                       <Button
                         style={{ flexGrow: 1 }}

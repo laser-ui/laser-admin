@@ -68,21 +68,6 @@
     }
   }
 
-  @include mixins.e(col-config-item) {
-    display: flex;
-    align-items: center;
-
-    & > .#{variables.$prefix}icon {
-      padding: 4px 8px;
-      color: var(--#{variables.$prefix}color-icon-decorator);
-      cursor: grab;
-
-      &:hover {
-        color: var(--#{variables.$prefix}color-text);
-      }
-    }
-  }
-
   @include mixins.e(col-config-actions) {
     --#{variables.$prefix}button-font-size: 14px;
 
@@ -90,5 +75,35 @@
     align-items: stretch;
     height: 36px;
     border-top: 1px solid var(--#{variables.$prefix}color-divider);
+  }
+}
+
+@include mixins.b(table-sortable-cols) {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  margin: 0;
+  list-style: none;
+
+  @include mixins.e(item) {
+    display: flex;
+    align-items: center;
+  }
+
+  @include mixins.e(drag-indicator) {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 24px;
+    margin-right: 8px;
+    color: var(--#{variables.$prefix}color-icon-decorator);
+    touch-action: none;
+    cursor: grab;
+
+    &:hover {
+      color: var(--#{variables.$prefix}color-text);
+    }
   }
 }
