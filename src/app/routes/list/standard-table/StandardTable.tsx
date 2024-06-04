@@ -74,10 +74,11 @@ export default function StandardTable() {
       method: 'get',
     }).then((res) => {
       updateQuery({ page: res.metadata.page }, { navigateOptions: {} });
-      setTable((draft) => {
-        draft.loading = false;
-        draft.list = res.resources;
-        draft.totalSize = res.metadata.total_size;
+      setTable({
+        loading: false,
+        list: res.resources,
+        totalSize: res.metadata.total_size,
+        selected: new Set(),
       });
     });
   };
