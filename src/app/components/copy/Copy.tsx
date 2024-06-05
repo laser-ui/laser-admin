@@ -5,6 +5,7 @@ import { useAsync } from '@laser-ui/hooks';
 import { classNames, copy } from '@laser-ui/utils';
 import CheckOutlined from '@material-design-icons/svg/outlined/check.svg?react';
 import ContentCopyOutlined from '@material-design-icons/svg/outlined/content_copy.svg?react';
+import { isNumber, isString } from 'lodash';
 import { useState } from 'react';
 
 export function AppCopy(props: AppCopyProps): JSX.Element | null {
@@ -13,6 +14,15 @@ export function AppCopy(props: AppCopyProps): JSX.Element | null {
   const async = useAsync();
 
   const [copyed, setCopyed] = useState(false);
+
+  let str: any = value ?? children;
+  if (isNumber(str)) {
+    str = str.toString();
+  }
+
+  if (!isString(str)) {
+    return children as any;
+  }
 
   return (
     <div className="app-copy">
@@ -24,7 +34,7 @@ export function AppCopy(props: AppCopyProps): JSX.Element | null {
         size={size}
         onClick={() => {
           if (!copyed) {
-            copy(value ?? (children as string));
+            copy(str);
 
             setCopyed(true);
             async.setTimeout(() => {
