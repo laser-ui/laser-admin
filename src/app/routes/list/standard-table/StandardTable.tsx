@@ -70,8 +70,8 @@ export default function StandardTable() {
     }
     http<AppStandardResponse.List<AppDocs.Device>>({
       url: '/device',
-      params: reqParams,
       method: 'get',
+      params: reqParams,
     }).then((res) => {
       updateQuery({ page: res.metadata.page }, { navigateOptions: {} });
       setTable({

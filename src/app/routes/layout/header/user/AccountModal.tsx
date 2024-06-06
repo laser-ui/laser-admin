@@ -53,8 +53,8 @@ export function AppAccountModal(props: ModalProps): JSX.Element | null {
               }
               http({
                 url: `/user/${appUser.id}`,
-                data,
                 method: 'patch',
+                data,
               }).then((res) => {
                 handleStandardResponse(res, {
                   success: () => {
