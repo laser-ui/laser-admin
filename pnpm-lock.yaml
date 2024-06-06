@@ -23,9 +23,6 @@ dependencies:
   '@laser-pro/http':
     specifier: ^0.0.4
     version: 0.0.4(@laser-ui/hooks@0.6.4)(axios@1.6.2)
-  '@laser-pro/rcharts':
-    specifier: ^0.0.4
-    version: 0.0.4(@laser-ui/hooks@0.6.4)(echarts@5.4.3)
   '@laser-pro/router':
     specifier: ^0.0.4
     version: 0.0.4(@laser-ui/hooks@0.6.4)(react-router-dom@6.19.0)
@@ -2001,16 +1998,6 @@ packages:
       '@laser-ui/hooks': 0.6.4(immer@10.0.3)
       axios: 1.6.2
       lodash: 4.17.21
-    dev: false
-
-  /@laser-pro/rcharts@0.0.4(@laser-ui/hooks@0.6.4)(echarts@5.4.3):
-    resolution: {integrity: sha512-YJroAg/AzLzq09JcxiIllbBKYhTTW9sByrOt4HZbGryI0Ab+M4kZVHJC6xUla0X16TtHIItHnT2sebN4ytx8Cg==}
-    peerDependencies:
-      '@laser-ui/hooks': '>=0.6.0'
-      echarts: '>=5.4.0'
-    dependencies:
-      '@laser-ui/hooks': 0.6.4(immer@10.0.3)
-      echarts: 5.4.3
     dev: false
 
   /@laser-pro/router@0.0.4(@laser-ui/hooks@0.6.4)(react-router-dom@6.19.0):

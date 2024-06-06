@@ -17,7 +17,6 @@
     "@laser-pro/acl": "^0.0.4",
     "@laser-pro/auth": "^0.0.4",
     "@laser-pro/http": "^0.0.4",
-    "@laser-pro/rcharts": "^0.0.4",
     "@laser-pro/router": "^0.0.4",
     "@laser-pro/storage": "^0.0.4",
     "@laser-ui/components": "^0.6.4",
