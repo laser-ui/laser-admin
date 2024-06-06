@@ -9,7 +9,13 @@ import { isNumber, isString } from 'lodash';
 import { useState } from 'react';
 
 export function AppCopy(props: AppCopyProps): JSX.Element | null {
-  const { children, value, size } = props;
+  const {
+    children,
+    value,
+    size,
+
+    ...restProps
+  } = props;
 
   const async = useAsync();
 
@@ -25,7 +31,7 @@ export function AppCopy(props: AppCopyProps): JSX.Element | null {
   }
 
   return (
-    <div className="app-copy">
+    <div {...restProps} className={classNames(restProps.className, 'app-copy')}>
       {children}
       <Icon
         className={classNames('app-copy__icon', {
