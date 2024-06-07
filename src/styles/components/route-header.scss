@@ -2,14 +2,14 @@
 @use '../mixins';
 
 @include mixins.b(route-header) {
-  position: static;
-  top: 0;
+  position: relative;
   z-index: 1;
   padding: 12px 20px 0;
+  overflow: hidden;
   background-color: var(--#{variables.$prefix}background-color);
 
   @include mixins.e(breadcrumb) {
-    min-height: 40px;
+    margin-bottom: 8px;
   }
 
   @include mixins.e(breadcrumb-link) {
@@ -24,8 +24,7 @@
     gap: 12px 20px;
     align-items: center;
     justify-content: space-between;
-    min-height: 52px;
-    padding-bottom: 16px;
+    margin-bottom: 16px;
   }
 
   @include mixins.e(header-title-container) {
