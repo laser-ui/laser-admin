@@ -53,6 +53,7 @@ export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
           <Button
             onClick={() => {
               searchWithFilter.current = searchValue || badgeValue > 0 ? true : false;
+              setShowAdvancedSearch(false);
               onSearchClick?.();
             }}
           >
