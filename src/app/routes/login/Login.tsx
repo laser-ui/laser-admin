@@ -1,4 +1,3 @@
-import type { PREV_ROUTE_KEY } from '../../configs/router';
 import type { AppUser } from '../../types';
 import type { AxiosError } from 'axios';
 
@@ -28,6 +27,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AppLanguage } from '../../components';
 import { APP_NAME } from '../../configs/app';
+import { PREV_ROUTE_KEY } from '../../configs/router';
 import { LOGIN_PATH } from '../../configs/router';
 import { STORAGE } from '../../configs/storage';
 import { URLS } from '../../configs/urls';
@@ -41,7 +41,7 @@ export default function Login(): JSX.Element | null {
   const http = useHttp();
   const [loginloading, setLoginLoading] = useState(false);
   const location = useLocation();
-  const from = (location.state as null | { [PREV_ROUTE_KEY]?: Location })?.from?.pathname;
+  const from = location.state && location.state[PREV_ROUTE_KEY] ? (location.state[PREV_ROUTE_KEY] as Location).pathname : undefined;
   const navigate = useNavigate();
 
   const rememberStorage = useStorage(...STORAGE.remember);
