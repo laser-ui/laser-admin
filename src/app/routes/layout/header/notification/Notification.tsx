@@ -8,7 +8,7 @@ import { useStore } from 'rcl-store';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AppList } from './List';
+import { AppList } from '../../../../components';
 import { URLS } from '../../../../configs/urls';
 import { GlobalStore } from '../../../../core';
 
