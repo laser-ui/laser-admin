@@ -13,6 +13,9 @@
       "Last day": "Last day",
       "Last week": "Last week",
       "Last month": "Last month",
+      "Last 3 months": "Last 3 months",
+      "Last 6 months": "Last 6 months",
+      "Last year": "Last year",
       "components": {
         "language": {
           "Change language": "Change language"
@@ -125,6 +128,9 @@
       "Last day": "最近一天",
       "Last week": "最近一周",
       "Last month": "最近一月",
+      "Last 3 months": "最近三月",
+      "Last 6 months": "最近半年",
+      "Last year": "最近一年",
       "components": {
         "language": {
           "Change language": "改变语言"

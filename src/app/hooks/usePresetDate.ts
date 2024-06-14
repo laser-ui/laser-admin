@@ -19,5 +19,20 @@ export function usePresetDate() {
       date.setMonth(date.getMonth() - 1);
       return [date, new Date()];
     },
+    [t('Last 3 months')]: () => {
+      const date = new Date();
+      date.setMonth(date.getMonth() - 3);
+      return [date, new Date()];
+    },
+    [t('Last 6 months')]: () => {
+      const date = new Date();
+      date.setMonth(date.getMonth() - 6);
+      return [date, new Date()];
+    },
+    [t('Last year')]: () => {
+      const date = new Date();
+      date.setMonth(date.getMonth() - 12);
+      return [date, new Date()];
+    },
   } as any;
 }
