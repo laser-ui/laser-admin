@@ -48,7 +48,7 @@ export interface AppTableProps<T> {
     }[];
     width: number | string;
   };
-  expand?: (data: T, index: number) => React.ReactNode;
+  expand?: (data: T, index: number, expand: boolean) => React.ReactNode;
   expandFixed?: boolean;
   grid?: boolean;
   layout?: 'default' | 'middle' | 'compact';
