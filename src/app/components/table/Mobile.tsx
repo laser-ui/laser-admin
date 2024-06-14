@@ -6,7 +6,6 @@ import { classNames } from '@laser-ui/utils';
 import ArrowDropDownOutlined from '@material-design-icons/svg/outlined/arrow_drop_down.svg?react';
 import ArrowDropUpOutlined from '@material-design-icons/svg/outlined/arrow_drop_up.svg?react';
 import MoreHorizOutlined from '@material-design-icons/svg/outlined/more_horiz.svg?react';
-import { isUndefined } from 'lodash';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { getContent, getKey } from './utils';
@@ -51,7 +50,7 @@ export function Mobile<T = any>(props: AppTableProps<T> & { grid: boolean; layou
       ) : (
         list.map((data, index) => {
           const id = itemKey(data, index);
-          const expandNode = !isUndefined(_expand) ? _expand(data, index) : false;
+          const isExpand = expands.has(id);
           const list = detailView(data, index);
 
           return (
@@ -199,12 +198,12 @@ export function Mobile<T = any>(props: AppTableProps<T> & { grid: boolean; layou
                   );
                 }
               })()}
-              {expandNode !== false && (
+              {_expand && (
                 <div className="app-table__expand">
-                  {expands.has(id) && <div style={{ padding: 16 }}>{expandNode}</div>}
+                  <div style={{ display: isExpand ? undefined : 'none', padding: 16 }}>{_expand(data, index, isExpand)}</div>
                   <div
                     className={classNames('app-table__expand-button', {
-                      'is-expand': expands.has(id),
+                      'is-expand': isExpand,
                     })}
                     onClick={() => {
                       setExpands((draft) => {
@@ -216,7 +215,7 @@ export function Mobile<T = any>(props: AppTableProps<T> & { grid: boolean; layou
                       });
                     }}
                   >
-                    <Button pattern="link" icon={<Icon>{expands.has(id) ? <ArrowDropUpOutlined /> : <ArrowDropDownOutlined />}</Icon>} />
+                    <Button pattern="link" icon={<Icon>{isExpand ? <ArrowDropUpOutlined /> : <ArrowDropDownOutlined />}</Icon>} />
                   </div>
                 </div>
               )}

@@ -127,6 +127,7 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
           ) : (
             list.map((data, index) => {
               const id = itemKey(data, index);
+              const isExpand = expands.has(id);
               const selectNode = selectable && selectable.item(data, index);
 
               return (
@@ -135,7 +136,7 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
                     {_expand && (
                       <Table.Td width={60} align="center" fixed={leftFixed[0]}>
                         <Table.Expand
-                          expand={expands.has(id)}
+                          expand={isExpand}
                           onExpandChange={(expand) => {
                             setExpands((draft) => {
                               if (expand) {
@@ -214,10 +215,8 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
                     )}
                   </tr>
                   {_expand && (
-                    <tr style={{ display: expands.has(id) ? undefined : 'none' }}>
-                      <td colSpan={1 + (selectable ? 1 : 0) + ths.length + (actionOpts ? 1 : 0)}>
-                        {_expand(data, index, expands.has(id))}
-                      </td>
+                    <tr style={{ display: isExpand ? undefined : 'none' }}>
+                      <td colSpan={1 + (selectable ? 1 : 0) + ths.length + (actionOpts ? 1 : 0)}>{_expand(data, index, isExpand)}</td>
                     </tr>
                   )}
                 </Fragment>
