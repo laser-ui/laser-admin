@@ -24,7 +24,7 @@ export interface AppTableColumn<T> {
 export interface AppTableProps<T> {
   id?: string;
   className?: string;
-  name?: string | false;
+  name?: React.ReactNode;
   tools?: ('refresh' | 'grid' | 'layout' | 'settings')[];
   list: T[];
   columns: AppTableColumn<T>[];
