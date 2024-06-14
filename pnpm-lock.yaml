@@ -22,25 +22,25 @@ dependencies:
     version: 0.0.5
   '@laser-pro/http':
     specifier: ^0.0.5
-    version: 0.0.5(@laser-ui/hooks@0.6.5)(axios@1.6.2)
+    version: 0.0.5(@laser-ui/hooks@0.6.6)(axios@1.6.2)
   '@laser-pro/router':
     specifier: ^0.0.5
-    version: 0.0.5(@laser-ui/hooks@0.6.5)(react-router-dom@6.19.0)
+    version: 0.0.5(@laser-ui/hooks@0.6.6)(react-router-dom@6.19.0)
   '@laser-pro/storage':
     specifier: ^0.0.5
-    version: 0.0.5(@laser-ui/hooks@0.6.5)
+    version: 0.0.5(@laser-ui/hooks@0.6.6)
   '@laser-ui/components':
-    specifier: ^0.6.5
-    version: 0.6.5(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)
+    specifier: ^0.6.6
+    version: 0.6.6(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)
   '@laser-ui/hooks':
-    specifier: ^0.6.5
-    version: 0.6.5(immer@10.0.3)
+    specifier: ^0.6.6
+    version: 0.6.6(immer@10.0.3)
   '@laser-ui/themes':
-    specifier: ^0.6.5
-    version: 0.6.5
+    specifier: ^0.6.6
+    version: 0.6.6
   '@laser-ui/utils':
-    specifier: ^0.6.5
-    version: 0.6.5
+    specifier: ^0.6.6
+    version: 0.6.6
   '@material-design-icons/svg':
     specifier: ^0.14.13
     version: 0.14.13
@@ -1989,40 +1989,40 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@laser-pro/http@0.0.5(@laser-ui/hooks@0.6.5)(axios@1.6.2):
+  /@laser-pro/http@0.0.5(@laser-ui/hooks@0.6.6)(axios@1.6.2):
     resolution: {integrity: sha512-6IJVCrKb8lxzb7ldNkqbBP6WjvmzLg7TNxz5iifxuFBYKTKc9YPclZhcKyxs2MPCrzji8vIamS/UFskQIcKSEg==}
     peerDependencies:
       '@laser-ui/hooks': '>=0.6.0'
       axios: ^1.6.0
     dependencies:
-      '@laser-ui/hooks': 0.6.5(immer@10.0.3)
+      '@laser-ui/hooks': 0.6.6(immer@10.0.3)
       axios: 1.6.2
       lodash: 4.17.21
     dev: false
 
-  /@laser-pro/router@0.0.5(@laser-ui/hooks@0.6.5)(react-router-dom@6.19.0):
+  /@laser-pro/router@0.0.5(@laser-ui/hooks@0.6.6)(react-router-dom@6.19.0):
     resolution: {integrity: sha512-ROhiSrHxpttiOLudlzBmjmFRX6D1fyqZTnWxtD6LdA0FKk7A+/K83xr7vR1OiykBg8D6j45Gl2kGS5lyp8RPSg==}
     peerDependencies:
       '@laser-ui/hooks': '>=0.6.0'
       react-router-dom: '>=6.0.0'
     dependencies:
-      '@laser-ui/hooks': 0.6.5(immer@10.0.3)
+      '@laser-ui/hooks': 0.6.6(immer@10.0.3)
       jsurl: 0.1.5
       lodash: 4.17.21
       react-router-dom: 6.19.0(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@laser-pro/storage@0.0.5(@laser-ui/hooks@0.6.5):
+  /@laser-pro/storage@0.0.5(@laser-ui/hooks@0.6.6):
     resolution: {integrity: sha512-GfAIBrMPtZarGmkRrW9eWhNUq0q0++Xj6M6l0vbZ8buvn/sYomeAdsLhAFALhQuTHEFhgpOoVteqkdLT27C4Cw==}
     peerDependencies:
       '@laser-ui/hooks': '>=0.6.0'
     dependencies:
-      '@laser-ui/hooks': 0.6.5(immer@10.0.3)
+      '@laser-ui/hooks': 0.6.6(immer@10.0.3)
       lodash: 4.17.21
     dev: false
 
-  /@laser-ui/components@0.6.5(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0):
-    resolution: {integrity: sha512-800Q9VO3eJ10CcH9bYoHbtMoQ8FqtImvK8yANXbLLA00zYlfukhjFWLeXqhuNF7C3yoAj+QmhbybY9yUnghPJA==}
+  /@laser-ui/components@0.6.6(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0):
+    resolution: {integrity: sha512-8saWrUhlgMrjU+nRWMCwMvRyiteb9FT6nkhb2qQO1gcqdFTVdyHP2TqMCeM9aLc5VHnSOHkmjBJZZ80vTIzVLQ==}
     peerDependencies:
       dayjs: ^1.11.0
       immer: '>=2.0.0'
@@ -2038,8 +2038,8 @@ packages:
       - react
     dev: false
 
-  /@laser-ui/hooks@0.6.5(immer@10.0.3):
-    resolution: {integrity: sha512-1wty9P0/fiF3VOcmNRaCW4RJaeLnKKQO/lPG3WsQgzYB3JHSK1tW0UnFEPwPtRNRdklg2nwrrzCdo3EE3ueZzw==}
+  /@laser-ui/hooks@0.6.6(immer@10.0.3):
+    resolution: {integrity: sha512-CyLTVDt7WUXsJ70auPVQ6jfkUFLim+4az0X3PeX4sOaVV8m4v84BtJeTqnDvNGwUAE46b0/i4JvniDQ53HqJ/Q==}
     peerDependencies:
       immer: '>=2.0.0'
     dependencies:
@@ -2047,14 +2047,14 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@laser-ui/themes@0.6.5:
-    resolution: {integrity: sha512-QrBfGCSn5A4Mqphc5UH0Uxc9NudkG71moqAmTbMozKLtHdsVaekiIaIaQt3FD96brBRb7IBx4Ogt1u9zo9iF5A==}
+  /@laser-ui/themes@0.6.6:
+    resolution: {integrity: sha512-13PmQvp/jCLgJOXzUGbrVckNUvR9vA0HFsbUYcz6qMOzi5eQDlO0kVs9D1cTUA6Qt1AmcoeEew5ZwWvy0yLPHA==}
     dependencies:
       rfs: 10.0.0
     dev: false
 
-  /@laser-ui/utils@0.6.5:
-    resolution: {integrity: sha512-KTgp0loExrkx9Sc8bNrrE5wwIUF+67LDGaeYqDoWJJ2WlOhKP4Cs4iPZvhFoFNIwapw4bmb7N55o26BIWz1i7g==}
+  /@laser-ui/utils@0.6.6:
+    resolution: {integrity: sha512-pSYf623YakwAHBxEa4iHsm7cYVk6AQrKKRQdVYaqeuD94SWCYVpfp6y6Mg6bJY9NKgnjvqKthGWvhKQ61EK01w==}
     dependencies:
       lodash: 4.17.21
     dev: false
