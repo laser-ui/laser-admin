@@ -90,8 +90,8 @@ export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
           )}
         </div>
       </div>
-      {filterList && showAdvancedSearch && (
-        <>
+      {filterList && (
+        <div style={{ display: showAdvancedSearch ? undefined : 'none' }}>
           <Separator />
           {filterList.map(({ label, node }) => (
             <div key={label} className="app-table-filter__filter">
@@ -99,7 +99,7 @@ export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
               {node}
             </div>
           ))}
-        </>
+        </div>
       )}
     </div>
   );
