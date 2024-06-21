@@ -19,7 +19,9 @@ const configStorage = () =>
   new Promise<void>((r) => {
     const defaultStorage: any = {};
     Object.values(STORAGE).forEach(([key, options]) => {
-      defaultStorage[key] = options.defaultValue;
+      if ('defaultValue' in options) {
+        defaultStorage[key] = options.defaultValue;
+      }
     });
     useStorage.config({ default: defaultStorage });
     r();
