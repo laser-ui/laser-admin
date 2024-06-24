@@ -5,15 +5,11 @@ import { isNull } from 'lodash';
 import { initReactI18next } from 'react-i18next';
 
 import { HTTP_CONFIGS } from './app/configs/http';
-import { HASH, LOGIN_PATH } from './app/configs/router';
+import { LOGIN_PATH } from './app/configs/router';
 import { STORAGE } from './app/configs/storage';
 import { initUser } from './app/core';
 import { TOKEN, rememberToken } from './app/core/token';
 import resources from './resources.json';
-
-function redirect(path: string) {
-  window.history.replaceState(null, '', (HASH ? '#' : '') + path);
-}
 
 const configStorage = () =>
   new Promise<void>((r) => {
@@ -49,7 +45,7 @@ const initI18n = () =>
   });
 
 const initData = () =>
-  new Promise<void>((r) => {
+  new Promise<string | undefined>((r) => {
     if (!isNull(TOKEN.value) && !TOKEN.expired) {
       axios({
         url: '/auth/me',
@@ -59,15 +55,17 @@ const initData = () =>
           initUser(res.data);
         })
         .catch(() => {
-          redirect(LOGIN_PATH);
+          r(LOGIN_PATH);
         })
-        .finally(r);
+        .finally(() => {
+          r(undefined);
+        });
     } else {
-      redirect(LOGIN_PATH);
-      r();
+      r(LOGIN_PATH);
     }
   });
 
 export const startup = configStorage()
   .then(() => Promise.all([configToken(), configHttp()]))
-  .then(() => Promise.all([initI18n(), initData()]));
+  .then(() => Promise.all([initI18n()]))
+  .then(() => initData());
