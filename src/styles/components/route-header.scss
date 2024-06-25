@@ -9,7 +9,7 @@
   background-color: var(--#{variables.$prefix}background-color);
 
   @include mixins.e(breadcrumb) {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   @include mixins.e(breadcrumb-link) {
@@ -22,9 +22,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 12px 20px;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
-    margin-bottom: 16px;
+    min-height: 40px;
+    margin-bottom: 10px;
   }
 
   @include mixins.e(header-title-container) {
