@@ -22,7 +22,7 @@ import LockOutlined from '@material-design-icons/svg/outlined/lock.svg?react';
 import PersonOutlined from '@material-design-icons/svg/outlined/person.svg?react';
 import { isString } from 'lodash';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AppLanguage } from '../../components';
@@ -96,7 +96,7 @@ export default function Login(): JSX.Element | null {
             <span>{APP_NAME}</span>
           </div>
           <div className={styles['app-login__description']}>
-            {APP_NAME} {t('routes.login.description')}
+            <Trans i18nKey="routes.login.description" values={{ what: APP_NAME }} />
           </div>
           <Tabs
             className={styles['app-login__tabs']}
