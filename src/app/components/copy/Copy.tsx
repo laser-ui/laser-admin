@@ -26,7 +26,7 @@ export function AppCopy(props: AppCopyProps): JSX.Element | null {
     str = str.toString();
   }
 
-  if (!isString(str)) {
+  if (!isString(str) || str.length === 0) {
     return children as any;
   }
 
