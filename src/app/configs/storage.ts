@@ -1,7 +1,7 @@
 import type { AppLang, AppLayout, AppTheme } from '../types';
-import type { Options } from '@laser-pro/storage/useStorage';
+import type { AbstractParserOptions } from '@laser-pro/storage/parser';
 
-type Value<T> = [string, Options<T>];
+type Value<T> = [string, { defaultValue: T; parser?: keyof AbstractParserOptions<any> }];
 export const STORAGE = {
   language: ['language', { defaultValue: 'zh-CN' }] as Value<AppLang>,
   theme: ['theme', { defaultValue: 'light' }] as Value<AppTheme>,
