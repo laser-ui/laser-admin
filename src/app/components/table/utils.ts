@@ -9,11 +9,11 @@ export function toCssUnit(val: string | number) {
   return isNumber(val) ? val + 'px' : val;
 }
 
-export function getKey(data: any) {
+export function getKey(data: any, index: number) {
   if ('id' in data) {
     return data.id;
   }
-  throw new Error('Please provide `itemKey`');
+  return index;
 }
 
 export function getContent(column: AppTableColumn<any>, data: any, index: number) {
