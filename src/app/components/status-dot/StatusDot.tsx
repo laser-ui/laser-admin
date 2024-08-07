@@ -1,6 +1,6 @@
 import type { AppStatusDotProps } from './types';
 
-import { classNames } from '@laser-ui/utils';
+import { checkNodeExist, classNames } from '@laser-ui/utils';
 
 export function AppStatusDot(props: AppStatusDotProps): JSX.Element | null {
   const {
@@ -36,7 +36,7 @@ export function AppStatusDot(props: AppStatusDotProps): JSX.Element | null {
           height: size,
         }}
       />
-      <div>{children}</div>
+      {checkNodeExist(children) && <div className="app-status-dot__content">{children}</div>}
     </div>
   );
 }

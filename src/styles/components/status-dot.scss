@@ -46,8 +46,11 @@
     position: relative;
     width: 6px;
     height: 6px;
-    margin-right: 8px;
     background-color: var(--app-status-dot-color);
     border-radius: 50%;
+  }
+
+  @include mixins.e(content) {
+    margin-left: 8px;
   }
 }
