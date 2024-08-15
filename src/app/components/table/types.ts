@@ -55,4 +55,5 @@ export interface AppTableProps<T> {
   scroll?: { x?: number | string; y?: number | string };
   itemKey?: (data: T, index: number) => any;
   onRefresh?: () => void;
+  render?: (table: React.ReactElement) => React.ReactNode;
 }

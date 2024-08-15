@@ -4,7 +4,14 @@ import { Mobile } from './Mobile';
 import { PC } from './PC';
 
 export function AppSimpleTable<T = any>(props: Omit<AppTableProps<T>, 'tools'>): JSX.Element | null {
-  const { name, grid = false, layout = 'default' } = props;
+  const { name, grid = false, layout = 'default', render } = props;
+
+  const table = (
+    <>
+      <PC {...props} grid={grid} layout={layout} />
+      <Mobile {...props} grid={grid} layout={layout} />
+    </>
+  );
 
   return (
     <>
@@ -14,8 +21,7 @@ export function AppSimpleTable<T = any>(props: Omit<AppTableProps<T>, 'tools'>):
           {(props as any)._actions}
         </div>
       )}
-      <PC {...props} grid={grid} layout={layout} />
-      <Mobile {...props} grid={grid} layout={layout} />
+      {render ? render(table) : table}
     </>
   );
 }

@@ -26,6 +26,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
     grid: _grid,
     layout: _layout,
     onRefresh,
+    render,
   } = props;
 
   const { t } = useTranslation();
@@ -73,6 +74,13 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
   const colHiddens = new Set<string>(storage.value.hiddens ?? defaultHiddens);
 
   const columnsWithConfig = colSorts.map((key) => ({ ...columnMap.get(key)!, hidden: colHiddens.has(key) }));
+
+  const table = (
+    <>
+      <PC {...props} columns={columnsWithConfig} grid={grid} layout={layout} />
+      <Mobile {...props} columns={columnsWithConfig} grid={grid} layout={layout} />
+    </>
+  );
 
   return (
     <>
@@ -195,8 +203,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
           </div>
         </div>
       )}
-      <PC {...props} columns={columnsWithConfig} grid={grid} layout={layout} />
-      <Mobile {...props} columns={columnsWithConfig} grid={grid} layout={layout} />
+      {render ? render(table) : table}
     </>
   );
 }
