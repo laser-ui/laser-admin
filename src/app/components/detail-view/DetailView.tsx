@@ -2,6 +2,7 @@ import type { AppDetailViewProps } from './types';
 
 import { classNames } from '@laser-ui/utils';
 import { isArray, isNull, isNumber, isString, isUndefined } from 'lodash';
+import { useEffect, useRef } from 'react';
 
 export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
   const {
@@ -9,12 +10,14 @@ export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
     col: _col = { xs: 12, md: 6, lg: 4, xxl: 3 },
     gutter,
     labelAlign = 'left',
-    labelWidth: _labelWidth,
+    labelWidth = 'auto',
     empty = '-',
     vertical = false,
 
     ...restProps
   } = props;
+
+  const detailViewRef = useRef<HTMLDivElement>(null);
 
   const [gutterY, gutterX] = isArray(gutter) ? gutter : [gutter, gutter];
   const col = (() => {
@@ -39,24 +42,20 @@ export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
     return classNames.join(' ');
   })();
 
-  const labelWidth = (() => {
-    if (vertical) {
-      return undefined;
-    }
-
-    let maxLength = 0;
-    if (list) {
-      list.forEach((item) => {
-        maxLength = Math.max(item.label.length, maxLength);
+  useEffect(() => {
+    if (detailViewRef.current) {
+      let maxWidth = 0;
+      detailViewRef.current.querySelectorAll('[data-app-detail-view-label]').forEach((el) => {
+        maxWidth = Math.max((el as HTMLElement).offsetWidth, maxWidth);
       });
+      detailViewRef.current.style.setProperty('--label-width', `${maxWidth}px`);
     }
-
-    return isUndefined(_labelWidth) ? maxLength + 1 + 'em' : _labelWidth;
-  })();
+  });
 
   return (
     <div
       {...restProps}
+      ref={detailViewRef}
       className={classNames(restProps.className, 'app-detail-view', 'row', {
         'app-detail-view--vertical': vertical,
         [`gx-${gutterX}`]: gutterX,
@@ -77,13 +76,15 @@ export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
             })}
           >
             <div
-              className="app-detail-view__item-label"
+              className="app-detail-view__item-label-wrapper"
               style={{
-                width: labelWidth,
+                width: vertical ? undefined : labelWidth === 'auto' ? 'var(--label-width)' : labelWidth,
                 textAlign: labelAlign,
               }}
             >
-              {label}
+              <div className="app-detail-view__item-label" data-app-detail-view-label>
+                {label}
+              </div>
             </div>
             <div className="app-detail-view__item-content">{content}</div>
           </div>

@@ -91,7 +91,7 @@ export default function Detail() {
                 <div className="app-title mb-3">Title 1</div>
                 <AppDetailView
                   list={Array.from({ length: 5 }).map((_, n) => ({
-                    label: `Label ${n}`,
+                    label: `Label ${n === 0 ? 'First' : n}`,
                     content: n === 1 ? null : n === 3 ? 'This is a long long long long long long long long text' : `Content ${n}`,
                   }))}
                   gutter={3}

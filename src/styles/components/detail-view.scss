@@ -7,9 +7,12 @@
       flex-direction: column;
     }
 
-    @include mixins.e(item-label) {
+    @include mixins.e(item-label-wrapper) {
       margin-right: 0;
       margin-bottom: 2px;
+    }
+
+    @include mixins.e(item-label) {
       font-size: 0.775em;
 
       &::after {
@@ -26,10 +29,16 @@
     }
   }
 
-  @include mixins.e(item-label) {
+  @include mixins.e(item-label-wrapper) {
     flex-shrink: 0;
     margin-right: 12px;
+    overflow: hidden;
+  }
+
+  @include mixins.e(item-label) {
+    display: inline-block;
     color: var(--#{variables.$prefix}color-text-sub);
+    white-space: nowrap;
 
     &::after {
       margin-left: 2px;
