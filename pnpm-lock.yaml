@@ -25,25 +25,25 @@ importers:
         version: 0.1.2
       '@laser-pro/http':
         specifier: ^0.1.2
-        version: 0.1.2(@laser-ui/hooks@1.1.1(immer@10.0.3))(axios@1.6.2)
+        version: 0.1.2(@laser-ui/hooks@1.2.0(immer@10.0.3))(axios@1.6.2)
       '@laser-pro/router':
         specifier: ^0.1.2
-        version: 0.1.2(@laser-ui/hooks@1.1.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 0.1.2(@laser-ui/hooks@1.2.0(immer@10.0.3))(react-router-dom@6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       '@laser-pro/storage':
         specifier: ^0.1.2
-        version: 0.1.2(@laser-ui/hooks@1.1.1(immer@10.0.3))
+        version: 0.1.2(@laser-ui/hooks@1.2.0(immer@10.0.3))
       '@laser-ui/components':
-        specifier: ^1.1.1
-        version: 1.1.1(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)
+        specifier: ^1.2.0
+        version: 1.2.0(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)
       '@laser-ui/hooks':
-        specifier: ^1.1.1
-        version: 1.1.1(immer@10.0.3)
+        specifier: ^1.2.0
+        version: 1.2.0(immer@10.0.3)
       '@laser-ui/themes':
-        specifier: ^1.1.1
-        version: 1.1.1
+        specifier: ^1.2.0
+        version: 1.2.0
       '@laser-ui/utils':
-        specifier: ^1.1.1
-        version: 1.1.1
+        specifier: ^1.2.0
+        version: 1.2.0
       '@material-design-icons/svg':
         specifier: ^0.14.13
         version: 0.14.13
@@ -1161,22 +1161,22 @@ packages:
     peerDependencies:
       '@laser-ui/hooks': '>=1.0.0'
 
-  '@laser-ui/components@1.1.1':
-    resolution: {integrity: sha512-pfHg0zWo6DX6xapaflxkgtn0IHeb4Py/OrduwSx48hvku9gQO48c1cgvMFoVNO0abgUKTcB5v5kpzCsItw5KXg==}
+  '@laser-ui/components@1.2.0':
+    resolution: {integrity: sha512-olsPrXACpXV/Y7+4W99QiHw+FzsClh23ZN0gTH9qz5WrDrhhkmKfDnrGfbZY1AHLxBA4IMKjBbYhuioATW8Tcg==}
     peerDependencies:
       dayjs: ^1.11.0
       immer: '>=2.0.0'
 
-  '@laser-ui/hooks@1.1.1':
-    resolution: {integrity: sha512-EQGEjSpRWHR42RBSJ/3sQu3hvk4m8y9VwabjC0FHevkQJavos/F5fWkkM45V2w2vyd9jjMwmeJoujnH4VDH2GA==}
+  '@laser-ui/hooks@1.2.0':
+    resolution: {integrity: sha512-UTqC2pLtAxTXMTUQG5ow//L0d7WNDrGefG3llr763LwkVD3rzBLp03LshZ6mY4d2jLRNO+gGars2eX2oJroG+g==}
     peerDependencies:
       immer: '>=2.0.0'
 
-  '@laser-ui/themes@1.1.1':
-    resolution: {integrity: sha512-ORLSvic5/n9dvqZI9TinbNA1kKLudzligc6w7Pt15LMcdTunlU4L8lIoTIglv+qkOoWo0oFlDX291JkhwRwA1Q==}
+  '@laser-ui/themes@1.2.0':
+    resolution: {integrity: sha512-f3wJDKjGM321C9HhXLGvn0VaEVoavElI1/YNKpWFoS/Rga+SIieIwWiyDj3wnWn+9aWkthbReUYEBvJz1ccoHA==}
 
-  '@laser-ui/utils@1.1.1':
-    resolution: {integrity: sha512-7DMzAJZK9alE1rn+j2CYAyOk4fuSzk2yZmRSo2GSVKWt/Tk12pLX7zwktMhTJCuEC9AKNUzkgHufxdXCFAYSqQ==}
+  '@laser-ui/utils@1.2.0':
+    resolution: {integrity: sha512-28Ut+QZOJalJZ0oS19Z/KIGd6uDKLfewkvGT6vgcKjv9F++Ch5xOBCnjx2Fe43dFYhp1sC7YtlVJwfbDk8nfCw==}
 
   '@material-design-icons/svg@0.14.13':
     resolution: {integrity: sha512-nCExGZOtoLoFeeqShEOM4XA9DkkLzLlQdk/ZxHxps0//dz6e1Lw3fvQbZ2X/+0Dz2O+udiEukfZ4Nd4KpHg8aA==}
@@ -6128,25 +6128,25 @@ snapshots:
     dependencies:
       lodash: 4.17.21
 
-  '@laser-pro/http@0.1.2(@laser-ui/hooks@1.1.1(immer@10.0.3))(axios@1.6.2)':
+  '@laser-pro/http@0.1.2(@laser-ui/hooks@1.2.0(immer@10.0.3))(axios@1.6.2)':
     dependencies:
-      '@laser-ui/hooks': 1.1.1(immer@10.0.3)
+      '@laser-ui/hooks': 1.2.0(immer@10.0.3)
       axios: 1.6.2
       lodash: 4.17.21
 
-  '@laser-pro/router@0.1.2(@laser-ui/hooks@1.1.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))':
+  '@laser-pro/router@0.1.2(@laser-ui/hooks@1.2.0(immer@10.0.3))(react-router-dom@6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))':
     dependencies:
-      '@laser-ui/hooks': 1.1.1(immer@10.0.3)
+      '@laser-ui/hooks': 1.2.0(immer@10.0.3)
       jsurl: 0.1.5
       lodash: 4.17.21
       react-router-dom: 6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
-  '@laser-pro/storage@0.1.2(@laser-ui/hooks@1.1.1(immer@10.0.3))':
+  '@laser-pro/storage@0.1.2(@laser-ui/hooks@1.2.0(immer@10.0.3))':
     dependencies:
-      '@laser-ui/hooks': 1.1.1(immer@10.0.3)
+      '@laser-ui/hooks': 1.2.0(immer@10.0.3)
       lodash: 4.17.21
 
-  '@laser-ui/components@1.1.1(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)':
+  '@laser-ui/components@1.2.0(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)':
     dependencies:
       '@material-design-icons/svg': 0.14.13
       dayjs: 1.11.10
@@ -6158,16 +6158,16 @@ snapshots:
     transitivePeerDependencies:
       - react
 
-  '@laser-ui/hooks@1.1.1(immer@10.0.3)':
+  '@laser-ui/hooks@1.2.0(immer@10.0.3)':
     dependencies:
       immer: 10.0.3
       lodash: 4.17.21
 
-  '@laser-ui/themes@1.1.1':
+  '@laser-ui/themes@1.2.0':
     dependencies:
       rfs: 10.0.0
 
-  '@laser-ui/utils@1.1.1':
+  '@laser-ui/utils@1.2.0':
     dependencies:
       lodash: 4.17.21
 
