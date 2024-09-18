@@ -62,7 +62,7 @@ export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
         [`gy-${gutterY}`]: gutterY,
       })}
     >
-      {list.map(({ label, content: _content, isEmpty: _isEmpty, center }) => {
+      {list.map(({ label, content: _content, isEmpty: _isEmpty, center }, index) => {
         const isEmpty = isUndefined(_isEmpty)
           ? (isString(_content) && _content.length === 0) || isUndefined(_content) || isNull(_content)
           : _isEmpty;
@@ -70,7 +70,7 @@ export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
 
         return (
           <div
-            key={label}
+            key={label || index}
             className={classNames('app-detail-view__item', col, {
               'app-detail-view__item--center': !vertical && center,
             })}
@@ -82,7 +82,12 @@ export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
                 textAlign: labelAlign,
               }}
             >
-              <div className="app-detail-view__item-label" data-app-detail-view-label>
+              <div
+                className={classNames('app-detail-view__item-label', {
+                  'app-detail-view__item-label--colon': !vertical && label,
+                })}
+                data-app-detail-view-label
+              >
                 {label}
               </div>
             </div>

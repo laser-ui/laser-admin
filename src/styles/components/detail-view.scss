@@ -14,10 +14,6 @@
 
     @include mixins.e(item-label) {
       font-size: 0.775em;
-
-      &::after {
-        content: none;
-      }
     }
   }
 
@@ -40,9 +36,11 @@
     color: var(--#{variables.$prefix}color-text-sub);
     white-space: nowrap;
 
-    &::after {
-      margin-left: 2px;
-      content: ':';
+    @include mixins.m(colon) {
+      &::after {
+        margin-left: 2px;
+        content: ':';
+      }
     }
   }
 
