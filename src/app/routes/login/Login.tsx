@@ -32,7 +32,6 @@ import { LOGIN_PATH } from '../../configs/router';
 import { STORAGE } from '../../configs/storage';
 import { URLS } from '../../configs/urls';
 import { TOKEN, initUser, useHttp } from '../../core';
-import { rememberToken } from '../../core/token';
 
 import styles from './Login.module.scss';
 
@@ -68,8 +67,8 @@ export default function Login(): JSX.Element | null {
       { authorization: true },
     )
       .then((res) => {
-        TOKEN.set(res.token);
-        rememberToken(rememberStorage.value === '1');
+        TOKEN.setValue(res.token);
+        TOKEN.remember = rememberStorage.value === '1';
 
         initUser(res.user);
         navigate(isString(from) && from !== LOGIN_PATH ? from : '/', { replace: true });

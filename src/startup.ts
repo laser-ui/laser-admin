@@ -1,14 +1,12 @@
 import { axios, useHttp } from '@laser-pro/http';
 import { useStorage } from '@laser-pro/storage';
 import i18n from 'i18next';
-import { isNull } from 'lodash';
 import { initReactI18next } from 'react-i18next';
 
 import { HTTP_CONFIGS } from './app/configs/http';
 import { LOGIN_PATH } from './app/configs/router';
 import { STORAGE } from './app/configs/storage';
-import { initUser } from './app/core';
-import { TOKEN, rememberToken } from './app/core/token';
+import { TOKEN, initUser } from './app/core';
 import resources from './resources.json';
 
 const configStorage = () =>
@@ -25,7 +23,11 @@ const configStorage = () =>
 
 const configToken = () =>
   new Promise<void>((r) => {
-    rememberToken(useStorage.get(...STORAGE.remember) === '1');
+    const token = useStorage.get(...STORAGE.token);
+    if (token) {
+      TOKEN.setValue(token);
+    }
+    TOKEN.remember = useStorage.get(...STORAGE.remember) === '1';
     r();
   });
 
@@ -46,7 +48,7 @@ const initI18n = () =>
 
 const initData = () =>
   new Promise<string | undefined>((r) => {
-    if (!isNull(TOKEN.value) && !TOKEN.expired) {
+    if (TOKEN.value && !TOKEN.value.expired) {
       axios({
         url: '/auth/me',
         method: 'get',
@@ -66,6 +68,7 @@ const initData = () =>
   });
 
 export const startup = configStorage()
-  .then(() => Promise.all([configToken(), configHttp()]))
-  .then(() => Promise.all([initI18n()]))
-  .then(() => initData());
+  .then(() => configToken())
+  .then(() => configHttp())
+  .then(() => Promise.all([initData(), initI18n()]))
+  .then((res) => res[0]);

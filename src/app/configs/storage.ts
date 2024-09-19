@@ -7,4 +7,5 @@ export const STORAGE = {
   theme: ['theme', { defaultValue: 'light' }] as Value<AppTheme>,
   layout: ['layout', { defaultValue: { menu: { mode: 'vertical' } }, parser: 'json' }] as Value<AppLayout>,
   remember: ['remember', { defaultValue: '1' }] as Value<'1' | '0'>,
+  token: ['token', {}] as Value<string | null>,
 };

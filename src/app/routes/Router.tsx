@@ -36,7 +36,7 @@ const AppRouter = memo(() => {
   const { t } = useTranslation();
 
   const ACLGuard = useACLGuard('/exception/403');
-  const tokenGuard = useTokenGuard(TOKEN, LOGIN_PATH, { [PREV_ROUTE_KEY]: location });
+  const tokenGuard = useTokenGuard(TOKEN.value ? TOKEN.value.expired : true, LOGIN_PATH, { [PREV_ROUTE_KEY]: location });
 
   return (
     <Router

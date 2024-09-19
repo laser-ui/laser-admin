@@ -39,7 +39,7 @@ export function mock(config: AxiosRequestConfig) {
       }
 
       case match('/api/v1/auth/me'): {
-        response((TOKEN.payload as any).admin ? DATA.admin : DATA.user, 500);
+        response((TOKEN.value!.payload as any).admin ? DATA.admin : DATA.user, 500);
         break;
       }
 
@@ -48,7 +48,7 @@ export function mock(config: AxiosRequestConfig) {
           `${base64url.encode(JSON.stringify({}))}.${base64url.encode(
             JSON.stringify({
               exp: ~~((Date.now() + 2 * 60 * 60 * 1000) / 1000),
-              admin: (TOKEN.payload as any)?.admin,
+              admin: (TOKEN.value!.payload as any)?.admin,
             }),
           )}.signature`,
           500,

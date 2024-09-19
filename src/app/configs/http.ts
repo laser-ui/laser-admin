@@ -1,6 +1,5 @@
 import type { HttpConfigs } from '@laser-pro/http/configs';
 
-import { TOKEN } from '../core';
 import mock from '../mock';
 
 export const HTTP_CONFIGS: HttpConfigs = import.meta.env.DEV
@@ -10,7 +9,6 @@ export const HTTP_CONFIGS: HttpConfigs = import.meta.env.DEV
       transformURL: (url: string) => {
         return '/api/v1' + url;
       },
-      token: TOKEN,
     }
   : {
       mock,
@@ -18,5 +16,4 @@ export const HTTP_CONFIGS: HttpConfigs = import.meta.env.DEV
       transformURL: (url: string) => {
         return '/api/v1' + url;
       },
-      token: TOKEN,
     };
