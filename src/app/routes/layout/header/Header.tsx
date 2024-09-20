@@ -16,6 +16,7 @@ import { AppLanguage } from '../../../components';
 import { APP_NAME } from '../../../configs/app';
 import { STORAGE } from '../../../configs/storage';
 import { URLS } from '../../../configs/urls';
+import { useMatchMedia } from '../../../hooks';
 
 import styles from './Header.module.scss';
 
@@ -33,6 +34,7 @@ export function AppHeader(props: AppHeaderProps): JSX.Element | null {
   const { t } = useTranslation();
   const themeStorage = useStorage(...STORAGE.theme);
   const layoutStorage = useStorage(...STORAGE.layout);
+  const { mediaBreakpointUp } = useMatchMedia();
 
   useEffect(() => {
     if (layoutStorage.value.menu.mode === 'vertical' && textRef.current) {
@@ -60,30 +62,33 @@ export function AppHeader(props: AppHeaderProps): JSX.Element | null {
           </div>
         </div>
       </Link>
-      <button
-        className={classNames(styles['app-header__button'], 'd-md-none')}
-        aria-label={t(menuOpen ? 'routes.layout.Fold main navigation' : 'routes.layout.Expand main navigation')}
-        onClick={() => {
-          onMenuOpenChange(!menuOpen);
-        }}
-      >
-        <Icon size={20}>{menuOpen ? <FormatIndentDecreaseOutlined /> : <FormatIndentIncreaseOutlined />}</Icon>
-      </button>
-      <button
-        className={classNames(styles['app-header__button'], 'd-none d-md-inline-flex')}
-        aria-label={t(
-          layoutStorage.value.menu.mode === 'vertical' ? 'routes.layout.Fold main navigation' : 'routes.layout.Expand main navigation',
-        )}
-        onClick={() => {
-          const layout = JSON.parse(JSON.stringify(layoutStorage.value));
-          layout.menu.mode = layout.menu.mode === 'vertical' ? 'icon' : 'vertical';
-          layoutStorage.set(layout);
-        }}
-      >
-        <Icon size={20}>
-          {layoutStorage.value.menu.mode === 'vertical' ? <FormatIndentDecreaseOutlined /> : <FormatIndentIncreaseOutlined />}
-        </Icon>
-      </button>
+      {mediaBreakpointUp('md') ? (
+        <button
+          className={styles['app-header__button']}
+          aria-label={t(
+            layoutStorage.value.menu.mode === 'vertical' ? 'routes.layout.Fold main navigation' : 'routes.layout.Expand main navigation',
+          )}
+          onClick={() => {
+            const layout = JSON.parse(JSON.stringify(layoutStorage.value));
+            layout.menu.mode = layout.menu.mode === 'vertical' ? 'icon' : 'vertical';
+            layoutStorage.set(layout);
+          }}
+        >
+          <Icon size={20}>
+            {layoutStorage.value.menu.mode === 'vertical' ? <FormatIndentDecreaseOutlined /> : <FormatIndentIncreaseOutlined />}
+          </Icon>
+        </button>
+      ) : (
+        <button
+          className={styles['app-header__button']}
+          aria-label={t(menuOpen ? 'routes.layout.Fold main navigation' : 'routes.layout.Expand main navigation')}
+          onClick={() => {
+            onMenuOpenChange(!menuOpen);
+          }}
+        >
+          <Icon size={20}>{menuOpen ? <FormatIndentDecreaseOutlined /> : <FormatIndentIncreaseOutlined />}</Icon>
+        </button>
+      )}
       <button
         className={styles['app-header__button']}
         aria-label={t(themeStorage.value === 'light' ? 'Dark theme' : 'Light theme')}

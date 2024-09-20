@@ -2,16 +2,14 @@ import type { AppTableProps } from './types';
 
 import { Mobile } from './Mobile';
 import { PC } from './PC';
+import { useMatchMedia } from '../../hooks';
 
 export function AppSimpleTable<T = any>(props: Omit<AppTableProps<T>, 'tools'>): JSX.Element | null {
   const { name, grid = false, layout = 'default', render } = props;
 
-  const table = (
-    <>
-      <PC {...props} grid={grid} layout={layout} />
-      <Mobile {...props} grid={grid} layout={layout} />
-    </>
-  );
+  const { mediaBreakpointUp } = useMatchMedia();
+
+  const table = mediaBreakpointUp('md') ? <PC {...props} grid={grid} layout={layout} /> : <Mobile {...props} grid={grid} layout={layout} />;
 
   return (
     <>

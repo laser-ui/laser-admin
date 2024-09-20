@@ -1,9 +1,9 @@
 import { useStorage } from '@laser-pro/storage';
 import { Drawer, Menu } from '@laser-ui/components';
-import { classNames } from '@laser-ui/utils';
 
 import { STORAGE } from '../../../configs/storage';
 import { useMenu } from '../../../core';
+import { useMatchMedia } from '../../../hooks';
 
 import styles from './Sidebar.module.scss';
 
@@ -16,6 +16,7 @@ export function AppSidebar(props: AppSidebarProps): JSX.Element | null {
   const { menuOpen, onMenuOpenChange } = props;
 
   const layoutStorage = useStorage(...STORAGE.layout);
+  const { mediaBreakpointUp } = useMatchMedia();
 
   const [{ menu, active, expands }, setMenu] = useMenu();
 
@@ -34,21 +35,19 @@ export function AppSidebar(props: AppSidebarProps): JSX.Element | null {
     />
   );
 
-  return (
-    <>
-      <Drawer
-        className="d-md-none"
-        styleOverrides={{ drawer__body: { style: { padding: 0 } } }}
-        visible={menuOpen}
-        width={200}
-        placement="left"
-        onClose={() => {
-          onMenuOpenChange(false);
-        }}
-      >
-        {menuNode(false)}
-      </Drawer>
-      <div className={classNames(styles['app-sidebar'], 'd-none d-md-block')}>{menuNode(true)}</div>
-    </>
+  return mediaBreakpointUp('md') ? (
+    <div className={styles['app-sidebar']}>{menuNode(true)}</div>
+  ) : (
+    <Drawer
+      styleOverrides={{ drawer__body: { style: { padding: 0 } } }}
+      visible={menuOpen}
+      width={200}
+      placement="left"
+      onClose={() => {
+        onMenuOpenChange(false);
+      }}
+    >
+      {menuNode(false)}
+    </Drawer>
   );
 }

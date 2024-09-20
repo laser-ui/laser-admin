@@ -44,7 +44,7 @@ export function Mobile<T = any>(props: AppTableProps<T> & { grid: boolean; layou
   const size = layout === 'default' ? undefined : layout === 'middle' ? 12 : 8;
 
   return (
-    <div className={classNames('d-md-none', className)}>
+    <div className={className}>
       {list.length === 0 ? (
         <Empty />
       ) : (

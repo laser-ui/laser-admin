@@ -16,6 +16,7 @@ import { useLocation } from 'react-router-dom';
 import { Mobile } from './Mobile';
 import { PC } from './PC';
 import { SortableCols } from './sortable-cols';
+import { useMatchMedia } from '../../hooks';
 
 export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
   const {
@@ -33,6 +34,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
   const location = useLocation();
   const { title } = useContext(RouterContext);
   const async = useAsync();
+  const { mediaBreakpointUp } = useMatchMedia();
 
   const dragEnd = useRef<() => void>();
 
@@ -75,11 +77,10 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
 
   const columnsWithConfig = colSorts.map((key) => ({ ...columnMap.get(key)!, hidden: colHiddens.has(key) }));
 
-  const table = (
-    <>
-      <PC {...props} columns={columnsWithConfig} grid={grid} layout={layout} />
-      <Mobile {...props} columns={columnsWithConfig} grid={grid} layout={layout} />
-    </>
+  const table = mediaBreakpointUp('md') ? (
+    <PC {...props} columns={columnsWithConfig} grid={grid} layout={layout} />
+  ) : (
+    <Mobile {...props} columns={columnsWithConfig} grid={grid} layout={layout} />
   );
 
   return (

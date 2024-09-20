@@ -84,7 +84,7 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
   return (
     <Table
       border={grid}
-      className={classNames('d-none d-md-block', `app-table--${layout}`, className)}
+      className={classNames(`app-table--${layout}`, className)}
       style={{
         maxHeight: scroll?.y,
         overflowX: isUndefined(scroll?.x) ? 'hidden' : 'auto',
