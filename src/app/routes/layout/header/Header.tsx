@@ -12,10 +12,10 @@ import { Link } from 'react-router-dom';
 
 import { AppNotification } from './notification/Notification';
 import { AppUser } from './user/User';
+import logoUrl from '../../../../assets/logo.png';
 import { AppLanguage } from '../../../components';
 import { APP_NAME } from '../../../configs/app';
 import { STORAGE } from '../../../configs/storage';
-import { URLS } from '../../../configs/urls';
 import { useMatchMedia } from '../../../hooks';
 
 import styles from './Header.module.scss';
@@ -51,7 +51,7 @@ export function AppHeader(props: AppHeaderProps): JSX.Element | null {
     <header className={styles['app-header']}>
       <Link className={styles['app-header__logo-container']} to="/">
         <div className={styles['app-header__logo']}>
-          <img src={URLS['/logo.png']} alt="Logo" width="36" height="36" />
+          <img src={logoUrl} alt="Logo" width="36" height="36" />
         </div>
         <div
           className={classNames(styles['app-header__logo-title-wrapper'], 'd-none d-md-block')}

@@ -1,5 +1,6 @@
 import type { AppUser } from '../types';
 
+import avatarUrl from '../../assets/avatar.png';
 import { ROLE_ACL, ROUTES_ACL } from '../configs/acl';
 
 export const DATA = {
@@ -11,7 +12,7 @@ export const DATA = {
   user: {
     id: 2,
     name: 'user',
-    avatar: { id: 1, name: 'avatar', path: '/assets/imgs/avatar.png' },
+    avatar: { id: 1, name: 'avatar', path: avatarUrl },
     permissions: [0, ROUTES_ACL['/test/acl'], ROUTES_ACL['/test/http']],
   } as AppUser,
   notification: [

@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="//laser-admin.github.io/" rel="noopener" target="_blank"><img width="150" src="public/logo.png" alt="logo"></a>
+  <a href="//laser-admin.github.io/" rel="noopener" target="_blank"><img width="150" src="src/assets/logo.png" alt="logo"></a>
 </p>
 
 <h1 align="center">Laser Admin</h1>

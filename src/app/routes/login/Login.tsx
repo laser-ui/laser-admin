@@ -25,12 +25,13 @@ import { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import logoBgUrl from '../../../assets/login_bg.png';
+import logoUrl from '../../../assets/logo.png';
 import { AppLanguage } from '../../components';
 import { APP_NAME } from '../../configs/app';
 import { PREV_ROUTE_KEY } from '../../configs/router';
 import { LOGIN_PATH } from '../../configs/router';
 import { STORAGE } from '../../configs/storage';
-import { URLS } from '../../configs/urls';
 import { TOKEN, initUser, useHttp } from '../../core';
 
 import styles from './Login.module.scss';
@@ -88,10 +89,10 @@ export default function Login(): JSX.Element | null {
     <div className={styles['app-login']}>
       <AppLanguage className={styles['app-login__lang']} />
       <div>
-        <img className={classNames(styles['app-login__bg'], 'd-none d-lg-inline')} src={URLS['/login.bg.png']} alt="bg" />
+        <img className={classNames(styles['app-login__bg'], 'd-none d-lg-inline')} src={logoBgUrl} alt="bg" />
         <div className={styles['app-login__login-container']}>
           <div className={styles['app-login__title-container']}>
-            <img className={styles['app-login__logo']} src={URLS['/logo.png']} alt="Logo" />
+            <img className={styles['app-login__logo']} src={logoUrl} alt="Logo" />
             <span>{APP_NAME}</span>
           </div>
           <div className={styles['app-login__description']}>

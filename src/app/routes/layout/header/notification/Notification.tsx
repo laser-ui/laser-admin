@@ -8,8 +8,8 @@ import { useStore } from 'rcl-store';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import avatarUrl from '../../../../../assets/avatar.png';
 import { AppList } from '../../../../components';
-import { URLS } from '../../../../configs/urls';
 import { GlobalStore } from '../../../../core';
 
 import styles from './Notification.module.scss';
@@ -50,7 +50,7 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
                   ) : (
                     <AppList
                       list={(appNotifications[index] as { message: string; read: boolean }[]).map((notification, index) => ({
-                        avatar: <Avatar img={{ src: URLS['/avatar.png'], alt: 'avatar' }} />,
+                        avatar: <Avatar img={{ src: avatarUrl, alt: 'avatar' }} />,
                         title: 'Name',
                         extra: <Tag theme={index === 0 ? undefined : 'success'}>{index === 0 ? 'Pending' : 'Processed'}</Tag>,
                         description: notification.message,
