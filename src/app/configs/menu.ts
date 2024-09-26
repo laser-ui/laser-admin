@@ -49,7 +49,7 @@ export const MENU: AppMenuItem[] = [
       {
         path: '/list/standard-table',
         type: 'item',
-        titleI18n: 'Standard Table',
+        titleI18n: 'Standard table',
         greedyMatch: true,
         acl: ROUTES_ACL['/list/standard-table'],
       },

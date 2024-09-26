@@ -23,7 +23,7 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): J
       list={[
         {
           id: 'center',
-          title: t('routes.layout.Account Center'),
+          title: t('routes.layout.Account center'),
           type: 'item',
           icon: (
             <Icon>
@@ -33,7 +33,7 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): J
         },
         {
           id: 'setting',
-          title: t('routes.layout.Account Settings'),
+          title: t('routes.layout.Account settings'),
           type: 'item',
           icon: (
             <Icon>
@@ -43,7 +43,7 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): J
         },
         {
           id: 'password',
-          title: t('routes.layout.Change Password'),
+          title: t('routes.layout.Change password'),
           type: 'item',
           icon: (
             <Icon>

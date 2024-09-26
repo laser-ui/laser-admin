@@ -36,7 +36,7 @@ export function AppAccountModal(props: ModalProps): JSX.Element | null {
   return (
     <Modal
       {...props}
-      header={t('routes.layout.Account Settings')}
+      header={t('routes.layout.Account settings')}
       footer={
         <Modal.Footer
           okProps={{ disabled: !form.valid }}

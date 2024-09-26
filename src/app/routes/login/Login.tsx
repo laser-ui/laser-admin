@@ -103,7 +103,7 @@ export default function Login(): JSX.Element | null {
             list={[
               {
                 id: 'account',
-                title: t('routes.login.Account Login'),
+                title: t('routes.login.Account login'),
                 panel: (
                   <Form onSubmit={handleSubmit}>
                     <FormGroupContext.Provider value={accountForm}>
@@ -146,7 +146,7 @@ export default function Login(): JSX.Element | null {
                           {t('routes.login.Remember me')}
                         </Checkbox>
                         <a className="app-link" style={{ marginLeft: 'auto' }}>
-                          {t('routes.login.Forgot Password')}
+                          {t('routes.login.Forgot password')}
                         </a>
                       </div>
                       <Form.Item>

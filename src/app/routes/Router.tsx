@@ -91,7 +91,7 @@ const AppRouter = memo(() => {
                   path: 'standard-table',
                   element: <AppRoute path="/list/standard-table" />,
                   data: {
-                    title: t('Standard Table', { ns: 'title' }),
+                    title: t('Standard table', { ns: 'title' }),
                     acl: ROUTES_ACL['/list/standard-table'],
                     canActivate: [ACLGuard],
                   },
@@ -100,7 +100,7 @@ const AppRouter = memo(() => {
                   path: 'standard-table/:id',
                   element: <AppRoute path="/list/standard-table/:id" />,
                   data: {
-                    title: t('Device Detail', { ns: 'title' }),
+                    title: t('Device detail', { ns: 'title' }),
                     acl: ROUTES_ACL['/list/standard-table/:id'],
                     canActivate: [ACLGuard],
                   },

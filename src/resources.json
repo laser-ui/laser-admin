@@ -33,7 +33,7 @@
         },
         "table-filter": {
           "Search": "Search",
-          "Advanced Search": "Advanced Search"
+          "Advanced search": "Advanced search"
         }
       },
       "routes": {
@@ -45,26 +45,25 @@
           "Clear notifications": "Clear",
           "See more": "More",
           "My account": "My account",
-          "Account Center": "Account Center",
-          "Account Settings": "Account Settings",
+          "Account center": "Account center",
+          "Account settings": "Account settings",
           "Name": "Name",
           "Please enter a name": "Please enter a name!",
-          "Change Password": "Change Password",
-          "New Password": "New Password",
+          "Change password": "Change password",
+          "New password": "New password",
           "Please enter a new password": "Please enter a new password!",
           "Logout": "Logout"
         },
         "login": {
           "Login": "Login",
           "description": "{{what}} provides solutions for enterprise-level background management systems",
-          "Account Login": "Account Login",
-          "Phone Login": "Phone Login",
+          "Account login": "Account login",
           "Username": "Username: 'admin' or 'user'",
           "Password": "Password: any input",
           "Please enter your name": "Please enter your name!",
           "Please enter your password": "Please enter your password!",
           "Remember me": "Remember me",
-          "Forgot Password": "Forgot Password?",
+          "Forgot password": "Forgot password?",
           "Phone number": "Phone number",
           "Verification code": "Verification code",
           "Get code": "Get code",
@@ -77,21 +76,13 @@
           "403": "Sorry, you do not have permission to access this page",
           "404": "Sorry, the page you visited does not exist",
           "500": "Sorry, there was an error with the server",
-          "Back Home": "Back Home"
-        },
-        "dashboard": {
-          "amap": {
-            "Please enter your JSAPI key": "Please enter your JSAPI key!",
-            "Security key": "Security key",
-            "OK": "OK",
-            "No JSAPI key": "No JSAPI key!"
-          }
+          "Back home": "Back home"
         },
         "test": {
           "acl": {
             "Switch between different users to compare effects": "Switch between different users to compare effects",
-            "ACL Data": "ACL Data",
-            "Test Route Guard": "Test Route Guard"
+            "ACL data": "ACL data",
+            "Test route guard": "Test route guard"
           }
         }
       }
@@ -103,8 +94,8 @@
       "AMap": "AMap",
       "ECharts": "ECharts",
       "List": "List",
-      "Standard Table": "Standard Table",
-      "Device Detail": "Device Detail",
+      "Standard table": "Standard table",
+      "Device detail": "Device detail",
       "Test": "Test",
       "ACL": "ACL",
       "Http": "Http",
@@ -148,7 +139,7 @@
         },
         "table-filter": {
           "Search": "查询",
-          "Advanced Search": "高级搜索"
+          "Advanced search": "高级搜索"
         }
       },
       "routes": {
@@ -160,26 +151,25 @@
           "Clear notifications": "清空通知",
           "See more": "查看更多",
           "My account": "我的账户",
-          "Account Center": "个人中心",
-          "Account Settings": "个人设置",
+          "Account center": "个人中心",
+          "Account settings": "个人设置",
           "Name": "用户名",
           "Please enter a name": "请输入用户名！",
-          "Change Password": "修改密码",
-          "New Password": "新密码",
+          "Change password": "修改密码",
+          "New password": "新密码",
           "Please enter a new password": "请输入新密码！",
           "Logout": "退出登录"
         },
         "login": {
           "Login": "登 录",
           "description": "{{what}} 提供了企业级后台管理系统的解决方案",
-          "Account Login": "账号密码登录",
-          "Phone Login": "手机号登录",
+          "Account login": "账号密码登录",
           "Username": "用户名：'admin' 或 'user'",
           "Password": "密码：任意输入",
           "Please enter your name": "请输入用户名！",
           "Please enter your password": "请输入密码！",
           "Remember me": "记住我",
-          "Forgot Password": "忘记密码？",
+          "Forgot password": "忘记密码？",
           "Phone number": "手机号",
           "Verification code": "验证码",
           "Get code": "获取验证码",
@@ -192,21 +182,13 @@
           "403": "抱歉，你无权访问该页面",
           "404": "抱歉，你访问的页面不存在",
           "500": "抱歉，服务器出错了",
-          "Back Home": "返回首页"
-        },
-        "dashboard": {
-          "amap": {
-            "Please enter your JSAPI key": "请输入 JSAPI key！",
-            "Security key": "安全密钥",
-            "OK": "确 定",
-            "No JSAPI key": "无 JSAPI key!"
-          }
+          "Back home": "返回首页"
         },
         "test": {
           "acl": {
             "Switch between different users to compare effects": "切换不同用户对比效果",
-            "ACL Data": "ACL数据",
-            "Test Route Guard": "测试路由守卫"
+            "ACL data": "ACL数据",
+            "Test route guard": "测试路由守卫"
           }
         }
       }
@@ -218,8 +200,8 @@
       "AMap": "高德地图",
       "ECharts": "ECharts",
       "List": "列表",
-      "Standard Table": "标准表格",
-      "Device Detail": "设备详情",
+      "Standard table": "标准表格",
+      "Device detail": "设备详情",
       "Test": "测试",
       "ACL": "ACL",
       "Http": "Http",

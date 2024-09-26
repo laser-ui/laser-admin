@@ -79,7 +79,7 @@ export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
                 }}
               >
                 <div className="d-flex align-items-center">
-                  {t('components.table-filter.Advanced Search')}
+                  {t('components.table-filter.Advanced search')}
                   <Icon className="ms-1" size={12} rotate={showAdvancedSearch ? 180 : 0}>
                     <ExpandMoreOutlined />
                   </Icon>

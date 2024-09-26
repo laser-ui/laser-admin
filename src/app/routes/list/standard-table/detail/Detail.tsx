@@ -48,10 +48,10 @@ export default function Detail() {
             { id: '/list', title: t('List', { ns: 'title' }) },
             {
               id: '/list/standard-table',
-              title: t('Standard Table', { ns: 'title' }),
+              title: t('Standard table', { ns: 'title' }),
               link: true,
             },
-            { id: '/list/standard-table/:id', title: t('Device Detail', { ns: 'title' }) },
+            { id: '/list/standard-table/:id', title: t('Device detail', { ns: 'title' }) },
           ]}
         />
         <AppRouteHeader.Header

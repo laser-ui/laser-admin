@@ -22,7 +22,7 @@ export function AppPasswordModal(props: ModalProps): JSX.Element | null {
   return (
     <Modal
       {...props}
-      header={t('routes.layout.Change Password')}
+      header={t('routes.layout.Change password')}
       footer={
         <Modal.Footer
           okProps={{ disabled: !form.valid }}
@@ -53,7 +53,7 @@ export function AppPasswordModal(props: ModalProps): JSX.Element | null {
     >
       <Form vertical>
         <FormGroupContext.Provider value={form}>
-          <Form.Item formControls={{ password: t('routes.layout.Please enter a new password') }} label={t('routes.layout.New Password')}>
+          <Form.Item formControls={{ password: t('routes.layout.Please enter a new password') }} label={t('routes.layout.New password')}>
             {({ password }) => <Input formControl={password} style={{ width: '100%' }} />}
           </Form.Item>
         </FormGroupContext.Provider>

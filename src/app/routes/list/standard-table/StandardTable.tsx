@@ -115,7 +115,7 @@ export default function StandardTable() {
         <AppRouteHeader.Breadcrumb
           list={[
             { id: '/list', title: t('List', { ns: 'title' }) },
-            { id: '/list/standard-table', title: t('Standard Table', { ns: 'title' }) },
+            { id: '/list/standard-table', title: t('Standard table', { ns: 'title' }) },
           ]}
         />
         <AppRouteHeader.Header

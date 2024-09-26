@@ -28,7 +28,7 @@ export default function ACL() {
         <Alert type="info">{t('routes.test.acl.Switch between different users to compare effects')}</Alert>
         <Table border>
           <table>
-            <caption>{t('routes.test.acl.ACL Data')}</caption>
+            <caption>{t('routes.test.acl.ACL data')}</caption>
             <tbody>
               <tr>
                 <Table.Th>Full</Table.Th>
@@ -57,7 +57,7 @@ export default function ACL() {
                 navigate('/dashboard/echarts');
               }}
             >
-              {t('routes.test.acl.Test Route Guard')}
+              {t('routes.test.acl.Test route guard')}
             </Button>
           </Card.Content>
         </Card>

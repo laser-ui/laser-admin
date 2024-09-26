@@ -26,7 +26,7 @@ export default function Exception(): JSX.Element | null {
             navigate('/', { replace: true });
           }}
         >
-          {t('routes.exception.Back Home')}
+          {t('routes.exception.Back home')}
         </Button>
       </div>
     </div>
