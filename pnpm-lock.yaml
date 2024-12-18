@@ -18,20 +18,20 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(react@19.0.0)
       '@laser-pro/acl':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       '@laser-pro/auth':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       '@laser-pro/http':
-        specifier: ^1.0.0
-        version: 1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))(axios@1.6.2)
+        specifier: ^1.0.1
+        version: 1.0.1(@laser-ui/hooks@2.0.1(immer@10.0.3))(axios@1.6.2)
       '@laser-pro/router':
-        specifier: ^1.0.0
-        version: 1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        specifier: ^1.0.1
+        version: 1.0.1(@laser-ui/hooks@2.0.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@laser-pro/storage':
-        specifier: ^1.0.0
-        version: 1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))
+        specifier: ^1.0.1
+        version: 1.0.1(@laser-ui/hooks@2.0.1(immer@10.0.3))
       '@laser-ui/components':
         specifier: ^2.0.1
         version: 2.0.1(dayjs@1.11.10)(immer@10.0.3)(react@19.0.0)
@@ -1313,26 +1313,26 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@laser-pro/acl@1.0.0':
-    resolution: {integrity: sha512-9p84lMNZrHLjpmZ67+XZ9Zpk16Rdi0uYVT0HnD56KU1b8V2FCIxujpRivB7HTYlNQQl7COxHSWQAjBq1NdpSPg==}
+  '@laser-pro/acl@1.0.1':
+    resolution: {integrity: sha512-bgZktsJk2y82PqxgbvN+JtK3/9bD6m3JzWUV9GIXOsuMA/JxtxGuYJxSpcB9hqBEYZVWjesYtC8cW99vSwj+cQ==}
 
-  '@laser-pro/auth@1.0.0':
-    resolution: {integrity: sha512-fJBenSYKpNbr84ggCBT//8fL496rMhChk5FnyWYcD+I4GEZBQqeCp7hCAwhGm39rgdZTUmlySdaQ3SVfPrIjjQ==}
+  '@laser-pro/auth@1.0.1':
+    resolution: {integrity: sha512-3dsvwecymlnqSY4dxq5+kk/+zMYngI6igr+sXchqj96gyfn0VZ1A3WW+okdIPDX7DR/jLp3zGtunqvKbRQrwIw==}
 
-  '@laser-pro/http@1.0.0':
-    resolution: {integrity: sha512-JgQ4Lxzg68PWUTLCRqybfv55qRam5FuYMr0AqesTua5pcyN5mdJXadlE5l6ef1AqCM8TBY7c83WsSnlnlqkV+g==}
+  '@laser-pro/http@1.0.1':
+    resolution: {integrity: sha512-x/M9onJ+JlX9+HQ2wz59v8tl9cXqyZo0P3b5/tVqairqzw72sXBKc6X2J+xo7XMHfF+UFGZjdkslFQ26CbIB6w==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
       axios: ^1.6.0
 
-  '@laser-pro/router@1.0.0':
-    resolution: {integrity: sha512-3g1jHLB/0/WsU8qvzW5ZcKCAPI8QrS6ciQNgrBlqQaYFCIO8eO15xEmK2sKKWjdqA/9TXyNrgSQqrDAbGdFZGQ==}
+  '@laser-pro/router@1.0.1':
+    resolution: {integrity: sha512-QTCRDVrtj39mEob/1XjRsfgbEXRoDKFSHLcEldk8szUkVvBj293M4n1H6P7t5sHJ54JwC23mwvoyOYt0BrYwKw==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
       react-router-dom: '>=6.0.0'
 
-  '@laser-pro/storage@1.0.0':
-    resolution: {integrity: sha512-QohOyzM6gZknaqr820VwzcBH9xS9OdLlor0MgLn+5bekKXCr49n/kfjID+74wqyYT/bK3+zessnXQdWpdxo1pw==}
+  '@laser-pro/storage@1.0.1':
+    resolution: {integrity: sha512-FdQGMINVAnx8mOSIX8/ndDuz4gWoMGZXZjKOBIIpNU7fId1y1u6yjqez+h3iKSFPlJHJUz5oeOYFo7CGbvGg7Q==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
 
@@ -6595,27 +6595,27 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@laser-pro/acl@1.0.0':
+  '@laser-pro/acl@1.0.1':
     dependencies:
       lodash: 4.17.21
 
-  '@laser-pro/auth@1.0.0':
+  '@laser-pro/auth@1.0.1':
     dependencies:
       lodash: 4.17.21
 
-  '@laser-pro/http@1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))(axios@1.6.2)':
+  '@laser-pro/http@1.0.1(@laser-ui/hooks@2.0.1(immer@10.0.3))(axios@1.6.2)':
     dependencies:
       '@laser-ui/hooks': 2.0.1(immer@10.0.3)
       axios: 1.6.2
 
-  '@laser-pro/router@1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@laser-pro/router@1.0.1(@laser-ui/hooks@2.0.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
       '@laser-ui/hooks': 2.0.1(immer@10.0.3)
       jsurl: 0.1.5
       lodash: 4.17.21
       react-router-dom: 6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
-  '@laser-pro/storage@1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))':
+  '@laser-pro/storage@1.0.1(@laser-ui/hooks@2.0.1(immer@10.0.3))':
     dependencies:
       '@laser-ui/hooks': 2.0.1(immer@10.0.3)
       lodash: 4.17.21
