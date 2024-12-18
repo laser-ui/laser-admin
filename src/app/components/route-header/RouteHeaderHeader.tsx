@@ -4,10 +4,11 @@ import { RouterContext } from '@laser-pro/router/context';
 import { Icon } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import ArrowBackOutlined from '@material-design-icons/svg/outlined/arrow_back.svg?react';
-import { Children, useContext } from 'react';
+import { has } from 'lodash';
+import { Fragment, use } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function AppRouteHeaderHeader(props: AppRouteHeaderHeaderProps): JSX.Element | null {
+export function AppRouteHeaderHeader(props: AppRouteHeaderHeaderProps): React.ReactElement | null {
   const {
     children,
     back = false,
@@ -16,7 +17,7 @@ export function AppRouteHeaderHeader(props: AppRouteHeaderHeaderProps): JSX.Elem
     ...restProps
   } = props;
 
-  const { title } = useContext(RouterContext);
+  const { title } = use(RouterContext);
 
   const navigate = useNavigate();
 
@@ -37,7 +38,17 @@ export function AppRouteHeaderHeader(props: AppRouteHeaderHeaderProps): JSX.Elem
         )}
         <div className="app-route-header__header-title">{children ?? title}</div>
       </div>
-      <div className="app-route-header__header-actions">{Children.map(actions, (action) => action)}</div>
+      {actions && (
+        <div className="app-route-header__header-actions">
+          {actions.map((node, index) => {
+            const { id, action } = (has(node, ['id', 'action']) ? node : { id: index, action: node }) as {
+              id: React.Key;
+              action: React.ReactNode;
+            };
+            return <Fragment key={id}>{action}</Fragment>;
+          })}
+        </div>
+      )}
     </div>
   );
 }

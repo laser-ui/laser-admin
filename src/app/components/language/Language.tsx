@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 import { STORAGE } from '../../configs/storage';
 
-export function AppLanguage(props: AppLanguageProps): JSX.Element | null {
+export function AppLanguage(props: AppLanguageProps): React.ReactElement | null {
   const {
     trigger,
 
@@ -42,11 +42,13 @@ export function AppLanguage(props: AppLanguageProps): JSX.Element | null {
         i18n.changeLanguage(id);
       }}
     >
-      <button {...restProps} aria-label={t('components.language.Change language')}>
-        <Icon size={20}>
-          <TranslateOutlined />
-        </Icon>
-      </button>
+      {(dropdownProps) => (
+        <button {...restProps} {...dropdownProps} aria-label={t('components.language.Change language')}>
+          <Icon size={20}>
+            <TranslateOutlined />
+          </Icon>
+        </button>
+      )}
     </Dropdown>
   );
 }

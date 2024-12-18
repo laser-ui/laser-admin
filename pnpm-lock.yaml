@@ -10,40 +10,40 @@ importers:
     dependencies:
       '@dnd-kit/core':
         specifier: ^6.1.0
-        version: 6.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 6.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@dnd-kit/sortable':
         specifier: ^8.0.0
-        version: 8.0.0(@dnd-kit/core@6.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        version: 8.0.0(@dnd-kit/core@6.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@dnd-kit/utilities':
         specifier: ^3.2.2
-        version: 3.2.2(react@18.2.0)
+        version: 3.2.2(react@19.0.0)
       '@laser-pro/acl':
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^1.0.0
+        version: 1.0.0
       '@laser-pro/auth':
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^1.0.0
+        version: 1.0.0
       '@laser-pro/http':
-        specifier: ^0.3.1
-        version: 0.3.1(@laser-ui/hooks@1.6.1(immer@10.0.3))(axios@1.6.2)
+        specifier: ^1.0.0
+        version: 1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))(axios@1.6.2)
       '@laser-pro/router':
-        specifier: ^0.3.1
-        version: 0.3.1(@laser-ui/hooks@1.6.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        specifier: ^1.0.0
+        version: 1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@laser-pro/storage':
-        specifier: ^0.3.1
-        version: 0.3.1(@laser-ui/hooks@1.6.1(immer@10.0.3))
+        specifier: ^1.0.0
+        version: 1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))
       '@laser-ui/components':
-        specifier: ^1.6.1
-        version: 1.6.1(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)
+        specifier: ^2.0.1
+        version: 2.0.1(dayjs@1.11.10)(immer@10.0.3)(react@19.0.0)
       '@laser-ui/hooks':
-        specifier: ^1.6.1
-        version: 1.6.1(immer@10.0.3)
+        specifier: ^2.0.1
+        version: 2.0.1(immer@10.0.3)
       '@laser-ui/themes':
-        specifier: ^1.6.1
-        version: 1.6.1
+        specifier: ^2.0.1
+        version: 2.0.1
       '@laser-ui/utils':
-        specifier: ^1.6.1
-        version: 1.6.1
+        specifier: ^2.0.1
+        version: 2.0.1
       '@material-design-icons/svg':
         specifier: ^0.14.13
         version: 0.14.13
@@ -76,19 +76,19 @@ importers:
         version: 4.17.21
       rcl-store:
         specifier: ^2.1.1
-        version: 2.1.1(immer@10.0.3)(react@18.2.0)
+        version: 2.1.1(immer@10.0.3)(react@19.0.0)
       react:
-        specifier: 18.2.0
-        version: 18.2.0
+        specifier: 19.0.0
+        version: 19.0.0
       react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
+        specifier: 19.0.0
+        version: 19.0.0(react@19.0.0)
       react-i18next:
         specifier: ^13.5.0
-        version: 13.5.0(i18next@23.7.6)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 13.5.0(i18next@23.7.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-router-dom:
         specifier: ^6.19.0
-        version: 6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       rfs:
         specifier: ^10.0.0
         version: 10.0.0
@@ -128,16 +128,16 @@ importers:
         version: 1.3.85(@swc/helpers@0.5.3)
       '@testing-library/react':
         specifier: 14.0.0
-        version: 14.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 14.0.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@types/node':
         specifier: 18.14.2
         version: 18.14.2
       '@types/react':
-        specifier: 18.2.33
-        version: 18.2.33
+        specifier: 19.0.0
+        version: 19.0.0
       '@types/react-dom':
-        specifier: 18.2.14
-        version: 18.2.14
+        specifier: 19.0.0
+        version: 19.0.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.9.1
         version: 6.9.1(@typescript-eslint/parser@6.9.1(eslint@8.46.0)(typescript@5.2.2))(eslint@8.46.0)(typescript@5.2.2)
@@ -1313,49 +1313,49 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@laser-pro/acl@0.3.1':
-    resolution: {integrity: sha512-QzvCTka8dJ8fwwTl71unkauGGbIcwxGxM+Zq8x7yafT5OqshP33rIaGd+pso1EuOhzQbMStdyUnkvyfrv4gbyg==}
+  '@laser-pro/acl@1.0.0':
+    resolution: {integrity: sha512-9p84lMNZrHLjpmZ67+XZ9Zpk16Rdi0uYVT0HnD56KU1b8V2FCIxujpRivB7HTYlNQQl7COxHSWQAjBq1NdpSPg==}
 
-  '@laser-pro/auth@0.3.1':
-    resolution: {integrity: sha512-HKNlFzD5Wob0j1fAK5RPTlzIpm1p4P4yxoBkCtEoKR2KhRlO65j/JG6izxKuPyBM8/fxquW4SDtAulVgfx4kKg==}
+  '@laser-pro/auth@1.0.0':
+    resolution: {integrity: sha512-fJBenSYKpNbr84ggCBT//8fL496rMhChk5FnyWYcD+I4GEZBQqeCp7hCAwhGm39rgdZTUmlySdaQ3SVfPrIjjQ==}
 
-  '@laser-pro/http@0.3.1':
-    resolution: {integrity: sha512-3mphT/xzfOY7m3IAjjCFRVIHlJWEU5nRnHDslWtwEehyfTNOU5XYWTJ3qtfe6pvtolIeDa7DhAcQEblWOObNag==}
+  '@laser-pro/http@1.0.0':
+    resolution: {integrity: sha512-JgQ4Lxzg68PWUTLCRqybfv55qRam5FuYMr0AqesTua5pcyN5mdJXadlE5l6ef1AqCM8TBY7c83WsSnlnlqkV+g==}
     peerDependencies:
-      '@laser-ui/hooks': '>=1.0.0'
+      '@laser-ui/hooks': '>=2.0.0'
       axios: ^1.6.0
 
-  '@laser-pro/router@0.3.1':
-    resolution: {integrity: sha512-PXxHaNsVokG63/XREIIRU4lpt321OSCOGiyGI5r22ucpkvxFmvmkfg/GHJpwCjxkXc0nafwXFz1o5AhjS6ZX3g==}
+  '@laser-pro/router@1.0.0':
+    resolution: {integrity: sha512-3g1jHLB/0/WsU8qvzW5ZcKCAPI8QrS6ciQNgrBlqQaYFCIO8eO15xEmK2sKKWjdqA/9TXyNrgSQqrDAbGdFZGQ==}
     peerDependencies:
-      '@laser-ui/hooks': '>=1.0.0'
+      '@laser-ui/hooks': '>=2.0.0'
       react-router-dom: '>=6.0.0'
 
-  '@laser-pro/storage@0.3.1':
-    resolution: {integrity: sha512-7s1x01Tz23EIXXUseLumOc3QQiXNj6sCr6WMIKI+K6bTHziyJC++44/CIqRtW50e+TD3YAr4HqXvYpUkRoHa6Q==}
+  '@laser-pro/storage@1.0.0':
+    resolution: {integrity: sha512-QohOyzM6gZknaqr820VwzcBH9xS9OdLlor0MgLn+5bekKXCr49n/kfjID+74wqyYT/bK3+zessnXQdWpdxo1pw==}
     peerDependencies:
-      '@laser-ui/hooks': '>=1.0.0'
+      '@laser-ui/hooks': '>=2.0.0'
 
   '@laser-ui/cli@0.0.3':
     resolution: {integrity: sha512-h+12AeZNYTgwYFTmkMIXz5SuIKD41yhC7RAt+3qcYnI/QA+aVA/+Aluz+UPuv6esAJ1KaJj4tVel5SenrctngA==}
     hasBin: true
 
-  '@laser-ui/components@1.6.1':
-    resolution: {integrity: sha512-rHniv2Hy2g04W3p1Zbt+c83P/OFLWEZ+8aNMKxqHQKhkzyvUd+re2zOAr9WFEorNzGhYXYNQdKCsB9mP1qcQHA==}
+  '@laser-ui/components@2.0.1':
+    resolution: {integrity: sha512-xQxlbVxKHXgTpAfmmn93x7J3w8JWeAm3IQctjp/kg0Tlr/Ho6odtBiNJXFcK/+TVflDGMhDlM/ALcXQFVhe4rA==}
     peerDependencies:
       dayjs: ^1.11.0
       immer: '>=2.0.0'
 
-  '@laser-ui/hooks@1.6.1':
-    resolution: {integrity: sha512-hFwpR8usIdxkd3l6J/3q78wNG4OBYVywnYQur2mDPsAZXvcMU1Vuj4AL2jeYtmd1SjDFMVQQO7eh9+4sbvMUiw==}
+  '@laser-ui/hooks@2.0.1':
+    resolution: {integrity: sha512-d+PxHLpe2pU/KXoqw0/is5spgABeOvt72/Dapc0sPOuDI8UV1//bbc9ogYEhzZuyNvIQz8rPZGdrlHy3M3HLZQ==}
     peerDependencies:
       immer: '>=2.0.0'
 
-  '@laser-ui/themes@1.6.1':
-    resolution: {integrity: sha512-6YOurpeEpU2I/yXdMHLigM8bNiC+2cwJx5bnKodHSKB/n/SxclP1j2Y4iisGFs/a5m6OfDleB3F4hYu0bZ5Q9w==}
+  '@laser-ui/themes@2.0.1':
+    resolution: {integrity: sha512-1PBjWOl3yAH520wa9GJIkuSlBW6BSnVl1aJiUIWjBIdFUPe1lMSq/uRYjEVUycVkhpJ+Msy/8ZEBTtZPp73QGg==}
 
-  '@laser-ui/utils@1.6.1':
-    resolution: {integrity: sha512-xkz+cQxKD8hORGRcD86XpGGbenruDIi69sv8gNB174ey9cTiqkYQH5M3AXTgSIoBexYPwB1ZDmcbRmm2P6rINA==}
+  '@laser-ui/utils@2.0.1':
+    resolution: {integrity: sha512-drOVii24+2X11Fyj07ztuw6Qat7sjNiqtXVttZp9zOmVoYs1gXGeO4DhOHvAubWy+7Ww1oFibVWCvn24LRpwug==}
 
   '@material-design-icons/svg@0.14.13':
     resolution: {integrity: sha512-nCExGZOtoLoFeeqShEOM4XA9DkkLzLlQdk/ZxHxps0//dz6e1Lw3fvQbZ2X/+0Dz2O+udiEukfZ4Nd4KpHg8aA==}
@@ -1910,20 +1910,17 @@ packages:
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
 
-  '@types/prop-types@15.7.11':
-    resolution: {integrity: sha512-ga8y9v9uyeiLdpKddhxYQkxNDrfvuPrlFb0N1qnZZByvcElJaXthF1UhvCh9TLWJBEHeNtdnbysW7Y6Uq8CVng==}
-
   '@types/react-dom@18.2.14':
     resolution: {integrity: sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ==}
 
-  '@types/react@18.2.33':
-    resolution: {integrity: sha512-v+I7S+hu3PIBoVkKGpSYYpiBT1ijqEzWpzQD62/jm4K74hPpSP7FF9BnKG6+fg2+62weJYkkBWDJlZt5JO/9hg==}
+  '@types/react-dom@19.0.0':
+    resolution: {integrity: sha512-1KfiQKsH1o00p9m5ag12axHQSb3FOU9H20UTrujVSkNhuCrRHiQWFqgEnTNK5ZNfnzZv8UWrnXVqCmCF9fgY3w==}
+
+  '@types/react@19.0.0':
+    resolution: {integrity: sha512-MY3oPudxvMYyesqs/kW1Bh8y9VqSmf+tzqw3ae8a9DZW68pUe3zAdHeI1jc6iAysuRdACnVknHP8AhwD4/dxtg==}
 
   '@types/responselike@1.0.3':
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
-
-  '@types/scheduler@0.16.8':
-    resolution: {integrity: sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==}
 
   '@types/semver@7.5.6':
     resolution: {integrity: sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==}
@@ -2624,9 +2621,6 @@ packages:
   css-tree@2.3.1:
     resolution: {integrity: sha512-6Fv1DV/TYw//QF5IzQdqsNDjx/wc8TrMBZsqjL9eW01tWb7R7k/mq+/VXfJCl7SoD5emsJop9cOByJZfs8hYIw==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
-
-  css-vendor@2.0.8:
-    resolution: {integrity: sha512-x9Aq0XTInxrkuFeHKbYC7zWY8ai7qJ04Kxd9MnvbC1uO5DagxoHQjm4JvG+vCdXOoFtCjbL2XSZfxmoYa9uQVQ==}
 
   css-what@6.1.0:
     resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
@@ -3397,9 +3391,6 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
-  hyphenate-style-name@1.0.4:
-    resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
-
   i18next@23.7.6:
     resolution: {integrity: sha512-O66BhXBw0fH4bEJMA0/klQKPEbcwAp5wjXEL803pdAynNbg2f4qhLIYlNHJyE7icrL6XmSZKPYaaXwy11kJ6YQ==}
 
@@ -3530,9 +3521,6 @@ packages:
 
   is-hexadecimal@1.0.4:
     resolution: {integrity: sha512-gyPJuv83bHMpocVYoqof5VDiZveEoGoFL8m3BXNb2VW8Xs+rz9kqO8LOQ5DH6EsuvilT1ApazU0pyl+ytbPtlw==}
-
-  is-in-browser@1.1.3:
-    resolution: {integrity: sha512-FeXIBgG/CPGd/WUxuEyvgGTEfwiG9Z4EKGxjNMRqviiIIfsmgrpnHLffEDdwUHqNva1VEW91o3xBT/m8Elgl9g==}
 
   is-interactive@1.0.0:
     resolution: {integrity: sha512-2HvIEKRoqS62guEC+qBjpvRubdX910WCMuJTZ+I9yvqKU2/12eSL549HMwtabb4oupdj2sMP50k+XJfB/8JE6w==}
@@ -3743,48 +3731,6 @@ packages:
   jsprim@1.4.2:
     resolution: {integrity: sha512-P2bSOMAc/ciLz6DzgjVlGJP9+BrJWu5UDGK70C2iweC5QBIeFf0ZXRvGjEj2uYgrY2MkAAhsSWHDWlFtEroZWw==}
     engines: {node: '>=0.6.0'}
-
-  jss-plugin-camel-case@10.10.0:
-    resolution: {integrity: sha512-z+HETfj5IYgFxh1wJnUAU8jByI48ED+v0fuTuhKrPR+pRBYS2EDwbusU8aFOpCdYhtRc9zhN+PJ7iNE8pAWyPw==}
-
-  jss-plugin-compose@10.10.0:
-    resolution: {integrity: sha512-F5kgtWpI2XfZ3Z8eP78tZEYFdgTIbpA/TMuX3a8vwrNolYtN1N4qJR/Ob0LAsqIwCMLojtxN7c7Oo/+Vz6THow==}
-
-  jss-plugin-default-unit@10.10.0:
-    resolution: {integrity: sha512-SvpajxIECi4JDUbGLefvNckmI+c2VWmP43qnEy/0eiwzRUsafg5DVSIWSzZe4d2vFX1u9nRDP46WCFV/PXVBGQ==}
-
-  jss-plugin-expand@10.10.0:
-    resolution: {integrity: sha512-ymT62W2OyDxBxr7A6JR87vVX9vTq2ep5jZLIdUSusfBIEENLdkkc0lL/Xaq8W9s3opUq7R0sZQpzRWELrfVYzA==}
-
-  jss-plugin-extend@10.10.0:
-    resolution: {integrity: sha512-sKYrcMfr4xxigmIwqTjxNcHwXJIfvhvjTNxF+Tbc1NmNdyspGW47Ey6sGH8BcQ4FFQhLXctpWCQSpDwdNmXSwg==}
-
-  jss-plugin-global@10.10.0:
-    resolution: {integrity: sha512-icXEYbMufiNuWfuazLeN+BNJO16Ge88OcXU5ZDC2vLqElmMybA31Wi7lZ3lf+vgufRocvPj8443irhYRgWxP+A==}
-
-  jss-plugin-nested@10.10.0:
-    resolution: {integrity: sha512-9R4JHxxGgiZhurDo3q7LdIiDEgtA1bTGzAbhSPyIOWb7ZubrjQe8acwhEQ6OEKydzpl8XHMtTnEwHXCARLYqYA==}
-
-  jss-plugin-props-sort@10.10.0:
-    resolution: {integrity: sha512-5VNJvQJbnq/vRfje6uZLe/FyaOpzP/IH1LP+0fr88QamVrGJa0hpRRyAa0ea4U/3LcorJfBFVyC4yN2QC73lJg==}
-
-  jss-plugin-rule-value-function@10.10.0:
-    resolution: {integrity: sha512-uEFJFgaCtkXeIPgki8ICw3Y7VMkL9GEan6SqmT9tqpwM+/t+hxfMUdU4wQ0MtOiMNWhwnckBV0IebrKcZM9C0g==}
-
-  jss-plugin-rule-value-observable@10.10.0:
-    resolution: {integrity: sha512-ZLMaYrR3QE+vD7nl3oNXuj79VZl9Kp8/u6A1IbTPDcuOu8b56cFdWRZNZ0vNr8jHewooEeq2doy8Oxtymr2ZPA==}
-
-  jss-plugin-template@10.10.0:
-    resolution: {integrity: sha512-ocXZBIOJOA+jISPdsgkTs8wwpK6UbsvtZK5JI7VUggTD6LWKbtoxUzadd2TpfF+lEtlhUmMsCkTRNkITdPKa6w==}
-
-  jss-plugin-vendor-prefixer@10.10.0:
-    resolution: {integrity: sha512-UY/41WumgjW8r1qMCO8l1ARg7NHnfRVWRhZ2E2m0DMYsr2DD91qIXLyNhiX83hHswR7Wm4D+oDYNC1zWCJWtqg==}
-
-  jss-preset-default@10.10.0:
-    resolution: {integrity: sha512-GL175Wt2FGhjE+f+Y3aWh+JioL06/QWFgZp53CbNNq6ZkVU0TDplD8Bxm9KnkotAYn3FlplNqoW5CjyLXcoJ7Q==}
-
-  jss@10.10.0:
-    resolution: {integrity: sha512-cqsOTS7jqPsPMjtKYDUpdFC0AbhYFLTcuGRqymgmdJIeQ8cH7+AgX7YSgQy79wXloZq2VvATYxUOUQEvS1V/Zw==}
 
   jsurl@0.1.5:
     resolution: {integrity: sha512-HyrafsIRCa+VlJAsvuvxWUM0iMeZd6+2J4JngECGF0JTRi5moUFV/mLxgyYfDizGF4ofLLYRpvD/Kt1d9wlUUg==}
@@ -4385,10 +4331,10 @@ packages:
       immer: '>=2.0.0'
       react: ^18.0.0
 
-  react-dom@18.2.0:
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+  react-dom@19.0.0:
+    resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
     peerDependencies:
-      react: ^18.2.0
+      react: ^19.0.0
 
   react-i18next@13.5.0:
     resolution: {integrity: sha512-CFJ5NDGJ2MUyBohEHxljOq/39NQ972rh1ajnadG9BjTk+UXbHLq4z5DKEbEQBDoIhUmmbuS/fIMJKo6VOax1HA==}
@@ -4429,8 +4375,8 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-  react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+  react@19.0.0:
+    resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
     engines: {node: '>=0.10.0'}
 
   read-pkg-up@8.0.0:
@@ -4599,8 +4545,8 @@ packages:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
 
-  scheduler@0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+  scheduler@0.25.0:
+    resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
 
   schema-utils@3.3.0:
     resolution: {integrity: sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg==}
@@ -4911,10 +4857,6 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  symbol-observable@1.2.0:
-    resolution: {integrity: sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==}
-    engines: {node: '>=0.10.0'}
-
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
@@ -4967,9 +4909,6 @@ packages:
 
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
-
-  tiny-warning@1.0.3:
-    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
 
   tinybench@2.5.1:
     resolution: {integrity: sha512-65NKvSuAVDP/n4CqH+a9w2kTlLReS9vhsAP06MWx+/89nMinJyB2icyl58RIcqCmIggpojIGeuJGhjU1aGMBSg==}
@@ -6375,29 +6314,29 @@ snapshots:
     dependencies:
       postcss-selector-parser: 6.0.13
 
-  '@dnd-kit/accessibility@3.1.0(react@18.2.0)':
+  '@dnd-kit/accessibility@3.1.0(react@19.0.0)':
     dependencies:
-      react: 18.2.0
+      react: 19.0.0
       tslib: 2.6.2
 
-  '@dnd-kit/core@6.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@dnd-kit/core@6.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@dnd-kit/accessibility': 3.1.0(react@18.2.0)
-      '@dnd-kit/utilities': 3.2.2(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      '@dnd-kit/accessibility': 3.1.0(react@19.0.0)
+      '@dnd-kit/utilities': 3.2.2(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
       tslib: 2.6.2
 
-  '@dnd-kit/sortable@8.0.0(@dnd-kit/core@6.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)':
+  '@dnd-kit/sortable@8.0.0(@dnd-kit/core@6.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@dnd-kit/core': 6.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@dnd-kit/utilities': 3.2.2(react@18.2.0)
-      react: 18.2.0
+      '@dnd-kit/core': 6.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@dnd-kit/utilities': 3.2.2(react@19.0.0)
+      react: 19.0.0
       tslib: 2.6.2
 
-  '@dnd-kit/utilities@3.2.2(react@18.2.0)':
+  '@dnd-kit/utilities@3.2.2(react@19.0.0)':
     dependencies:
-      react: 18.2.0
+      react: 19.0.0
       tslib: 2.6.2
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -6656,29 +6595,29 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@laser-pro/acl@0.3.1':
+  '@laser-pro/acl@1.0.0':
     dependencies:
       lodash: 4.17.21
 
-  '@laser-pro/auth@0.3.1':
+  '@laser-pro/auth@1.0.0':
     dependencies:
       lodash: 4.17.21
 
-  '@laser-pro/http@0.3.1(@laser-ui/hooks@1.6.1(immer@10.0.3))(axios@1.6.2)':
+  '@laser-pro/http@1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))(axios@1.6.2)':
     dependencies:
-      '@laser-ui/hooks': 1.6.1(immer@10.0.3)
+      '@laser-ui/hooks': 2.0.1(immer@10.0.3)
       axios: 1.6.2
 
-  '@laser-pro/router@0.3.1(@laser-ui/hooks@1.6.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))':
+  '@laser-pro/router@1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))(react-router-dom@6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
-      '@laser-ui/hooks': 1.6.1(immer@10.0.3)
+      '@laser-ui/hooks': 2.0.1(immer@10.0.3)
       jsurl: 0.1.5
       lodash: 4.17.21
-      react-router-dom: 6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react-router-dom: 6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
-  '@laser-pro/storage@0.3.1(@laser-ui/hooks@1.6.1(immer@10.0.3))':
+  '@laser-pro/storage@1.0.0(@laser-ui/hooks@2.0.1(immer@10.0.3))':
     dependencies:
-      '@laser-ui/hooks': 1.6.1(immer@10.0.3)
+      '@laser-ui/hooks': 2.0.1(immer@10.0.3)
       lodash: 4.17.21
 
   '@laser-ui/cli@0.0.3(@types/node@18.14.2)':
@@ -6696,28 +6635,26 @@ snapshots:
       - '@types/node'
       - debug
 
-  '@laser-ui/components@1.6.1(dayjs@1.11.10)(immer@10.0.3)(react@18.2.0)':
+  '@laser-ui/components@2.0.1(dayjs@1.11.10)(immer@10.0.3)(react@19.0.0)':
     dependencies:
       '@material-design-icons/svg': 0.14.13
       dayjs: 1.11.10
       immer: 10.0.3
-      jss: 10.10.0
-      jss-preset-default: 10.10.0
       lodash: 4.17.21
-      rcl-store: 2.1.1(immer@10.0.3)(react@18.2.0)
+      rcl-store: 2.1.1(immer@10.0.3)(react@19.0.0)
     transitivePeerDependencies:
       - react
 
-  '@laser-ui/hooks@1.6.1(immer@10.0.3)':
+  '@laser-ui/hooks@2.0.1(immer@10.0.3)':
     dependencies:
       immer: 10.0.3
       lodash: 4.17.21
 
-  '@laser-ui/themes@1.6.1':
+  '@laser-ui/themes@2.0.1':
     dependencies:
       rfs: 10.0.0
 
-  '@laser-ui/utils@1.6.1':
+  '@laser-ui/utils@2.0.1':
     dependencies:
       lodash: 4.17.21
 
@@ -7350,13 +7287,13 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/react@14.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@testing-library/react@14.0.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@babel/runtime': 7.23.4
       '@testing-library/dom': 9.3.3
       '@types/react-dom': 18.2.14
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   '@tokenizer/token@0.3.0': {}
 
@@ -7448,23 +7385,21 @@ snapshots:
 
   '@types/parse-json@4.0.2': {}
 
-  '@types/prop-types@15.7.11': {}
-
   '@types/react-dom@18.2.14':
     dependencies:
-      '@types/react': 18.2.33
+      '@types/react': 19.0.0
 
-  '@types/react@18.2.33':
+  '@types/react-dom@19.0.0':
     dependencies:
-      '@types/prop-types': 15.7.11
-      '@types/scheduler': 0.16.8
+      '@types/react': 19.0.0
+
+  '@types/react@19.0.0':
+    dependencies:
       csstype: 3.1.2
 
   '@types/responselike@1.0.3':
     dependencies:
       '@types/node': 18.14.2
-
-  '@types/scheduler@0.16.8': {}
 
   '@types/semver@7.5.6': {}
 
@@ -8299,11 +8234,6 @@ snapshots:
     dependencies:
       mdn-data: 2.0.30
       source-map-js: 1.0.2
-
-  css-vendor@2.0.8:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      is-in-browser: 1.1.3
 
   css-what@6.1.0: {}
 
@@ -9224,8 +9154,6 @@ snapshots:
 
   human-signals@2.1.0: {}
 
-  hyphenate-style-name@1.0.4: {}
-
   i18next@23.7.6:
     dependencies:
       '@babel/runtime': 7.23.4
@@ -9359,8 +9287,6 @@ snapshots:
       is-extglob: 2.1.1
 
   is-hexadecimal@1.0.4: {}
-
-  is-in-browser@1.1.3: {}
 
   is-interactive@1.0.0: {}
 
@@ -9569,98 +9495,6 @@ snapshots:
       extsprintf: 1.3.0
       json-schema: 0.4.0
       verror: 1.10.0
-
-  jss-plugin-camel-case@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      hyphenate-style-name: 1.0.4
-      jss: 10.10.0
-
-  jss-plugin-compose@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-      tiny-warning: 1.0.3
-
-  jss-plugin-default-unit@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-
-  jss-plugin-expand@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-
-  jss-plugin-extend@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-      tiny-warning: 1.0.3
-
-  jss-plugin-global@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-
-  jss-plugin-nested@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-      tiny-warning: 1.0.3
-
-  jss-plugin-props-sort@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-
-  jss-plugin-rule-value-function@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-      tiny-warning: 1.0.3
-
-  jss-plugin-rule-value-observable@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-      symbol-observable: 1.2.0
-
-  jss-plugin-template@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-      tiny-warning: 1.0.3
-
-  jss-plugin-vendor-prefixer@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      css-vendor: 2.0.8
-      jss: 10.10.0
-
-  jss-preset-default@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      jss: 10.10.0
-      jss-plugin-camel-case: 10.10.0
-      jss-plugin-compose: 10.10.0
-      jss-plugin-default-unit: 10.10.0
-      jss-plugin-expand: 10.10.0
-      jss-plugin-extend: 10.10.0
-      jss-plugin-global: 10.10.0
-      jss-plugin-nested: 10.10.0
-      jss-plugin-props-sort: 10.10.0
-      jss-plugin-rule-value-function: 10.10.0
-      jss-plugin-rule-value-observable: 10.10.0
-      jss-plugin-template: 10.10.0
-      jss-plugin-vendor-prefixer: 10.10.0
-
-  jss@10.10.0:
-    dependencies:
-      '@babel/runtime': 7.23.4
-      csstype: 3.1.2
-      is-in-browser: 1.1.3
-      tiny-warning: 1.0.3
 
   jsurl@0.1.5: {}
 
@@ -10280,25 +10114,24 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  rcl-store@2.1.1(immer@10.0.3)(react@18.2.0):
+  rcl-store@2.1.1(immer@10.0.3)(react@19.0.0):
     dependencies:
       immer: 10.0.3
-      react: 18.2.0
+      react: 19.0.0
 
-  react-dom@18.2.0(react@18.2.0):
+  react-dom@19.0.0(react@19.0.0):
     dependencies:
-      loose-envify: 1.4.0
-      react: 18.2.0
-      scheduler: 0.23.0
+      react: 19.0.0
+      scheduler: 0.25.0
 
-  react-i18next@13.5.0(i18next@23.7.6)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-i18next@13.5.0(i18next@23.7.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@babel/runtime': 7.23.4
       html-parse-stringify: 3.0.1
       i18next: 23.7.6
-      react: 18.2.0
+      react: 19.0.0
     optionalDependencies:
-      react-dom: 18.2.0(react@18.2.0)
+      react-dom: 19.0.0(react@19.0.0)
 
   react-is@16.13.1: {}
 
@@ -10308,21 +10141,19 @@ snapshots:
 
   react-refresh@0.14.2: {}
 
-  react-router-dom@6.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-router-dom@6.19.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@remix-run/router': 1.12.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.19.0(react@18.2.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      react-router: 6.19.0(react@19.0.0)
 
-  react-router@6.19.0(react@18.2.0):
+  react-router@6.19.0(react@19.0.0):
     dependencies:
       '@remix-run/router': 1.12.0
-      react: 18.2.0
+      react: 19.0.0
 
-  react@18.2.0:
-    dependencies:
-      loose-envify: 1.4.0
+  react@19.0.0: {}
 
   read-pkg-up@8.0.0:
     dependencies:
@@ -10535,9 +10366,7 @@ snapshots:
     dependencies:
       xmlchars: 2.2.0
 
-  scheduler@0.23.0:
-    dependencies:
-      loose-envify: 1.4.0
+  scheduler@0.25.0: {}
 
   schema-utils@3.3.0:
     dependencies:
@@ -10923,8 +10752,6 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.0.0
 
-  symbol-observable@1.2.0: {}
-
   symbol-tree@3.2.4: {}
 
   synckit@0.9.2:
@@ -10983,8 +10810,6 @@ snapshots:
   text-table@0.2.0: {}
 
   through@2.3.8: {}
-
-  tiny-warning@1.0.3: {}
 
   tinybench@2.5.1: {}
 

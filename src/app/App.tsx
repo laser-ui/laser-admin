@@ -2,7 +2,8 @@ import type { LContextIn } from '@laser-ui/components/context';
 
 import { useStorage } from '@laser-pro/storage';
 import { ConfigProvider, Root } from '@laser-ui/components';
-import { useEffect, useMemo } from 'react';
+import { useIsomorphicLayoutEffect } from '@laser-ui/hooks';
+import { useMemo } from 'react';
 
 import { STORAGE } from './configs/storage';
 import AppRouter from './routes/Router';
@@ -11,12 +12,12 @@ function App() {
   const languageStorage = useStorage(...STORAGE.language);
   const themeStorage = useStorage(...STORAGE.theme);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     document.documentElement.lang = languageStorage.value;
   }, [languageStorage.value]);
 
   const theme = themeStorage.value;
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     for (const t of ['light', 'dark']) {
       document.body.classList.toggle(t, theme === t);
     }

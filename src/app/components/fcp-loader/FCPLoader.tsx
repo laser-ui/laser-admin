@@ -1,3 +1,3 @@
-export function AppFCPLoader(): JSX.Element | null {
+export function AppFCPLoader(): React.ReactElement | null {
   return <div className="app-fcp-loader" />;
 }

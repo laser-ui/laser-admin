@@ -11,7 +11,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getContent, getKey } from './utils';
 import { AppDetailView } from '../detail-view';
 
-export function Mobile<T = any>(props: AppTableProps<T> & { grid: boolean; layout: 'default' | 'middle' | 'compact' }): JSX.Element | null {
+export function Mobile<T = any>(
+  props: AppTableProps<T> & { grid: boolean; layout: 'default' | 'middle' | 'compact' },
+): React.ReactElement | null {
   const { className, list, columns, selectable, actionOpts, expand: _expand, itemKey = getKey, layout } = props;
 
   const navigate = useNavigate();
@@ -107,14 +109,17 @@ export function Mobile<T = any>(props: AppTableProps<T> & { grid: boolean; layou
                                 }
                               }}
                             >
-                              <Button
-                                pattern="link"
-                                icon={
-                                  <Icon>
-                                    <MoreHorizOutlined />
-                                  </Icon>
-                                }
-                              />
+                              {(dropdownProps) => (
+                                <Button
+                                  {...dropdownProps}
+                                  pattern="link"
+                                  icon={
+                                    <Icon>
+                                      <MoreHorizOutlined />
+                                    </Icon>
+                                  }
+                                />
+                              )}
                             </Dropdown>
                           );
                         })()
@@ -185,11 +190,13 @@ export function Mobile<T = any>(props: AppTableProps<T> & { grid: boolean; layou
                                   }
                                 }}
                               >
-                                <Card.Action>
-                                  <Icon>
-                                    <MoreHorizOutlined />
-                                  </Icon>
-                                </Card.Action>
+                                {(dropdownProps) => (
+                                  <Card.Action {...dropdownProps}>
+                                    <Icon>
+                                      <MoreHorizOutlined />
+                                    </Icon>
+                                  </Card.Action>
+                                )}
                               </Dropdown>,
                             ]
                           : actions.map((action) => getAction(action))

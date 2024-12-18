@@ -1,5 +1,4 @@
 import type { DragEndEvent, DragStartEvent, UniqueIdentifier } from '@dnd-kit/core';
-import type { ReactNode } from 'react';
 
 import { DndContext, KeyboardSensor, PointerSensor, closestCenter, useSensor, useSensors } from '@dnd-kit/core';
 import { SortableContext, arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
@@ -11,7 +10,7 @@ import { SortableOverlay } from './SortableOverlay';
 interface SortableColsProps<T extends UniqueIdentifier> {
   items: T[];
   onChange: (items: T[]) => void;
-  renderItem: (item: T) => ReactNode;
+  renderItem: (item: T) => React.ReactNode;
   onDragStart?: (event: DragStartEvent) => void;
   onDragEnd?: (event: DragEndEvent) => void;
 }

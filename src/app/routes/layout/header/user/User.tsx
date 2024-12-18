@@ -12,7 +12,7 @@ import { AppPasswordModal } from './PasswordModal';
 import { LOGIN_PATH } from '../../../../configs/router';
 import { GlobalStore, TOKEN } from '../../../../core';
 
-export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): JSX.Element | null {
+export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): React.ReactElement | null {
   const [{ appUser }] = useStore(GlobalStore, ['appUser']);
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -87,14 +87,16 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): J
         }
       }}
     >
-      <button {...props} aria-label={t('routes.layout.My account')}>
-        <Avatar
-          img={appUser.avatar ? { src: appUser.avatar.path, alt: t('Avatar') } : undefined}
-          text={appUser.name[0].toUpperCase()}
-          size={28}
-        />
-        <span className="d-none d-md-block">{appUser.name}</span>
-      </button>
+      {(dropdownProps) => (
+        <button {...props} {...dropdownProps} aria-label={t('routes.layout.My account')}>
+          <Avatar
+            img={appUser.avatar ? { src: appUser.avatar.path, alt: t('Avatar') } : undefined}
+            text={appUser.name[0].toUpperCase()}
+            size={28}
+          />
+          <span className="d-none d-md-block">{appUser.name}</span>
+        </button>
+      )}
     </Dropdown>
   );
 }

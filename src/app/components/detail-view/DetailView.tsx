@@ -1,10 +1,11 @@
 import type { AppDetailViewProps } from './types';
 
+import { useIsomorphicLayoutEffect } from '@laser-ui/hooks';
 import { classNames } from '@laser-ui/utils';
 import { isArray, isNull, isNumber, isString, isUndefined } from 'lodash';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
-export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
+export function AppDetailView(props: AppDetailViewProps): React.ReactElement | null {
   const {
     list,
     col: _col = { xs: 12, md: 6, lg: 4, xxl: 3 },
@@ -42,7 +43,7 @@ export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
     return classNames.join(' ');
   })();
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (detailViewRef.current) {
       let maxWidth = 0;
       detailViewRef.current.querySelectorAll('[data-app-detail-view-label]').forEach((el) => {
@@ -55,7 +56,12 @@ export function AppDetailView(props: AppDetailViewProps): JSX.Element | null {
   return (
     <div
       {...restProps}
-      ref={detailViewRef}
+      ref={(instance) => {
+        detailViewRef.current = instance;
+        return () => {
+          detailViewRef.current = null;
+        };
+      }}
       className={classNames(restProps.className, 'app-detail-view', 'row', {
         'app-detail-view--vertical': vertical,
         [`gx-${gutterX}`]: gutterX,

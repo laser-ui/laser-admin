@@ -28,10 +28,9 @@ export default function ECharts() {
                 <Card>
                   <Card.Content>
                     <AppChart
-                      ref={(chart) => {
-                        if (chart) {
-                          chart.setOption(option);
-                        }
+                      ref={(instance) => {
+                        instance!.setOption(option);
+                        return () => {};
                       }}
                       style={{ height: 320 }}
                     />

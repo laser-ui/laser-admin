@@ -12,7 +12,7 @@ interface AppSidebarProps {
   onMenuOpenChange: (open: boolean) => void;
 }
 
-export function AppSidebar(props: AppSidebarProps): JSX.Element | null {
+export function AppSidebar(props: AppSidebarProps): React.ReactElement | null {
   const { menuOpen, onMenuOpenChange } = props;
 
   const layoutStorage = useStorage(...STORAGE.layout);

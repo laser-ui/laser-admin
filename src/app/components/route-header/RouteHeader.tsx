@@ -4,7 +4,7 @@ import { AppRouteHeaderBreadcrumb } from './RouteHeaderBreadcrumb';
 import { AppRouteHeaderHeader } from './RouteHeaderHeader';
 
 export const AppRouteHeader: {
-  (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element | null;
+  (props: React.HTMLAttributes<HTMLDivElement>): React.ReactElement | null;
   Breadcrumb: typeof AppRouteHeaderBreadcrumb;
   Header: typeof AppRouteHeaderHeader;
 } = (props) => {

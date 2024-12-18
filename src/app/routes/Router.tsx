@@ -1,5 +1,5 @@
 import { Router, useACLGuard, useTokenGuard } from '@laser-pro/router';
-import { Suspense, createElement, lazy, memo } from 'react';
+import { Suspense, lazy, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -26,9 +26,17 @@ interface AppRouteProps {
   element?: React.FC;
 }
 function AppRoute(props: AppRouteProps) {
-  const { path, element } = props;
+  const { path, element: FC } = props;
 
-  return element ? createElement(element) : <Suspense fallback={<AppFCPLoader />}>{createElement(ROUTES[path!])}</Suspense>;
+  const Route = ROUTES[path!];
+
+  return FC ? (
+    <FC />
+  ) : (
+    <Suspense fallback={<AppFCPLoader />}>
+      <Route />
+    </Suspense>
+  );
 }
 
 const AppRouter = memo(() => {

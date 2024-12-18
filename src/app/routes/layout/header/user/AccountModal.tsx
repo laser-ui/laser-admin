@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { GlobalStore, useHttp } from '../../../../core';
 import { handleStandardResponse } from '../../../../utils';
 
-export function AppAccountModal(props: ModalProps): JSX.Element | null {
+export function AppAccountModal(props: ModalProps): React.ReactElement | null {
   const [{ appUser }, { appUser: setAppUser }] = useStore(GlobalStore, ['appUser']);
   const { t } = useTranslation();
   const http = useHttp();
@@ -89,8 +89,10 @@ export function AppAccountModal(props: ModalProps): JSX.Element | null {
           <Form.Item formControls={{ avatar: '' }} label={t('Avatar')}>
             {({ avatar }) => (
               <Upload formControl={avatar} accept="image/*" max={1}>
-                {(render) => (
-                  <Upload.Picture actions={() => [<Upload.Action preset="remove" />]}>{render(<Upload.Button />)}</Upload.Picture>
+                {(uploadProps) => (
+                  <Upload.Picture actions={() => [<Upload.Action preset="remove" />]}>
+                    <Upload.Button {...uploadProps} />
+                  </Upload.Picture>
                 )}
               </Upload>
             )}

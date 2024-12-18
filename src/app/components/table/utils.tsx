@@ -1,7 +1,6 @@
 import type { AppTableColumn } from './types';
 
 import { get, isNumber, isString } from 'lodash';
-import { createElement } from 'react';
 
 import { AppCopy } from '../copy';
 
@@ -18,5 +17,5 @@ export function getKey(data: any, index: number) {
 
 export function getContent(column: AppTableColumn<any>, data: any, index: number) {
   const content = isString(column.td) ? get(data, column.td) : column.td(data, index);
-  return column.copyable ? createElement(AppCopy, { children: content }) : content;
+  return column.copyable ? <AppCopy>{content}</AppCopy> : content;
 }

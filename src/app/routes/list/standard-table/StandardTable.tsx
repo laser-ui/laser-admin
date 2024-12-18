@@ -7,7 +7,7 @@ import { useImmer, useMount } from '@laser-ui/hooks';
 import AddOutlined from '@material-design-icons/svg/outlined/add.svg?react';
 import KeyboardArrowDownOutlined from '@material-design-icons/svg/outlined/keyboard_arrow_down.svg?react';
 import { isUndefined, pick } from 'lodash';
-import { Children, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AppDeviceModal } from './DeviceModal';
@@ -153,10 +153,12 @@ export default function StandardTable() {
                         updateQuery({ status: value });
                       }}
                     >
-                      {(nodes) => (
-                        <div className="row g-2">
-                          {Children.map(nodes, (node) => (
-                            <div className="col-auto">{node}</div>
+                      {(groupProps, optionProps, options) => (
+                        <div {...groupProps} className="row g-2">
+                          {options.map((opt) => (
+                            <div key={opt.value} className="col-auto">
+                              <Checkbox {...optionProps(opt)} />
+                            </div>
                           ))}
                         </div>
                       )}
@@ -315,18 +317,21 @@ export default function StandardTable() {
                   ]}
                   placement="bottom-right"
                 >
-                  <Button
-                    pattern="secondary"
-                    icon={
-                      <Icon>
-                        <KeyboardArrowDownOutlined />
-                      </Icon>
-                    }
-                    iconRight
-                    disabled={allSelected === false}
-                  >
-                    More
-                  </Button>
+                  {(dropdownProps) => (
+                    <Button
+                      {...dropdownProps}
+                      pattern="secondary"
+                      icon={
+                        <Icon>
+                          <KeyboardArrowDownOutlined />
+                        </Icon>
+                      }
+                      iconRight
+                      disabled={allSelected === false}
+                    >
+                      More
+                    </Button>
+                  )}
                 </Dropdown>
               </div>
               <Pagination

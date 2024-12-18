@@ -2,7 +2,7 @@ import type { AppChartProps } from './types';
 import type { ECharts } from 'echarts/core';
 
 import { useStorage } from '@laser-pro/storage';
-import { useAsync, useResize } from '@laser-ui/hooks';
+import { useAsync, useEventCallback, useIsomorphicLayoutEffect, useResize } from '@laser-ui/hooks';
 import { BarChart, LineChart, PieChart, ScatterChart } from 'echarts/charts';
 import {
   DataZoomComponent,
@@ -18,7 +18,7 @@ import * as echarts from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { SVGRenderer } from 'echarts/renderers';
 import { merge } from 'lodash';
-import { forwardRef, useCallback, useRef } from 'react';
+import { useImperativeHandle, useRef } from 'react';
 
 import chartThemes from './themes.json';
 import { STORAGE } from '../../configs/storage';
@@ -41,8 +41,9 @@ echarts.use([
   SVGRenderer,
 ]);
 
-export const AppChart = forwardRef<ECharts, AppChartProps>((props, ref): JSX.Element | null => {
+export function AppChart(props: AppChartProps): React.ReactElement | null {
   const {
+    ref,
     theme: _theme,
     autoResize = true,
     autoResizeDebounce = 100,
@@ -52,12 +53,11 @@ export const AppChart = forwardRef<ECharts, AppChartProps>((props, ref): JSX.Ele
 
   const async = useAsync();
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const elRef = useRef<HTMLDivElement>(null);
 
-  const dataRef = useRef<{
-    clearTid?: () => void;
-    option?: any;
-  }>({});
+  const optionSaved = useRef<any>(undefined);
+  const clearTid = useRef(() => {});
 
   const themeStorage = useStorage(...STORAGE.theme);
   const languageStorage = useStorage(...STORAGE.language);
@@ -65,41 +65,32 @@ export const AppChart = forwardRef<ECharts, AppChartProps>((props, ref): JSX.Ele
   const theme = _theme ?? themeStorage.value;
 
   const instanceRef = useRef<ECharts | null>(null);
-  const chartRef = useCallback(
-    (el: HTMLDivElement | null) => {
-      const setRef = (instance: ECharts | null) => {
-        if (typeof ref === 'function') {
-          ref(instance);
-        } else if (ref) {
-          ref.current = instance;
-        }
-      };
-      if (el) {
-        instanceRef.current = echarts.init(
-          el,
-          JSON.parse(
-            JSON.stringify(theme === 'light' ? chartThemes.light : merge(JSON.parse(JSON.stringify(chartThemes.light)), chartThemes.dark)),
-          ),
-          { renderer: 'svg', locale: languageStorage.value === 'zh-CN' ? 'ZH' : 'EN' },
-        );
-        setRef(instanceRef.current);
-        if (dataRef.current.option) {
-          instanceRef.current.setOption(dataRef.current.option);
-        }
-      } else if (instanceRef.current) {
-        dataRef.current.option = instanceRef.current.getOption();
-        instanceRef.current.dispose();
-        instanceRef.current = null;
-        setRef(null);
+
+  useIsomorphicLayoutEffect(() => {
+    if (elRef.current) {
+      const chart = echarts.init(
+        elRef.current,
+        JSON.parse(
+          JSON.stringify(theme === 'light' ? chartThemes.light : merge(JSON.parse(JSON.stringify(chartThemes.light)), chartThemes.dark)),
+        ),
+        { renderer: 'svg', locale: languageStorage.value === 'zh-CN' ? 'ZH' : 'EN' },
+      );
+      if (optionSaved.current) {
+        chart.setOption(optionSaved.current);
       }
-    },
-    [languageStorage.value, ref, theme],
-  );
+      instanceRef.current = chart;
+      return () => {
+        optionSaved.current = chart.getOption();
+        chart.dispose();
+        instanceRef.current = null;
+      };
+    }
+  }, [languageStorage.value, theme]);
 
   useResize(
-    elRef,
+    containerRef,
     () => {
-      dataRef.current.clearTid?.();
+      clearTid.current();
       const cb = () => {
         if (instanceRef.current) {
           instanceRef.current.resize();
@@ -108,8 +99,8 @@ export const AppChart = forwardRef<ECharts, AppChartProps>((props, ref): JSX.Ele
       if (autoResizeDebounce === 0) {
         cb();
       } else {
-        dataRef.current.clearTid = async.setTimeout(() => {
-          dataRef.current.clearTid = undefined;
+        clearTid.current = async.setTimeout(() => {
+          clearTid.current = () => {};
           cb();
         }, autoResizeDebounce);
       }
@@ -118,16 +109,42 @@ export const AppChart = forwardRef<ECharts, AppChartProps>((props, ref): JSX.Ele
     autoResize === false,
   );
 
+  const setOption = useEventCallback((base: any, update?: any) => {
+    if (instanceRef.current) {
+      if (instanceRef.current.getOption()) {
+        instanceRef.current.setOption(update ?? base);
+      } else {
+        instanceRef.current.setOption({ ...base, ...update });
+      }
+    } else {
+      optionSaved.current = { ...base, ...update };
+    }
+  });
+  useImperativeHandle(ref, () => ({ setOption }), [setOption]);
+
   return (
     <div
       {...restProps}
-      ref={elRef}
+      ref={(instance) => {
+        containerRef.current = instance;
+        return () => {
+          containerRef.current = null;
+        };
+      }}
       style={{
         ...restProps.style,
         position: restProps.style?.position ?? 'relative',
       }}
     >
-      <div ref={chartRef} style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}></div>
+      <div
+        ref={(instance) => {
+          elRef.current = instance;
+          return () => {
+            elRef.current = null;
+          };
+        }}
+        style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
+      />
     </div>
   );
-});
+}

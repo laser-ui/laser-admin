@@ -6,7 +6,6 @@ import { Icon } from '@laser-ui/components';
 import { useMount } from '@laser-ui/hooks';
 import { isObject, isUndefined } from 'lodash';
 import { useStore } from 'rcl-store';
-import { createElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -41,10 +40,22 @@ export function useMenu() {
 
       const { title: _title, titleI18n } = item;
       const title = _title ?? (isUndefined(titleI18n) ? undefined : t(titleI18n as any, { ns: 'title' }));
+      const IconFC = item.icon;
       const obj: MenuItem<string> = {
         id: item.path,
-        title: item.type === 'item' ? createElement(Link, { className: 'app-menu-link', tabIndex: -1, to: item.path }, title) : title,
-        icon: item.icon ? createElement(Icon, undefined, createElement(item.icon)) : undefined,
+        title:
+          item.type === 'item' ? (
+            <Link className="app-menu-link" tabIndex={-1} to={item.path}>
+              {title}
+            </Link>
+          ) : (
+            title
+          ),
+        icon: IconFC ? (
+          <Icon>
+            <IconFC />
+          </Icon>
+        ) : undefined,
         type: item.type,
       };
 

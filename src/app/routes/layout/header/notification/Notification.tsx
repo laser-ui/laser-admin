@@ -14,7 +14,7 @@ import { GlobalStore } from '../../../../core';
 
 import styles from './Notification.module.scss';
 
-export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElement>): JSX.Element | null {
+export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElement>): React.ReactElement | null {
   const tabsRef = useRef<TabsRef>(null);
 
   const [{ appNotifications }] = useStore(GlobalStore, ['appNotifications']);
@@ -40,7 +40,12 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
         ) : (
           <>
             <Tabs
-              ref={tabsRef}
+              ref={(instance) => {
+                tabsRef.current = instance;
+                return () => {
+                  tabsRef.current = null;
+                };
+              }}
               list={Array.from({ length: 3 }).map((_, index) => ({
                 id: index,
                 title: 'Title',
@@ -88,14 +93,16 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
         }
       }}
     >
-      <button {...props} aria-label={t('routes.layout.Notification')}>
-        <div style={{ position: 'relative' }}>
-          <Badge value={num} dot />
-          <Icon size={20}>
-            <NotificationsOutlined />
-          </Icon>
-        </div>
-      </button>
+      {(popoverProps) => (
+        <button {...props} {...popoverProps} aria-label={t('routes.layout.Notification')}>
+          <div style={{ position: 'relative' }}>
+            <Badge value={num} dot />
+            <Icon size={20}>
+              <NotificationsOutlined />
+            </Icon>
+          </div>
+        </button>
+      )}
     </Popover>
   );
 }

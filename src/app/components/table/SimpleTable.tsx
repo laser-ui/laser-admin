@@ -4,7 +4,7 @@ import { Mobile } from './Mobile';
 import { PC } from './PC';
 import { useMatchMedia } from '../../hooks';
 
-export function AppSimpleTable<T = any>(props: Omit<AppTableProps<T>, 'tools'>): JSX.Element | null {
+export function AppSimpleTable<T = any>(props: Omit<AppTableProps<T>, 'tools'>): React.ReactElement | null {
   const { name, grid = false, layout = 'default', render } = props;
 
   const { mediaBreakpointUp } = useMatchMedia();

@@ -1,4 +1,4 @@
-import { StrictMode, createElement, useEffect, useRef } from 'react';
+import { StrictMode, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, HashRouter, Navigate, useLocation } from 'react-router-dom';
 
@@ -18,7 +18,12 @@ function Main({ path }: { path?: string }) {
 }
 
 startup.then((path) => {
+  const Router = HASH ? HashRouter : BrowserRouter;
   createRoot(document.getElementById('root') as HTMLElement).render(
-    <StrictMode>{createElement(HASH ? HashRouter : BrowserRouter, { children: <Main path={path} /> })}</StrictMode>,
+    <StrictMode>
+      <Router>
+        <Main path={path} />
+      </Router>
+    </StrictMode>,
   );
 });

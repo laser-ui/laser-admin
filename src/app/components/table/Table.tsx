@@ -9,7 +9,7 @@ import RefreshOutlined from '@material-design-icons/svg/outlined/refresh.svg?rea
 import SettingsOutlined from '@material-design-icons/svg/outlined/settings.svg?react';
 import ViewDayOutlined from '@material-design-icons/svg/outlined/view_day.svg?react';
 import ViewModuleOutlined from '@material-design-icons/svg/outlined/view_module.svg?react';
-import { useContext, useRef, useState } from 'react';
+import { use, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ import { PC } from './PC';
 import { SortableCols } from './sortable-cols';
 import { useMatchMedia } from '../../hooks';
 
-export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
+export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement | null {
   const {
     id: _id,
     name: _name,
@@ -32,11 +32,11 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
 
   const { t } = useTranslation();
   const location = useLocation();
-  const { title } = useContext(RouterContext);
+  const { title } = use(RouterContext);
   const async = useAsync();
   const { mediaBreakpointUp } = useMatchMedia();
 
-  const dragEnd = useRef<() => void>();
+  const dragEnd = useRef<() => void>(undefined);
 
   const name = _name ?? title;
   const id = _id ?? location.pathname + (name ? name : '');
@@ -121,9 +121,11 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
                   storage.set({ ...storage.value, layout: id as any });
                 }}
               >
-                <Icon title={t('components.table.Layout')}>
-                  <ViewDayOutlined />
-                </Icon>
+                {(dropdownProps) => (
+                  <Icon {...dropdownProps} title={t('components.table.Layout')}>
+                    <ViewDayOutlined />
+                  </Icon>
+                )}
               </Dropdown>
             )}
             {tools.includes('settings') && (
@@ -196,9 +198,11 @@ export function AppTable<T = any>(props: AppTableProps<T>): JSX.Element | null {
                   }
                 }}
               >
-                <Icon title={t('components.table.Settings')}>
-                  <SettingsOutlined />
-                </Icon>
+                {(popoverProps) => (
+                  <Icon {...popoverProps} title={t('components.table.Settings')}>
+                    <SettingsOutlined />
+                  </Icon>
+                )}
               </Popover>
             )}
           </div>

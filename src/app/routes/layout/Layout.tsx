@@ -1,6 +1,7 @@
 import { useStorage } from '@laser-pro/storage';
+import { useIsomorphicLayoutEffect } from '@laser-ui/hooks';
 import { classNames } from '@laser-ui/utils';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import { AppHeader } from './header/Header';
@@ -19,7 +20,7 @@ const SIDEBAR_DEFAULT = {
   width: 200,
 };
 
-export default function Layout(props: AppLayoutProps): JSX.Element | null {
+export default function Layout(props: AppLayoutProps): React.ReactElement | null {
   const { sidebar } = props;
 
   const layoutStorage = useStorage(...STORAGE.layout);
@@ -27,7 +28,7 @@ export default function Layout(props: AppLayoutProps): JSX.Element | null {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     setMenuOpen(false);
   }, [location]);
 

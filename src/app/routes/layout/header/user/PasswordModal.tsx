@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { GlobalStore, useHttp } from '../../../../core';
 import { handleStandardResponse } from '../../../../utils';
 
-export function AppPasswordModal(props: ModalProps): JSX.Element | null {
+export function AppPasswordModal(props: ModalProps): React.ReactElement | null {
   const [{ appUser }] = useStore(GlobalStore, ['appUser']);
   const { t } = useTranslation();
   const http = useHttp();

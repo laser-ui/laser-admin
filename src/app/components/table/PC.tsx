@@ -10,7 +10,9 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { getContent, getKey, toCssUnit } from './utils';
 
-export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: 'default' | 'middle' | 'compact' }): JSX.Element | null {
+export function PC<T = any>(
+  props: AppTableProps<T> & { grid: boolean; layout: 'default' | 'middle' | 'compact' },
+): React.ReactElement | null {
   const { className, list, columns, selectable, actionOpts, expand: _expand, expandFixed, scroll, itemKey = getKey, grid, layout } = props;
 
   const { t } = useTranslation();
@@ -20,8 +22,8 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
   const leftFixed: { left?: number }[] = [{}, {}];
 
   const { ths, tds } = (() => {
-    const ths: JSX.Element[] = [];
-    const tds: ((data: T, index: number) => JSX.Element)[] = [];
+    const ths: React.ReactElement[] = [];
+    const tds: ((data: T, index: number) => React.ReactElement)[] = [];
     const left: string[] = [];
     if (_expand && expandFixed) {
       leftFixed[0].left = 0;
@@ -197,7 +199,11 @@ export function PC<T = any>(props: AppTableProps<T> & { grid: boolean; layout: '
                                       }
                                     }}
                                   >
-                                    <Button pattern="link">{t('components.table.More')}</Button>
+                                    {(dropdownProps) => (
+                                      <Button {...dropdownProps} pattern="link">
+                                        {t('components.table.More')}
+                                      </Button>
+                                    )}
                                   </Dropdown>
                                 </>
                               );

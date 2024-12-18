@@ -1,12 +1,13 @@
 import { useStorage } from '@laser-pro/storage';
 import { Icon } from '@laser-ui/components';
+import { useIsomorphicLayoutEffect } from '@laser-ui/hooks';
 import { classNames } from '@laser-ui/utils';
 import DarkModeOutlined from '@material-design-icons/svg/outlined/dark_mode.svg?react';
 import FormatIndentDecreaseOutlined from '@material-design-icons/svg/outlined/format_indent_decrease.svg?react';
 import FormatIndentIncreaseOutlined from '@material-design-icons/svg/outlined/format_indent_increase.svg?react';
 import LightModeOutlined from '@material-design-icons/svg/outlined/light_mode.svg?react';
 import SearchOutlined from '@material-design-icons/svg/outlined/search.svg?react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +27,7 @@ interface AppHeaderProps {
   onMenuOpenChange: (open: boolean) => void;
 }
 
-export function AppHeader(props: AppHeaderProps): JSX.Element | null {
+export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
   const { sidebarWidth, menuOpen, onMenuOpenChange } = props;
 
   const textRef = useRef<HTMLDivElement>(null);
@@ -36,7 +37,7 @@ export function AppHeader(props: AppHeaderProps): JSX.Element | null {
   const layoutStorage = useStorage(...STORAGE.layout);
   const { mediaBreakpointUp } = useMatchMedia();
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (layoutStorage.value.menu.mode === 'vertical' && textRef.current) {
       const maxWidth = sidebarWidth - 64 - 14;
       if (textRef.current.scrollWidth > maxWidth) {
@@ -57,7 +58,15 @@ export function AppHeader(props: AppHeaderProps): JSX.Element | null {
           className={classNames(styles['app-header__logo-title-wrapper'], 'd-none d-md-block')}
           style={{ width: layoutStorage.value.menu.mode === 'vertical' ? sidebarWidth - 64 : 0 }}
         >
-          <div className={styles['app-header__logo-title']} ref={textRef}>
+          <div
+            className={styles['app-header__logo-title']}
+            ref={(instance) => {
+              textRef.current = instance;
+              return () => {
+                textRef.current = null;
+              };
+            }}
+          >
             {APP_NAME}
           </div>
         </div>

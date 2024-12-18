@@ -36,7 +36,7 @@ import { TOKEN, initUser, useHttp } from '../../core';
 
 import styles from './Login.module.scss';
 
-export default function Login(): JSX.Element | null {
+export default function Login(): React.ReactElement | null {
   const { t } = useTranslation();
   const http = useHttp();
   const [loginloading, setLoginLoading] = useState(false);

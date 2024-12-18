@@ -4,7 +4,7 @@ import { Separator } from '@laser-ui/components';
 import { checkNodeExist, classNames } from '@laser-ui/utils';
 import { Fragment } from 'react';
 
-export function AppList(props: AppListProps): JSX.Element | null {
+export function AppList(props: AppListProps): React.ReactElement | null {
   const {
     list,
     separator = true,

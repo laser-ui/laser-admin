@@ -1,5 +1,4 @@
 import { Button } from '@laser-ui/components';
-import { createElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -9,15 +8,17 @@ import S500 from './500.svg?react';
 
 import styles from './Exception.module.scss';
 
-export default function Exception(): JSX.Element | null {
+export default function Exception(): React.ReactElement | null {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const { status } = useParams();
 
+  const BG = status === '403' ? S403 : status === '404' ? S404 : S500;
+
   return (
     <div className={styles['app-exception']}>
-      {createElement(status === '403' ? S403 : status === '404' ? S404 : S500, { className: styles['app-exception__bg'] })}
+      <BG className={styles['app-exception__bg']} />
       <div className={styles['app-exception__info']}>
         <div className={styles['app-exception__status']}>{status}</div>
         <div className={styles['app-exception__description']}>{t(`routes.exception.${status}` as any)}</div>

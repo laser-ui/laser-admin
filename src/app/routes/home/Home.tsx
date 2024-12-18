@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { LOGIN_PATH } from '../../configs/router';
 import { useMenu } from '../../core';
 
-export default function Home(): JSX.Element | null {
+export default function Home(): React.ReactElement | null {
   const [{ firstCanActive }] = useMenu();
 
   return <Navigate to={isUndefined(firstCanActive) ? LOGIN_PATH : firstCanActive.path} replace />;

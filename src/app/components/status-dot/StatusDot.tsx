@@ -2,7 +2,7 @@ import type { AppStatusDotProps } from './types';
 
 import { checkNodeExist, classNames } from '@laser-ui/utils';
 
-export function AppStatusDot(props: AppStatusDotProps): JSX.Element | null {
+export function AppStatusDot(props: AppStatusDotProps): React.ReactElement | null {
   const {
     children,
     theme,

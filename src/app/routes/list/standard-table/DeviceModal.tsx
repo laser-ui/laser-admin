@@ -15,7 +15,7 @@ export interface AppDeviceModalProps extends ModalProps {
   onSuccess: () => void;
 }
 
-export function AppDeviceModal(props: AppDeviceModalProps): JSX.Element | null {
+export function AppDeviceModal(props: AppDeviceModalProps): React.ReactElement | null {
   const {
     device,
     onSuccess,

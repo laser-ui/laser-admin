@@ -1,11 +1,10 @@
 import type { DraggableSyntheticListeners, UniqueIdentifier } from '@dnd-kit/core';
-import type { CSSProperties } from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Icon } from '@laser-ui/components';
 import DragIndicatorOutlined from '@material-design-icons/svg/outlined/drag_indicator.svg?react';
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, use, useMemo } from 'react';
 
 interface SortableItemProps {
   children: React.ReactNode;
@@ -36,7 +35,7 @@ export function SortableItem(props: SortableItemProps) {
     }),
     [attributes, listeners, setActivatorNodeRef],
   );
-  const style: CSSProperties = {
+  const style: React.CSSProperties = {
     opacity: isDragging ? 0.4 : undefined,
     transform: CSS.Translate.toString(transform),
     transition,
@@ -44,7 +43,16 @@ export function SortableItem(props: SortableItemProps) {
 
   return (
     <SortableItemContext.Provider value={context}>
-      <li className="app-table-sortable-cols__item" ref={setNodeRef} style={style}>
+      <li
+        className="app-table-sortable-cols__item"
+        ref={(instance) => {
+          setNodeRef(instance);
+          return () => {
+            setNodeRef(null);
+          };
+        }}
+        style={style}
+      >
         {children}
       </li>
     </SortableItemContext.Provider>
@@ -52,10 +60,20 @@ export function SortableItem(props: SortableItemProps) {
 }
 
 export function DragHandle() {
-  const { attributes, listeners, ref } = useContext(SortableItemContext);
+  const { attributes, listeners, ref } = use(SortableItemContext);
 
   return (
-    <div className="app-table-sortable-cols__drag-indicator" {...attributes} {...listeners} ref={ref}>
+    <div
+      className="app-table-sortable-cols__drag-indicator"
+      {...attributes}
+      {...listeners}
+      ref={(instance) => {
+        ref(instance);
+        return () => {
+          ref(null);
+        };
+      }}
+    >
       <Icon>
         <DragIndicatorOutlined />
       </Icon>

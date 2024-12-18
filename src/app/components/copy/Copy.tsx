@@ -8,7 +8,7 @@ import ContentCopyOutlined from '@material-design-icons/svg/outlined/content_cop
 import { isNumber, isString } from 'lodash';
 import { useState } from 'react';
 
-export function AppCopy(props: AppCopyProps): JSX.Element | null {
+export function AppCopy(props: AppCopyProps): React.ReactElement | null {
   const {
     children,
     value,

@@ -3,12 +3,12 @@ import type { AppTableFilterProps } from './types';
 import { Badge, Button, Icon, Input, Separator } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import ExpandMoreOutlined from '@material-design-icons/svg/outlined/expand_more.svg?react';
-import { cloneElement, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { checkEmpty } from '../../utils';
 
-export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
+export function AppTableFilter(props: AppTableFilterProps): React.ReactElement | null {
   const {
     filterList,
     searchValue,
@@ -35,18 +35,14 @@ export function AppTableFilter(props: AppTableFilterProps): JSX.Element | null {
           className="app-table-filter__search-input"
           model={searchValue}
           placeholder={searchPlaceholder}
-          inputRender={(el) =>
-            cloneElement<React.InputHTMLAttributes<HTMLInputElement>>(el, {
-              onKeyDown: (e) => {
-                el.props.onKeyDown?.(e);
-
-                if (e.code === 'Enter') {
-                  e.preventDefault();
-                  onSearchClick?.();
-                }
-              },
-            })
-          }
+          inputProps={{
+            onKeyDown: (e) => {
+              if (e.code === 'Enter') {
+                e.preventDefault();
+                onSearchClick?.();
+              }
+            },
+          }}
           onModelChange={onSearchValueChange}
         />
         <div className="app-table-filter__button-container">
