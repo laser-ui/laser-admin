@@ -168,16 +168,25 @@ export function PC<T = any>(
                           {(() => {
                             const actions = actionOpts.actions(data, index).filter((action) => !action.hidden);
                             const getAction = (action: (typeof actions)[0]) => {
-                              const node = action.link ? (
-                                <Link className="app-link" to={action.link}>
-                                  {action.text}
-                                </Link>
-                              ) : (
-                                <Button disabled={action.loading} pattern="link" onClick={action.onclick}>
-                                  {action.loading ? <Spinner visible size="1em" alone /> : action.text}
-                                </Button>
-                              );
-                              return action.render ? action.render(node) : node;
+                              const custom = (props?: React.HTMLAttributes<HTMLElement>) =>
+                                action.link ? (
+                                  <Link {...props} className="app-link" to={action.link}>
+                                    {action.text}
+                                  </Link>
+                                ) : (
+                                  <Button
+                                    {...props}
+                                    disabled={action.loading}
+                                    pattern="link"
+                                    onClick={(e) => {
+                                      props?.onClick?.(e);
+                                      action.onclick?.();
+                                    }}
+                                  >
+                                    {action.loading ? <Spinner visible size="1em" alone /> : action.text}
+                                  </Button>
+                                );
+                              return action.render ? action.render(custom) : custom();
                             };
                             if (actions.length > 2) {
                               return (

@@ -74,24 +74,29 @@ export function Mobile<T = any>(
                           return actions.length === 1 && actions[0].link ? (
                             (() => {
                               const action = actions[0];
-                              const node = action.link ? (
-                                <Link className="app-link" to={action.link}>
-                                  <Icon>
-                                    <MoreHorizOutlined />
-                                  </Icon>
-                                </Link>
-                              ) : (
-                                <Button
-                                  pattern="link"
-                                  icon={
+                              const custom = (props?: React.HTMLAttributes<HTMLElement>) =>
+                                action.link ? (
+                                  <Link {...props} className="app-link" to={action.link}>
                                     <Icon>
                                       <MoreHorizOutlined />
                                     </Icon>
-                                  }
-                                  onClick={action.onclick}
-                                />
-                              );
-                              return action.render ? action.render(node) : node;
+                                  </Link>
+                                ) : (
+                                  <Button
+                                    {...props}
+                                    pattern="link"
+                                    icon={
+                                      <Icon>
+                                        <MoreHorizOutlined />
+                                      </Icon>
+                                    }
+                                    onClick={(e) => {
+                                      props?.onClick?.(e);
+                                      action.onclick?.();
+                                    }}
+                                  />
+                                );
+                              return action.render ? action.render(custom) : custom();
                             })()
                           ) : (
                             <Dropdown
@@ -152,21 +157,31 @@ export function Mobile<T = any>(
                   }
 
                   const getAction = (action: (typeof actions)[0]) => {
-                    const node = action.link ? (
-                      <Card.Action
-                        title="edit"
-                        onClick={() => {
-                          navigate(action.link!);
-                        }}
-                      >
-                        {action.text}
-                      </Card.Action>
-                    ) : (
-                      <Card.Action disabled={action.loading} onClick={action.onclick}>
-                        {action.loading ? <Spinner visible size="1em" alone /> : action.text}
-                      </Card.Action>
-                    );
-                    return action.render ? action.render(node) : node;
+                    const custom = (props?: React.HTMLAttributes<HTMLElement>) =>
+                      action.link ? (
+                        <Card.Action
+                          {...props}
+                          title="edit"
+                          onClick={(e) => {
+                            props?.onClick?.(e);
+                            navigate(action.link!);
+                          }}
+                        >
+                          {action.text}
+                        </Card.Action>
+                      ) : (
+                        <Card.Action
+                          {...props}
+                          disabled={action.loading}
+                          onClick={(e) => {
+                            props?.onClick?.(e);
+                            action.onclick?.();
+                          }}
+                        >
+                          {action.loading ? <Spinner visible size="1em" alone /> : action.text}
+                        </Card.Action>
+                      );
+                    return action.render ? action.render(custom) : custom();
                   };
 
                   return (

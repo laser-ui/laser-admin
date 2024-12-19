@@ -3,6 +3,7 @@ import path from 'node:path';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import react from '@vitejs/plugin-react';
+import sass from 'sass';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
@@ -18,7 +19,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        quietDeps: true,
+        logger: sass.Logger.silent,
       },
     },
   },

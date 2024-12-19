@@ -40,11 +40,11 @@ export interface AppTableProps<T> {
       index: number,
     ) => {
       text: string;
-      onclick?: () => void;
       link?: string;
-      render?: (node: React.ReactElement) => React.ReactNode;
       loading?: boolean;
       hidden?: boolean;
+      render?: (custom: (props: React.HTMLAttributes<HTMLElement>) => React.ReactElement) => React.ReactElement;
+      onclick?: () => void;
     }[];
     width: number | string;
   };
