@@ -1,6 +1,6 @@
 import { StrictMode, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, HashRouter, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Navigate, useLocation } from 'react-router';
 
 import App from './app/App';
 import { HASH } from './app/configs/router';

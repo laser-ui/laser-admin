@@ -6,7 +6,7 @@ import { classNames } from '@laser-ui/utils';
 import ArrowDropDownOutlined from '@material-design-icons/svg/outlined/arrow_drop_down.svg?react';
 import ArrowDropUpOutlined from '@material-design-icons/svg/outlined/arrow_drop_up.svg?react';
 import MoreHorizOutlined from '@material-design-icons/svg/outlined/more_horiz.svg?react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 
 import { getContent, getKey } from './utils';
 import { AppDetailView } from '../detail-view';

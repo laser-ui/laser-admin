@@ -7,7 +7,7 @@ import { useMount } from '@laser-ui/hooks';
 import { isObject, isUndefined } from 'lodash';
 import { useStore } from 'rcl-store';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 
 import { GlobalStore } from './store';
 import { MENU } from '../configs/menu';

@@ -5,7 +5,7 @@ import PersonOutlined from '@material-design-icons/svg/outlined/person.svg?react
 import SettingsOutlined from '@material-design-icons/svg/outlined/settings.svg?react';
 import { useStore } from 'rcl-store';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { AppAccountModal } from './AccountModal';
 import { AppPasswordModal } from './PasswordModal';

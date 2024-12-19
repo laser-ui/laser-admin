@@ -2,7 +2,7 @@ import { useACL } from '@laser-pro/acl';
 import { Alert, Button, Card, Table, Tag } from '@laser-ui/components';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { AppRouteHeader } from '../../../components';
 

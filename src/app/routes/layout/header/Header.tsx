@@ -9,7 +9,7 @@ import LightModeOutlined from '@material-design-icons/svg/outlined/light_mode.sv
 import SearchOutlined from '@material-design-icons/svg/outlined/search.svg?react';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 import { AppNotification } from './notification/Notification';
 import { AppUser } from './user/User';

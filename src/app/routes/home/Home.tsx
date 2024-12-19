@@ -1,5 +1,5 @@
 import { isUndefined } from 'lodash';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
 import { LOGIN_PATH } from '../../configs/router';
 import { useMenu } from '../../core';

@@ -23,7 +23,7 @@ import PersonOutlined from '@material-design-icons/svg/outlined/person.svg?react
 import { isString } from 'lodash';
 import { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router';
 
 import logoBgUrl from '../../../assets/login_bg.png';
 import logoUrl from '../../../assets/logo.png';

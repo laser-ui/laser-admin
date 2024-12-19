@@ -2,7 +2,7 @@ import { useStorage } from '@laser-pro/storage';
 import { useIsomorphicLayoutEffect } from '@laser-ui/hooks';
 import { classNames } from '@laser-ui/utils';
 import { useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router';
 
 import { AppHeader } from './header/Header';
 import { AppSidebar } from './sidebar/Sidebar';

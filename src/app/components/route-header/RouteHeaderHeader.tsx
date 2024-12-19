@@ -6,7 +6,7 @@ import { classNames } from '@laser-ui/utils';
 import ArrowBackOutlined from '@material-design-icons/svg/outlined/arrow_back.svg?react';
 import { has } from 'lodash';
 import { Fragment, use } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 export function AppRouteHeaderHeader(props: AppRouteHeaderHeaderProps): React.ReactElement | null {
   const {

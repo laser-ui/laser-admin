@@ -11,7 +11,7 @@ import ViewDayOutlined from '@material-design-icons/svg/outlined/view_day.svg?re
 import ViewModuleOutlined from '@material-design-icons/svg/outlined/view_module.svg?react';
 import { use, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 import { Mobile } from './Mobile';
 import { PC } from './PC';

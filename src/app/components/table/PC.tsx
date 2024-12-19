@@ -6,7 +6,7 @@ import { classNames } from '@laser-ui/utils';
 import { isUndefined } from 'lodash';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 
 import { getContent, getKey, toCssUnit } from './utils';
 

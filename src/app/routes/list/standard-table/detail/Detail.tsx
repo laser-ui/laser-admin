@@ -6,7 +6,7 @@ import EditOutlined from '@material-design-icons/svg/outlined/edit.svg?react';
 import { isUndefined } from 'lodash';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 import { AppDetailView, AppRouteHeader } from '../../../../components';
 import { useHttp } from '../../../../core';

@@ -1,7 +1,7 @@
 import { Router, useACLGuard, useTokenGuard } from '@laser-pro/router';
 import { Suspense, lazy, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router';
 
 import AppExceptionRoute from './exception/Exception';
 import AppHomeRoute from './home/Home';

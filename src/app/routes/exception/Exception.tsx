@@ -1,6 +1,6 @@
 import { Button } from '@laser-ui/components';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 
 import S403 from './403.svg?react';
 import S404 from './404.svg?react';

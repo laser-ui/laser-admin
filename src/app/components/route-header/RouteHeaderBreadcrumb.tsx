@@ -3,7 +3,7 @@ import type { AppBreadcrumbItem, AppRouteHeaderBreadcrumbProps } from './types';
 import { Breadcrumb } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 export function AppRouteHeaderBreadcrumb(props: AppRouteHeaderBreadcrumbProps): React.ReactElement | null {
   const {
