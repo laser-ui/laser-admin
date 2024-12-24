@@ -1,8 +1,11 @@
 const nx = require('@nx/eslint-plugin');
+const importPlugin = require('eslint-plugin-import');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+const reactHooks = require('eslint-plugin-react-hooks');
 const reactRefresh = require('eslint-plugin-react-refresh');
 
 module.exports = [
+  eslintPluginPrettierRecommended,
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
@@ -11,8 +14,11 @@ module.exports = [
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
-    // Override or add rules here
+    plugins: {
+      import: importPlugin,
+    },
     rules: {
+      'no-unreachable': 'error',
       'import/order': [
         'error',
         {
@@ -36,28 +42,27 @@ module.exports = [
           warnOnUnassignedImports: true,
         },
       ],
-      'no-unreachable': 'error',
     },
   },
   ...nx.configs['flat/react'],
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    // Override or add rules here
-    rules: {},
-  },
-  {
-    files: ['**/*.tsx', '**/*.jsx'],
-    // Override or add rules here
     plugins: {
+      'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
     rules: {
+      'react-hooks/exhaustive-deps': [
+        'warn',
+        {
+          additionalHooks: '(useIsomorphicLayoutEffect)',
+        },
+      ],
       'react-refresh/only-export-components': 'error',
     },
   },
   {
     files: ['**/*.ts', '**/*.tsx'],
-    // Override or add rules here
     rules: {
       '@typescript-eslint/array-type': 'error',
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
