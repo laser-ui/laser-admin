@@ -1,8 +1,8 @@
 const nx = require('@nx/eslint-plugin');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+const reactRefresh = require('eslint-plugin-react-refresh');
 
 module.exports = [
-  eslintPluginPrettierRecommended,
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
@@ -44,6 +44,16 @@ module.exports = [
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     // Override or add rules here
     rules: {},
+  },
+  {
+    files: ['**/*.tsx', '**/*.jsx'],
+    // Override or add rules here
+    plugins: {
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      'react-refresh/only-export-components': 'error',
+    },
   },
   {
     files: ['**/*.ts', '**/*.tsx'],

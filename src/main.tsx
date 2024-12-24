@@ -8,6 +8,7 @@ import App from './app/App';
 import { HASH } from './app/configs/router';
 import { startup } from './startup';
 
+// eslint-disable-next-line react-refresh/only-export-components
 function Main({ path }: { path?: string }) {
   const location = useLocation();
   const mounted = useRef(false);
