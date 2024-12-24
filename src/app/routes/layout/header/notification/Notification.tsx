@@ -72,11 +72,11 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
               center
             />
             <div className={styles['app-notification__actions']}>
-              <Button style={{ flexGrow: 1 }} pattern="link">
+              <Button className="grow" pattern="link">
                 {t('routes.layout.Clear notifications')}
               </Button>
               <Separator style={{ margin: 0 }} vertical />
-              <Button style={{ flexGrow: 1 }} pattern="link">
+              <Button className="grow" pattern="link">
                 {t('routes.layout.See more')}
               </Button>
             </div>
@@ -95,7 +95,7 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
     >
       {(popoverProps) => (
         <button {...props} {...popoverProps} aria-label={t('routes.layout.Notification')}>
-          <div style={{ position: 'relative' }}>
+          <div className="relative">
             <Badge value={num} dot />
             <Icon size={20}>
               <NotificationsOutlined />

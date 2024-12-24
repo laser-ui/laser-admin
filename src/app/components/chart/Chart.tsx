@@ -3,6 +3,7 @@ import type { ECharts } from 'echarts/core';
 
 import { useStorage } from '@laser-pro/storage';
 import { useAsync, useEventCallback, useIsomorphicLayoutEffect, useResize } from '@laser-ui/hooks';
+import { classNames } from '@laser-ui/utils';
 import { BarChart, LineChart, PieChart, ScatterChart } from 'echarts/charts';
 import {
   DataZoomComponent,
@@ -133,10 +134,7 @@ export function AppChart(props: AppChartProps): React.ReactElement | null {
           containerRef.current = null;
         };
       }}
-      style={{
-        ...restProps.style,
-        position: restProps.style?.position ?? 'relative',
-      }}
+      className={classNames(restProps.className, 'relative')}
     >
       <div
         ref={(instance) => {
@@ -145,7 +143,7 @@ export function AppChart(props: AppChartProps): React.ReactElement | null {
             elRef.current = null;
           };
         }}
-        style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
+        className="absolute inset-0"
       />
     </div>
   );

@@ -170,7 +170,7 @@ export default function StandardTable() {
                   label: 'Model',
                   node: (
                     <Select
-                      style={{ width: '16em', maxWidth: '100%' }}
+                      className="w-64 max-w-full"
                       list={modelList ?? []}
                       model={query.model}
                       placeholder="Model"

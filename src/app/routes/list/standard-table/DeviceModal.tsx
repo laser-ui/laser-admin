@@ -89,13 +89,13 @@ export function AppDeviceModal(props: AppDeviceModalProps): React.ReactElement |
       <Form vertical>
         <FormGroupContext.Provider value={form}>
           <Form.Item formControls={{ name: 'Please enter name!' }} label="Name">
-            {({ name }) => <Input formControl={name} style={{ width: '100%' }} placeholder="Name" />}
+            {({ name }) => <Input formControl={name} className="w-full" placeholder="Name" />}
           </Form.Item>
           <Form.Item formControls={{ model: 'Please select model!' }} label="Model">
             {({ model }) => (
               <Select
                 formControl={model}
-                style={{ width: '100%' }}
+                className="w-full"
                 list={modelList ?? []}
                 placeholder="Model"
                 loading={isUndefined(modelList)}

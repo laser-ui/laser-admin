@@ -54,7 +54,7 @@ export function AppPasswordModal(props: ModalProps): React.ReactElement | null {
       <Form vertical>
         <FormGroupContext.Provider value={form}>
           <Form.Item formControls={{ password: t('routes.layout.Please enter a new password') }} label={t('routes.layout.New password')}>
-            {({ password }) => <Input formControl={password} style={{ width: '100%' }} />}
+            {({ password }) => <Input formControl={password} className="w-full" />}
           </Form.Item>
         </FormGroupContext.Provider>
       </Form>

@@ -110,7 +110,7 @@ export default function Login(): React.ReactElement | null {
                         {({ username }) => (
                           <Input
                             formControl={username}
-                            style={{ width: '100%' }}
+                            className="w-full"
                             placeholder={t('routes.login.Username')}
                             prefix={
                               <Icon>
@@ -124,7 +124,7 @@ export default function Login(): React.ReactElement | null {
                         {({ password }) => (
                           <Input
                             formControl={password}
-                            style={{ width: '100%' }}
+                            className="w-full"
                             placeholder={t('routes.login.Password')}
                             type="password"
                             prefix={
@@ -135,7 +135,7 @@ export default function Login(): React.ReactElement | null {
                           />
                         )}
                       </Form.Item>
-                      <div className="mb-2 flex content-between items-center" style={{ width: '100%' }}>
+                      <div className="mb-2 flex w-full content-between items-center">
                         <Checkbox
                           model={rememberStorage.value === '1'}
                           onModelChange={(checked) => {
@@ -144,9 +144,7 @@ export default function Login(): React.ReactElement | null {
                         >
                           {t('routes.login.Remember me')}
                         </Checkbox>
-                        <a className="app-link" style={{ marginLeft: 'auto' }}>
-                          {t('routes.login.Forgot password')}
-                        </a>
+                        <a className="app-link ml-auto">{t('routes.login.Forgot password')}</a>
                       </div>
                       <Form.Item>
                         <Button type="submit" loading={loginloading} disabled={!accountForm.valid} block>

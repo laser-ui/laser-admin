@@ -168,7 +168,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                     />
                     <div className="app-table__col-config-actions">
                       <Button
-                        style={{ flexGrow: 1 }}
+                        className="grow"
                         pattern="link"
                         onClick={() => {
                           storage.set({ ...storage.value, sorts: defaultColSorts, hiddens: Array.from(defaultHiddens) });
@@ -178,7 +178,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                       </Button>
                       <Separator style={{ margin: 0 }} vertical />
                       <Button
-                        style={{ flexGrow: 1 }}
+                        className="grow"
                         pattern="link"
                         onClick={() => {
                           setSettingsVisible(false);

@@ -84,7 +84,7 @@ export function AppAccountModal(props: ModalProps): React.ReactElement | null {
       <Form vertical>
         <FormGroupContext.Provider value={form}>
           <Form.Item formControls={{ name: t('routes.layout.Please enter a name') }} label={t('routes.layout.Name')}>
-            {({ name }) => <Input formControl={name} style={{ width: '100%' }} />}
+            {({ name }) => <Input formControl={name} className="w-full" />}
           </Form.Item>
           <Form.Item formControls={{ avatar: '' }} label={t('Avatar')}>
             {({ avatar }) => (
