@@ -51,7 +51,7 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
                 title: 'Title',
                 panel:
                   appNotifications[index].length === 0 ? (
-                    <Empty className="mb-3" />
+                    <Empty className="mb-5" />
                   ) : (
                     <AppList
                       list={(appNotifications[index] as { message: string; read: boolean }[]).map((notification, index) => ({

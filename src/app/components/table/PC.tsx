@@ -164,7 +164,7 @@ export function PC<T = any>(
                     {tds.map((td) => td(data, index))}
                     {actionOpts && (
                       <Table.Td width={actionOpts.width} fixed={{ top: 0, right: 0 }}>
-                        <div className="d-flex">
+                        <div className="flex">
                           {(() => {
                             const actions = actionOpts.actions(data, index).filter((action) => !action.hidden);
                             const getAction = (action: (typeof actions)[0]) => {

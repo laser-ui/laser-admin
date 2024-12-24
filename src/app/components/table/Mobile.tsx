@@ -56,7 +56,7 @@ export function Mobile<T = any>(
           const list = detailView(data, index);
 
           return (
-            <Card key={id} className="mb-3">
+            <Card key={id} className="mb-4">
               {(titleCol || selectable) && (
                 <Card.Header
                   styleOverrides={{
@@ -143,7 +143,7 @@ export function Mobile<T = any>(
                 if (list.length > 0) {
                   return (
                     <Card.Content styleOverrides={{ card__content: { style: { padding: size } } }}>
-                      <AppDetailView list={list} col={12} gutter={layout === 'default' ? 3 : layout === 'middle' ? 2 : 1} vertical />
+                      <AppDetailView list={list} col={12} gutter={layout === 'default' ? 4 : layout === 'middle' ? 2 : 1} vertical />
                     </Card.Content>
                   );
                 }

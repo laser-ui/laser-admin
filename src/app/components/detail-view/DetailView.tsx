@@ -8,7 +8,7 @@ import { useRef } from 'react';
 export function AppDetailView(props: AppDetailViewProps): React.ReactElement | null {
   const {
     list,
-    col: _col = { xs: 12, md: 6, lg: 4, xxl: 3 },
+    col: _col = { xs: 12, md: 6, lg: 4, '2xl': 3 },
     gutter,
     labelAlign = 'left',
     labelWidth = 'auto',
@@ -64,9 +64,13 @@ export function AppDetailView(props: AppDetailViewProps): React.ReactElement | n
       }}
       className={classNames(restProps.className, 'app-detail-view', 'row', {
         'app-detail-view--vertical': vertical,
-        [`gx-${gutterX}`]: gutterX,
-        [`gy-${gutterY}`]: gutterY,
       })}
+      style={
+        Object.assign(
+          isNumber(gutterX) ? { '--gutter-x': gutterX * 0.25 + 'rem' } : {},
+          isNumber(gutterY) ? { '--gutter-y': gutterY * 0.25 + 'rem' } : {},
+        ) as any
+      }
     >
       {list.map(({ label, content: _content, isEmpty: _isEmpty, center }, index) => {
         const isEmpty = isUndefined(_isEmpty)

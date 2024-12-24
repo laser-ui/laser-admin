@@ -41,4 +41,16 @@
     font-size: 0.775em;
     color: var(--#{variables.$prefix}color-text-sub);
   }
+
+  @include mixins.e(expand) {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  @include mixins.e(expand-text) {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
 }

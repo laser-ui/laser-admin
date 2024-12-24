@@ -21,15 +21,16 @@ export default function ECharts() {
         <AppRouteHeader.Header />
       </AppRouteHeader>
       <div className={styles['app-echarts']}>
-        <div className="row g-2">
+        <div className="row g-4">
           {[lineOptions, stackedLineOptions, barOptions, stackedBarOptions, pieOptions, nightingaleOptions, scatterOptions].map(
             (option, index) => (
-              <div key={index} className="col-12 col-xxl-6">
+              <div key={index} className="col-12 col-xl-6">
                 <Card>
                   <Card.Content>
                     <AppChart
                       ref={(instance) => {
                         instance!.setOption(option);
+                        // eslint-disable-next-line @typescript-eslint/no-empty-function
                         return () => {};
                       }}
                       style={{ height: 320 }}

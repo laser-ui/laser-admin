@@ -94,7 +94,7 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): R
             text={appUser.name[0].toUpperCase()}
             size={28}
           />
-          <span className="d-none d-md-block">{appUser.name}</span>
+          <span className="hidden md:block">{appUser.name}</span>
         </button>
       )}
     </Dropdown>

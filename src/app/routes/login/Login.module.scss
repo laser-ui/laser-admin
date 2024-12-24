@@ -9,9 +9,14 @@
   padding: 10vh 20px 20px;
 
   @include mixins.e(bg) {
+    display: none;
     width: 400px;
     height: 400px;
     margin-right: 100px;
+
+    @include mixins.media-breakpoint-up(lg) {
+      display: inline;
+    }
   }
 
   @include mixins.e(login-container) {

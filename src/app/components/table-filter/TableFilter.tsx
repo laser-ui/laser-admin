@@ -66,17 +66,16 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
             {t('Reset')}
           </Button>
           {filterList && (
-            <div className="d-flex align-items-center">
+            <div className="app-table-filter__expand">
               <Button
-                className="me-2"
                 pattern="link"
                 onClick={() => {
                   setShowAdvancedSearch((prevShowAdvancedSearch) => !prevShowAdvancedSearch);
                 }}
               >
-                <div className="d-flex align-items-center">
-                  {t('components.table-filter.Advanced search')}
-                  <Icon className="ms-1" size={12} rotate={showAdvancedSearch ? 180 : 0}>
+                <div className="app-table-filter__expand-text">
+                  <span>{t('components.table-filter.Advanced search')}</span>
+                  <Icon size={12} rotate={showAdvancedSearch ? 180 : 0}>
                     <ExpandMoreOutlined />
                   </Icon>
                 </div>

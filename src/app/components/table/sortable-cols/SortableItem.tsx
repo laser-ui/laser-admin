@@ -20,7 +20,8 @@ interface Context {
 const SortableItemContext = createContext<Context>({
   attributes: {},
   listeners: undefined,
-  ref() {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  ref: () => {},
 });
 
 export function SortableItem(props: SortableItemProps) {

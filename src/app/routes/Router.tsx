@@ -3,11 +3,11 @@ import { Suspense, lazy, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useLocation } from 'react-router';
 
+import { AppFCPLoader } from '../components';
 import AppExceptionRoute from './exception/Exception';
 import AppHomeRoute from './home/Home';
 import AppLayout from './layout/Layout';
 import AppLoginRoute from './login/Login';
-import { AppFCPLoader } from '../components';
 import { ROUTES_ACL } from '../configs/acl';
 import { TITLE_OPTIONS } from '../configs/app';
 import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';

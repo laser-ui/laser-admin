@@ -1,12 +1,12 @@
-import { useMount } from '@laser-ui/hooks';
+import { useIsomorphicLayoutEffect } from '@laser-ui/hooks';
 import { useCallback, useSyncExternalStore } from 'react';
 
 const breakpoints = {
-  sm: 576,
+  sm: 640,
   md: 768,
-  lg: 992,
-  xl: 1200,
-  xxl: 1400,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536,
 };
 
 let mediaQueryList = {
@@ -15,14 +15,14 @@ let mediaQueryList = {
     md: false,
     lg: false,
     xl: false,
-    xxl: false,
+    '2xl': false,
   },
   down: {
     sm: true,
     md: true,
     lg: true,
     xl: true,
-    xxl: true,
+    '2xl': true,
   },
 };
 
@@ -44,6 +44,7 @@ function emitChange() {
 
 let createMediaQueryList = () => {
   if (window) {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     createMediaQueryList = () => {};
     Object.entries(breakpoints).forEach(([breakpoint, width]) => {
       ['up', 'down'].forEach((key) => {
@@ -64,9 +65,9 @@ createMediaQueryList();
 export function useMatchMedia() {
   const mediaQueryList = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 
-  useMount(() => {
+  useIsomorphicLayoutEffect(() => {
     createMediaQueryList();
-  });
+  }, []);
 
   const mediaBreakpointUp = useCallback(
     (breakpoint: keyof typeof breakpoints) => {

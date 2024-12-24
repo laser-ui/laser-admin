@@ -32,8 +32,13 @@
   }
 
   @include mixins.e(logo-title-wrapper) {
+    display: none;
     overflow: hidden;
     transition: width var(--#{variables.$prefix}animation-duration-base) linear;
+
+    @include mixins.media-breakpoint-up(md) {
+      display: block;
+    }
   }
 
   @include mixins.e(logo-title) {

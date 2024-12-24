@@ -17,7 +17,6 @@ import {
   Validators,
   useForm,
 } from '@laser-ui/components';
-import { classNames } from '@laser-ui/utils';
 import LockOutlined from '@material-design-icons/svg/outlined/lock.svg?react';
 import PersonOutlined from '@material-design-icons/svg/outlined/person.svg?react';
 import { isString } from 'lodash';
@@ -89,7 +88,7 @@ export default function Login(): React.ReactElement | null {
     <div className={styles['app-login']}>
       <AppLanguage className={styles['app-login__lang']} />
       <div>
-        <img className={classNames(styles['app-login__bg'], 'd-none d-lg-inline')} src={logoBgUrl} alt="bg" />
+        <img className={styles['app-login__bg']} src={logoBgUrl} alt="bg" />
         <div className={styles['app-login__login-container']}>
           <div className={styles['app-login__title-container']}>
             <img className={styles['app-login__logo']} src={logoUrl} alt="Logo" />
@@ -136,7 +135,7 @@ export default function Login(): React.ReactElement | null {
                           />
                         )}
                       </Form.Item>
-                      <div className="d-flex align-items-center justify-content-between mb-2" style={{ width: '100%' }}>
+                      <div className="mb-2 flex content-between items-center" style={{ width: '100%' }}>
                         <Checkbox
                           model={rememberStorage.value === '1'}
                           onModelChange={(checked) => {

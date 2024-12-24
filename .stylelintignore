@@ -1,4 +1,4 @@
-node_modules
-dist
-dist-electron
-release
+/dist
+/coverage
+/.nx/cache
+/.nx/workspace-data

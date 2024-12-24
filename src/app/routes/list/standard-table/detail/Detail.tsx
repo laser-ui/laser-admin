@@ -80,7 +80,7 @@ export default function Detail() {
       </AppRouteHeader>
       <div className={styles['app-detail']}>
         {isUndefined(device) ? (
-          <div className="d-flex justify-content-center">
+          <div className="flex justify-center">
             <Spinner visible alone></Spinner>
           </div>
         ) : (
@@ -94,7 +94,7 @@ export default function Detail() {
                     label: `Label ${n === 0 ? 'First' : n}`,
                     content: n === 1 ? null : n === 3 ? 'This is a long long long long long long long long text' : `Content ${n}`,
                   }))}
-                  gutter={3}
+                  gutter={4}
                 />
                 <Separator />
                 <div className="app-title mb-3">Title 2</div>
@@ -103,12 +103,12 @@ export default function Detail() {
                     label: `Label ${n}`,
                     content: n === 1 ? null : n === 3 ? 'This is a long long long long long long long long text' : `Content ${n}`,
                   }))}
-                  gutter={3}
+                  gutter={4}
                   vertical
                 />
               </Card.Content>
             </Card>
-            <Card className="mt-3">
+            <Card className="mt-4">
               <Card.Header>Title</Card.Header>
               <Card.Content>
                 <Table style={{ overflow: 'auto hidden' }}>

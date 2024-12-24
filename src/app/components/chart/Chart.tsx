@@ -57,6 +57,7 @@ export function AppChart(props: AppChartProps): React.ReactElement | null {
   const elRef = useRef<HTMLDivElement>(null);
 
   const optionSaved = useRef<any>(undefined);
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   const clearTid = useRef(() => {});
 
   const themeStorage = useStorage(...STORAGE.theme);
@@ -100,6 +101,7 @@ export function AppChart(props: AppChartProps): React.ReactElement | null {
         cb();
       } else {
         clearTid.current = async.setTimeout(() => {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           clearTid.current = () => {};
           cb();
         }, autoResizeDebounce);

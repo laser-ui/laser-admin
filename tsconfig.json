@@ -1,31 +1,48 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "resolveJsonModule": true,
-    "newLine": "LF",
-    "isolatedModules": true,
-    "useDefineForClassFields": true,
+    //Type Checking
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": true,
     "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "disableSizeLimit": true,
-    "allowJs": false,
+
+    // Modules
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "paths": {},
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "types": ["vite/client", "vitest"],
+
+    // Emit
+    "declaration": false,
+    "importHelpers": true,
+    "newLine": "LF",
+    "sourceMap": true,
+
+    // Language and Environment
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "jsx": "react-jsx",
-    "types": ["vite/client", "vitest"]
+    "lib": ["es2020", "dom"],
+    "target": "es2015",
+    "useDefineForClassFields": true,
+
+    // Completeness
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+
+    // JavaScript Support
+    "allowJs": false,
+
+    // Editor Support
+    "disableSizeLimit": true,
+
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true
   },
   "files": [],
   "include": [],

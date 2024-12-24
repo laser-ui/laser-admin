@@ -136,7 +136,7 @@ export default function StandardTable() {
         />
       </AppRouteHeader>
       <div className={styles['app-standard-table']}>
-        <Card className="mb-3">
+        <Card className="mb-4">
           <Card.Content>
             <AppTableFilter
               filterList={[

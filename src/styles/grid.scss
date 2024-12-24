@@ -1,0 +1,115 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables';
+@use 'mixins';
+
+.row {
+  --gutter-x: #{variables.$grid-gutter-width};
+  --gutter-y: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--gutter-y));
+  margin-right: calc(-0.5 * var(--gutter-x));
+  margin-left: calc(-0.5 * var(--gutter-x));
+
+  & > * {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--gutter-x) * 0.5);
+    padding-left: calc(var(--gutter-x) * 0.5);
+    margin-top: var(--gutter-y);
+  }
+}
+
+@mixin make-col($size: false, $columns: variables.$grid-columns) {
+  @if $size {
+    flex: 0 0 auto;
+    width: math.percentage(math.div($size, $columns));
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@mixin make-col-offset($size, $columns: variables.$grid-columns) {
+  $num: math.div($size, $columns);
+
+  margin-left: if($num == 0, 0, math.percentage($num));
+}
+
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: math.percentage(math.div(1, $count));
+  }
+}
+
+@mixin make-grid-columns(
+  $columns: variables.$grid-columns,
+  $gutter: variables.$grid-gutter-width,
+  $breakpoints: variables.$grid-breakpoints
+) {
+  @each $breakpoint in map.keys($breakpoints) {
+    $infix: mixins.breakpoint-infix($breakpoint, $breakpoints);
+
+    @include mixins.media-breakpoint-up($breakpoint, $breakpoints) {
+      .col#{$infix} {
+        flex: 1 0 0;
+      }
+
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+
+      @if variables.$grid-row-columns > 0 {
+        @for $i from 1 through variables.$grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+      }
+
+      .col#{$infix}-auto {
+        @include make-col-auto();
+      }
+
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        @for $i from 0 through ($columns - 1) {
+          @if not($infix == '' and $i == 0) {
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
+        }
+      }
+
+      @each $key, $value in (0: 0, 1: 0.25rem, 2: 0.5rem, 3: 0.75rem, 4: 1rem, 6: 1.5rem, 12: 3rem) {
+        .g#{$infix}-#{$key},
+        .gx#{$infix}-#{$key} {
+          --gutter-x: #{$value};
+        }
+
+        .g#{$infix}-#{$key},
+        .gy#{$infix}-#{$key} {
+          --gutter-y: #{$value};
+        }
+      }
+    }
+  }
+}
+
+@include make-grid-columns();

@@ -55,7 +55,7 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
           <img src={logoUrl} alt="Logo" width="36" height="36" />
         </div>
         <div
-          className={classNames(styles['app-header__logo-title-wrapper'], 'd-none d-md-block')}
+          className={styles['app-header__logo-title-wrapper']}
           style={{ width: layoutStorage.value.menu.mode === 'vertical' ? sidebarWidth - 64 : 0 }}
         >
           <div
@@ -107,7 +107,7 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
       >
         <Icon size={20}>{themeStorage.value === 'light' ? <DarkModeOutlined /> : <LightModeOutlined />}</Icon>
       </button>
-      <button className={classNames(styles['app-header__button'], 'ms-auto')} aria-label={t('routes.layout.Search')}>
+      <button className={classNames(styles['app-header__button'], '!ml-auto')} aria-label={t('routes.layout.Search')}>
         <Icon size={20}>
           <SearchOutlined />
         </Icon>
