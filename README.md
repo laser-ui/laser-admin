@@ -22,8 +22,8 @@ English | [简体中文](README.zh-CN.md)
 - Route cache
 - Customize Theme
 - International
-- Sass preprocessor & CSS variable
+- Tailwind & Sass preprocessor & CSS variable
 
 ## License
 
-[![gitHub license](https://img.shields.io/github/license/laser-admin/laser-admin?style=flat-square)](/LICENSE)
+[![gitHub license](https://img.shields.io/github/license/laser-ui/laser-admin?style=flat-square)](/LICENSE)

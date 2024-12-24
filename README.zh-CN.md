@@ -22,8 +22,8 @@
 - 响应式布局
 - 自定义主题
 - 国际化
-- Sass 预处理器 & CSS 变量
+- Tailwind & Sass 预处理器 & CSS 变量
 
 ## 授权协议
 
-[![gitHub license](https://img.shields.io/github/license/laser-admin/laser-admin?style=flat-square)](/LICENSE)
+[![gitHub license](https://img.shields.io/github/license/laser-ui/laser-admin?style=flat-square)](/LICENSE)
