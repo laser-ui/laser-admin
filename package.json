@@ -8,7 +8,6 @@
     "lint": "nx lint",
     "lint:style": "stylelint **/*.{css,scss,html,md}",
     "start": "nx serve",
-    "test": "nx test",
     "util:sort-package-json": "sort-package-json"
   },
   "dependencies": {
