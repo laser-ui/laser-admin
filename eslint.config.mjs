@@ -1,10 +1,14 @@
-const nx = require('@nx/eslint-plugin');
-const importPlugin = require('eslint-plugin-import');
-const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
-const reactHooks = require('eslint-plugin-react-hooks');
-const reactRefresh = require('eslint-plugin-react-refresh');
+import { createRequire } from 'module';
 
-module.exports = [
+import importPlugin from 'eslint-plugin-import';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import reactRefreshPlugin from 'eslint-plugin-react-refresh';
+
+const require = createRequire(import.meta.url);
+const nx = require('@nx/eslint-plugin');
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+
+export default [
   eslintPluginPrettierRecommended,
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
@@ -19,6 +23,7 @@ module.exports = [
     },
     rules: {
       'no-unreachable': 'error',
+      'no-empty': ['error', { allowEmptyCatch: true }],
       'import/order': [
         'error',
         {
@@ -45,11 +50,11 @@ module.exports = [
     },
   },
   ...nx.configs['flat/react'],
+  reactRefreshPlugin.configs.recommended,
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      'react-hooks': reactHooksPlugin,
     },
     rules: {
       'react-hooks/exhaustive-deps': [
@@ -58,7 +63,6 @@ module.exports = [
           additionalHooks: '(useIsomorphicLayoutEffect)',
         },
       ],
-      'react-refresh/only-export-components': 'error',
     },
   },
   {
@@ -80,6 +84,7 @@ module.exports = [
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
+          caughtErrors: 'none',
           ignoreRestSiblings: false,
         },
       ],
