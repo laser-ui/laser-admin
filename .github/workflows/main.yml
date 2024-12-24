@@ -14,10 +14,10 @@ jobs:
       - uses: nrwl/nx-set-shas@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22'
       - uses: pnpm/action-setup@v2
         with:
-          version: '8'
+          version: '9'
           run_install: false
       - run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
       - uses: actions/cache@v3
@@ -37,10 +37,10 @@ jobs:
       - uses: nrwl/nx-set-shas@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22'
       - uses: pnpm/action-setup@v2
         with:
-          version: '8'
+          version: '9'
           run_install: false
       - run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
       - uses: actions/cache@v3
@@ -62,10 +62,10 @@ jobs:
       - uses: nrwl/nx-set-shas@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22'
       - uses: pnpm/action-setup@v2
         with:
-          version: '8'
+          version: '9'
           run_install: false
       - run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
       - uses: actions/cache@v3
