@@ -52,7 +52,7 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
     <header className={styles['app-header']}>
       <Link className={styles['app-header__logo-container']} to="/">
         <div className={styles['app-header__logo']}>
-          <img src={logoUrl} alt="Logo" width="36" height="36" />
+          <img style={{ width: 36, height: 36 }} src={logoUrl} alt="Logo" />
         </div>
         <div
           className={styles['app-header__logo-title-wrapper']}
