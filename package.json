@@ -4,10 +4,10 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "start": "nx serve",
     "build": "nx build",
     "lint": "nx lint",
     "lint:style": "stylelint **/*.{css,scss,html,md}",
-    "start": "nx serve",
     "util:sort-package-json": "sort-package-json"
   },
   "dependencies": {
@@ -19,10 +19,10 @@
     "@laser-pro/http": "^1.0.2",
     "@laser-pro/router": "^1.0.2",
     "@laser-pro/storage": "^1.0.2",
-    "@laser-ui/components": "^2.0.2",
-    "@laser-ui/hooks": "^2.0.2",
-    "@laser-ui/themes": "^2.0.2",
-    "@laser-ui/utils": "^2.0.2",
+    "@laser-ui/components": "^2.0.3",
+    "@laser-ui/hooks": "^2.0.3",
+    "@laser-ui/themes": "^2.0.3",
+    "@laser-ui/utils": "^2.0.3",
     "@material-design-icons/svg": "^0.14.13",
     "axios": "^1.7.9",
     "dayjs": "^1.11.13",
