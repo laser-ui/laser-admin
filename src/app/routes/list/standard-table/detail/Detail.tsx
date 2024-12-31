@@ -94,7 +94,7 @@ export default function Detail() {
                     label: `Label ${n === 0 ? 'First' : n}`,
                     content: n === 1 ? null : n === 3 ? 'This is a long long long long long long long long text' : `Content ${n}`,
                   }))}
-                  gutter={4}
+                  gutter={3}
                 />
                 <Separator />
                 <div className="app-title mb-3">Title 2</div>
@@ -103,7 +103,7 @@ export default function Detail() {
                     label: `Label ${n}`,
                     content: n === 1 ? null : n === 3 ? 'This is a long long long long long long long long text' : `Content ${n}`,
                   }))}
-                  gutter={4}
+                  gutter={3}
                   vertical
                 />
               </Card.Content>
