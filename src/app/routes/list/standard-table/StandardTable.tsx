@@ -47,10 +47,10 @@ export default function StandardTable() {
 
   const [modelList, setModelList] = useState<SelectItem<string>[]>();
 
-  const requestTable = (updateParams?: Partial<QueryParams>, options?: { clear?: boolean }) => {
+  const requestTable = (updateParams?: Partial<QueryParams>, options?: { replace?: boolean }) => {
     let params = query;
     if (updateParams) {
-      params = updateQuery(updateParams, { clear: options?.clear, navigateOptions: {} });
+      params = updateQuery(updateParams, { replace: options?.replace, navigateOptions: {} });
     }
     setTable((draft) => {
       draft.loading = true;
@@ -73,7 +73,7 @@ export default function StandardTable() {
       method: 'get',
       params: reqParams,
     }).then((res) => {
-      updateQuery({ page: res.metadata.page }, { navigateOptions: {} });
+      updateQuery({ page: res.metadata.page });
       setTable({
         loading: false,
         list: res.resources,
@@ -84,7 +84,7 @@ export default function StandardTable() {
   };
 
   useMount(() => {
-    requestTable();
+    requestTable({});
 
     http<AppStandardResponse.List<AppDocs.DeviceModel>>({
       url: '/device/model',
@@ -194,7 +194,11 @@ export default function StandardTable() {
                 requestTable({ page: 1 });
               }}
               onResetClick={(change) => {
-                (change ? requestTable : updateQuery)(pick(query, ['pageSize']), { clear: true });
+                if (change) {
+                  requestTable({ page: 1, pageSize: query.pageSize }, { replace: true });
+                } else {
+                  updateQuery(pick(query, ['page', 'pageSize']), { replace: true });
+                }
               }}
             />
           </Card.Content>
