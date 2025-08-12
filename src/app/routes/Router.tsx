@@ -1,7 +1,8 @@
 import { Router, useACLGuard, useTokenGuard } from '@laser-pro/router';
-import { Suspense, lazy, memo } from 'react';
+import { isFunction } from 'lodash';
+import { Fragment, Suspense, lazy, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Navigate, useLocation } from 'react-router';
+import { Navigate, useLocation, useParams } from 'react-router';
 
 import { AppFCPLoader } from '../components';
 import AppExceptionRoute from './exception/Exception';
@@ -13,31 +14,42 @@ import { TITLE_OPTIONS } from '../configs/app';
 import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
 import { TOKEN } from '../core';
 
+function createRoute(element: any, rerender?: () => React.Key): React.ReactElement {
+  const useRerender: () => React.Key | undefined = rerender ? rerender : () => undefined;
+  const Component = isFunction(element) ? lazy(element) : null;
+  const Route = () => {
+    const key = useRerender();
+    return (
+      <Fragment key={key}>
+        {Component ? (
+          <Suspense fallback={<AppFCPLoader />}>
+            <Component />
+          </Suspense>
+        ) : (
+          element
+        )}
+      </Fragment>
+    );
+  };
+  return <Route />;
+}
 const ROUTES = {
-  '/dashboard/echarts': lazy(() => import('./dashboard/echarts/ECharts')),
-  '/list/standard-table': lazy(() => import('./list/standard-table/StandardTable')),
-  '/list/standard-table/:id': lazy(() => import('./list/standard-table/detail/Detail')),
-  '/test/acl': lazy(() => import('./test/acl/ACL')),
-  '/test/http': lazy(() => import('./test/http/Http')),
+  [LOGIN_PATH]: createRoute(<AppLoginRoute />),
+  '/': createRoute(<AppHomeRoute />),
+  '/dashboard/echarts': createRoute(() => import('./dashboard/echarts/ECharts')),
+  '/list/standard-table': createRoute(() => import('./list/standard-table/StandardTable')),
+  '/list/standard-table/:id': createRoute(
+    () => import('./list/standard-table/detail/Detail'),
+    () => {
+      return useParams()['id']!;
+    },
+  ),
+  '/test/acl': createRoute(() => import('./test/acl/ACL')),
+  '/test/http': createRoute(() => import('./test/http/Http')),
+  '/exception/:status': createRoute(<AppExceptionRoute />, () => {
+    return useParams()['status']!;
+  }),
 };
-
-interface AppRouteProps {
-  path?: keyof typeof ROUTES;
-  element?: React.FC;
-}
-function AppRoute(props: AppRouteProps) {
-  const { path, element: FC } = props;
-
-  const Route = ROUTES[path!];
-
-  return FC ? (
-    <FC />
-  ) : (
-    <Suspense fallback={<AppFCPLoader />}>
-      <Route />
-    </Suspense>
-  );
-}
 
 const AppRouter = memo(() => {
   const location = useLocation();
@@ -51,14 +63,14 @@ const AppRouter = memo(() => {
       routes={[
         {
           path: LOGIN_PATH,
-          element: <AppRoute element={AppLoginRoute} />,
+          element: ROUTES[LOGIN_PATH],
           data: {
             title: t('Login', { ns: 'title' }),
           },
         },
         {
           path: '/',
-          element: <AppRoute element={AppHomeRoute} />,
+          element: ROUTES['/'],
           data: {
             canActivate: [tokenGuard],
           },
@@ -79,7 +91,7 @@ const AppRouter = memo(() => {
                 },
                 {
                   path: 'echarts',
-                  element: <AppRoute path="/dashboard/echarts" />,
+                  element: ROUTES['/dashboard/echarts'],
                   data: {
                     title: t('ECharts', { ns: 'title' }),
                     acl: ROUTES_ACL['/dashboard/echarts'],
@@ -97,7 +109,7 @@ const AppRouter = memo(() => {
                 },
                 {
                   path: 'standard-table',
-                  element: <AppRoute path="/list/standard-table" />,
+                  element: ROUTES['/list/standard-table'],
                   data: {
                     title: t('Standard table', { ns: 'title' }),
                     acl: ROUTES_ACL['/list/standard-table'],
@@ -106,7 +118,7 @@ const AppRouter = memo(() => {
                 },
                 {
                   path: 'standard-table/:id',
-                  element: <AppRoute path="/list/standard-table/:id" />,
+                  element: ROUTES['/list/standard-table/:id'],
                   data: {
                     title: t('Device detail', { ns: 'title' }),
                     acl: ROUTES_ACL['/list/standard-table/:id'],
@@ -124,7 +136,7 @@ const AppRouter = memo(() => {
                 },
                 {
                   path: 'acl',
-                  element: <AppRoute path="/test/acl" />,
+                  element: ROUTES['/test/acl'],
                   data: {
                     title: t('ACL', { ns: 'title' }),
                     acl: ROUTES_ACL['/test/acl'],
@@ -133,7 +145,7 @@ const AppRouter = memo(() => {
                 },
                 {
                   path: 'http',
-                  element: <AppRoute path="/test/http" />,
+                  element: ROUTES['/test/http'],
                   data: {
                     title: t('Http', { ns: 'title' }),
                     acl: ROUTES_ACL['/test/http'],
@@ -146,7 +158,7 @@ const AppRouter = memo(() => {
         },
         {
           path: '/exception/:status',
-          element: <AppRoute element={AppExceptionRoute} />,
+          element: ROUTES['/exception/:status'],
           data: (params) => ({
             title: params.status,
           }),
