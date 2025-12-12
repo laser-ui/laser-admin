@@ -56,8 +56,8 @@ export function mock(config: AxiosRequestConfig) {
         break;
       }
 
-      case match('/api/v1/notification'): {
-        response(DATA.notification, 500);
+      case match('/api/v1/notifications'): {
+        response(DATA.notifications, 500);
         break;
       }
 
@@ -66,49 +66,49 @@ export function mock(config: AxiosRequestConfig) {
         break;
       }
 
-      case match('/api/v1/device/model'): {
-        response({ resources: [...DATA.deviceModelList].sort(() => -1) }, 500);
+      case match('/api/v1/device-models'): {
+        response({ resources: [...DATA.deviceModels].sort(() => -1) }, 500);
         break;
       }
 
-      case match('/api/v1/device'): {
+      case match('/api/v1/devices'): {
         if (config.method === 'get') {
-          const page = Math.min(Math.max(1, Math.ceil(DATA.deviceList.length / config.params.page_size)), config.params.page);
+          const page = Math.min(Math.max(1, Math.ceil(DATA.devices.length / config.params.page_size)), config.params.page);
           response(
             {
-              resources: [...DATA.deviceList].sort(() => -1).slice((page - 1) * config.params.page_size, page * config.params.page_size),
+              resources: [...DATA.devices].sort(() => -1).slice((page - 1) * config.params.page_size, page * config.params.page_size),
               metadata: {
                 page,
                 page_size: config.params.page_size,
-                total_size: DATA.deviceList.length,
+                total_size: DATA.devices.length,
               },
             },
             500,
           );
         } else {
-          DATA.deviceList.push({
-            id: (nth(DATA.deviceList, -1)?.id ?? 0) + 1,
+          const device = {
+            id: (nth(DATA.devices, -1)?.id ?? 0) + 1,
             create_time: Date.now() + 60 * 60 * 1000,
             update_time: Date.now() + 60 * 60 * 1000,
             price: ~~(Math.random() * 1000),
             status: ~~(Math.random() * 9) % 3,
             ...config.data,
-          });
-          response({ success: true }, 500);
+          };
+          DATA.devices.push(device);
+          response({ success: true, data: device }, 500);
         }
         break;
       }
 
-      case match(/\/api\/v1\/device\/[0-9]+/): {
-        const index = DATA.deviceList.findIndex((device) => device.id === Number(config.url!.match(/[0-9]+$/)![0]));
+      case match(/\/api\/v1\/devices\/[0-9]+/): {
+        const index = DATA.devices.findIndex((device) => device.id === Number(config.url!.match(/[0-9]+$/)![0]));
         if (config.method === 'get') {
-          response(DATA.deviceList[index], 500);
+          response(DATA.devices[index], 500);
         } else if (config.method === 'patch') {
-          DATA.deviceList[index] = { ...DATA.deviceList[index], ...config.data };
-          response({ success: true }, 500);
+          DATA.devices[index] = { ...DATA.devices[index], ...config.data };
+          response({ success: true, data: DATA.devices[index] }, 500);
         } else {
-          DATA.deviceList.splice(index, 1);
-          response({ success: true }, 500);
+          response({ success: true, data: DATA.devices.splice(index, 1)[0] }, 500);
         }
         break;
       }

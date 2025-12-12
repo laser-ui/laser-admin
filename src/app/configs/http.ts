@@ -1,4 +1,4 @@
-import type { HttpConfigs } from '@laser-pro/http/configs';
+import type { HttpConfigs } from '../core/axios/configs';
 
 import mock from '../mock';
 

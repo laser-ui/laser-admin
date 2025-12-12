@@ -2,16 +2,26 @@ import type { ModalProps } from '@laser-ui/components/modal';
 import type { UploadFile } from '@laser-ui/components/upload/types';
 
 import { Form, FormControl, FormGroup, FormGroupContext, Input, Modal, Upload, Validators, useForm } from '@laser-ui/components';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useStore } from 'rcl-store';
 import { useTranslation } from 'react-i18next';
 
-import { GlobalStore, useHttp } from '../../../../core';
+import { GlobalStore, useAxios } from '../../../../core';
+import { USERS_QUERY_KEYS } from '../../../../queries/user';
 import { handleStandardResponse } from '../../../../utils';
 
 export function AppAccountModal(props: ModalProps): React.ReactElement | null {
   const [{ appUser }, { appUser: setAppUser }] = useStore(GlobalStore, ['appUser']);
   const { t } = useTranslation();
-  const http = useHttp();
+  const axios = useAxios();
+
+  const queryClient = useQueryClient();
+  const userMutation = useMutation({
+    mutationFn: (variables: any) => axios({ url: `/users/${appUser.id}`, method: 'patch', data: variables }),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: USERS_QUERY_KEYS.all });
+    },
+  });
 
   const [form] = useForm(
     () =>
@@ -51,29 +61,27 @@ export function AppAccountModal(props: ModalProps): React.ReactElement | null {
               } else {
                 data.$unset = { avatar: '' };
               }
-              http({
-                url: `/user/${appUser.id}`,
-                method: 'patch',
-                data,
-              }).then((res) => {
-                handleStandardResponse(res, {
-                  success: () => {
-                    setAppUser((draft) => {
-                      draft.name = form.get('name').value;
-                      draft.avatar = avatar
-                        ? ({
-                            id: avatar.uid,
-                            name: avatar.name,
-                            path: avatar.url,
-                          } as any)
-                        : null;
-                    });
-                    r(true);
-                  },
-                  error: () => {
-                    r(false);
-                  },
-                });
+              userMutation.mutate(data, {
+                onSuccess: (res) => {
+                  handleStandardResponse(res, {
+                    success: () => {
+                      setAppUser((draft) => {
+                        draft.name = form.get('name').value;
+                        draft.avatar = avatar
+                          ? ({
+                              id: avatar.uid,
+                              name: avatar.name,
+                              path: avatar.url,
+                            } as any)
+                          : null;
+                      });
+                      r(true);
+                    },
+                    error: () => {
+                      r(false);
+                    },
+                  });
+                },
               });
             })
           }

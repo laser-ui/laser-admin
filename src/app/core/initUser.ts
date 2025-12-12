@@ -1,12 +1,10 @@
-import type { AppUser } from '../types';
-
 import { acl } from '@laser-pro/acl';
-import { axios } from '@laser-pro/http';
 
+import { axios } from './axios';
 import { GlobalStore } from './store';
 import { ROLE_ACL } from '../configs/acl';
 
-export function initUser(user: AppUser) {
+export function initUser(user: AppDocs.User) {
   acl.set([]);
   const superAdmin = user.permissions.includes(ROLE_ACL.super_admin);
   acl.setFull(superAdmin);
@@ -22,7 +20,7 @@ export function initUser(user: AppUser) {
   GlobalStore.set('appNotifications', undefined);
 
   axios({
-    url: '/notification',
+    url: '/notifications',
     method: 'get',
   }).then((res) => {
     GlobalStore.set('appNotifications', res.data);

@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StrictMode, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, HashRouter, Navigate, useLocation } from 'react-router';
@@ -7,6 +8,8 @@ import './index.css';
 import App from './app/App';
 import { HASH } from './app/configs/router';
 import { startup } from './startup';
+
+const queryClient = new QueryClient();
 
 // eslint-disable-next-line react-refresh/only-export-components
 function Main({ path }: { path?: string }) {
@@ -24,9 +27,11 @@ startup.then((path) => {
   const Router = HASH ? HashRouter : BrowserRouter;
   createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
-      <Router>
-        <Main path={path} />
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Main path={path} />
+        </Router>
+      </QueryClientProvider>
     </StrictMode>,
   );
 });

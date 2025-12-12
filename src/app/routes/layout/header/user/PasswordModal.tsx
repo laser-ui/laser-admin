@@ -1,16 +1,21 @@
 import type { ModalProps } from '@laser-ui/components/modal';
 
 import { Form, FormControl, FormGroup, FormGroupContext, Input, Modal, Validators, useForm } from '@laser-ui/components';
+import { useMutation } from '@tanstack/react-query';
 import { useStore } from 'rcl-store';
 import { useTranslation } from 'react-i18next';
 
-import { GlobalStore, useHttp } from '../../../../core';
+import { GlobalStore, useAxios } from '../../../../core';
 import { handleStandardResponse } from '../../../../utils';
 
 export function AppPasswordModal(props: ModalProps): React.ReactElement | null {
   const [{ appUser }] = useStore(GlobalStore, ['appUser']);
   const { t } = useTranslation();
-  const http = useHttp();
+  const axios = useAxios();
+
+  const userMutation = useMutation({
+    mutationFn: (variables: any) => axios({ url: `/users/${appUser.id}`, method: 'patch', data: variables }),
+  });
 
   const [form] = useForm(
     () =>
@@ -31,19 +36,17 @@ export function AppPasswordModal(props: ModalProps): React.ReactElement | null {
               const data: any = {
                 password: form.get('password').value,
               };
-              http({
-                url: `/user/${appUser.id}`,
-                method: 'patch',
-                data,
-              }).then((res) => {
-                handleStandardResponse(res, {
-                  success: () => {
-                    r(true);
-                  },
-                  error: () => {
-                    r(false);
-                  },
-                });
+              userMutation.mutate(data, {
+                onSuccess: (res) => {
+                  handleStandardResponse(res, {
+                    success: () => {
+                      r(true);
+                    },
+                    error: () => {
+                      r(false);
+                    },
+                  });
+                },
               });
             })
           }

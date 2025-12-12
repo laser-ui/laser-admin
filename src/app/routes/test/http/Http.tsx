@@ -2,13 +2,13 @@ import { Button, Card } from '@laser-ui/components';
 import { useTranslation } from 'react-i18next';
 
 import { AppRouteHeader } from '../../../components';
-import { useHttp } from '../../../core';
+import { useAxios } from '../../../core';
 
 import styles from './Http.module.scss';
 
 export default function Http() {
-  const http = useHttp();
   const { t } = useTranslation();
+  const axios = useAxios();
 
   return (
     <>
@@ -29,11 +29,7 @@ export default function Http() {
                 <Button
                   key={status}
                   onClick={() => {
-                    http({
-                      url: '/test/http',
-                      method: 'post',
-                      data: { status },
-                    });
+                    axios({ url: '/test/http', method: 'post', data: { status } });
                   }}
                 >
                   {status}

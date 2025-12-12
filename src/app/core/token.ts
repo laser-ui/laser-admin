@@ -1,9 +1,9 @@
 import type { JWTTokenPayload } from '@laser-pro/auth/jwt-token';
 
 import { JWTToken } from '@laser-pro/auth';
-import { axios, useHttp } from '@laser-pro/http';
 import { useStorage } from '@laser-pro/storage';
 
+import { axios } from './axios';
 import { STORAGE } from '../configs/storage';
 
 const configs = {
@@ -23,7 +23,7 @@ export const TOKEN = {
   setValue: (val: string) => {
     TOKEN.value = new JWTToken(val, configs);
     useStorage.set(STORAGE.token[0], val);
-    useHttp.config({ token: TOKEN.value });
+    axios.config({ token: TOKEN.value });
   },
   remember: false,
   remove: () => {
@@ -32,6 +32,6 @@ export const TOKEN = {
       TOKEN.value = undefined;
     }
     useStorage.remove(STORAGE.token[0]);
-    useHttp.config({ token: TOKEN.value });
+    axios.config({ token: TOKEN.value });
   },
 };

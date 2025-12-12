@@ -1,15 +1,10 @@
-import type { DeviceData } from '../types';
-
 import { Button, Card, DialogService, Icon, Separator, Spinner, Table } from '@laser-ui/components';
-import { useMount } from '@laser-ui/hooks';
 import EditOutlined from '@material-design-icons/svg/outlined/edit.svg?react';
-import { isUndefined } from 'lodash';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
 import { AppDetailView, AppRouteHeader } from '../../../../components';
-import { useHttp } from '../../../../core';
+import { useDeviceQuery } from '../../../../queries/device';
 import { AppDeviceModal } from '../DeviceModal';
 
 import styles from './Detail.module.scss';
@@ -17,28 +12,10 @@ import styles from './Detail.module.scss';
 export default function Detail() {
   const { t } = useTranslation();
 
-  const http = useHttp();
-
   const params = useParams();
   const id = Number(params['id']);
 
-  const [loading, setLoading] = useState(true);
-  const [device, setDevice] = useState<DeviceData>();
-
-  const requestDevice = () => {
-    setLoading(true);
-    http({
-      url: `/device/${id}`,
-      method: 'get',
-    }).then((res) => {
-      setLoading(false);
-      setDevice(res);
-    });
-  };
-
-  useMount(() => {
-    requestDevice();
-  });
+  const { deviceQuery } = useDeviceQuery(id);
 
   return (
     <>
@@ -62,13 +39,10 @@ export default function Detail() {
                   <EditOutlined />
                 </Icon>
               }
-              disabled={!device}
+              disabled={!deviceQuery.isSuccess}
               onClick={() => {
                 DialogService.open(AppDeviceModal, {
-                  device,
-                  onSuccess: () => {
-                    requestDevice();
-                  },
+                  device: deviceQuery.data,
                 });
               }}
             >
@@ -79,13 +53,13 @@ export default function Detail() {
         />
       </AppRouteHeader>
       <div className={styles['app-detail']}>
-        {isUndefined(device) ? (
+        {deviceQuery.isPending ? (
           <div className="flex justify-center">
             <Spinner visible alone></Spinner>
           </div>
         ) : (
           <>
-            <Spinner visible={loading}></Spinner>
+            <Spinner visible={deviceQuery.isFetching}></Spinner>
             <Card>
               <Card.Content>
                 <div className="app-title mb-3">Title 1</div>

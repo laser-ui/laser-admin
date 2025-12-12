@@ -1,30 +1,25 @@
 import type { DeviceData } from './types';
-import type { SelectItem } from '@laser-ui/components/select/types';
+import type { DeviceQueryParams } from '../../../queries/device';
 
-import { useQuery } from '@laser-pro/router';
+import { useQueryParams } from '@laser-pro/router';
 import { Button, Card, Checkbox, DialogService, Dropdown, Icon, Modal, Pagination, Select, Spinner } from '@laser-ui/components';
-import { useImmer, useMount } from '@laser-ui/hooks';
+import { useImmer } from '@laser-ui/hooks';
 import AddOutlined from '@material-design-icons/svg/outlined/add.svg?react';
 import KeyboardArrowDownOutlined from '@material-design-icons/svg/outlined/keyboard_arrow_down.svg?react';
-import { isUndefined, pick } from 'lodash';
-import { useState } from 'react';
+import { keepPreviousData, useMutation, useQueryClient } from '@tanstack/react-query';
+import { pick } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
 import { AppDeviceModal } from './DeviceModal';
 import { AppRouteHeader, AppStatusDot, AppTable, AppTableFilter } from '../../../components';
-import { useHttp } from '../../../core';
-import { checkEmpty, handleStandardResponse } from '../../../utils';
+import { useAxios } from '../../../core';
+import { DEVICES_QUERY_KEYS, useDevicesQuery } from '../../../queries/device';
+import { useDeviceModelsQuery } from '../../../queries/device-model';
+import { handleStandardResponse } from '../../../utils';
 
 import styles from './StandardTable.module.scss';
 
-interface QueryParams {
-  keyword: string;
-  model: string[];
-  status: number[];
-  page: number;
-  pageSize: number;
-}
-const QUERY: QueryParams = {
+const QUERY: DeviceQueryParams = {
   keyword: '',
   model: [],
   status: [],
@@ -34,78 +29,35 @@ const QUERY: QueryParams = {
 
 export default function StandardTable() {
   const { t } = useTranslation();
-  const http = useHttp();
+  const axios = useAxios();
 
-  const [query, updateQuery] = useQuery<QueryParams>(QUERY);
-  const [table, setTable] = useImmer({
-    loading: true,
-    list: [] as DeviceData[],
-    totalSize: 0,
-    selected: new Set<number>(),
+  const queryParams = useQueryParams<DeviceQueryParams>(QUERY);
+  const queryClient = useQueryClient();
+  const { deviceModelsQuery } = useDeviceModelsQuery();
+  const { devicesQuery } = useDevicesQuery(queryParams.saved, {}, { placeholderData: keepPreviousData });
+  const deviceDeleteMutation = useMutation({
+    mutationFn: (variables: any) =>
+      axios({
+        url: `/devices/${variables.id}`,
+        method: 'delete',
+      }),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: DEVICES_QUERY_KEYS.all });
+    },
   });
-  const allSelected = table.selected.size === 0 ? false : table.selected.size === table.list.length ? true : 'mixed';
 
-  const [modelList, setModelList] = useState<SelectItem<string>[]>();
-
-  const requestTable = (updateParams?: Partial<QueryParams>, options?: { replace?: boolean }) => {
-    let params = query;
-    if (updateParams) {
-      params = updateQuery(updateParams, { replace: options?.replace, navigateOptions: {} });
-    }
-    setTable((draft) => {
-      draft.loading = true;
-    });
-    const reqParams: AppStandardRequest.Params = {
-      page: params.page,
-      page_size: params.pageSize,
-    };
-    if (!checkEmpty(params.keyword)) {
-      reqParams['keyword'] = params.keyword;
-    }
-    if (!checkEmpty(params.model)) {
-      reqParams['filter[model:in]'] = params.model.join();
-    }
-    if (!checkEmpty(params.status)) {
-      reqParams['filter[status:in]'] = params.status.join();
-    }
-    http<AppStandardResponse.List<AppDocs.Device>>({
-      url: '/device',
-      method: 'get',
-      params: reqParams,
-    }).then((res) => {
-      updateQuery({ page: res.metadata.page });
-      setTable({
-        loading: false,
-        list: res.resources,
-        totalSize: res.metadata.total_size,
-        selected: new Set(),
-      });
-    });
-  };
-
-  useMount(() => {
-    requestTable({});
-
-    http<AppStandardResponse.List<AppDocs.DeviceModel>>({
-      url: '/device/model',
-      method: 'get',
-    }).then((res) => {
-      setModelList(
-        res.resources.map((model) => ({
-          label: model.name,
-          value: model.name,
-          disabled: model.disabled,
-        })),
-      );
-    });
-  });
+  const [selected, setSelected] = useImmer(new Set<number>());
+  const allSelected = devicesQuery.isSuccess
+    ? selected.size === 0
+      ? false
+      : selected.size === devicesQuery.data.resources.length
+        ? true
+        : 'mixed'
+    : false;
 
   const openDeviceModal = (device?: DeviceData) => {
     DialogService.open(AppDeviceModal, {
       device,
-      onSuccess: () => {
-        requestTable();
-      },
     });
   };
 
@@ -148,9 +100,9 @@ export default function StandardTable() {
                         label: n === 0 ? 'Normal' : n === 1 ? 'Failure' : 'Alarm',
                         value: n,
                       }))}
-                      model={query.status}
+                      model={queryParams.value.status}
                       onModelChange={(value) => {
-                        updateQuery({ status: value });
+                        queryParams.update({ status: value });
                       }}
                     >
                       {(groupProps, optionProps, options) => (
@@ -164,40 +116,50 @@ export default function StandardTable() {
                       )}
                     </Checkbox.Group>
                   ),
-                  value: query.status,
+                  value: queryParams.value.status,
                 },
                 {
                   label: 'Model',
                   node: (
                     <Select
                       className="w-64 max-w-full"
-                      list={modelList ?? []}
-                      model={query.model}
+                      list={
+                        deviceModelsQuery.isSuccess
+                          ? deviceModelsQuery.data.resources.map((model) => ({
+                              label: model.name,
+                              value: model.name,
+                              disabled: model.disabled,
+                            }))
+                          : []
+                      }
+                      model={queryParams.value.model}
                       placeholder="Model"
-                      loading={isUndefined(modelList)}
+                      loading={deviceModelsQuery.isPending}
                       multiple
                       clearable
                       onModelChange={(value) => {
-                        updateQuery({ model: value });
+                        queryParams.update({ model: value });
                       }}
                     />
                   ),
-                  value: query.model,
+                  value: queryParams.value.model,
                 },
               ]}
-              searchValue={query.keyword}
+              searchValue={queryParams.value.keyword}
               searchPlaceholder="ID, Name"
               onSearchValueChange={(value) => {
-                updateQuery({ keyword: value });
+                queryParams.update({ keyword: value });
               }}
               onSearchClick={() => {
-                requestTable({ page: 1 });
+                queryParams.update({ page: 1 }).saveToUrl();
+                setSelected(new Set<number>());
               }}
               onResetClick={(change) => {
                 if (change) {
-                  requestTable({ page: 1, pageSize: query.pageSize }, { replace: true });
+                  queryParams.update({ page: 1, pageSize: queryParams.value.pageSize }, true).saveToUrl();
+                  setSelected(new Set<number>());
                 } else {
-                  updateQuery(pick(query, ['page', 'pageSize']), { replace: true });
+                  queryParams.update(pick(queryParams.value, ['page', 'pageSize']), true);
                 }
               }}
             />
@@ -205,9 +167,9 @@ export default function StandardTable() {
         </Card>
         <Card>
           <Card.Content>
-            <Spinner visible={table.loading}></Spinner>
+            <Spinner visible={devicesQuery.isFetching}></Spinner>
             <AppTable
-              list={table.list}
+              list={devicesQuery.isSuccess ? devicesQuery.data.resources : []}
               columns={[
                 {
                   th: 'NAME',
@@ -240,18 +202,18 @@ export default function StandardTable() {
               selectable={{
                 all: allSelected,
                 onAllChange: (checked) => {
-                  setTable((draft) => {
-                    draft.selected = new Set(checked ? draft.list.map((data) => data.id) : []);
-                  });
+                  if (devicesQuery.isSuccess) {
+                    setSelected(new Set(checked ? devicesQuery.data.resources.map((data) => data.id) : []));
+                  }
                 },
                 item: (data) => ({
-                  checked: table.selected.has(data.id),
+                  checked: selected.has(data.id),
                   onChange: (checked) => {
-                    setTable((draft) => {
+                    setSelected((draft) => {
                       if (checked) {
-                        draft.selected.add(data.id);
+                        draft.add(data.id);
                       } else {
-                        draft.selected.delete(data.id);
+                        draft.delete(data.id);
                       }
                     });
                   },
@@ -279,19 +241,20 @@ export default function StandardTable() {
                           <Modal.Footer
                             onOkClick={() =>
                               new Promise((r) => {
-                                http({
-                                  url: `/device/${data.id}`,
-                                  method: 'delete',
-                                }).then((res) => {
-                                  handleStandardResponse(res, {
-                                    success: () => {
-                                      requestTable();
-                                      r(true);
-                                    },
-                                    error: () => {
-                                      r(false);
-                                    },
-                                  });
+                                deviceDeleteMutation.mutate(data, {
+                                  onSuccess: (res) => {
+                                    handleStandardResponse(res, {
+                                      success: () => {
+                                        setSelected((draft) => {
+                                          draft.delete(data.id);
+                                        });
+                                        r(true);
+                                      },
+                                      error: () => {
+                                        r(false);
+                                      },
+                                    });
+                                  },
                                 });
                               })
                             }
@@ -306,7 +269,7 @@ export default function StandardTable() {
               }}
               scroll={{ x: 1200 }}
               onRefresh={() => {
-                requestTable();
+                devicesQuery.refetch();
               }}
             />
             <div className="app-table-footer">
@@ -339,12 +302,13 @@ export default function StandardTable() {
                 </Dropdown>
               </div>
               <Pagination
-                total={table.totalSize}
-                active={query.page}
-                pageSize={query.pageSize}
+                total={devicesQuery.isSuccess ? devicesQuery.data.metadata.total_size : 0}
+                active={queryParams.value.page}
+                pageSize={queryParams.value.pageSize}
                 compose={['total', 'pages', 'page-size', 'jump']}
                 onChange={(page, pageSize) => {
-                  requestTable({ page, pageSize });
+                  queryParams.update({ page, pageSize }).saveToUrl();
+                  setSelected(new Set<number>());
                 }}
               />
             </div>

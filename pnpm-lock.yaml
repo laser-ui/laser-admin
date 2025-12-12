@@ -18,20 +18,17 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(react@19.0.0)
       '@laser-pro/acl':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^2.0.0
+        version: 2.0.0
       '@laser-pro/auth':
-        specifier: ^1.1.0
-        version: 1.1.0
-      '@laser-pro/http':
-        specifier: ^1.1.0
-        version: 1.1.0(@laser-ui/hooks@2.0.4(immer@10.1.1))(axios@1.7.9)
+        specifier: ^2.0.0
+        version: 2.0.0
       '@laser-pro/router':
-        specifier: ^1.1.0
-        version: 1.1.0(@laser-ui/hooks@2.0.4(immer@10.1.1))(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        specifier: ^2.0.0
+        version: 2.0.0(@laser-ui/hooks@2.0.4(immer@10.1.1))(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@laser-pro/storage':
-        specifier: ^1.1.0
-        version: 1.1.0(@laser-ui/hooks@2.0.4(immer@10.1.1))
+        specifier: ^2.0.0
+        version: 2.0.0(@laser-ui/hooks@2.0.4(immer@10.1.1))
       '@laser-ui/components':
         specifier: ^2.0.4
         version: 2.0.4(dayjs@1.11.13)(immer@10.1.1)
@@ -47,6 +44,9 @@ importers:
       '@material-design-icons/svg':
         specifier: ^0.14.13
         version: 0.14.13
+      '@tanstack/react-query':
+        specifier: ^5.90.2
+        version: 5.90.2(react@19.0.0)
       axios:
         specifier: ^1.7.9
         version: 1.7.9
@@ -1262,26 +1262,20 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@laser-pro/acl@1.1.0':
-    resolution: {integrity: sha512-F628AGSJX0kdNsdK6PWUijzmGZQ8ACeG7CO/Z/MocGFSrFTZYdPvlFrtKoVInOS2wOPpvZPXeQSFRrWmFFA8sw==}
+  '@laser-pro/acl@2.0.0':
+    resolution: {integrity: sha512-08umSxxLHmg/w5+TqBB9RQyg/xz+KsYA+rH6HXQZUSvbV6cYz7Tyx4Iqbs/qsnr8uS2reK3zDnehflmXhAWhLg==}
 
-  '@laser-pro/auth@1.1.0':
-    resolution: {integrity: sha512-lpQ/q1Kk74aJAfOvtYjiYvJyzHthtXx1FlHtI4W3xRB9xzRS/j82fHbDxmA7Uf27CAjK0Z3ZbyGBpyPu/Enp4Q==}
+  '@laser-pro/auth@2.0.0':
+    resolution: {integrity: sha512-hnUyMiJvN3f35XtFEKzmEK6eNZFTfOkqN1m0Nx0q2j26yc0Q2TnXZ+9TE17gbD8tdO+qVWHGuikskuCIgXAQ8A==}
 
-  '@laser-pro/http@1.1.0':
-    resolution: {integrity: sha512-S5+SrymDJ26UxJH2oTCzLE3jyMMvl2/8R3H6JOxwW2xpuXRChbhcbNhrJ44DNImrPOX9VKAXElAcjNW+leGFhg==}
-    peerDependencies:
-      '@laser-ui/hooks': '>=2.0.0'
-      axios: ^1.6.0
-
-  '@laser-pro/router@1.1.0':
-    resolution: {integrity: sha512-g7Y+wDkDdsM3Lvl1vgNgJBvXtbM87UUx1mxT66SEUaq/aKq86DaYiO1Dl3412IykbV842zfmuyPsPiJRJD57ew==}
+  '@laser-pro/router@2.0.0':
+    resolution: {integrity: sha512-lZAOpb3YsjNCZpBOF5oK7AhapLvOCLa/VL9rJauYfqpvGJC8WAP87ghYzxsDFy33mEc31sUTRGsnh9athXktJQ==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
       react-router: '>=7.0.0'
 
-  '@laser-pro/storage@1.1.0':
-    resolution: {integrity: sha512-DD9umNIyLOJfPEWh0cxV1qYT5EvNu5wjasXtERiTc2XyORSwJlkhl+rWoMZ4TbaV6jTMbZvKU0+BDqSKdQD6og==}
+  '@laser-pro/storage@2.0.0':
+    resolution: {integrity: sha512-Gve4FbIAexJX5qBMIQ6L5/wEIFs57nTiVBJdaFeHqL2T/kBaYNDPg6h0D3DGtHcj1dt0bmASQDNxpBrnT6yivw==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
 
@@ -2155,6 +2149,14 @@ packages:
   '@szmarczak/http-timer@5.0.1':
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
     engines: {node: '>=14.16'}
+
+  '@tanstack/query-core@5.90.2':
+    resolution: {integrity: sha512-k/TcR3YalnzibscALLwxeiLUub6jN5EDLwKDiO7q5f4ICEoptJ+n9+7vcEFy5/x/i6Q+Lb/tXrsKCggf5uQJXQ==}
+
+  '@tanstack/react-query@5.90.2':
+    resolution: {integrity: sha512-CLABiR+h5PYfOWr/z+vWFt5VsOA2ekQeRQBFSKlcoW6Ndx/f8rfyVmq4LbgOM4GG2qtxAxjLYLOpCNTYm4uKzw==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@testing-library/dom@10.4.0':
     resolution: {integrity: sha512-pemlzrSESWbdAloYml3bAJMEfNh1Z7EduzqPKprCH5S341frlpYnUEW0H72dLxa6IsYr+mPno20GiSm+h9dEdQ==}
@@ -7115,27 +7117,22 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@laser-pro/acl@1.1.0':
+  '@laser-pro/acl@2.0.0':
     dependencies:
       lodash: 4.17.21
 
-  '@laser-pro/auth@1.1.0':
+  '@laser-pro/auth@2.0.0':
     dependencies:
       lodash: 4.17.21
 
-  '@laser-pro/http@1.1.0(@laser-ui/hooks@2.0.4(immer@10.1.1))(axios@1.7.9)':
-    dependencies:
-      '@laser-ui/hooks': 2.0.4(immer@10.1.1)
-      axios: 1.7.9
-
-  '@laser-pro/router@1.1.0(@laser-ui/hooks@2.0.4(immer@10.1.1))(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@laser-pro/router@2.0.0(@laser-ui/hooks@2.0.4(immer@10.1.1))(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
       '@laser-ui/hooks': 2.0.4(immer@10.1.1)
       jsurl: 0.1.5
       lodash: 4.17.21
       react-router: 7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
-  '@laser-pro/storage@1.1.0(@laser-ui/hooks@2.0.4(immer@10.1.1))':
+  '@laser-pro/storage@2.0.0(@laser-ui/hooks@2.0.4(immer@10.1.1))':
     dependencies:
       '@laser-ui/hooks': 2.0.4(immer@10.1.1)
       lodash: 4.17.21
@@ -8152,6 +8149,13 @@ snapshots:
   '@szmarczak/http-timer@5.0.1':
     dependencies:
       defer-to-connect: 2.0.1
+
+  '@tanstack/query-core@5.90.2': {}
+
+  '@tanstack/react-query@5.90.2(react@19.0.0)':
+    dependencies:
+      '@tanstack/query-core': 5.90.2
+      react: 19.0.0
 
   '@testing-library/dom@10.4.0':
     dependencies:

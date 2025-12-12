@@ -1,4 +1,3 @@
-import { axios, useHttp } from '@laser-pro/http';
 import { useStorage } from '@laser-pro/storage';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -6,7 +5,7 @@ import { initReactI18next } from 'react-i18next';
 import { HTTP_CONFIGS } from './app/configs/http';
 import { LOGIN_PATH } from './app/configs/router';
 import { STORAGE } from './app/configs/storage';
-import { TOKEN, initUser } from './app/core';
+import { TOKEN, axios, initUser } from './app/core';
 import resources from './resources.json';
 
 const configStorage = () =>
@@ -33,7 +32,7 @@ const configToken = () =>
 
 const configHttp = () =>
   new Promise<void>((r) => {
-    useHttp.config(HTTP_CONFIGS);
+    axios.config(HTTP_CONFIGS);
     r();
   });
 

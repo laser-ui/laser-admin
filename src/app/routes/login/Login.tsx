@@ -1,4 +1,3 @@
-import type { AppUser } from '../../types';
 import type { AxiosError } from 'axios';
 
 import { useStorage } from '@laser-pro/storage';
@@ -31,13 +30,12 @@ import { APP_NAME } from '../../configs/app';
 import { PREV_ROUTE_KEY } from '../../configs/router';
 import { LOGIN_PATH } from '../../configs/router';
 import { STORAGE } from '../../configs/storage';
-import { TOKEN, initUser, useHttp } from '../../core';
+import { TOKEN, axios, initUser } from '../../core';
 
 import styles from './Login.module.scss';
 
 export default function Login(): React.ReactElement | null {
   const { t } = useTranslation();
-  const http = useHttp();
   const [loginloading, setLoginLoading] = useState(false);
   const location = useLocation();
   const from = location.state && location.state[PREV_ROUTE_KEY] ? (location.state[PREV_ROUTE_KEY] as Location).pathname : undefined;
@@ -52,37 +50,6 @@ export default function Login(): React.ReactElement | null {
         password: new FormControl('', Validators.required),
       }),
   );
-
-  const handleSubmit = () => {
-    setLoginLoading(true);
-    http<{ user: AppUser; token: string }>(
-      {
-        url: '/auth/login',
-        method: 'post',
-        data: {
-          username: accountForm.get('username').value,
-          password: accountForm.get('password').value,
-        },
-      },
-      { authorization: true },
-    )
-      .then((res) => {
-        TOKEN.setValue(res.token);
-        TOKEN.remember = rememberStorage.value === '1';
-
-        initUser(res.user);
-        navigate(isString(from) && from !== LOGIN_PATH ? from : '/', { replace: true });
-      })
-      .catch((err: AxiosError) => {
-        DialogService.open(Toast, {
-          children: err.message,
-          type: 'error',
-        });
-      })
-      .finally(() => {
-        setLoginLoading(false);
-      });
-  };
 
   return (
     <div className={styles['app-login']}>
@@ -104,7 +71,39 @@ export default function Login(): React.ReactElement | null {
                 id: 'account',
                 title: t('routes.login.Account login'),
                 panel: (
-                  <Form onSubmit={handleSubmit}>
+                  <Form
+                    onSubmit={() => {
+                      setLoginLoading(true);
+                      axios(
+                        {
+                          url: '/auth/login',
+                          method: 'post',
+                          data: {
+                            username: accountForm.get('username').value,
+                            password: accountForm.get('password').value,
+                          },
+                        },
+                        { authorization: true },
+                      )
+                        .then((res) => res.data as { user: AppDocs.User; token: string })
+                        .then((res) => {
+                          TOKEN.setValue(res.token);
+                          TOKEN.remember = rememberStorage.value === '1';
+
+                          initUser(res.user);
+                          navigate(isString(from) && from !== LOGIN_PATH ? from : '/', { replace: true });
+                        })
+                        .catch((err: AxiosError) => {
+                          DialogService.open(Toast, {
+                            children: err.message,
+                            type: 'error',
+                          });
+                        })
+                        .finally(() => {
+                          setLoginLoading(false);
+                        });
+                    }}
+                  >
                     <FormGroupContext.Provider value={accountForm}>
                       <Form.Item formControls={{ username: t('routes.login.Please enter your name') }}>
                         {({ username }) => (

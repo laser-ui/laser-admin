@@ -8,6 +8,17 @@ interface StandardFields {
 
 declare global {
   declare namespace AppDocs {
+    export interface UploadFile extends StandardFields {
+      name: string;
+      path: string;
+    }
+
+    export interface User extends StandardFields {
+      name: string;
+      avatar?: AppDocs.UploadFile | null;
+      permissions: (string | number)[];
+    }
+
     export interface DeviceModel extends StandardFields {
       name: string;
       disabled: boolean;
