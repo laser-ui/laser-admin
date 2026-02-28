@@ -32,7 +32,17 @@ export default defineConfig(() => ({
     port: 4300,
     host: 'localhost',
   },
-  plugins: [react(), svgr(), tailwindcss(), nxViteTsPaths(), nxCopyAssetsPlugin([])],
+  plugins: [
+    react({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
+      },
+    }),
+    svgr(),
+    tailwindcss(),
+    nxViteTsPaths(),
+    nxCopyAssetsPlugin([]),
+  ],
   // Uncomment this if you are using workers.
   // worker: {
   //   plugins: () => [ nxViteTsPaths() ],
