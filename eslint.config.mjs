@@ -1,11 +1,11 @@
 import { createRequire } from 'module';
 
+import nx from '@nx/eslint-plugin';
 import importPlugin from 'eslint-plugin-import';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 
 const require = createRequire(import.meta.url);
-const nx = require('@nx/eslint-plugin');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 
 export default [
@@ -14,10 +14,10 @@ export default [
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist'],
+    ignores: ['**/dist', '**/out-tsc'],
   },
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
+    files: ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts', '**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
     plugins: {
       import: importPlugin,
     },

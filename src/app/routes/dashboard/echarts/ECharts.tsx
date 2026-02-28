@@ -24,7 +24,7 @@ export default function ECharts() {
         <div className="row g-4">
           {[lineOptions, stackedLineOptions, barOptions, stackedBarOptions, pieOptions, nightingaleOptions, scatterOptions].map(
             (option, index) => (
-              <div key={index} className="col-12 col-xl-6">
+              <div key={index} className="col-xl-6 col-12">
                 <Card>
                   <Card.Content>
                     <AppChart
