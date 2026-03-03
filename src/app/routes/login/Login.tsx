@@ -26,7 +26,6 @@ import { useLocation, useNavigate } from 'react-router';
 import logoBgUrl from '../../../assets/login_bg.png';
 import logoUrl from '../../../assets/logo.png';
 import { AppLanguage } from '../../components';
-import { APP_NAME } from '../../configs/app';
 import { PREV_ROUTE_KEY } from '../../configs/router';
 import { LOGIN_PATH } from '../../configs/router';
 import { STORAGE } from '../../configs/storage';
@@ -59,10 +58,10 @@ export default function Login(): React.ReactElement | null {
         <div className={styles['app-login__login-container']}>
           <div className={styles['app-login__title-container']}>
             <img className={styles['app-login__logo']} src={logoUrl} alt="Logo" />
-            <span>{APP_NAME}</span>
+            <span>{t('App')}</span>
           </div>
           <div className={styles['app-login__description']}>
-            <Trans i18nKey="routes.login.description" values={{ what: APP_NAME }} />
+            <Trans i18nKey="routes.login.description" values={{ what: t('App') }} />
           </div>
           <Tabs
             className={styles['app-login__tabs']}

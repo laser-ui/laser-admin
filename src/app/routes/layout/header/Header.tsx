@@ -15,7 +15,6 @@ import { AppNotification } from './notification/Notification';
 import { AppUser } from './user/User';
 import logoUrl from '../../../../assets/logo.png';
 import { AppLanguage } from '../../../components';
-import { APP_NAME } from '../../../configs/app';
 import { STORAGE } from '../../../configs/storage';
 import { useMatchMedia } from '../../../hooks';
 
@@ -67,7 +66,7 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
               };
             }}
           >
-            {APP_NAME}
+            {t('App')}
           </div>
         </div>
       </Link>

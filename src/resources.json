@@ -1,6 +1,7 @@
 {
   "en-US": {
     "translation": {
+      "App": "Laser Admin",
       "Add": "Add",
       "Edit": "Edit",
       "Reset": "Reset",
@@ -107,6 +108,7 @@
   },
   "zh-CN": {
     "translation": {
+      "App": "Laser Admin",
       "Add": "添加",
       "Edit": "编辑",
       "Reset": "重置",

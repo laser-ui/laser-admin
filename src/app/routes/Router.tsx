@@ -10,7 +10,6 @@ import AppHomeRoute from './home/Home';
 import AppLayout from './layout/Layout';
 import AppLoginRoute from './login/Login';
 import { ROUTES_ACL } from '../configs/acl';
-import { TITLE_OPTIONS } from '../configs/app';
 import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
 import { TOKEN } from '../core';
 
@@ -168,7 +167,11 @@ const AppRouter = memo(() => {
           element: <Navigate to="/exception/404" replace />,
         },
       ]}
-      titleOptions={TITLE_OPTIONS}
+      titleOptions={{
+        default: t('App'),
+        separator: ' - ',
+        suffix: t('App'),
+      }}
     />
   );
 });
