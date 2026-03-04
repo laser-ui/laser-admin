@@ -1,7 +1,6 @@
 import { useStorage } from '@laser-pro/storage';
 import { Icon } from '@laser-ui/components';
 import { useIsomorphicLayoutEffect } from '@laser-ui/hooks';
-import { classNames } from '@laser-ui/utils';
 import DarkModeOutlined from '@material-design-icons/svg/outlined/dark_mode.svg?react';
 import FormatIndentDecreaseOutlined from '@material-design-icons/svg/outlined/format_indent_decrease.svg?react';
 import FormatIndentIncreaseOutlined from '@material-design-icons/svg/outlined/format_indent_increase.svg?react';
@@ -106,7 +105,8 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
       >
         <Icon size={20}>{themeStorage.value === 'light' ? <DarkModeOutlined /> : <LightModeOutlined />}</Icon>
       </button>
-      <button className={classNames(styles['app-header__button'], '!ml-auto')} aria-label={t('routes.layout.Search')}>
+      <div className="mr-auto!"></div>
+      <button className={styles['app-header__button']} aria-label={t('routes.layout.Search')}>
         <Icon size={20}>
           <SearchOutlined />
         </Icon>
