@@ -56,6 +56,7 @@ export function useAxios() {
         } else {
           // Something happened in setting up the request that triggered an Error.
         }
+        return Promise.reject(error);
       })
       .finally(() => {
         controllers.current.delete(controller);
