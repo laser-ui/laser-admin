@@ -3,7 +3,6 @@ import type { DeviceQueryParams } from '../../../queries/device';
 
 import { useQueryParams } from '@laser-pro/router';
 import { Button, Card, Checkbox, DialogService, Dropdown, Icon, Modal, Pagination, Select, Spinner } from '@laser-ui/components';
-import { useImmer } from '@laser-ui/hooks';
 import AddOutlined from '@material-design-icons/svg/outlined/add.svg?react';
 import KeyboardArrowDownOutlined from '@material-design-icons/svg/outlined/keyboard_arrow_down.svg?react';
 import { keepPreviousData, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -13,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { AppDeviceModal } from './DeviceModal';
 import { AppRouteHeader, AppStatusDot, AppTable, AppTableFilter } from '../../../components';
 import { useAxios } from '../../../core';
+import { useSelectedManagement } from '../../../hooks';
 import { DEVICES_QUERY_KEYS, useDevicesQuery } from '../../../queries/device';
 import { useDeviceModelsQuery } from '../../../queries/device-model';
 import { handleStandardResponse } from '../../../utils';
@@ -46,14 +46,9 @@ export default function StandardTable() {
     },
   });
 
-  const [selected, setSelected] = useImmer(new Set<number>());
-  const allSelected = devicesQuery.isSuccess
-    ? selected.size === 0
-      ? false
-      : selected.size === devicesQuery.data.resources.length
-        ? true
-        : 'mixed'
-    : false;
+  const selectedManagement = useSelectedManagement(devicesQuery.data, () =>
+    devicesQuery.isSuccess ? devicesQuery.data.resources.map(({ id }) => id) : [],
+  );
 
   const openDeviceModal = (device?: DeviceData) => {
     DialogService.open(AppDeviceModal, {
@@ -152,12 +147,10 @@ export default function StandardTable() {
               }}
               onSearchClick={() => {
                 queryParams.update({ page: 1 }).saveToUrl();
-                setSelected(new Set<number>());
               }}
               onResetClick={(change) => {
                 if (change) {
                   queryParams.update({ page: 1, pageSize: queryParams.value.pageSize }, true).saveToUrl();
-                  setSelected(new Set<number>());
                 } else {
                   queryParams.update(pick(queryParams.value, ['page', 'pageSize']), true);
                 }
@@ -200,22 +193,16 @@ export default function StandardTable() {
                 },
               ]}
               selectable={{
-                all: allSelected,
-                onAllChange: (checked) => {
+                all: selectedManagement.all,
+                onAllChange: () => {
                   if (devicesQuery.isSuccess) {
-                    setSelected(new Set(checked ? devicesQuery.data.resources.map((data) => data.id) : []));
+                    selectedManagement.selectAll();
                   }
                 },
                 item: (data) => ({
-                  checked: selected.has(data.id),
-                  onChange: (checked) => {
-                    setSelected((draft) => {
-                      if (checked) {
-                        draft.add(data.id);
-                      } else {
-                        draft.delete(data.id);
-                      }
-                    });
+                  checked: selectedManagement.ids.includes(data.id),
+                  onChange: () => {
+                    selectedManagement.select(data.id);
                   },
                 }),
               }}
@@ -245,9 +232,6 @@ export default function StandardTable() {
                                   onSuccess: (res) => {
                                     handleStandardResponse(res, {
                                       success: () => {
-                                        setSelected((draft) => {
-                                          draft.delete(data.id);
-                                        });
                                         r(true);
                                       },
                                       error: () => {
@@ -274,7 +258,7 @@ export default function StandardTable() {
             />
             <div className="app-table-footer">
               <div>
-                <Button className="me-2" pattern="secondary" disabled={allSelected === false}>
+                <Button className="me-2" pattern="secondary" disabled={selectedManagement.all === false}>
                   Download
                 </Button>
                 <Dropdown
@@ -294,7 +278,7 @@ export default function StandardTable() {
                         </Icon>
                       }
                       iconRight
-                      disabled={allSelected === false}
+                      disabled={selectedManagement.all === false}
                     >
                       More
                     </Button>
@@ -308,7 +292,6 @@ export default function StandardTable() {
                 compose={['total', 'pages', 'page-size', 'jump']}
                 onChange={(page, pageSize) => {
                   queryParams.update({ page, pageSize }).saveToUrl();
-                  setSelected(new Set<number>());
                 }}
               />
             </div>
