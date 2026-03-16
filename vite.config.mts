@@ -14,7 +14,7 @@ export default defineConfig(() => ({
   cacheDir: './node_modules/.vite/laser-admin',
   resolve: {
     alias: {
-      '~styles': join(__dirname, './src/styles'),
+      '~styles': join(import.meta.dirname, './src/styles'),
     },
   },
   css: {
