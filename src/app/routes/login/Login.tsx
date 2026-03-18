@@ -87,7 +87,6 @@ export default function Login(): React.ReactElement | null {
                         .then((res) => res.data as { user: AppDocs.User; token: string })
                         .then((res) => {
                           TOKEN.setValue(res.token);
-                          TOKEN.remember = rememberStorage.value === '1';
 
                           initUser(res.user);
                           navigate(isString(from) && from !== LOGIN_PATH ? from : '/', { replace: true });

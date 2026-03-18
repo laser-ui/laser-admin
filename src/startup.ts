@@ -22,11 +22,12 @@ const configStorage = () =>
 
 const configToken = () =>
   new Promise<void>((r) => {
-    const token = useStorage.get(...STORAGE.token);
-    if (token) {
-      TOKEN.setValue(token);
+    if (useStorage.get(...STORAGE.remember) === '1') {
+      const token = useStorage.get(...STORAGE.token);
+      if (token) {
+        TOKEN.setValue(token);
+      }
     }
-    TOKEN.remember = useStorage.get(...STORAGE.remember) === '1';
     r();
   });
 

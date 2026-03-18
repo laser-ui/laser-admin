@@ -18,17 +18,17 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(react@19.2.4)
       '@laser-pro/acl':
-        specifier: ^2.0.2
-        version: 2.0.2
+        specifier: ^3.0.1
+        version: 3.0.1
       '@laser-pro/auth':
-        specifier: ^2.0.2
-        version: 2.0.2
+        specifier: ^3.0.1
+        version: 3.0.1
       '@laser-pro/router':
-        specifier: ^2.0.2
-        version: 2.0.2(@laser-ui/hooks@2.3.5(immer@11.1.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
+        specifier: ^3.0.1
+        version: 3.0.1(@laser-ui/hooks@2.3.5(immer@11.1.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@laser-pro/storage':
-        specifier: ^2.0.2
-        version: 2.0.2(@laser-ui/hooks@2.3.5(immer@11.1.4))
+        specifier: ^3.0.1
+        version: 3.0.1(@laser-ui/hooks@2.3.5(immer@11.1.4))
       '@laser-ui/components':
         specifier: ^2.3.5
         version: 2.3.5(dayjs@1.11.20)(immer@11.1.4)
@@ -112,8 +112,8 @@ importers:
         specifier: 22.5.4
         version: 22.5.4(@swc-node/register@1.11.1(@swc/core@1.15.18(@swc/helpers@0.5.19))(@swc/types@0.1.25)(typescript@5.9.3))(@swc/core@1.15.18(@swc/helpers@0.5.19))
       '@rolldown/plugin-babel':
-        specifier: ^0.2.1
-        version: 0.2.1(@babel/core@7.29.0)(@babel/plugin-transform-runtime@7.29.0(@babel/core@7.29.0))(@babel/runtime@7.28.6)(rolldown@1.0.0-rc.9)(vite@7.3.1(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.98.0)(terser@5.46.0)(yaml@2.8.2))
+        specifier: ^0.2.2
+        version: 0.2.2(@babel/core@7.29.0)(@babel/plugin-transform-runtime@7.29.0(@babel/core@7.29.0))(@babel/runtime@7.28.6)(rolldown@1.0.0-rc.9)(vite@7.3.1(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.98.0)(terser@5.46.0)(yaml@2.8.2))
       '@swc-node/register':
         specifier: ^1.11.1
         version: 1.11.1(@swc/core@1.15.18(@swc/helpers@0.5.19))(@swc/types@0.1.25)(typescript@5.9.3)
@@ -217,8 +217,8 @@ importers:
         specifier: ^17.4.0
         version: 17.4.0(typescript@5.9.3)
       stylelint-config-recess-order:
-        specifier: ^7.6.1
-        version: 7.6.1(stylelint-order@8.1.1(stylelint@17.4.0(typescript@5.9.3)))(stylelint@17.4.0(typescript@5.9.3))
+        specifier: ^7.7.0
+        version: 7.7.0(stylelint-order@8.1.1(stylelint@17.4.0(typescript@5.9.3)))(stylelint@17.4.0(typescript@5.9.3))
       stylelint-config-recommended-scss:
         specifier: ^17.0.0
         version: 17.0.0(postcss@8.5.8)(stylelint@17.4.0(typescript@5.9.3))
@@ -1209,20 +1209,20 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@laser-pro/acl@2.0.2':
-    resolution: {integrity: sha512-LdDEIvBGiOJ5PliCeEAhm+sG3GnR8Mg6j15IFb3XqJ5Ga8kfokYlHf52jD0UPuSEsJSqRXwqtRhAcMZ42dqvIg==}
+  '@laser-pro/acl@3.0.1':
+    resolution: {integrity: sha512-32PV6gHmrLF8vVBsXd6tz36DzZRwmjMkcu0j7dcNyyWZbiEXnkDDR6kir2dWHqaKLesi86fjDbX+KcYePcplgw==}
 
-  '@laser-pro/auth@2.0.2':
-    resolution: {integrity: sha512-CRsKzJ4peNBbnQXGJCHw0TyW+S9b/0N+eLHvnbeLNw0OMWw4qOhQgCrD7iF5t2u5zlz5z+GaJWke5ir60m+TmA==}
+  '@laser-pro/auth@3.0.1':
+    resolution: {integrity: sha512-WWTS6fTHaUSFGyVlrjWs2NE4rrcWmY4NWvLOCfNqx4zwOW+0B42So8wuaen26xZcwj9Bw/x0ALbfIhI+Og4h0Q==}
 
-  '@laser-pro/router@2.0.2':
-    resolution: {integrity: sha512-1Ake3eDcxfgClvG+pHGmVnKXm5xY8nPS0ddKe5p5ckrgGmbJmTvg6I233G6jl0Bo95Pyxv7Os4ikCFilS3dAPg==}
+  '@laser-pro/router@3.0.1':
+    resolution: {integrity: sha512-rlSrJBSBMKPaOvg7pKewUD8kiTxWnjynsYT3s6N0KyXe1xCQnctKu94s3BS+z1/x4WhvRPma9XV4YhQ+k9VgOQ==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
       react-router: '>=7.0.0'
 
-  '@laser-pro/storage@2.0.2':
-    resolution: {integrity: sha512-U0KJZEmlvdmmkX6Dn3ZFgWpbvu49piGJ2G/+d8VPI5sqE3wHmOT9Ge1PrR8Yob69xBFgYGCdFZL5IQRenJJ3rQ==}
+  '@laser-pro/storage@3.0.1':
+    resolution: {integrity: sha512-Xm5eDnWBA5NJlpn0p0rzJ35cHboJjUXWIi8Tjkz07/RSybNAyjj3HlHP1+SPnEWy2CwULpOBgGXK2l35HDXmGw==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
 
@@ -1985,8 +1985,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rolldown/plugin-babel@0.2.1':
-    resolution: {integrity: sha512-pHDVHqFv26JNC8I500JZ0H4h1kvSyiE3V9gjEO9pRAgD1KrIdJvcHCokV6f7gG7Rx4vMOD11V8VUOpqdyGbKBw==}
+  '@rolldown/plugin-babel@0.2.2':
+    resolution: {integrity: sha512-q9pE8+47bQNHb5eWVcE6oXppA+JTSwvnrhH53m0ZuHuK5MLvwsLoWrWzBTFQqQ06BVxz1gp0HblLsch8o6pvZw==}
     engines: {node: '>=22.12.0 || ^24.0.0'}
     peerDependencies:
       '@babel/core': ^7.29.0 || ^8.0.0-rc.1
@@ -5873,11 +5873,11 @@ packages:
     resolution: {integrity: sha512-KIy5nylvC5le1OdaaoCJ07L+8iQzJHGH6pWDuzS+d07Cu7n1MZ2x26P8ZKIWfbK02+XIL8Mp4RkWeqdUCrDMfg==}
     engines: {node: '>=18'}
 
-  stylelint-config-recess-order@7.6.1:
-    resolution: {integrity: sha512-ac0H/Iy2chh1YBADrua87G+nJCmG/SdG7gjnoLvtfpN0D+RuNfuADawfbCKvm0LMp5hvuRFNkJsu6xNoLM5ToA==}
+  stylelint-config-recess-order@7.7.0:
+    resolution: {integrity: sha512-TWRkg+BrwHOki4pi9y1emWgx6pFwZXOYZhNsbEObke/mzYUJVJvDEzJJQXhH7ajslQJGcrExy8ZvJqDiUbhFpA==}
     peerDependencies:
       stylelint: ^16.18.0 || ^17.0.0
-      stylelint-order: ^7.0.0
+      stylelint-order: ^7.0.0 || ^8.0.0
 
   stylelint-config-recommended-scss@17.0.0:
     resolution: {integrity: sha512-VkVD9r7jfUT/dq3mA3/I1WXXk2U71rO5wvU2yIil9PW5o1g3UM7Xc82vHmuVJHV7Y8ok5K137fmW5u3HbhtTOA==}
@@ -7511,22 +7511,22 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@laser-pro/acl@2.0.2':
+  '@laser-pro/acl@3.0.1':
     dependencies:
       lodash: 4.17.23
 
-  '@laser-pro/auth@2.0.2':
+  '@laser-pro/auth@3.0.1':
     dependencies:
       lodash: 4.17.23
 
-  '@laser-pro/router@2.0.2(@laser-ui/hooks@2.3.5(immer@11.1.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
+  '@laser-pro/router@3.0.1(@laser-ui/hooks@2.3.5(immer@11.1.4))(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
     dependencies:
       '@laser-ui/hooks': 2.3.5(immer@11.1.4)
       jsurl: 0.1.5
       lodash: 4.17.23
       react-router: 7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
-  '@laser-pro/storage@2.0.2(@laser-ui/hooks@2.3.5(immer@11.1.4))':
+  '@laser-pro/storage@3.0.1(@laser-ui/hooks@2.3.5(immer@11.1.4))':
     dependencies:
       '@laser-ui/hooks': 2.3.5(immer@11.1.4)
       lodash: 4.17.23
@@ -8505,7 +8505,7 @@ snapshots:
   '@rolldown/binding-win32-x64-msvc@1.0.0-rc.9':
     optional: true
 
-  '@rolldown/plugin-babel@0.2.1(@babel/core@7.29.0)(@babel/plugin-transform-runtime@7.29.0(@babel/core@7.29.0))(@babel/runtime@7.28.6)(rolldown@1.0.0-rc.9)(vite@7.3.1(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.98.0)(terser@5.46.0)(yaml@2.8.2))':
+  '@rolldown/plugin-babel@0.2.2(@babel/core@7.29.0)(@babel/plugin-transform-runtime@7.29.0(@babel/core@7.29.0))(@babel/runtime@7.28.6)(rolldown@1.0.0-rc.9)(vite@7.3.1(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.98.0)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
       '@babel/core': 7.29.0
       picomatch: 4.0.3
@@ -12742,7 +12742,7 @@ snapshots:
     dependencies:
       '@tokenizer/token': 0.3.0
 
-  stylelint-config-recess-order@7.6.1(stylelint-order@8.1.1(stylelint@17.4.0(typescript@5.9.3)))(stylelint@17.4.0(typescript@5.9.3)):
+  stylelint-config-recess-order@7.7.0(stylelint-order@8.1.1(stylelint@17.4.0(typescript@5.9.3)))(stylelint@17.4.0(typescript@5.9.3)):
     dependencies:
       stylelint: 17.4.0(typescript@5.9.3)
       stylelint-order: 8.1.1(stylelint@17.4.0(typescript@5.9.3))

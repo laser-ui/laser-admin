@@ -11,7 +11,7 @@ import AppLayout from './layout/Layout';
 import AppLoginRoute from './login/Login';
 import { ROUTES_ACL } from '../configs/acl';
 import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
-import { TOKEN } from '../core';
+import { useToken } from '../core';
 
 function createRoute(element: any, rerender?: () => React.Key): React.ReactElement {
   const useRerender: () => React.Key | undefined = rerender ? rerender : () => undefined;
@@ -55,7 +55,9 @@ const AppRouter = memo(() => {
   const { t } = useTranslation();
 
   const ACLGuard = useACLGuard('/exception/403');
-  const tokenGuard = useTokenGuard(TOKEN.value ? TOKEN.value.expired : true, LOGIN_PATH, { [PREV_ROUTE_KEY]: location });
+
+  const token = useToken();
+  const tokenGuard = useTokenGuard(token ? token.expired : true, LOGIN_PATH, { [PREV_ROUTE_KEY]: location });
 
   return (
     <Router
