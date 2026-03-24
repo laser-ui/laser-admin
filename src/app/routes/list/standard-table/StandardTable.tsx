@@ -18,7 +18,6 @@ import {
 import AddOutlined from '@material-design-icons/svg/outlined/add.svg?react';
 import KeyboardArrowDownOutlined from '@material-design-icons/svg/outlined/keyboard_arrow_down.svg?react';
 import { keepPreviousData, useMutation, useQueryClient } from '@tanstack/react-query';
-import { pick } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
 import { AppDeviceModal } from './DeviceModal';
@@ -162,12 +161,8 @@ export default function StandardTable() {
               onSearchClick={() => {
                 queryParams.update({ page: 1 }).saveToUrl();
               }}
-              onResetClick={(change) => {
-                if (change) {
-                  queryParams.update({ page: 1, pageSize: queryParams.value.pageSize }, true).saveToUrl();
-                } else {
-                  queryParams.update(pick(queryParams.value, ['page', 'pageSize']), true);
-                }
+              onResetClick={() => {
+                queryParams.set({ ...QUERY, page: 1, pageSize: queryParams.value.pageSize }).saveToUrl();
               }}
             />
           </Card.Content>

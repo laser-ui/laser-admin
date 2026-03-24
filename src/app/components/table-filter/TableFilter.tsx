@@ -3,7 +3,7 @@ import type { AppTableFilterProps } from './types';
 import { Badge, Button, Icon, Input, Separator } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import ExpandMoreOutlined from '@material-design-icons/svg/outlined/expand_more.svg?react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { checkEmpty } from '../../utils';
@@ -23,8 +23,6 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
   const { t } = useTranslation();
 
   const badgeValue = filterList ? filterList.filter(({ value }) => !checkEmpty(value)).length : 0;
-
-  const searchWithFilter = useRef(searchValue || badgeValue > 0 ? true : false);
 
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
 
@@ -48,7 +46,6 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
         <div className="app-table-filter__button-container">
           <Button
             onClick={() => {
-              searchWithFilter.current = searchValue || badgeValue > 0 ? true : false;
               setShowAdvancedSearch(false);
               onSearchClick?.();
             }}
@@ -59,8 +56,7 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
             pattern="secondary"
             disabled={!searchValue && badgeValue === 0}
             onClick={() => {
-              onResetClick?.(searchWithFilter.current);
-              searchWithFilter.current = false;
+              onResetClick?.();
             }}
           >
             {t('Reset')}
