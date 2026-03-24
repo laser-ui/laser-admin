@@ -2,7 +2,19 @@ import type { DeviceData } from './types';
 import type { DeviceQueryParams } from '../../../queries/device';
 
 import { useQueryParams } from '@laser-pro/router';
-import { Button, Card, Checkbox, DialogService, Dropdown, Icon, Modal, Pagination, Select, Spinner } from '@laser-ui/components';
+import {
+  Button,
+  Card,
+  Checkbox,
+  Dialogs,
+  Dropdown,
+  Icon,
+  Modal,
+  Pagination,
+  Select,
+  Spinner,
+  useDialogService,
+} from '@laser-ui/components';
 import AddOutlined from '@material-design-icons/svg/outlined/add.svg?react';
 import KeyboardArrowDownOutlined from '@material-design-icons/svg/outlined/keyboard_arrow_down.svg?react';
 import { keepPreviousData, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -30,6 +42,7 @@ const QUERY: DeviceQueryParams = {
 export default function StandardTable() {
   const { t } = useTranslation();
   const axios = useAxios();
+  const [dialogService, dialogs] = useDialogService();
 
   const queryParams = useQueryParams<DeviceQueryParams>(QUERY);
   const queryClient = useQueryClient();
@@ -51,13 +64,14 @@ export default function StandardTable() {
   );
 
   const openDeviceModal = (device?: DeviceData) => {
-    DialogService.open(AppDeviceModal, {
+    dialogService.open(AppDeviceModal, {
       device,
     });
   };
 
   return (
     <>
+      <Dialogs dialogs={dialogs} />
       <AppRouteHeader>
         <AppRouteHeader.Breadcrumb
           list={[
@@ -218,7 +232,7 @@ export default function StandardTable() {
                   {
                     text: 'Delete',
                     onclick: () => {
-                      DialogService.open(Modal, {
+                      dialogService.open(Modal, {
                         alert: (
                           <Modal.Alert type="warning" title="Delete Device">
                             Are you sure you want to delete this?

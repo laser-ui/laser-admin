@@ -1,4 +1,4 @@
-import { Button, Card, DialogService, Icon, Separator, Spinner, Table } from '@laser-ui/components';
+import { Button, Card, Dialogs, Icon, Separator, Spinner, Table, useDialogService } from '@laser-ui/components';
 import EditOutlined from '@material-design-icons/svg/outlined/edit.svg?react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
@@ -11,6 +11,7 @@ import styles from './Detail.module.scss';
 
 export default function Detail() {
   const { t } = useTranslation();
+  const [dialogService, dialogs] = useDialogService();
 
   const params = useParams();
   const id = Number(params['id']);
@@ -19,6 +20,7 @@ export default function Detail() {
 
   return (
     <>
+      <Dialogs dialogs={dialogs} />
       <AppRouteHeader>
         <AppRouteHeader.Breadcrumb
           list={[
@@ -41,7 +43,7 @@ export default function Detail() {
               }
               disabled={!deviceQuery.isSuccess}
               onClick={() => {
-                DialogService.open(AppDeviceModal, {
+                dialogService.open(AppDeviceModal, {
                   device: deviceQuery.data,
                 });
               }}

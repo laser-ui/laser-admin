@@ -1,4 +1,4 @@
-import { Avatar, DialogService, Dropdown, Icon } from '@laser-ui/components';
+import { Avatar, Dialogs, Dropdown, Icon, useDialogService } from '@laser-ui/components';
 import LockOutlined from '@material-design-icons/svg/outlined/lock.svg?react';
 import LogoutOutlined from '@material-design-icons/svg/outlined/logout.svg?react';
 import PersonOutlined from '@material-design-icons/svg/outlined/person.svg?react';
@@ -16,87 +16,91 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): R
   const [{ appUser }] = useStore(GlobalStore, ['appUser']);
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [dialogService, dialogs] = useDialogService();
 
   return (
-    <Dropdown
-      styleOverrides={{ 'dropdown-popup': { style: { minWidth: 160 } } }}
-      list={[
-        {
-          id: 'center',
-          title: t('routes.layout.Account center'),
-          type: 'item',
-          icon: (
-            <Icon>
-              <PersonOutlined />
-            </Icon>
-          ),
-        },
-        {
-          id: 'setting',
-          title: t('routes.layout.Account settings'),
-          type: 'item',
-          icon: (
-            <Icon>
-              <SettingsOutlined />
-            </Icon>
-          ),
-        },
-        {
-          id: 'password',
-          title: t('routes.layout.Change password'),
-          type: 'item',
-          icon: (
-            <Icon>
-              <LockOutlined />
-            </Icon>
-          ),
-        },
-        {
-          id: 'logout',
-          title: t('routes.layout.Logout'),
-          type: 'item',
-          icon: (
-            <Icon>
-              <LogoutOutlined />
-            </Icon>
-          ),
-          separator: true,
-        },
-      ]}
-      trigger="click"
-      onClick={(id) => {
-        switch (id) {
-          case 'setting': {
-            DialogService.open(AppAccountModal, {});
-            break;
-          }
+    <>
+      <Dialogs dialogs={dialogs} />
+      <Dropdown
+        styleOverrides={{ 'dropdown-popup': { style: { minWidth: 160 } } }}
+        list={[
+          {
+            id: 'center',
+            title: t('routes.layout.Account center'),
+            type: 'item',
+            icon: (
+              <Icon>
+                <PersonOutlined />
+              </Icon>
+            ),
+          },
+          {
+            id: 'setting',
+            title: t('routes.layout.Account settings'),
+            type: 'item',
+            icon: (
+              <Icon>
+                <SettingsOutlined />
+              </Icon>
+            ),
+          },
+          {
+            id: 'password',
+            title: t('routes.layout.Change password'),
+            type: 'item',
+            icon: (
+              <Icon>
+                <LockOutlined />
+              </Icon>
+            ),
+          },
+          {
+            id: 'logout',
+            title: t('routes.layout.Logout'),
+            type: 'item',
+            icon: (
+              <Icon>
+                <LogoutOutlined />
+              </Icon>
+            ),
+            separator: true,
+          },
+        ]}
+        trigger="click"
+        onClick={(id) => {
+          switch (id) {
+            case 'setting': {
+              dialogService.open(AppAccountModal, {});
+              break;
+            }
 
-          case 'password': {
-            DialogService.open(AppPasswordModal, {});
-            break;
-          }
+            case 'password': {
+              dialogService.open(AppPasswordModal, {});
+              break;
+            }
 
-          case 'logout': {
-            TOKEN.remove();
-            navigate(LOGIN_PATH);
-            break;
-          }
+            case 'logout': {
+              TOKEN.remove();
+              navigate(LOGIN_PATH);
+              break;
+            }
 
-          default:
-            break;
-        }
-      }}
-    >
-      {(dropdownProps) => (
-        <button {...props} {...dropdownProps} aria-label={t('routes.layout.My account')}>
-          <Avatar
-            img={appUser.avatar ? { src: appUser.avatar.path, alt: t('Avatar') } : undefined}
-            text={appUser.name[0].toUpperCase()}
-            size={28}
-          />
-          <span className="hidden md:block">{appUser.name}</span>
-        </button>
-      )}
-    </Dropdown>
+            default:
+              break;
+          }
+        }}
+      >
+        {(dropdownProps) => (
+          <button {...props} {...dropdownProps} aria-label={t('routes.layout.My account')}>
+            <Avatar
+              img={appUser.avatar ? { src: appUser.avatar.path, alt: t('Avatar') } : undefined}
+              text={appUser.name[0].toUpperCase()}
+              size={28}
+            />
+            <span className="hidden md:block">{appUser.name}</span>
+          </button>
+        )}
+      </Dropdown>
+    </>
   );
 }
