@@ -108,7 +108,7 @@ export function Mobile<T = any>(
                               placement="bottom-right"
                               onClick={(id: number) => {
                                 if (actions[id].link) {
-                                  navigate(actions[id].link!);
+                                  navigate(actions[id].link);
                                 } else {
                                   return actions[id].onclick?.();
                                 }
@@ -157,14 +157,15 @@ export function Mobile<T = any>(
                   }
 
                   const getAction = (action: (typeof actions)[0]) => {
-                    const custom = (props?: React.HTMLAttributes<HTMLElement>) =>
-                      action.link ? (
+                    const custom = (props?: React.HTMLAttributes<HTMLElement>) => {
+                      const link = action.link;
+                      return link ? (
                         <Card.Action
                           {...props}
                           title="edit"
                           onClick={(e) => {
                             props?.onClick?.(e);
-                            navigate(action.link!);
+                            navigate(link);
                           }}
                         >
                           {action.text}
@@ -181,6 +182,7 @@ export function Mobile<T = any>(
                           {action.loading ? <Spinner visible size="1em" alone /> : action.text}
                         </Card.Action>
                       );
+                    };
                     return action.render ? action.render(custom) : custom();
                   };
 
@@ -199,7 +201,7 @@ export function Mobile<T = any>(
                                 placement="bottom-right"
                                 onClick={(id: number) => {
                                   if (actions[id].link) {
-                                    navigate(actions[id].link!);
+                                    navigate(actions[id].link);
                                   } else {
                                     return actions[id].onclick?.();
                                   }

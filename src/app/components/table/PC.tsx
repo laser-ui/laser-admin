@@ -35,7 +35,7 @@ export function PC<T = any>(
     }
     const right = columns.reduce((previous, current) => {
       if (current.fixed === 'R') {
-        previous.push(toCssUnit(current.width!));
+        previous.push(toCssUnit(current.width ?? 0));
       }
       return previous;
     }, [] as string[]);
@@ -47,7 +47,7 @@ export function PC<T = any>(
         const fixed: any = {};
         if (column.fixed === 'L') {
           fixed.left = `calc(${left.join(' + ')})`;
-          left.push(toCssUnit(column.width!));
+          left.push(toCssUnit(column.width ?? 0));
         } else if (column.fixed === 'R') {
           right.shift();
           fixed.right = `calc(${right.join(' + ')})`;
@@ -202,7 +202,7 @@ export function PC<T = any>(
                                     placement="bottom-right"
                                     onClick={(id: number) => {
                                       if (actions[id].link) {
-                                        navigate(actions[id].link!);
+                                        navigate(actions[id].link);
                                       } else {
                                         return actions[id].onclick?.();
                                       }

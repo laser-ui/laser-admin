@@ -29,9 +29,11 @@ export default function ECharts() {
                   <Card.Content>
                     <AppChart
                       ref={(instance) => {
-                        instance!.setOption(option);
-                        // eslint-disable-next-line @typescript-eslint/no-empty-function
-                        return () => {};
+                        if (instance) {
+                          instance.setOption(option);
+                          // eslint-disable-next-line @typescript-eslint/no-empty-function
+                          return () => {};
+                        }
                       }}
                       style={{ height: 320 }}
                     />

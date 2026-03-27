@@ -28,8 +28,7 @@ export function axios<T = any, D = any>(
   return axios({
     ...config,
     baseURL: overrides?.baseURL ? config.baseURL : CONFIGS.baseURL,
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    url: overrides?.url ? config.url : CONFIGS.transformURL(config.url!),
+    url: overrides?.url ? config.url : config.url ? CONFIGS.transformURL(config.url) : undefined,
     headers,
   });
 }

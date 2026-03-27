@@ -75,6 +75,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
   })();
   const colHiddens = new Set<string>(storage.value.hiddens ?? defaultHiddens);
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const columnsWithConfig = colSorts.map((key) => ({ ...columnMap.get(key)!, hidden: colHiddens.has(key) }));
 
   const table = mediaBreakpointUp('md') ? (
@@ -155,7 +156,10 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                               storage.set({ ...storage.value, hiddens: Array.from(hiddens) });
                             }}
                           >
-                            {columnMap.get(item)!.th}
+                            {
+                              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                              columnMap.get(item)!.th
+                            }
                           </Checkbox>
                         </SortableCols.Item>
                       )}
@@ -168,7 +172,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                     />
                     <div className="app-table__col-config-actions">
                       <Button
-                        className="grow"
+                        className="w-0 grow"
                         pattern="link"
                         onClick={() => {
                           storage.set({ ...storage.value, sorts: defaultColSorts, hiddens: Array.from(defaultHiddens) });
@@ -178,7 +182,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                       </Button>
                       <Separator style={{ margin: 0 }} vertical />
                       <Button
-                        className="grow"
+                        className="w-0 grow"
                         pattern="link"
                         onClick={() => {
                           setSettingsVisible(false);

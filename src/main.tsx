@@ -26,6 +26,7 @@ let initNavigationCompleted = (currentPath: string, initialPath?: string): boole
 function Main({ path }: { path?: string }) {
   const location = useLocation();
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return initNavigationCompleted(location.pathname, path) ? <App /> : <Navigate to={path!} replace />;
 }
 

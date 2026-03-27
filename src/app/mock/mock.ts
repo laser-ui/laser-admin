@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { base64url } from '@laser-pro/auth/base64url';

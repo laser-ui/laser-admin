@@ -13,7 +13,7 @@ import { ROUTES_ACL } from '../configs/acl';
 import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
 import { useToken } from '../core';
 
-function createRoute(element: any, rerender?: () => React.Key): React.ReactElement {
+function createRoute(element: any, rerender?: () => React.Key | undefined): React.ReactElement {
   const useRerender: () => React.Key | undefined = rerender ? rerender : () => undefined;
   const Component = isFunction(element) ? lazy(element) : null;
   const Route = () => {
@@ -40,13 +40,13 @@ const ROUTES = {
   '/list/standard-table/:id': createRoute(
     () => import('./list/standard-table/detail/Detail'),
     () => {
-      return useParams()['id']!;
+      return useParams()['id'];
     },
   ),
   '/test/acl': createRoute(() => import('./test/acl/ACL')),
   '/test/http': createRoute(() => import('./test/http/Http')),
   '/exception/:status': createRoute(<AppExceptionRoute />, () => {
-    return useParams()['status']!;
+    return useParams()['status'];
   }),
 };
 
