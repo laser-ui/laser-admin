@@ -63,6 +63,7 @@ export default [
           additionalHooks: '(useIsomorphicLayoutEffect)',
         },
       ],
+      'react-hooks/preserve-manual-memoization': 'warn',
     },
   },
   {
