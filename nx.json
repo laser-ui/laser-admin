@@ -52,5 +52,5 @@
       }
     }
   },
-  "neverConnectToCloud": true
+  "analytics": false
 }

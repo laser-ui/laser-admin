@@ -6,7 +6,6 @@
     "strict": true,
 
     // Modules
-    "baseUrl": ".",
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {},
@@ -39,8 +38,6 @@
     "disableSizeLimit": true,
 
     // Interop Constraints
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": false,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true
   },

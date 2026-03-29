@@ -3,8 +3,9 @@ import { join } from 'node:path';
 
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import babel from '@rolldown/plugin-babel';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import * as sass from 'sass';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
@@ -32,17 +33,7 @@ export default defineConfig(() => ({
     port: 4300,
     host: 'localhost',
   },
-  plugins: [
-    react({
-      babel: {
-        plugins: ['babel-plugin-react-compiler'],
-      },
-    }),
-    svgr(),
-    tailwindcss(),
-    nxViteTsPaths(),
-    nxCopyAssetsPlugin([]),
-  ],
+  plugins: [react(), babel({ presets: [reactCompilerPreset()] }), svgr(), tailwindcss(), nxViteTsPaths(), nxCopyAssetsPlugin([])],
   // Uncomment this if you are using workers.
   // worker: {
   //   plugins: () => [ nxViteTsPaths() ],
