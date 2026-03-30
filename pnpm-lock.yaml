@@ -18,17 +18,17 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(react@19.2.4)
       '@laser-pro/acl':
-        specifier: ^3.2.0
-        version: 3.2.0
+        specifier: ^3.2.1
+        version: 3.2.1
       '@laser-pro/auth':
-        specifier: ^3.2.0
-        version: 3.2.0
+        specifier: ^3.2.1
+        version: 3.2.1
       '@laser-pro/router':
-        specifier: ^3.2.0
-        version: 3.2.0(@laser-ui/hooks@2.4.0(immer@11.1.4))(react-router@7.13.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
+        specifier: ^3.2.1
+        version: 3.2.1(@laser-ui/hooks@2.4.0(immer@11.1.4))(react-router@7.13.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@laser-pro/storage':
-        specifier: ^3.2.0
-        version: 3.2.0(@laser-ui/hooks@2.4.0(immer@11.1.4))
+        specifier: ^3.2.1
+        version: 3.2.1(@laser-ui/hooks@2.4.0(immer@11.1.4))
       '@laser-ui/components':
         specifier: ^2.4.0
         version: 2.4.0(dayjs@1.11.20)(immer@11.1.4)
@@ -57,8 +57,8 @@ importers:
         specifier: ^5.6.0
         version: 5.6.0
       i18next:
-        specifier: ^26.0.1
-        version: 26.0.1(typescript@6.0.2)
+        specifier: ^26.0.2
+        version: 26.0.2(typescript@6.0.2)
       immer:
         specifier: ^11.1.4
         version: 11.1.4
@@ -76,7 +76,7 @@ importers:
         version: 19.2.4(react@19.2.4)
       react-i18next:
         specifier: ^17.0.1
-        version: 17.0.1(i18next@26.0.1(typescript@6.0.2))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@6.0.2)
+        version: 17.0.1(i18next@26.0.2(typescript@6.0.2))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@6.0.2)
       react-router:
         specifier: ^7.13.2
         version: 7.13.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1197,20 +1197,20 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@laser-pro/acl@3.2.0':
-    resolution: {integrity: sha512-7cB65K/Z5BmTzYRSm+KztWQzPHy4jbByywLCvjoFvvFeTSWZhzTTFziLVvXsJ8ol/Vpzwb1ACrN5/LN1cQdxCw==}
+  '@laser-pro/acl@3.2.1':
+    resolution: {integrity: sha512-2ud8/Pqrchxn37w65ipH/xV1II35/9gfXezv4ZThM+Rwr895Z714hpCbHk+oOCJ60ZVUKrVKBzlrHxCRPMtOMA==}
 
-  '@laser-pro/auth@3.2.0':
-    resolution: {integrity: sha512-tZyRZ+Kz6edtGLvN/Kzrd9BLdi+5cRTs+NOk2i366SCz5IhlkS4NuMfxGKkLFgN7JCzZmy73IuwmZQ9vSZa0lQ==}
+  '@laser-pro/auth@3.2.1':
+    resolution: {integrity: sha512-elK/UnwqeybSmvmxnKh0ub5/s2+PI4GHyKH7E7ZNMYFL3J++lEo+LB+5BgG9SRM8wnJ/qKW1szGARIykGL8r5g==}
 
-  '@laser-pro/router@3.2.0':
-    resolution: {integrity: sha512-8Bi6AEEIivjx2kl/WFl/nkQwKKMJth49WfEA7RkXZgRLzGkO78YsD1jKT5FwDZ2ONJaxQ4EJv+FfR8IyTC7d/g==}
+  '@laser-pro/router@3.2.1':
+    resolution: {integrity: sha512-/9LVAah/PNqfNw0b5Q07EjtvbcEz0NNx7CXG/AzzjtPO19sBMR6t5AyDKLtkRR/hfWopxdfW8tyvSyg62HI6KQ==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
       react-router: '>=7.0.0'
 
-  '@laser-pro/storage@3.2.0':
-    resolution: {integrity: sha512-v8nn3A1xF7Tqelz4pZO6lX4Z9N3bw3C3ZJYOzKuH1bvgBDU0nmegcfCdBrgruP0w43OYJYebVHcq4ALeLyrzJw==}
+  '@laser-pro/storage@3.2.1':
+    resolution: {integrity: sha512-n6UCzMHiwzjrRzVc45dx7nAerqloxDlMHVwi7GrnTDkm3xOSSz+J2qFa4WY0tVtd+NduxiusccKVGvOTdJUqfQ==}
     peerDependencies:
       '@laser-ui/hooks': '>=2.0.0'
 
@@ -4213,8 +4213,8 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
-  i18next@26.0.1:
-    resolution: {integrity: sha512-vtz5sXU4+nkCm8yEU+JJ6yYIx0mkg9e68W0G0PXpnOsmzLajNsW5o28DJMqbajxfsfq0gV3XdrBudsDQnwxfsQ==}
+  i18next@26.0.2:
+    resolution: {integrity: sha512-WsK0SdP+7tGzsxpT+Us1s2nvOyx657DatBodaNZe4KcPTPYzkVfRKUygN69mB+sCbbnifRuKz+Ya5JRzd8DNHw==}
     peerDependencies:
       typescript: ^5 || ^6
     peerDependenciesMeta:
@@ -7358,22 +7358,22 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@laser-pro/acl@3.2.0':
+  '@laser-pro/acl@3.2.1':
     dependencies:
       lodash: 4.17.23
 
-  '@laser-pro/auth@3.2.0':
+  '@laser-pro/auth@3.2.1':
     dependencies:
       lodash: 4.17.23
 
-  '@laser-pro/router@3.2.0(@laser-ui/hooks@2.4.0(immer@11.1.4))(react-router@7.13.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
+  '@laser-pro/router@3.2.1(@laser-ui/hooks@2.4.0(immer@11.1.4))(react-router@7.13.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
     dependencies:
       '@laser-ui/hooks': 2.4.0(immer@11.1.4)
       jsurl: 0.1.5
       lodash: 4.17.23
       react-router: 7.13.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
-  '@laser-pro/storage@3.2.0(@laser-ui/hooks@2.4.0(immer@11.1.4))':
+  '@laser-pro/storage@3.2.1(@laser-ui/hooks@2.4.0(immer@11.1.4))':
     dependencies:
       '@laser-ui/hooks': 2.4.0(immer@11.1.4)
       lodash: 4.17.23
@@ -10774,7 +10774,7 @@ snapshots:
 
   human-signals@2.1.0: {}
 
-  i18next@26.0.1(typescript@6.0.2):
+  i18next@26.0.2(typescript@6.0.2):
     dependencies:
       '@babel/runtime': 7.29.2
     optionalDependencies:
@@ -11809,11 +11809,11 @@ snapshots:
       react: 19.2.4
       scheduler: 0.27.0
 
-  react-i18next@17.0.1(i18next@26.0.1(typescript@6.0.2))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@6.0.2):
+  react-i18next@17.0.1(i18next@26.0.2(typescript@6.0.2))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@6.0.2):
     dependencies:
       '@babel/runtime': 7.29.2
       html-parse-stringify: 3.0.1
-      i18next: 26.0.1(typescript@6.0.2)
+      i18next: 26.0.2(typescript@6.0.2)
       react: 19.2.4
       use-sync-external-store: 1.6.0(react@19.2.4)
     optionalDependencies:
