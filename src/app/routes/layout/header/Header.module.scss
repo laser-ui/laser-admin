@@ -42,6 +42,7 @@
   }
 
   @include mixins.e(logo-title) {
+    display: inline-block;
     white-space: nowrap;
     transform-origin: left;
 
