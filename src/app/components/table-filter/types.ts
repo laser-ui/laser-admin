@@ -7,4 +7,5 @@ export interface AppTableFilterProps extends Omit<React.HTMLAttributes<HTMLDivEl
   onSearchValueChange?: (value: string) => void;
   onSearchClick?: () => void;
   onResetClick?: () => void;
+  onFirstShowAdvancedSearch?: () => void;
 }

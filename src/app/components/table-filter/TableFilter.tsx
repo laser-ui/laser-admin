@@ -3,7 +3,7 @@ import type { AppTableFilterProps } from './types';
 import { Badge, Button, Icon, Input, Separator } from '@laser-ui/components';
 import { classNames } from '@laser-ui/utils';
 import ExpandMoreOutlined from '@material-design-icons/svg/outlined/expand_more.svg?react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { checkEmpty } from '../../utils';
@@ -16,6 +16,7 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
     onSearchValueChange,
     onSearchClick,
     onResetClick,
+    onFirstShowAdvancedSearch,
 
     ...restProps
   } = props;
@@ -25,6 +26,7 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
   const badgeValue = filterList ? filterList.filter(({ value }) => !checkEmpty(value)).length : 0;
 
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+  const hasShowAdvancedSearch = useRef(false);
 
   return (
     <div {...restProps} className={classNames(restProps.className, 'app-table-filter')}>
@@ -67,6 +69,11 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
                 pattern="link"
                 onClick={() => {
                   setShowAdvancedSearch((prevShowAdvancedSearch) => !prevShowAdvancedSearch);
+
+                  if (!hasShowAdvancedSearch.current) {
+                    hasShowAdvancedSearch.current = true;
+                    onFirstShowAdvancedSearch?.();
+                  }
                 }}
               >
                 <div className="app-table-filter__expand-text">
@@ -82,7 +89,7 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
         </div>
       </div>
       {filterList && (
-        <div style={{ display: showAdvancedSearch ? undefined : 'none' }}>
+        <div className={showAdvancedSearch ? undefined : 'hidden'}>
           <Separator />
           {filterList.map(({ label, node }) => (
             <div key={label} className="app-table-filter__filter">

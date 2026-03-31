@@ -180,7 +180,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                       >
                         {t('Reset')}
                       </Button>
-                      <Separator style={{ margin: 0 }} vertical />
+                      <Separator className="m-0!" vertical />
                       <Button
                         className="w-0 grow"
                         pattern="link"

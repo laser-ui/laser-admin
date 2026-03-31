@@ -75,7 +75,7 @@ export function AppNotification(props: React.ButtonHTMLAttributes<HTMLButtonElem
               <Button className="grow" pattern="link">
                 {t('routes.layout.Clear notifications')}
               </Button>
-              <Separator style={{ margin: 0 }} vertical />
+              <Separator className="m-0!" vertical />
               <Button className="grow" pattern="link">
                 {t('routes.layout.See more')}
               </Button>

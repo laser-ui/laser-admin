@@ -27,7 +27,7 @@ export function AppList(props: AppListProps): React.ReactElement | null {
               {checkNodeExist(footer) && <div className="app-list__footer">{footer}</div>}
             </div>
           </li>
-          {separator && index !== list.length - 1 && <Separator style={{ margin: 0 }} />}
+          {separator && index !== list.length - 1 && <Separator className="m-0!" />}
         </Fragment>
       ))}
     </ul>

@@ -47,6 +47,7 @@ export interface AppTableProps<T> {
       onclick?: () => void;
     }[];
     width: number | string;
+    th?: React.ReactNode;
   };
   expand?: (data: T, index: number, expand: boolean) => React.ReactNode;
   expandFixed?: boolean;

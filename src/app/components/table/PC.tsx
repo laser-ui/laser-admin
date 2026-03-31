@@ -2,7 +2,7 @@ import type { AppTableProps } from './types';
 
 import { Button, Checkbox, Dropdown, Separator, Spinner, Table } from '@laser-ui/components';
 import { useImmer } from '@laser-ui/hooks';
-import { classNames } from '@laser-ui/utils';
+import { checkNodeExist, classNames } from '@laser-ui/utils';
 import { isUndefined } from 'lodash';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -118,7 +118,7 @@ export function PC<T = any>(
                 width={actionOpts.width}
                 fixed={{ top: 0, right: 0 }}
               >
-                {t('components.table.ACTIONS')}
+                {checkNodeExist(actionOpts.th) ? actionOpts.th : t('components.table.ACTIONS')}
               </Table.Th>
             )}
           </tr>
@@ -230,7 +230,7 @@ export function PC<T = any>(
                     )}
                   </tr>
                   {_expand && (
-                    <tr style={{ display: isExpand ? undefined : 'none' }}>
+                    <tr className={isExpand ? undefined : 'hidden'}>
                       <td colSpan={1 + (selectable ? 1 : 0) + ths.length + (actionOpts ? 1 : 0)}>{_expand(data, index, isExpand)}</td>
                     </tr>
                   )}
