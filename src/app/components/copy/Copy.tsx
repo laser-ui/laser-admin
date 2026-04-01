@@ -31,7 +31,7 @@ export function AppCopy(props: AppCopyProps): React.ReactElement | null {
   }
 
   return (
-    <div {...restProps} className={classNames(restProps.className, 'app-copy')}>
+    <div {...restProps} className={classNames(restProps.className, 'app-copy', isString(children) ? 'app-copy--text' : undefined)}>
       {children}
       <Icon
         className={classNames('app-copy__icon', {

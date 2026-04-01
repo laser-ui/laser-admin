@@ -5,6 +5,16 @@
   display: flex;
   align-items: center;
 
+  @include mixins.m(text) {
+    display: block;
+    align-items: unset;
+
+    @include mixins.e(icon) {
+      display: inline-block !important;
+      vertical-align: middle !important;
+    }
+  }
+
   @include mixins.e(icon) {
     margin-left: 4px;
     color: var(--#{variables.$prefix}color-text-sub);
