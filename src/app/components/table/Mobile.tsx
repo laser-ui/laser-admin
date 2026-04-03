@@ -134,7 +134,11 @@ export function Mobile<T = any>(
                   {(() => {
                     const selectNode = selectable && selectable.item(data, index);
 
-                    return selectNode && <Checkbox model={selectNode.checked} onModelChange={selectNode.onChange} />;
+                    return (
+                      selectNode && (
+                        <Checkbox model={selectNode.checked} disabled={selectNode.disabled} onModelChange={selectNode.onChange} />
+                      )
+                    );
                   })()}
                   {titleCol && getContent(titleCol, data, index)}
                 </Card.Header>

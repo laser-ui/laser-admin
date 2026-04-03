@@ -32,7 +32,14 @@ export interface AppTableProps<T> {
     fixed?: boolean;
     all: boolean | 'mixed';
     onAllChange: (checked: boolean) => void;
-    item: (data: T, index: number) => { checked: boolean; onChange: (checked: boolean) => void };
+    item: (
+      data: T,
+      index: number,
+    ) => {
+      checked: boolean;
+      disabled?: boolean;
+      onChange: (checked: boolean) => void;
+    };
   };
   actionOpts?: {
     actions: (

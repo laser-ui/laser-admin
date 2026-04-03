@@ -158,7 +158,7 @@ export function PC<T = any>(
                         align="center"
                         fixed={leftFixed[1]}
                       >
-                        <Checkbox model={selectNode.checked} onModelChange={selectNode.onChange} />
+                        <Checkbox model={selectNode.checked} disabled={selectNode.disabled} onModelChange={selectNode.onChange} />
                       </Table.Td>
                     )}
                     {tds.map((td) => td(data, index))}
