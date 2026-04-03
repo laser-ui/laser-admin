@@ -1,5 +1,5 @@
 import { Router, useACLGuard, useTokenGuard } from '@laser-pro/router';
-import { isFunction } from 'lodash';
+import { isFunction, isUndefined } from 'lodash';
 import { Fragment, Suspense, lazy, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useLocation, useParams } from 'react-router';
@@ -10,11 +10,26 @@ import AppHomeRoute from './home/Home';
 import AppLayout from './layout/Layout';
 import AppLoginRoute from './login/Login';
 import { ROUTES_ACL } from '../configs/acl';
-import { LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
+import { APP_ROUTE_NAVIGATION, LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
 import { useToken } from '../core';
 
 function createRoute(element: any, rerender?: () => React.Key | undefined): React.ReactElement {
-  const useRerender: () => React.Key | undefined = rerender ? rerender : () => undefined;
+  const useRerender = (): React.Key | undefined => {
+    const location = useLocation();
+    if (location.state && location.state[APP_ROUTE_NAVIGATION]) {
+      const key = location.state[APP_ROUTE_NAVIGATION];
+      if (!isUndefined(key)) {
+        return key;
+      }
+    }
+
+    if (rerender) {
+      const key = rerender();
+      if (!isUndefined(key)) {
+        return key;
+      }
+    }
+  };
   const Component = isFunction(element) ? lazy(element) : null;
   const Route = () => {
     const key = useRerender();

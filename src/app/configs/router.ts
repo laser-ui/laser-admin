@@ -3,3 +3,5 @@ export const HASH = false;
 export const LOGIN_PATH = '/login';
 
 export const PREV_ROUTE_KEY = 'from';
+
+export const APP_ROUTE_NAVIGATION = '__APP_ROUTE_NAVIGATION';
