@@ -70,7 +70,7 @@ export function PC<T = any>(
         tds.push((data, dataIndex) => (
           <Table.Td
             key={index}
-            styleOverrides={{ 'table__cell-text': { style: { whiteSpace: column.nowrap ? 'nowrap' : undefined } } }}
+            styleOverrides={column.nowrap ? { 'table__cell-text': { style: { flexGrow: 1, whiteSpace: 'nowrap' } } } : undefined}
             width={column.width}
             fixed={fixed}
             align={column.align}
