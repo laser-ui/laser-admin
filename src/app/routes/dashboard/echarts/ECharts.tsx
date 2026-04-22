@@ -14,8 +14,8 @@ export default function ECharts() {
       <AppRouteHeader>
         <AppRouteHeader.Breadcrumb
           list={[
-            { id: '/dashboard', title: t('Dashboard', { ns: 'title' }) },
-            { id: '/dashboard/echarts', title: t('ECharts', { ns: 'title' }) },
+            { id: '/dashboard', title: t('dashboard', { ns: 'title' }) },
+            { id: '/dashboard/echarts', title: t('eCharts', { ns: 'title' }) },
           ]}
         />
         <AppRouteHeader.Header />

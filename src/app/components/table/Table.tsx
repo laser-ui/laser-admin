@@ -91,13 +91,13 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
           {name && <div className="app-table__title">{name}</div>}
           <div className="app-table__actions">
             {tools.includes('refresh') && (
-              <Icon title={t('components.table.Refresh')} onClick={onRefresh}>
+              <Icon title={t('components.table.refresh')} onClick={onRefresh}>
                 <RefreshOutlined />
               </Icon>
             )}
             {tools.includes('grid') && (
               <Icon
-                title={t('components.table.Grid')}
+                title={t('components.table.grid')}
                 theme={grid ? 'primary' : undefined}
                 onClick={() => {
                   storage.set({ ...storage.value, grid: !grid });
@@ -109,9 +109,9 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
             {tools.includes('layout') && (
               <Dropdown
                 list={[
-                  { id: 'default', title: t('components.table.Default') },
-                  { id: 'middle', title: t('components.table.Middle') },
-                  { id: 'compact', title: t('components.table.Compact') },
+                  { id: 'default', title: t('components.table.default') },
+                  { id: 'middle', title: t('components.table.middle') },
+                  { id: 'compact', title: t('components.table.compact') },
                 ].map(({ id, title }) => ({
                   id,
                   title: <div className={layout === id ? 'app-theme-primary' : undefined}>{title}</div>,
@@ -123,7 +123,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                 }}
               >
                 {(dropdownProps) => (
-                  <Icon {...dropdownProps} title={t('components.table.Layout')}>
+                  <Icon {...dropdownProps} title={t('components.table.layout')}>
                     <ViewDayOutlined />
                   </Icon>
                 )}
@@ -178,7 +178,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                           storage.set({ ...storage.value, sorts: defaultColSorts, hiddens: Array.from(defaultHiddens) });
                         }}
                       >
-                        {t('Reset')}
+                        {t('reset')}
                       </Button>
                       <Separator className="m-0!" vertical />
                       <Button
@@ -188,7 +188,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                           setSettingsVisible(false);
                         }}
                       >
-                        {t('OK')}
+                        {t('ok')}
                       </Button>
                     </div>
                   </>
@@ -203,7 +203,7 @@ export function AppTable<T = any>(props: AppTableProps<T>): React.ReactElement |
                 }}
               >
                 {(popoverProps) => (
-                  <Icon {...popoverProps} title={t('components.table.Settings')}>
+                  <Icon {...popoverProps} title={t('components.table.settings')}>
                     <SettingsOutlined />
                   </Icon>
                 )}

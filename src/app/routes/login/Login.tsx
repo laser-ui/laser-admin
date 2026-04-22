@@ -58,17 +58,17 @@ export default function Login(): React.ReactElement | null {
         <div className={styles['app-login__login-container']}>
           <div className={styles['app-login__title-container']}>
             <img className={styles['app-login__logo']} src={logoUrl} alt="Logo" />
-            <span>{t('App')}</span>
+            <span>{t('app')}</span>
           </div>
           <div className={styles['app-login__description']}>
-            <Trans i18nKey="routes.login.description" values={{ what: t('App') }} />
+            <Trans i18nKey="routes.login.description" values={{ what: t('app') }} />
           </div>
           <Tabs
             className={styles['app-login__tabs']}
             list={[
               {
                 id: 'account',
-                title: t('routes.login.Account login'),
+                title: t('routes.login.accountLogin'),
                 panel: (
                   <Form
                     onSubmit={() => {
@@ -103,12 +103,12 @@ export default function Login(): React.ReactElement | null {
                     }}
                   >
                     <FormGroupContext.Provider value={accountForm}>
-                      <Form.Item formControls={{ username: t('routes.login.Please enter your name') }}>
+                      <Form.Item formControls={{ username: t('routes.login.enterNamePrompt') }}>
                         {({ username }) => (
                           <Input
                             formControl={username}
                             className="w-full"
-                            placeholder={t('routes.login.Username')}
+                            placeholder={t('routes.login.usernameHint')}
                             prefix={
                               <Icon>
                                 <PersonOutlined />
@@ -117,12 +117,12 @@ export default function Login(): React.ReactElement | null {
                           />
                         )}
                       </Form.Item>
-                      <Form.Item formControls={{ password: t('routes.login.Please enter your password') }}>
+                      <Form.Item formControls={{ password: t('routes.login.enterPasswordPrompt') }}>
                         {({ password }) => (
                           <Input
                             formControl={password}
                             className="w-full"
-                            placeholder={t('routes.login.Password')}
+                            placeholder={t('routes.login.passwordHint')}
                             type="password"
                             prefix={
                               <Icon>
@@ -139,13 +139,13 @@ export default function Login(): React.ReactElement | null {
                             rememberStorage.set(checked ? '1' : '0');
                           }}
                         >
-                          {t('routes.login.Remember me')}
+                          {t('routes.login.rememberMe')}
                         </Checkbox>
-                        <a className="app-link ml-auto">{t('routes.login.Forgot password')}</a>
+                        <a className="app-link ml-auto">{t('routes.login.forgotPassword')}</a>
                       </div>
                       <Form.Item>
                         <Button type="submit" loading={loginloading} disabled={!accountForm.valid} block>
-                          {t('routes.login.Login')}
+                          {t('login')}
                         </Button>
                       </Form.Item>
                     </FormGroupContext.Provider>
@@ -165,8 +165,8 @@ export default function Login(): React.ReactElement | null {
           <span>, Inc.</span>
         </div>
         <div className={styles['app-login__link-container']}>
-          <a className="app-link">{t('routes.login.Terms')}</a>
-          <a className="app-link">{t('routes.login.Privacy')}</a>
+          <a className="app-link">{t('terms')}</a>
+          <a className="app-link">{t('privacy')}</a>
         </div>
       </footer>
     </div>

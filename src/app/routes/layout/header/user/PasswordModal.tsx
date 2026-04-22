@@ -27,7 +27,7 @@ export function AppPasswordModal(props: ModalProps): React.ReactElement | null {
   return (
     <Modal
       {...props}
-      header={t('routes.layout.Change password')}
+      header={t('routes.layout.changePassword')}
       footer={
         <Modal.Footer
           okProps={{ disabled: !form.valid }}
@@ -56,7 +56,7 @@ export function AppPasswordModal(props: ModalProps): React.ReactElement | null {
     >
       <Form vertical>
         <FormGroupContext.Provider value={form}>
-          <Form.Item formControls={{ password: t('routes.layout.Please enter a new password') }} label={t('routes.layout.New password')}>
+          <Form.Item formControls={{ password: t('routes.layout.enterNewPasswordPrompt') }} label={t('routes.layout.newPassword')}>
             {({ password }) => <Input formControl={password} className="w-full" />}
           </Form.Item>
         </FormGroupContext.Provider>

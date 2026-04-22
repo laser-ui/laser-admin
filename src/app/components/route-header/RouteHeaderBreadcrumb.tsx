@@ -18,7 +18,7 @@ export function AppRouteHeaderBreadcrumb(props: AppRouteHeaderBreadcrumbProps): 
 
   const home: AppBreadcrumbItem = _home ?? {
     id: '/',
-    title: t('Home', { ns: 'title' }),
+    title: t('home', { ns: 'title' }),
     link: true,
   };
 

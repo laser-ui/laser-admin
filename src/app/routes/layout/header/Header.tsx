@@ -65,16 +65,14 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
               };
             }}
           >
-            {t('App')}
+            {t('app')}
           </div>
         </div>
       </Link>
       {mediaBreakpointUp('md') ? (
         <button
           className={styles['app-header__button']}
-          aria-label={t(
-            layoutStorage.value.menu.mode === 'vertical' ? 'routes.layout.Fold main navigation' : 'routes.layout.Expand main navigation',
-          )}
+          aria-label={layoutStorage.value.menu.mode === 'vertical' ? t('routes.layout.foldNav') : t('routes.layout.expandNav')}
           onClick={() => {
             const layout = JSON.parse(JSON.stringify(layoutStorage.value));
             layout.menu.mode = layout.menu.mode === 'vertical' ? 'icon' : 'vertical';
@@ -88,7 +86,7 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
       ) : (
         <button
           className={styles['app-header__button']}
-          aria-label={t(menuOpen ? 'routes.layout.Fold main navigation' : 'routes.layout.Expand main navigation')}
+          aria-label={menuOpen ? t('routes.layout.foldNav') : t('routes.layout.expandNav')}
           onClick={() => {
             onMenuOpenChange(!menuOpen);
           }}
@@ -98,7 +96,7 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
       )}
       <button
         className={styles['app-header__button']}
-        aria-label={t(themeStorage.value === 'light' ? 'Dark theme' : 'Light theme')}
+        aria-label={themeStorage.value === 'light' ? t('darkTheme') : t('lightTheme')}
         onClick={() => {
           themeStorage.set(themeStorage.value === 'light' ? 'dark' : 'light');
         }}
@@ -106,7 +104,7 @@ export function AppHeader(props: AppHeaderProps): React.ReactElement | null {
         <Icon size={20}>{themeStorage.value === 'light' ? <DarkModeOutlined /> : <LightModeOutlined />}</Icon>
       </button>
       <div className="mr-auto!"></div>
-      <button className={styles['app-header__button']} aria-label={t('routes.layout.Search')}>
+      <button className={styles['app-header__button']} aria-label={t('search')}>
         <Icon size={20}>
           <SearchOutlined />
         </Icon>

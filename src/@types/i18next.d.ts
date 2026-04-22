@@ -1,7 +1,6 @@
-import 'i18next';
+import type resources from '../resources';
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import resources from '../resources.json';
+import 'i18next';
 
 declare module 'i18next' {
   // Extend CustomTypeOptions

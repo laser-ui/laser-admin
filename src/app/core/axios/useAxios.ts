@@ -34,7 +34,7 @@ export function useAxios() {
           switch (error.response.status) {
             case 401:
               DialogService.open(Toast, {
-                children: t('User not authorized'),
+                children: t('unauthorized'),
                 type: 'error',
               });
               navigate(LOGIN_PATH, { state: { [PREV_ROUTE_KEY]: location } });

@@ -81,7 +81,7 @@ const AppRouter = memo(() => {
           path: LOGIN_PATH,
           element: ROUTES[LOGIN_PATH],
           data: {
-            title: t('Login', { ns: 'title' }),
+            title: t('login', { ns: 'title' }),
           },
         },
         {
@@ -109,7 +109,7 @@ const AppRouter = memo(() => {
                   path: 'echarts',
                   element: ROUTES['/dashboard/echarts'],
                   data: {
-                    title: t('ECharts', { ns: 'title' }),
+                    title: t('eCharts', { ns: 'title' }),
                     acl: ROUTES_ACL['/dashboard/echarts'],
                     canActivate: [ACLGuard],
                   },
@@ -127,7 +127,7 @@ const AppRouter = memo(() => {
                   path: 'standard-table',
                   element: ROUTES['/list/standard-table'],
                   data: {
-                    title: t('Standard table', { ns: 'title' }),
+                    title: t('standardTable', { ns: 'title' }),
                     acl: ROUTES_ACL['/list/standard-table'],
                     canActivate: [ACLGuard],
                   },
@@ -136,7 +136,7 @@ const AppRouter = memo(() => {
                   path: 'standard-table/:id',
                   element: ROUTES['/list/standard-table/:id'],
                   data: {
-                    title: t('Device detail', { ns: 'title' }),
+                    title: t('deviceDetail', { ns: 'title' }),
                     acl: ROUTES_ACL['/list/standard-table/:id'],
                     canActivate: [ACLGuard],
                   },
@@ -154,7 +154,7 @@ const AppRouter = memo(() => {
                   path: 'acl',
                   element: ROUTES['/test/acl'],
                   data: {
-                    title: t('ACL', { ns: 'title' }),
+                    title: t('acl', { ns: 'title' }),
                     acl: ROUTES_ACL['/test/acl'],
                     canActivate: [ACLGuard],
                   },
@@ -163,7 +163,7 @@ const AppRouter = memo(() => {
                   path: 'http',
                   element: ROUTES['/test/http'],
                   data: {
-                    title: t('Http', { ns: 'title' }),
+                    title: t('http', { ns: 'title' }),
                     acl: ROUTES_ACL['/test/http'],
                     canActivate: [ACLGuard],
                   },
@@ -185,9 +185,9 @@ const AppRouter = memo(() => {
         },
       ]}
       titleOptions={{
-        default: t('App'),
+        default: t('app'),
         separator: ' - ',
-        suffix: t('App'),
+        suffix: t('app'),
       }}
     />
   );

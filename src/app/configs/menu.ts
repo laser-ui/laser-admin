@@ -1,3 +1,4 @@
+import type resources from '../../resources';
 import type { Control, ControlMode } from '@laser-pro/acl/types';
 
 import DashboardOutlined from '@material-design-icons/svg/outlined/dashboard.svg?react';
@@ -7,11 +8,13 @@ import TableViewOutlined from '@material-design-icons/svg/outlined/table_view.sv
 
 import { ROUTES_ACL } from './acl';
 
+export type TitleI18nKey = keyof (typeof resources)['en-US']['title'];
+
 export interface AppMenuItem {
   path: string;
   type: 'item' | 'group' | 'sub';
   title?: string;
-  titleI18n?: string;
+  titleI18n?: TitleI18nKey;
   icon?: React.FunctionComponent;
   greedyMatch?: boolean;
   disabled?: boolean;
@@ -29,13 +32,13 @@ export const MENU: AppMenuItem[] = [
   {
     path: '/dashboard',
     type: 'sub',
-    titleI18n: 'Dashboard',
+    titleI18n: 'dashboard',
     icon: DashboardOutlined,
     children: [
       {
         path: '/dashboard/echarts',
         type: 'item',
-        titleI18n: 'ECharts',
+        titleI18n: 'eCharts',
         acl: ROUTES_ACL['/dashboard/echarts'],
       },
     ],
@@ -43,13 +46,13 @@ export const MENU: AppMenuItem[] = [
   {
     path: '/list',
     type: 'sub',
-    titleI18n: 'List',
+    titleI18n: 'list',
     icon: TableViewOutlined,
     children: [
       {
         path: '/list/standard-table',
         type: 'item',
-        titleI18n: 'Standard table',
+        titleI18n: 'standardTable',
         greedyMatch: true,
         acl: ROUTES_ACL['/list/standard-table'],
       },
@@ -58,19 +61,19 @@ export const MENU: AppMenuItem[] = [
   {
     path: '/test',
     type: 'sub',
-    titleI18n: 'Test',
+    titleI18n: 'test',
     icon: ScienceOutlined,
     children: [
       {
         path: '/test/acl',
         type: 'item',
-        titleI18n: 'ACL',
+        titleI18n: 'acl',
         acl: ROUTES_ACL['/test/acl'],
       },
       {
         path: '/test/http',
         type: 'item',
-        titleI18n: 'Http',
+        titleI18n: 'http',
         acl: ROUTES_ACL['/test/http'],
       },
     ],
@@ -78,23 +81,23 @@ export const MENU: AppMenuItem[] = [
   {
     path: '/exception',
     type: 'sub',
-    titleI18n: 'Exception',
+    titleI18n: 'exception',
     icon: ReportOutlined,
     children: [
       {
         path: '/exception/403',
         type: 'item',
-        titleI18n: '403',
+        titleI18n: 'e403',
       },
       {
         path: '/exception/404',
         type: 'item',
-        titleI18n: '404',
+        titleI18n: 'e404',
       },
       {
         path: '/exception/500',
         type: 'item',
-        titleI18n: '500',
+        titleI18n: 'e500',
       },
     ],
   },

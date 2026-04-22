@@ -26,7 +26,7 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): R
         list={[
           {
             id: 'center',
-            title: t('routes.layout.Account center'),
+            title: t('routes.layout.accountCenter'),
             type: 'item',
             icon: (
               <Icon>
@@ -36,7 +36,7 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): R
           },
           {
             id: 'setting',
-            title: t('routes.layout.Account settings'),
+            title: t('routes.layout.accountSettings'),
             type: 'item',
             icon: (
               <Icon>
@@ -46,7 +46,7 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): R
           },
           {
             id: 'password',
-            title: t('routes.layout.Change password'),
+            title: t('routes.layout.changePassword'),
             type: 'item',
             icon: (
               <Icon>
@@ -56,7 +56,7 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): R
           },
           {
             id: 'logout',
-            title: t('routes.layout.Logout'),
+            title: t('logout'),
             type: 'item',
             icon: (
               <Icon>
@@ -91,9 +91,9 @@ export function AppUser(props: React.ButtonHTMLAttributes<HTMLButtonElement>): R
         }}
       >
         {(dropdownProps) => (
-          <button {...props} {...dropdownProps} aria-label={t('routes.layout.My account')}>
+          <button {...props} {...dropdownProps} aria-label={t('routes.layout.myAccount')}>
             <Avatar
-              img={appUser.avatar ? { src: appUser.avatar.path, alt: t('Avatar') } : undefined}
+              img={appUser.avatar ? { src: appUser.avatar.path, alt: t('avatar') } : undefined}
               text={appUser.name[0].toUpperCase()}
               size={28}
             />

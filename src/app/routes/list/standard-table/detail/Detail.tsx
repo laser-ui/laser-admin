@@ -24,13 +24,13 @@ export default function Detail() {
       <AppRouteHeader>
         <AppRouteHeader.Breadcrumb
           list={[
-            { id: '/list', title: t('List', { ns: 'title' }) },
+            { id: '/list', title: t('list', { ns: 'title' }) },
             {
               id: '/list/standard-table',
-              title: t('Standard table', { ns: 'title' }),
+              title: t('standardTable', { ns: 'title' }),
               link: true,
             },
-            { id: '/list/standard-table/:id', title: t('Device detail', { ns: 'title' }) },
+            { id: '/list/standard-table/:id', title: t('deviceDetail', { ns: 'title' }) },
           ]}
         />
         <AppRouteHeader.Header
@@ -48,7 +48,7 @@ export default function Detail() {
                 });
               }}
             >
-              {t('Edit')}
+              {t('edit')}
             </Button>,
           ]}
           back

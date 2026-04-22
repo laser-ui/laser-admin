@@ -43,7 +43,7 @@ export function AppLanguage(props: AppLanguageProps): React.ReactElement | null 
       }}
     >
       {(dropdownProps) => (
-        <button {...restProps} {...dropdownProps} aria-label={t('components.language.Change language')}>
+        <button {...restProps} {...dropdownProps} aria-label={t('components.language.change')}>
           <Icon size={20}>
             <TranslateOutlined />
           </Icon>

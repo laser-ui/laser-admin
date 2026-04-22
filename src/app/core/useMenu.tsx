@@ -39,7 +39,7 @@ export function useMenu() {
       }
 
       const { title: _title, titleI18n } = item;
-      const title = _title ?? (isUndefined(titleI18n) ? undefined : t(titleI18n as any, { ns: 'title' }));
+      const title = _title ?? (isUndefined(titleI18n) ? undefined : t(titleI18n, { ns: 'title' }));
       const IconFC = item.icon;
       const obj: MenuItem<string> = {
         id: item.path,

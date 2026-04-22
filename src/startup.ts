@@ -6,7 +6,7 @@ import { HTTP_CONFIGS } from './app/configs/http';
 import { LOGIN_PATH } from './app/configs/router';
 import { STORAGE } from './app/configs/storage';
 import { TOKEN, axios, initUser } from './app/core';
-import resources from './resources.json';
+import resources from './resources';
 
 const configStorage = () =>
   new Promise<void>((r) => {

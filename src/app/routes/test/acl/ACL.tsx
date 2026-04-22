@@ -18,17 +18,17 @@ export default function ACL() {
       <AppRouteHeader>
         <AppRouteHeader.Breadcrumb
           list={[
-            { id: '/test', title: t('Test', { ns: 'title' }) },
-            { id: '/test/acl', title: t('ACL', { ns: 'title' }) },
+            { id: '/test', title: t('test', { ns: 'title' }) },
+            { id: '/test/acl', title: t('acl', { ns: 'title' }) },
           ]}
         />
         <AppRouteHeader.Header />
       </AppRouteHeader>
       <div className={styles['app-acl']}>
-        <Alert type="info">{t('routes.test.acl.Switch between different users to compare effects')}</Alert>
+        <Alert type="info">{t('routes.test.acl.switchUsers')}</Alert>
         <Table border>
           <table>
-            <caption>{t('routes.test.acl.ACL data')}</caption>
+            <caption>{t('routes.test.acl.aclData')}</caption>
             <tbody>
               <tr>
                 <Table.Th>Full</Table.Th>
@@ -57,7 +57,7 @@ export default function ACL() {
                 navigate('/dashboard/echarts');
               }}
             >
-              {t('routes.test.acl.Test route guard')}
+              {t('routes.test.acl.testRouteGuard')}
             </Button>
           </Card.Content>
         </Card>

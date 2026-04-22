@@ -15,8 +15,8 @@ export default function Http() {
       <AppRouteHeader>
         <AppRouteHeader.Breadcrumb
           list={[
-            { id: '/test', title: t('Test', { ns: 'title' }) },
-            { id: '/test/http', title: t('Http', { ns: 'title' }) },
+            { id: '/test', title: t('test', { ns: 'title' }) },
+            { id: '/test/http', title: t('http', { ns: 'title' }) },
           ]}
         />
         <AppRouteHeader.Header />

@@ -74,8 +74,8 @@ export default function StandardTable() {
       <AppRouteHeader>
         <AppRouteHeader.Breadcrumb
           list={[
-            { id: '/list', title: t('List', { ns: 'title' }) },
-            { id: '/list/standard-table', title: t('Standard table', { ns: 'title' }) },
+            { id: '/list', title: t('list', { ns: 'title' }) },
+            { id: '/list/standard-table', title: t('standardTable', { ns: 'title' }) },
           ]}
         />
         <AppRouteHeader.Header
@@ -90,7 +90,7 @@ export default function StandardTable() {
                 openDeviceModal();
               }}
             >
-              {t('Add')}
+              {t('add')}
             </Button>,
           ]}
         />
@@ -267,7 +267,7 @@ export default function StandardTable() {
             />
             <div className="app-table-footer">
               <div>
-                <Button className="me-2" pattern="secondary" disabled={selectedManagement.all === false}>
+                <Button className="me-2!" pattern="secondary" disabled={selectedManagement.all === false}>
                   Download
                 </Button>
                 <Dropdown

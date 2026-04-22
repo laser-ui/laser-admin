@@ -32,7 +32,7 @@ export function AppAccountModal(props: ModalProps): React.ReactElement | null {
             ? [
                 {
                   uid: appUser.avatar.id,
-                  name: t('Avatar'),
+                  name: t('avatar'),
                   state: 'load',
                   url: appUser.avatar.path,
                   thumbUrl: appUser.avatar.path,
@@ -46,7 +46,7 @@ export function AppAccountModal(props: ModalProps): React.ReactElement | null {
   return (
     <Modal
       {...props}
-      header={t('routes.layout.Account settings')}
+      header={t('routes.layout.accountSettings')}
       footer={
         <Modal.Footer
           okProps={{ disabled: !form.valid }}
@@ -91,10 +91,10 @@ export function AppAccountModal(props: ModalProps): React.ReactElement | null {
     >
       <Form vertical>
         <FormGroupContext.Provider value={form}>
-          <Form.Item formControls={{ name: t('routes.layout.Please enter a name') }} label={t('routes.layout.Name')}>
+          <Form.Item formControls={{ name: t('routes.layout.enterNamePrompt') }} label={t('name')}>
             {({ name }) => <Input formControl={name} className="w-full" />}
           </Form.Item>
-          <Form.Item formControls={{ avatar: '' }} label={t('Avatar')}>
+          <Form.Item formControls={{ avatar: '' }} label={t('avatar')}>
             {({ avatar }) => (
               <Upload formControl={avatar} accept="image/*" max={1}>
                 {(uploadProps) => (

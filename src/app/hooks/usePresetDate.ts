@@ -4,32 +4,32 @@ export function usePresetDate() {
   const { t } = useTranslation();
 
   return {
-    [t('Last day')]: () => {
+    [t('lastDay')]: () => {
       const date = new Date();
       date.setDate(date.getDate() - 1);
       return [date, new Date()];
     },
-    [t('Last week')]: () => {
+    [t('lastWeek')]: () => {
       const date = new Date();
       date.setDate(date.getDate() - 7);
       return [date, new Date()];
     },
-    [t('Last month')]: () => {
+    [t('lastMonth')]: () => {
       const date = new Date();
       date.setMonth(date.getMonth() - 1);
       return [date, new Date()];
     },
-    [t('Last 3 months')]: () => {
+    [t('last3Months')]: () => {
       const date = new Date();
       date.setMonth(date.getMonth() - 3);
       return [date, new Date()];
     },
-    [t('Last 6 months')]: () => {
+    [t('last6Months')]: () => {
       const date = new Date();
       date.setMonth(date.getMonth() - 6);
       return [date, new Date()];
     },
-    [t('Last year')]: () => {
+    [t('lastYear')]: () => {
       const date = new Date();
       date.setMonth(date.getMonth() - 12);
       return [date, new Date()];

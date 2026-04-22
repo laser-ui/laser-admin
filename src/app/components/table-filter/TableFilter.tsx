@@ -52,7 +52,7 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
               onSearchClick?.();
             }}
           >
-            {t('components.table-filter.Search')}
+            {t('search')}
           </Button>
           <Button
             pattern="secondary"
@@ -61,7 +61,7 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
               onResetClick?.();
             }}
           >
-            {t('Reset')}
+            {t('reset')}
           </Button>
           {filterList && (
             <div className="app-table-filter__expand">
@@ -77,7 +77,7 @@ export function AppTableFilter(props: AppTableFilterProps): React.ReactElement |
                 }}
               >
                 <div className="app-table-filter__expand-text">
-                  <span>{t('components.table-filter.Advanced search')}</span>
+                  <span>{t('components.table-filter.advancedSearch')}</span>
                   <Icon size={12} rotate={showAdvancedSearch ? 180 : 0}>
                     <ExpandMoreOutlined />
                   </Icon>

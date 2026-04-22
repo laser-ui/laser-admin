@@ -118,7 +118,7 @@ export function PC<T = any>(
                 width={actionOpts.width}
                 fixed={{ top: 0, right: 0 }}
               >
-                {checkNodeExist(actionOpts.th) ? actionOpts.th : t('components.table.ACTIONS')}
+                {checkNodeExist(actionOpts.th) ? actionOpts.th : t('components.table.actions')}
               </Table.Th>
             )}
           </tr>
@@ -210,7 +210,7 @@ export function PC<T = any>(
                                   >
                                     {(dropdownProps) => (
                                       <Button {...dropdownProps} pattern="link">
-                                        {t('components.table.More')}
+                                        {t('components.table.more')}
                                       </Button>
                                     )}
                                   </Dropdown>
