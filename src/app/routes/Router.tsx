@@ -13,28 +13,27 @@ import { ROUTES_ACL } from '../configs/acl';
 import { APP_ROUTE_NAVIGATION, LOGIN_PATH, PREV_ROUTE_KEY } from '../configs/router';
 import { useToken } from '../core';
 
-function createRoute(element: any, rerender?: () => React.Key | undefined): React.ReactElement {
-  const useRerender = (): React.Key | undefined => {
+const defaultKeyHook = () => undefined;
+
+function createRoute(element: any, useCustomKeyHook: () => React.Key | undefined = defaultKeyHook): React.ReactElement {
+  const Component = isFunction(element) ? lazy(element) : null;
+
+  const Route = () => {
     const location = useLocation();
+
+    const customKey = useCustomKeyHook();
+
+    let finalKey: React.Key | undefined = customKey;
+
     if (location.state && location.state[APP_ROUTE_NAVIGATION]) {
-      const key = location.state[APP_ROUTE_NAVIGATION];
-      if (!isUndefined(key)) {
-        return key;
+      const navKey = location.state[APP_ROUTE_NAVIGATION];
+      if (!isUndefined(navKey)) {
+        finalKey = navKey;
       }
     }
 
-    if (rerender) {
-      const key = rerender();
-      if (!isUndefined(key)) {
-        return key;
-      }
-    }
-  };
-  const Component = isFunction(element) ? lazy(element) : null;
-  const Route = () => {
-    const key = useRerender();
     return (
-      <Fragment key={key}>
+      <Fragment key={finalKey}>
         {Component ? (
           <Suspense fallback={<AppFCPLoader />}>
             <Component />
@@ -45,6 +44,7 @@ function createRoute(element: any, rerender?: () => React.Key | undefined): Reac
       </Fragment>
     );
   };
+
   return <Route />;
 }
 const ROUTES = {
