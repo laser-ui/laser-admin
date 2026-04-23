@@ -1,11 +1,11 @@
-import { useStorage } from '@laser-pro/storage';
+import { storageScope } from '@laser-pro/storage';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import { HTTP_CONFIGS } from './app/configs/http';
 import { LOGIN_PATH } from './app/configs/router';
 import { STORAGE } from './app/configs/storage';
-import { TOKEN, axios, initUser } from './app/core';
+import { TOKEN, TOKEN_STORAGE, axios, initUser } from './app/core';
 import resources from './resources';
 
 const configStorage = () =>
@@ -16,14 +16,14 @@ const configStorage = () =>
         defaultStorage[key] = options.defaultValue;
       }
     });
-    useStorage.config({ default: defaultStorage });
+    storageScope.config({ default: defaultStorage });
     r();
   });
 
 const configToken = () =>
   new Promise<void>((r) => {
-    if (useStorage.get(...STORAGE.remember) === '1') {
-      const token = useStorage.get(...STORAGE.token);
+    if (storageScope.get(...STORAGE.remember) === '1') {
+      const token = storageScope.get<string | null>(TOKEN_STORAGE.key);
       if (token) {
         TOKEN.setValue(token);
       }
@@ -40,7 +40,7 @@ const configHttp = () =>
 const initI18n = () =>
   i18n.use(initReactI18next).init({
     resources,
-    lng: useStorage.get(...STORAGE.language),
+    lng: storageScope.get(...STORAGE.language),
     interpolation: {
       escapeValue: false,
     },
