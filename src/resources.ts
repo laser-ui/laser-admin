@@ -2,7 +2,8 @@ const resources = {
   'en-US': {
     translation: {
       // ==========================================
-      // 1. General Actions (通用操作与按钮)
+      // 1. 通用基础 (Common Basics)
+      // 包含：按钮、通用动作、基础状态、常见通用名词
       // ==========================================
       add: 'Add',
       edit: 'Edit',
@@ -11,17 +12,36 @@ const resources = {
       search: 'Search',
 
       // ==========================================
-      // 2. Prompts & Messages (提示、警告与消息)
+      // 2. 业务实体 (Business Entities)
+      // 包含：设备、告警、用户、组织、任务、指令等核心业务名词
       // ==========================================
-      unauthorized: 'User not authorized',
+      avatar: 'Avatar',
+      name: 'Name',
+      phoneNumber: 'Phone number',
 
       // ==========================================
-      // 3. Status & Results (状态与结果)
+      // 3. 表单与交互提示 (Forms & Interaction Prompts)
+      // 包含：输入提示、选择提示、确认弹窗、成功/失败消息
       // ==========================================
       success: 'Operation successful',
+      unauthorized: 'User not authorized',
+      verificationCode: 'Verification code',
 
       // ==========================================
-      // 4. Time & Units (时间与单位)
+      // 4. 系统与界面 (System & UI)
+      // 包含：系统级名词、文件操作、图表、登录登出、主题等
+      // ==========================================
+      app: 'Laser Admin',
+      darkTheme: 'Dark theme',
+      lightTheme: 'Light theme',
+      login: 'Login',
+      logout: 'Logout',
+      privacy: 'Privacy',
+      terms: 'Terms',
+
+      // ==========================================
+      // 5. 时间与单位 (Time & Units)
+      // 包含：时间相关和单位相关
       // ==========================================
       last3Months: 'Last 3 months',
       last6Months: 'Last 6 months',
@@ -29,29 +49,6 @@ const resources = {
       lastMonth: 'Last month',
       lastWeek: 'Last week',
       lastYear: 'Last year',
-
-      // ==========================================
-      // 5. UI & Display (界面显示、主题与布局)
-      // ==========================================
-      avatar: 'Avatar',
-      darkTheme: 'Dark theme',
-      lightTheme: 'Light theme',
-
-      // ==========================================
-      // 6. Auth & User (用户与安全)
-      // ==========================================
-      login: 'Login',
-      logout: 'Logout',
-      name: 'Name',
-      phoneNumber: 'Phone number',
-      privacy: 'Privacy',
-      terms: 'Terms',
-      verificationCode: 'Verification code',
-
-      // ==========================================
-      // 7. Entities, Protocols & Nouns (实体、协议与名词)
-      // ==========================================
-      app: 'Laser Admin',
 
       components: {
         language: {
@@ -136,7 +133,8 @@ const resources = {
   'zh-CN': {
     translation: {
       // ==========================================
-      // 1. General Actions (通用操作与按钮)
+      // 1. 通用基础 (Common Basics)
+      // 包含：按钮、通用动作、基础状态、常见通用名词
       // ==========================================
       add: '添加',
       edit: '编辑',
@@ -145,17 +143,36 @@ const resources = {
       search: '搜索',
 
       // ==========================================
-      // 2. Prompts & Messages (提示、警告与消息)
+      // 2. 业务实体 (Business Entities)
+      // 包含：设备、告警、用户、组织、任务、指令等核心业务名词
       // ==========================================
-      unauthorized: '用户未授权',
+      avatar: '头像',
+      name: '用户名',
+      phoneNumber: '手机号',
 
       // ==========================================
-      // 3. Status & Results (状态与结果)
+      // 3. 表单与交互提示 (Forms & Interaction Prompts)
+      // 包含：输入提示、选择提示、确认弹窗、成功/失败消息
       // ==========================================
       success: '操作成功',
+      unauthorized: '用户未授权',
+      verificationCode: '验证码',
 
       // ==========================================
-      // 4. Time & Units (时间与单位)
+      // 4. 系统与界面 (System & UI)
+      // 包含：系统级名词、文件操作、图表、登录登出、主题等
+      // ==========================================
+      app: 'Laser Admin',
+      darkTheme: '深色主题',
+      lightTheme: '浅色主题',
+      login: '登录',
+      logout: '退出登录',
+      privacy: '隐私政策',
+      terms: '服务条款',
+
+      // ==========================================
+      // 5. 时间与单位 (Time & Units)
+      // 包含：时间相关和单位相关
       // ==========================================
       last3Months: '最近三月',
       last6Months: '最近半年',
@@ -163,29 +180,6 @@ const resources = {
       lastMonth: '最近一月',
       lastWeek: '最近一周',
       lastYear: '最近一年',
-
-      // ==========================================
-      // 5. UI & Display (界面显示、主题与布局)
-      // ==========================================
-      avatar: '头像',
-      darkTheme: '深色主题',
-      lightTheme: '浅色主题',
-
-      // ==========================================
-      // 6. Auth & User (用户与安全)
-      // ==========================================
-      login: '登录',
-      logout: '退出登录',
-      name: '用户名',
-      phoneNumber: '手机号',
-      privacy: '隐私政策',
-      terms: '服务条款',
-      verificationCode: '验证码',
-
-      // ==========================================
-      // 7. Entities, Protocols & Nouns (实体、协议与名词)
-      // ==========================================
-      app: 'Laser Admin',
 
       components: {
         language: {
