@@ -46,11 +46,11 @@ export function PC<T = any>(
       if (!column.hidden) {
         const fixed: any = {};
         if (column.fixed === 'L') {
-          fixed.left = `calc(${left.join(' + ')})`;
+          fixed.left = left.length > 0 ? `calc(${left.join(' + ')})` : '0';
           left.push(toCssUnit(column.width ?? 0));
         } else if (column.fixed === 'R') {
           right.shift();
-          fixed.right = `calc(${right.join(' + ')})`;
+          fixed.right = right.length > 0 ? `calc(${right.join(' + ')})` : '0';
         }
 
         ths.push(
