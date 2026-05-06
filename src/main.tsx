@@ -30,7 +30,7 @@ function Main({ path }: { path?: string }) {
   return initNavigationCompleted(location.pathname, path) ? <App /> : <Navigate to={path!} replace />;
 }
 
-startup.then((path) => {
+startup().then((path) => {
   const Router = HASH ? HashRouter : BrowserRouter;
   createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
