@@ -54,7 +54,8 @@ declare global {
     export interface Action<T = any> {
       success: boolean;
       data: T;
-      message: string;
+      message?: string;
+      messageI18n?: string;
     }
   }
 }
