@@ -1,4 +1,4 @@
-import type { HttpConfigs } from '../core/http/http-scope';
+import type { HttpConfigs } from '../core/http/types';
 
 import mock from '../mock';
 

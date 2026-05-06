@@ -1,4 +1,4 @@
-import type { Token } from '@laser-pro/auth';
+import type { HttpConfigs, HttpInstance, HttpRequestConfigOverrides, UseHttpInstance } from './types';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { DialogService, Toast } from '@laser-ui/components';
@@ -9,27 +9,6 @@ import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
 
 import { LOGIN_PATH, PREV_ROUTE_KEY } from '../../configs/router';
-
-export interface HttpConfigs {
-  mock?: (config: AxiosRequestConfig) => Promise<AxiosResponse>;
-  baseURL?: string;
-  transformURL: (url: string) => string;
-  token?: Token;
-}
-
-export interface HttpRequestConfigOverrides {
-  baseURL?: boolean;
-  url?: boolean;
-  authorization?: boolean;
-}
-
-export interface HttpInstance {
-  <T = any, D = any>(config: AxiosRequestConfig, overrides?: true | HttpRequestConfigOverrides): Promise<AxiosResponse<T, D>>;
-  config: (configs: Partial<HttpConfigs>) => void;
-  configs: HttpConfigs;
-}
-
-export type UseHttpInstance = <T = any>(config: AxiosRequestConfig, overrides?: true | HttpRequestConfigOverrides) => Promise<T>;
 
 export class HttpScope {
   private _configs: HttpConfigs = {
@@ -138,7 +117,3 @@ export class HttpScope {
     };
   }
 }
-
-export const httpScope = new HttpScope();
-export const http = httpScope.createHttp();
-export const useHttp = httpScope.createHttpHook();
