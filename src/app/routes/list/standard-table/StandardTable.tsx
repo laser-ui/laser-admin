@@ -22,7 +22,7 @@ import { useTranslation } from 'react-i18next';
 
 import { AppDeviceModal } from './DeviceModal';
 import { AppRouteHeader, AppStatusDot, AppTable, AppTableFilter } from '../../../components';
-import { useAxios } from '../../../core';
+import { useHttp } from '../../../core';
 import { useSelectedManagement } from '../../../hooks';
 import { DEVICES_QUERY_KEYS, useDevicesQuery } from '../../../queries/device';
 import { useDeviceModelsQuery } from '../../../queries/device-model';
@@ -40,7 +40,7 @@ const QUERY: DeviceQueryParams = {
 
 export default function StandardTable() {
   const { t } = useTranslation();
-  const axios = useAxios();
+  const http = useHttp();
   const [dialogService, dialogs] = useDialogService();
 
   const queryParams = useQueryParams<DeviceQueryParams>(QUERY);
@@ -49,7 +49,7 @@ export default function StandardTable() {
   const { devicesQuery } = useDevicesQuery(queryParams.saved, {}, { placeholderData: keepPreviousData });
   const deviceDeleteMutation = useMutation({
     mutationFn: (variables: any) =>
-      axios({
+      http({
         url: `/devices/${variables.id}`,
         method: 'delete',
       }),

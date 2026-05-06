@@ -5,13 +5,13 @@ import { JWTToken } from '@laser-pro/auth';
 import { LocalStorageService, storageScope } from '@laser-pro/storage';
 import { useSyncExternalStore } from 'react';
 
-import { axios } from './axios';
+import { http } from './http';
 import { STORAGE } from '../configs/storage';
 
 const configs = {
   refresh: () => {
     if (storageScope.get(...STORAGE.remember) === '1') {
-      axios({
+      http({
         url: '/auth/refresh',
         method: 'post',
       }).then((res) => {
@@ -53,7 +53,7 @@ export const TOKEN = {
 
     TOKEN_STORAGE.service.setItem(TOKEN_STORAGE.key, val);
     TOKEN.value = new JWTToken(val, configs);
-    axios.config({ token: TOKEN.value });
+    http.config({ token: TOKEN.value });
 
     emitChange();
   },
@@ -63,7 +63,7 @@ export const TOKEN = {
       TOKEN.value.destroy();
       TOKEN.value = undefined;
     }
-    axios.config({ token: TOKEN.value });
+    http.config({ token: TOKEN.value });
 
     emitChange();
   },

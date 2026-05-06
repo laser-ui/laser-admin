@@ -5,16 +5,16 @@ import { useMutation } from '@tanstack/react-query';
 import { useStore } from 'rcl-store';
 import { useTranslation } from 'react-i18next';
 
-import { GlobalStore, useAxios } from '../../../../core';
+import { GlobalStore, useHttp } from '../../../../core';
 import { handleStandardResponse } from '../../../../utils';
 
 export function AppPasswordModal(props: ModalProps): React.ReactElement | null {
   const [{ appUser }] = useStore(GlobalStore, ['appUser']);
   const { t } = useTranslation();
-  const axios = useAxios();
+  const http = useHttp();
 
   const userMutation = useMutation({
-    mutationFn: (variables: any) => axios({ url: `/users/${appUser.id}`, method: 'patch', data: variables }),
+    mutationFn: (variables: any) => http({ url: `/users/${appUser.id}`, method: 'patch', data: variables }),
   });
 
   const [form] = useForm(

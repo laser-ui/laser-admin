@@ -29,7 +29,7 @@ import { AppLanguage } from '../../components';
 import { PREV_ROUTE_KEY } from '../../configs/router';
 import { LOGIN_PATH } from '../../configs/router';
 import { STORAGE } from '../../configs/storage';
-import { TOKEN, axios, initUser } from '../../core';
+import { TOKEN, http, initUser } from '../../core';
 
 import styles from './Login.module.scss';
 
@@ -37,7 +37,7 @@ export default function Login(): React.ReactElement | null {
   const { t } = useTranslation();
   const [loginloading, setLoginLoading] = useState(false);
   const location = useLocation();
-  const from = location.state && location.state[PREV_ROUTE_KEY] ? (location.state[PREV_ROUTE_KEY] as Location).pathname : undefined;
+  const from = location.state && location.state[PREV_ROUTE_KEY] ? (location.state[PREV_ROUTE_KEY] as string) : undefined;
   const navigate = useNavigate();
 
   const rememberStorage = useStorage(...STORAGE.remember);
@@ -73,7 +73,7 @@ export default function Login(): React.ReactElement | null {
                   <Form
                     onSubmit={() => {
                       setLoginLoading(true);
-                      axios(
+                      http(
                         {
                           url: '/auth/login',
                           method: 'post',

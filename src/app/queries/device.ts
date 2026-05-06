@@ -3,7 +3,7 @@ import type { UseQueryOptions } from '@tanstack/react-query';
 import { queryOptions, useQuery } from '@tanstack/react-query';
 
 import { createQueryKey, getParams } from './utils';
-import { useAxios } from '../core';
+import { useHttp } from '../core';
 
 export const DEVICES_QUERY_KEYS = createQueryKey('devices');
 
@@ -20,7 +20,7 @@ export function useDevicesQuery<T = AppStandardResponse.List<AppDocs.Device>>(
   extraParams?: any,
   options?: Partial<UseQueryOptions>,
 ) {
-  const axios = useAxios();
+  const http = useHttp();
 
   const params = Object.assign(
     getParams(_params, {} as AppStandardRequest.Params, {
@@ -45,7 +45,7 @@ export function useDevicesQuery<T = AppStandardResponse.List<AppDocs.Device>>(
 
   const devicesQueryOptions = queryOptions<T>({
     queryKey: DEVICES_QUERY_KEYS.list(params),
-    queryFn: (context) => axios({ url: '/devices', method: 'get', params, signal: context.signal }),
+    queryFn: (context) => http({ url: '/devices', method: 'get', params, signal: context.signal }),
     ...(options as any),
   });
   const devicesQuery = useQuery<T>(devicesQueryOptions);
@@ -54,11 +54,11 @@ export function useDevicesQuery<T = AppStandardResponse.List<AppDocs.Device>>(
 }
 
 export function useDeviceQuery<T = AppDocs.Device>(id: number, extraParams?: any, options?: Partial<UseQueryOptions>) {
-  const axios = useAxios();
+  const http = useHttp();
 
   const deviceQueryOptions = queryOptions<T>({
     queryKey: DEVICES_QUERY_KEYS.detail(id),
-    queryFn: (context) => axios({ url: `/devices/${id}`, method: 'get', params: extraParams, signal: context.signal }),
+    queryFn: (context) => http({ url: `/devices/${id}`, method: 'get', params: extraParams, signal: context.signal }),
     ...(options as any),
   });
   const deviceQuery = useQuery<T>(deviceQueryOptions);

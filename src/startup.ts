@@ -5,7 +5,7 @@ import { initReactI18next } from 'react-i18next';
 import { HTTP_CONFIGS } from './app/configs/http';
 import { LOGIN_PATH } from './app/configs/router';
 import { STORAGE } from './app/configs/storage';
-import { TOKEN, TOKEN_STORAGE, axios, initUser } from './app/core';
+import { TOKEN, TOKEN_STORAGE, http, initUser } from './app/core';
 import resources from './resources';
 
 const configStorage = async () => {
@@ -28,7 +28,7 @@ const configToken = async () => {
 };
 
 const configHttp = async () => {
-  axios.config(HTTP_CONFIGS);
+  http.config(HTTP_CONFIGS);
 };
 
 const initI18n = async () => {
@@ -46,7 +46,7 @@ const initData = async (): Promise<string | undefined> => {
     return LOGIN_PATH;
   }
   try {
-    const res = await axios({
+    const res = await http({
       url: '/auth/me',
       method: 'get',
     });

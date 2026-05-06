@@ -1,6 +1,6 @@
 import { acl } from '@laser-pro/acl';
 
-import { axios } from './axios';
+import { http } from './http';
 import { GlobalStore } from './store';
 import { ROLE_ACL } from '../configs/acl';
 
@@ -19,7 +19,7 @@ export function initUser(user: AppDocs.User) {
   });
   GlobalStore.set('appNotifications', undefined);
 
-  axios({
+  http({
     url: '/notifications',
     method: 'get',
   }).then((res) => {

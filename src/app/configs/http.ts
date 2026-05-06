@@ -1,4 +1,4 @@
-import type { HttpConfigs } from '../core/axios/configs';
+import type { HttpConfigs } from '../core/http/http-scope';
 
 import mock from '../mock';
 

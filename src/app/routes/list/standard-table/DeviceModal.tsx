@@ -4,7 +4,7 @@ import type { ModalProps } from '@laser-ui/components/modal';
 import { useForm, FormGroup, FormControl, Validators, Modal, Form, FormGroupContext, Input, Select } from '@laser-ui/components';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { useAxios } from '../../../core';
+import { useHttp } from '../../../core';
 import { DEVICES_QUERY_KEYS } from '../../../queries/device';
 import { useDeviceModelsQuery } from '../../../queries/device-model';
 import { handleStandardResponse } from '../../../utils';
@@ -20,13 +20,13 @@ export function AppDeviceModal(props: AppDeviceModalProps): React.ReactElement |
     ...restProps
   } = props;
 
-  const axios = useAxios();
+  const http = useHttp();
 
   const queryClient = useQueryClient();
   const { deviceModelsQuery } = useDeviceModelsQuery();
   const deviceMutation = useMutation({
     mutationFn: (variables: any) =>
-      axios<AppStandardResponse.Action<AppDocs.Device>>({
+      http<AppStandardResponse.Action<AppDocs.Device>>({
         url: '/devices' + (device ? `/${device.id}` : ''),
         method: device ? 'patch' : 'post',
         data: variables,
