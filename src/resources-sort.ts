@@ -195,9 +195,25 @@ function processObject(lines: string[], startIdx: number) {
         comments = [];
         i = nested.idx;
       } else {
-        leaves.push({ key, lines: [...comments, line] });
+        const leafLines = [...comments, line];
         comments = [];
         i++;
+        // Absorb continuation lines (values that span multiple lines)
+        while (i < lines.length) {
+          const nextTrimmed = lines[i].trim();
+          if (
+            nextTrimmed === '' ||
+            nextTrimmed.startsWith('//') ||
+            nextTrimmed === '}' ||
+            nextTrimmed === '},' ||
+            /^([a-zA-Z_]\w*|['"][^'"]+['"])\s*:\s*(.*)$/.test(nextTrimmed)
+          ) {
+            break;
+          }
+          leafLines.push(lines[i]);
+          i++;
+        }
+        leaves.push({ key, lines: leafLines });
       }
     } else {
       result.push(line);
