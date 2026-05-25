@@ -14,9 +14,13 @@ const configs = {
       http({
         url: '/auth/refresh',
         method: 'post',
-      }).then((res) => {
-        TOKEN.setValue(res.data);
-      });
+      })
+        .then((res) => {
+          TOKEN.setValue(res.data);
+        })
+        .catch(() => {
+          TOKEN.remove();
+        });
     }
   },
 };
